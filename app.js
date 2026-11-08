@@ -1,12 +1,15 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
   $("back-home").addEventListener("click",()=>show("home-screen"));
   $("enter-office").addEventListener("click",()=>show("office-screen"));
+  $("leave-interview").addEventListener("click",()=>show("office-screen"));
+  $("open-interview").addEventListener("click",()=>{renderInterview();show("interview-screen")});
+
   $("back-briefing").addEventListener("click",()=>show("briefing-screen"));
   $("open-investigation").addEventListener("click",()=>{show("investigation-screen");startAmbience();});
   $("leave-investigation").addEventListener("click",()=>show("office-screen"));
@@ -111,6 +114,38 @@
     }
     renderPhoneCode();
   });
+
+  // Witness interview: answers are recorded as statements, not treated as proof.
+  const interviewKey="thecase-case01-mazen-interview";
+  let asked=[];try{asked=JSON.parse(localStorage.getItem(interviewKey)||"[]")}catch(_){}
+  const interviewAnswers={
+    argument:{label:"الخلاف مع سليم",text:"«نعم، اختلفنا. كان يظن أنني أخفي عنه شيئاً. لم يكن شجاراً على المال؛ حاولت أن أقنعه أن يتوقف عن البحث وحده. خفت أن يورّط نفسه.»",note:"أقرّ بوجود خلاف، لكنه يصفه كتحذير لا كتهديد."},
+    records:{label:"سجلات الصلاحيات",text:"«رأيت اختلافاً بين النسخة المطبوعة والسجل الأصلي. قلت لسليم ألا يعتمد على التقرير. لم أملك صلاحية تعديل السجلات، ولم ألمس جهازه.»",note:"يؤكد وجود اختلاف في السجلات، وينفي امتلاكه صلاحية تعديلها."},
+    warning:{label:"شعور سليم بالمراقبة",text:"«كان يعتقد أن أحداً داخل الشركة يعرف متى يفتح الملفات. لم يقل لي اسماً. آخر مرة تحدثنا قال إن المشكلة من شخص يملك صلاحية الوصول، لا من شخص يراقب الباب.»",note:"يقول إن سليم اشتبه بشخص يملك صلاحيات داخلية، دون تسمية أحد."},
+    timeline:{label:"وقت المغادرة",text:"«غادرت الطابق عند 01:12. كنت قد أنهيت عملي. أعرف أن سليم بقي هناك، لكنني لم أعد إلى مكتبه بعد ذلك.»",note:"إفادة مازن: غادر عند 01:12. تحتاج إلى مطابقة مستقلة مع سجل المصعد أو الكاميرات."},
+    message:{label:"رسالة الهاتف 00:54",text:"«هذه رسالتي. أرسلتها لأنني اكتشفت اختلاف النسختين. أما عبارة لا تعتمد على التقرير المطبوع فكانت تحذيراً، لا اتفاقاً على إخفاء شيء. لم أكن أعرف من غيّر السجل.»",note:"طابق مازن الرسالة بنفسه، لكن ذلك لا يثبت وحده أنه لم يشارك في التلاعب."}
+  };
+  function renderInterview(){
+    $("interview-card-state").textContent=collected.includes("phone-data")?"متاحة للمراجعة ←":"تُفتح بعد فحص الهاتف ←";
+    $("open-interview").disabled=!collected.includes("phone-data");
+    $("question-message").classList.toggle("hidden",!collected.includes("phone-data"));
+    const host=$("interview-notes");host.innerHTML="";
+    if(!asked.length){const li=document.createElement("li");li.textContent="لم تُسجّل إجابات بعد.";host.appendChild(li)}
+    asked.forEach(k=>{const li=document.createElement("li");li.textContent=interviewAnswers[k].label+" — "+interviewAnswers[k].note;host.appendChild(li)});
+  }
+  $("dialogue-options").addEventListener("click",e=>{
+    const button=e.target.closest("[data-question]");if(!button)return;
+    const key=button.dataset.question,answer=interviewAnswers[key];
+    if(!answer||asked.includes(key))return;
+    if(key==="message"&&!collected.includes("phone-data"))return;
+    $("dialogue-response").textContent=answer.text;
+    $("dialogue-note").textContent="ملاحظة آدم: "+answer.note;
+    asked.push(key);localStorage.setItem(interviewKey,JSON.stringify(asked));
+    button.disabled=true;button.classList.add("asked");
+    renderInterview();
+  });
+  document.querySelectorAll("[data-question]").forEach(button=>{if(asked.includes(button.dataset.question)){button.disabled=true;button.classList.add("asked")}});
+  renderInterview();
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
