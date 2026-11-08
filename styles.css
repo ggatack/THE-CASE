@@ -183,3 +183,25 @@
 .phone-forensic-note b{font-size:9px;color:#bd956d}
 .phone-forensic-note p{font-size:9px;line-height:1.9;color:#aeb3ae;margin:5px 0 0}
 @media(orientation:landscape) and (max-height:600px){.phone-record{padding:7px 9px}.phone-record p{margin:4px 0}.phone-tabs{margin:7px 0}.phone-forensic-note{margin-top:7px;padding:7px}}
+
+/* First witness interview */
+.interview-screen{max-width:1000px;margin:22px auto 35px;animation:appear .35s ease}
+.interview-header{display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:18px;padding-bottom:17px;border-bottom:1px solid var(--line)}
+.interview-header h2{font-size:35px;font-weight:400;margin:0}.interview-header h2 em{font-style:normal;color:var(--copper)}.interview-header p:last-child{font-size:10px;color:#9da09d;margin:5px 0 0}
+.interview-status{border:1px solid #8a765c;color:#c7a77f;padding:7px 10px;font-size:9px}
+.interview-room{display:grid;grid-template-columns:220px 1fr;gap:16px;margin-top:18px}
+.interview-person,.interview-dialogue,.interview-record{background:linear-gradient(145deg,#1a2025,#101519);border:1px solid #374148;padding:18px}
+.interview-person{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px}
+.person-silhouette{width:104px;height:104px;border:1px solid #82694f;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#596064 0 18%,#30383d 19% 38%,#171d21 39%);color:#d4b18a;font-size:34px;box-shadow:0 0 0 10px #bd8b6210;margin-bottom:18px}
+.interview-person b{font-size:14px;font-weight:500;color:#e8dfd2}.interview-person small{font-size:9px;color:#a58e76;margin-top:7px}
+.dialogue-label{font-size:10px;color:#c59b70;border-bottom:1px solid #ffffff19;padding-bottom:10px}.dialogue-label span{color:#7e8988}
+.dialogue-response{min-height:100px;padding:18px 4px;font-size:14px;line-height:2.1;color:#e2ddd2}
+.dialogue-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dialogue-options button{min-height:43px;text-align:right;padding:9px 12px;background:#20282d;border:1px solid #465057;color:#d6d0c4;font:10px 'IBM Plex Sans Arabic';cursor:pointer}
+.dialogue-options button:hover:not(:disabled){border-color:#bd8b62;background:#292820}
+.dialogue-options button:disabled{opacity:.45;cursor:default;border-color:#4b6752;color:#9cb39e}
+.dialogue-note{font-size:9px;line-height:1.9;color:#bd957d;margin:13px 0 0}
+.interview-record{margin-top:13px}.interview-record b{font-size:10px;color:#c7a47d}.interview-record ul{margin:10px 0 0;padding-right:18px;color:#aeb4af;font-size:10px;line-height:2.1}
+.interview-card:disabled{opacity:.48;cursor:not-allowed}
+@media(max-width:700px){.interview-header{grid-template-columns:1fr auto}.interview-header .back-link{grid-column:1/-1}.interview-room{grid-template-columns:1fr}.interview-person{min-height:160px}.person-silhouette{width:70px;height:70px;margin-bottom:10px}.dialogue-options{grid-template-columns:1fr}.interview-header h2{font-size:28px}}
+@media(orientation:landscape) and (max-height:600px){.interview-screen{margin:8px auto 15px}.interview-room{grid-template-columns:170px 1fr;margin-top:10px}.interview-person{min-height:240px}.interview-dialogue{padding:12px}.dialogue-response{min-height:65px;padding:9px 4px;font-size:12px}.dialogue-options button{min-height:35px}.interview-record{margin-top:8px;padding:10px}}
