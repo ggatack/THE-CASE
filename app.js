@@ -65,6 +65,13 @@
   const phoneCode="0714",phoneKey="thecase-case01-phone-open";
   let phoneDigits="";
   let phoneOpened=localStorage.getItem(phoneKey)==="yes";
+  function renderPhoneCode(){
+    const display=$("phone-code-display");
+    display.setAttribute("dir","ltr");
+    display.style.direction="ltr";
+    display.style.unicodeBidi="isolate";
+    display.textContent="\\u2066"+phoneDigits.padEnd(4,"_").split("").join(" ")+"\\u2069";
+  }
   function renderPhonePuzzle(){
     const ready=collected.includes("paper")&&collected.includes("clock");
     $("phone-puzzle-intro").textContent=phoneOpened?"تم تجاوز قفل الجهاز. عُثر على مسودة محفوظة محلياً.":ready?"القرائن اللازمة أصبحت متاحة. اقرأها ثم أدخل الرمز المكوّن من أربعة أرقام.":"لفتح الهاتف، وثّق أولاً الأوراق والساعة؛ فهما يحملان القرائن اللازمة.";
@@ -73,7 +80,7 @@
     $("phone-code-display").classList.toggle("hidden",!ready||phoneOpened);
     $("phone-feedback").classList.toggle("hidden",!ready||phoneOpened);
     $("phone-unlocked").classList.toggle("hidden",!phoneOpened);
-    $("phone-code-display").textContent=phoneDigits.padEnd(4,"_").split("").join(" ");
+    renderPhoneCode();
     $("phone-feedback").textContent="";
   }
   $("phone-keypad").addEventListener("click",e=>{
@@ -82,14 +89,14 @@
     else if(b.dataset.action==="clear")phoneDigits="";
     else if(b.dataset.action==="enter"){
       if(phoneDigits.length!==4){$("phone-feedback").textContent="أدخل أربعة أرقام أولاً.";return}
-      if(phoneDigits===phoneCode){
+      if(phoneDigits.replace(/[^0-9]/g,"")===phoneCode){
         phoneOpened=true;localStorage.setItem(phoneKey,"yes");renderPhonePuzzle();
       }else{
         $("phone-feedback").textContent="رمز غير صحيح. راجع ترتيب القرائن؛ لا توجد عقوبة على المحاولة.";
         phoneDigits="";
       }
     }
-    $("phone-code-display").textContent=phoneDigits.padEnd(4,"_").split("").join(" ");
+    renderPhoneCode();
   });
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
