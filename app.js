@@ -20,7 +20,8 @@
 
   const evidence={
     cup:{title:"فنجان القهوة",number:"01 / TRACE EVIDENCE",description:"فنجان خزفي تُرك على الطرف الأيسر من المكتب. بقيت آثار سائل داكن في قاعه، ولا يظهر من النظرة الأولى إن كان قد شُرب قبل المواجهة أم بعدها. حافته سليمة ولا توجد شظايا حوله.",caution:"ما يمكن إثباته الآن: وجود الفنجان في المكان. البصمات، إن استُخرجت، تثبت ملامسة شخص له في وقت غير محدد؛ لا تثبت وجوده ساعة الوفاة."},
-    phone:{title:"هاتف سليم",number:"02 / DIGITAL EVIDENCE",description:"هاتف ذكي أسود، شاشته مطفأة ومقفلة برمز من أربعة أرقام. لا توجد معاينة للرسائل أو سجل المكالمات قبل فتحه. موضعه على المكتب لا يخبرنا من استخدمه آخر مرة.",caution:"الهاتف يحتاج إلى حل الرمز من قرائن أخرى. لن نختلق محتوى غير متاح، ولن نعتبر ملكية الهاتف دليلاً على آخر من لمسه."},
+    phone:{title:"هاتف سليم",number:"02 / DIGITAL EVIDENCE",description:"هاتف ذكي أسود عُثر عليه فوق المكتب. بعد تجاوز القفل، أمكن استعادة معاينات رسائل وسجل مكالمات جزئي من ذاكرته المحلية.",caution:"محتويات الهاتف تسجل أسماء محفوظة وتوقيتات محلية، لا هوية مؤكدة للشخص الذي استخدم الجهاز أو التحويلة. يلزم corroboration من سجلات مستقلة."},
+    "phone-data":{title:"محتويات الهاتف",number:"05 / DIGITAL FORENSICS",description:"استُعيدت أربع معاينات رسائل وثلاثة سجلات مكالمات. يظهر تواصل مع مازن، ورسالة من تحويلة داخلية 204 عند 01:28، ومكالمة واردة من التحويلة نفسها عند 01:32.",caution:"هذه سجلات محلية جزئية. اسم جهة الاتصال ليس إثبات هوية، والتحويلة قد يستخدمها أكثر من شخص. كما أن وقت الجهاز قابل للتعديل ولا يثبت وحده ترتيب الأحداث."},
     paper:{title:"أوراق على المكتب",number:"03 / DOCUMENT TRACE",description:"ورقتان فوق حافظة جلدية. إحداهما تحمل أرقاماً مكتوبة بخط اليد، والأخرى ممزقة من طرفها. لا تكفي المعاينة الحالية لترتيب الأرقام أو استعادة الجزء المفقود.",caution:"وجود كتابة بخط سليم لا يحدد متى كُتبت. سنحتاج إلى مقارنة الأرقام بملفات الشركة قبل استنتاج معناها."},
     clock:{title:"ساعة الحائط",number:"04 / SCENE DETAIL",description:"ساعة حائط دائرية متوقفة عند 01:40. لا نعرف إن كانت توقفت بسبب عطل أو صدمة أو نفاد البطارية. لا يوجد حتى الآن ما يثبت أنها ضُبطت على الوقت الصحيح.",caution:"01:40 ليست وقت وفاة مؤكداً. يجب مقارنتها بالتسجيلات وسجلات الحركة والتقدير الطبي."}
   };
@@ -29,9 +30,10 @@
   let selected=null;
   const empty=$("inspection-empty"),details=$("inspection-details"),list=$("collected-items");
   function render(){
-    $("evidence-count").textContent=collected.length+" / 4";
-    $("progress-fill").style.width=(collected.length*25)+"%";
-    $("collected-label").textContent=collected.length+" / 4";
+    const total=Object.keys(evidence).length;
+    $("evidence-count").textContent=collected.length+" / "+total;
+    $("progress-fill").style.width=(collected.length*100/total)+"%";
+    $("collected-label").textContent=collected.length+" / "+total;
     list.innerHTML="";
     collected.forEach(id=>{const li=document.createElement("li");li.textContent=evidence[id].title;list.appendChild(li)});
     document.querySelectorAll(".scene-object").forEach(btn=>{
@@ -61,7 +63,7 @@
   $("collect-evidence").addEventListener("click",()=>{if(selected)inspect(selected)});
   render();
 
-  // Phone puzzle: the player combines the floor number with the stopped-clock time.
+  // Phone puzzle: the player combines the floor number with the date reference.
   const phoneCode="0714",phoneKey="thecase-case01-phone-open";
   let phoneDigits="";
   let phoneOpened=localStorage.getItem(phoneKey)==="yes";
@@ -74,6 +76,9 @@
   }
   function renderPhonePuzzle(){
     const ready=collected.includes("paper")&&collected.includes("clock");
+    if(phoneOpened&&!collected.includes("phone-data")){
+      collected.push("phone-data");localStorage.setItem(key,JSON.stringify(collected));render();renderBoard();
+    }
     $("phone-puzzle-intro").textContent=phoneOpened?"تم تجاوز قفل الجهاز. عُثر على مسودة محفوظة محلياً.":ready?"القرائن اللازمة أصبحت متاحة. اقرأها ثم أدخل الرمز المكوّن من أربعة أرقام.":"لفتح الهاتف، وثّق أولاً الأوراق والساعة؛ فهما يحملان القرائن اللازمة.";
     $("phone-clues").classList.toggle("hidden",!ready||phoneOpened);
     $("phone-keypad").classList.toggle("hidden",!ready||phoneOpened);
@@ -83,6 +88,14 @@
     renderPhoneCode();
     $("phone-feedback").textContent="";
   }
+  document.querySelectorAll("[data-phone-tab]").forEach(tab=>tab.addEventListener("click",()=>{
+    const target=tab.dataset.phoneTab;
+    document.querySelectorAll("[data-phone-tab]").forEach(t=>{
+      const active=t===tab;t.classList.toggle("active",active);t.setAttribute("aria-selected",active?"true":"false");
+    });
+    $("phone-messages-panel").classList.toggle("hidden",target!=="messages");
+    $("phone-calls-panel").classList.toggle("hidden",target!=="calls");
+  }));
   $("phone-keypad").addEventListener("click",e=>{
     const b=e.target.closest("button");if(!b||phoneOpened)return;
     if(b.dataset.digit!==undefined){if(phoneDigits.length<4)phoneDigits+=b.dataset.digit;}
