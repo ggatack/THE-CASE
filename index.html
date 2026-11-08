@@ -7,7 +7,7 @@
   <meta name="description" content="THE CASE — لعبة تحقيق وغموض سينمائية باللغة العربية.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
-  <link rel="stylesheet" href="styles.css?v=crosscheck1">
+  <link rel="stylesheet" href="styles.css?v=serverforensics1">
   <title>THE CASE | القضية</title>
 </head>
 <body>
@@ -79,6 +79,7 @@
         <button class="office-card archive-card" id="open-archive"><span class="card-index">07</span><div class="card-symbol">▤</div><h3>أرشيف الشركة</h3><p>ملفات الصلاحيات والتحويلات القديمة</p><span class="card-state" id="archive-card-state">تُفتح بعد توثيق سجل الدخول ←</span></button>
       </div>
       <button class="office-card compare-card" id="open-crosscheck"><span class="card-index">08</span><div class="card-symbol">⌗</div><h3>مطابقة المستندات</h3><p>قارن الأرشيف وابحث عن التناقضات</p><span class="card-state" id="crosscheck-card-state">تُفتح بعد توثيق مستندات الأرشيف ←</span></button>
+      <button class="office-card server-card" id="open-server-forensics"><span class="card-index">09</span><div class="card-symbol">⌬</div><h3>فحص غرفة الخوادم</h3><p>أثر رقمي ومادي من موقع الدخول</p><span class="card-state" id="server-card-state">تُفتح بعد تقرير المطابقة ←</span></button>
       <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
     </section>
 
@@ -238,6 +239,30 @@
       </div>
       <p class="scene-footnote">ملاحظة آدم: الترتيب الزمني قد يكشف علاقة، لكنه لا يكشف وحده من أصدر الأمر.</p>
     </section>
+    <section class="server-forensics-screen hidden" id="server-forensics-screen">
+      <div class="server-header">
+        <button class="back-link" id="leave-server-forensics">← العودة إلى مكتب آدم</button>
+        <div><p class="eyebrow"><span class="status-dot"></span> فحص تقني ومادي · غرفة الخوادم</p><h2>الأثر الذي <em>بقي.</em></h2><p>راجع ثلاث مواد مستقلة. لا تفترض أن صاحب البطاقة هو من استخدمها.</p></div>
+        <span class="server-stamp">مختبر الأدلة</span>
+      </div>
+      <div class="server-alert"><b>تنبيه سلسلة الحيازة</b><span>المواد التالية نسخ أولية وصلت إلى آدم. لا تُعاملها كأصول جنائية مختومة، ولا تخلط بين أثر الجهاز وهوية مستخدمه.</span></div>
+      <div class="server-grid">
+        <button class="server-item" type="button" data-forensic="audit"><span class="server-index">01 / DIGITAL</span><b>سجل تدقيق قارئ الباب</b><small>تسلسل إنشاء وتعديل الحدث 01:43</small><i>افحص المادة ←</i></button>
+        <button class="server-item" type="button" data-forensic="camera"><span class="server-index">02 / VIDEO</span><b>إطار كاميرا الممر</b><small>صورة ثابتة منخفضة الدقة · 01:44</small><i>افحص المادة ←</i></button>
+        <button class="server-item" type="button" data-forensic="trace"><span class="server-index">03 / TRACE</span><b>أثر قرب قارئ البطاقة</b><small>ألياف دقيقة وخدش حديث</small><i>افحص المادة ←</i></button>
+      </div>
+      <aside class="server-reader" aria-live="polite">
+        <span class="log-detail-kicker">محطة الفحص</span>
+        <h3 id="forensic-title">اختر مادة للفحص</h3>
+        <p id="forensic-description">كل مادة قد تضيف تفصيلاً، لكنها لا تجيب وحدها عن هوية الشخص الذي دخل غرفة الخوادم.</p>
+        <div class="forensic-observation" id="forensic-observation">لم تُفحص مادة بعد.</div>
+        <div class="forensic-limit" id="forensic-limit">افصل بين ما تراه وما تستنتجه.</div>
+        <button class="collect-button" id="record-forensic" disabled>＋ توثيق المادة في ملف القضية</button>
+        <p class="forensic-recorded hidden" id="forensic-recorded">✓ تمت إضافة المادة إلى ملف القضية.</p>
+      </aside>
+      <div class="server-progress"><span>مواد موثقة</span><b id="forensic-progress">0 / 3</b></div>
+      <p class="scene-footnote">قاعدة آدم: التلاعب بسجل لا يحدد تلقائياً من نفّذه، والأثر المادي لا يحمل اسماً.</p>
+    </section>
     <section class="timeline-screen hidden" id="timeline-screen">
       <div class="timeline-header">
         <button class="back-link" id="leave-timeline">← العودة إلى مكتب آدم</button>
@@ -312,6 +337,6 @@
     </section>
     <footer class="site-footer"><span>THE CASE © 2026</span><span>صُممت لتُكتشف، لا لتُخمن.</span><span>نسخة تطويرية 0.1</span></footer>
   </main>
-  <script src="app.js?v=crosscheck1"></script>
+  <script src="app.js?v=serverforensics1"></script>
 </body>
 </html>
