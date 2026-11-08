@@ -145,7 +145,7 @@
 .phone-clues>div{padding:8px 9px;background:#ffffff06;border-right:2px solid #bd8b62}
 .phone-clues b{display:block;font-size:9px;color:#d0aa7e;margin-bottom:4px}
 .phone-clues span{display:block;font-size:9px;line-height:1.8;color:#b2b6b0}
-.phone-code-display{margin:12px auto;width:150px;text-align:center;letter-spacing:8px;padding:10px;background:#05090c;border:1px solid #6d5a46;color:#e6c69e;font:22px 'Cormorant Garamond'}
+.phone-code-display{direction:ltr;unicode-bidi:isolate;margin:12px auto;width:150px;text-align:center;letter-spacing:8px;padding:10px;background:#05090c;border:1px solid #6d5a46;color:#e6c69e;font:22px 'Cormorant Garamond'}
 .phone-keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:210px;margin:0 auto}
 .phone-keypad button{min-height:35px;background:#20282d;border:1px solid #414b50;color:#e8e0d3;font:12px 'IBM Plex Sans Arabic';cursor:pointer}
 .phone-keypad button:active{background:#bd8b62;color:#17130f}
