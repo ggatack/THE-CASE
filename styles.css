@@ -245,3 +245,25 @@
 .archive-card:disabled{opacity:.45;cursor:not-allowed}
 @media(max-width:700px){.archive-header{grid-template-columns:1fr auto}.archive-header .back-link{grid-column:1/-1}.archive-header h2{font-size:27px}.archive-layout{grid-template-columns:1fr}.archive-reader{min-height:280px}.archive-warning{align-items:flex-start}}
 @media(orientation:landscape) and (max-height:600px){.archive-screen{margin:8px auto 14px}.archive-header{padding-bottom:8px}.archive-header h2{font-size:27px}.archive-warning{margin:8px 0;padding:7px 10px}.archive-layout{gap:9px}.archive-documents,.archive-reader{padding:10px}.archive-document{padding:8px;margin-bottom:5px}.archive-reader{min-height:270px}.archive-reader h3{margin:8px 0}.archive-extract{margin:8px 0;padding:9px;min-height:95px}}
+
+
+/* Cross-reference analysis workspace */
+.crosscheck-screen{max-width:1080px;margin:22px auto 35px;animation:appear .35s ease}
+.crosscheck-header{display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:18px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.crosscheck-header h2{font-size:34px;font-weight:400;margin:0}.crosscheck-header h2 em{font-style:normal;color:var(--copper)}.crosscheck-header p:last-child{font-size:10px;color:#9da09d;margin:5px 0 0}
+.crosscheck-stamp{border:1px solid #8c6951;color:#c69b70;padding:7px 10px;font-size:9px}
+.crosscheck-warning{display:flex;gap:12px;align-items:center;margin:14px 0;padding:11px 14px;background:#34251f;border:1px solid #795541;color:#d4c0aa;font-size:10px;line-height:1.8}.crosscheck-warning b{color:#e2ad7d;white-space:nowrap}
+.crosscheck-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:15px}
+.crosscheck-sources,.crosscheck-result{background:linear-gradient(145deg,#192026,#101519);border:1px solid #38434a;padding:16px}
+.crosscheck-source{width:100%;display:block;text-align:right;padding:13px;margin:8px 0;background:#20272c;border:1px solid #414a4e;color:#e4ddd1;cursor:pointer}
+.crosscheck-source b{display:block;font-size:11px;font-weight:500}.crosscheck-source small{display:block;color:#929b98;font-size:9px;margin-top:5px}
+.crosscheck-source.selected{border-color:#bd8b62;background:#30291f}.crosscheck-source.source-saved{border-right:3px solid #8baa8c}.crosscheck-source:disabled{opacity:.38;cursor:not-allowed}
+.crosscheck-pair{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:14px 0;padding:12px;background:#11171b;border:1px solid #394349}
+.crosscheck-pair span{font-size:8px;color:#899391}.crosscheck-pair b{font-size:10px;color:#e1d3c0;min-height:24px}.crosscheck-pair i{grid-column:1/-1;text-align:center;color:#bd956d;font-style:normal}
+.save-crosscheck{width:100%;min-height:40px;background:linear-gradient(90deg,#b98255,#d0a176);border:0;color:#17130f;font:600 11px 'IBM Plex Sans Arabic';cursor:pointer}.save-crosscheck:disabled{background:#333b3d;color:#858c8a;cursor:not-allowed}
+.crosscheck-result{min-height:350px;display:flex;flex-direction:column}.crosscheck-result h3{font-size:20px;font-weight:400;color:#e8dfd1;margin:16px 0 10px}.crosscheck-result>p{font-size:11px;line-height:2;color:#b6b9b1;margin:0}
+.crosscheck-limits{margin:16px 0;padding:12px;background:#34231f;border-right:2px solid #b76f60;color:#d5b2a3;font-size:10px;line-height:2}
+.crosscheck-result .collect-button{margin-top:auto}.crosscheck-result .collect-button:disabled{opacity:.5}.crosscheck-saved{font-size:9px;color:#a7c2a7;margin:8px 0 0}
+.compare-card:disabled{opacity:.42;cursor:not-allowed}
+@media(max-width:700px){.crosscheck-header{grid-template-columns:1fr auto}.crosscheck-header .back-link{grid-column:1/-1}.crosscheck-header h2{font-size:27px}.crosscheck-layout{grid-template-columns:1fr}.crosscheck-result{min-height:290px}}
+@media(orientation:landscape) and (max-height:600px){.crosscheck-screen{margin:8px auto 14px}.crosscheck-header{padding-bottom:8px}.crosscheck-header h2{font-size:27px}.crosscheck-warning{margin:8px 0;padding:7px 10px}.crosscheck-layout{gap:9px}.crosscheck-sources,.crosscheck-result{padding:10px}.crosscheck-source{padding:8px;margin:5px 0}.crosscheck-result{min-height:260px}.crosscheck-result h3{margin:8px 0}.crosscheck-limits{margin:8px 0;padding:8px}}
