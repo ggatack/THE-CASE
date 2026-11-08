@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
@@ -10,6 +10,9 @@
   $("back-briefing").addEventListener("click",()=>show("briefing-screen"));
   $("open-investigation").addEventListener("click",()=>{show("investigation-screen");startAmbience();});
   $("leave-investigation").addEventListener("click",()=>show("office-screen"));
+  $("leave-board").addEventListener("click",()=>show("office-screen"));
+  $("open-board").addEventListener("click",()=>{renderBoard();show("evidence-board-screen")});
+  $("open-board-from-scene").addEventListener("click",()=>{renderBoard();show("evidence-board-screen")});
   $("open-files").addEventListener("click",()=>modal.classList.remove("hidden"));
   $("close-files").addEventListener("click",()=>modal.classList.add("hidden"));
   modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.add("hidden")});
@@ -51,6 +54,58 @@
     collected.push(selected);localStorage.setItem(key,JSON.stringify(collected));render();inspect(selected);
   });
   render();
+
+
+  // Player-authored evidence links are hypotheses, never automatic conclusions.
+  const theoryKey="thecase-case01-theories";
+  let theories=[];try{theories=JSON.parse(localStorage.getItem(theoryKey)||"[]")}catch(_){}
+  let pair=[];
+  const boardGrid=$("board-evidence-grid"),note=$("theory-note"),saveTheory=$("save-theory");
+  function renderBoard(){
+    $("board-evidence-count").textContent=collected.length;
+    $("board-card-state").textContent=collected.length>=2?"افتح لوحة التحليل ←":"تُفتح بعد جمع دليلين ←";
+    $("board-empty").classList.toggle("hidden",collected.length>=2);
+    boardGrid.innerHTML="";
+    collected.forEach(id=>{
+      const item=evidence[id],card=document.createElement("button");
+      card.type="button";card.className="board-evidence-card"+(pair.includes(id)?" chosen":"");
+      const no=String(Object.keys(evidence).indexOf(id)+1).padStart(2,"0");
+      card.innerHTML='<span class="board-card-no">'+no+' / EVIDENCE</span><b></b><small>موثّق في ملف القضية</small>';
+      card.querySelector("b").textContent=item.title;
+      card.addEventListener("click",()=>selectBoardEvidence(id));
+      boardGrid.appendChild(card);
+    });
+    $("slot-one").textContent=pair[0]?evidence[pair[0]].title:"لم يُحدّد";
+    $("slot-two").textContent=pair[1]?evidence[pair[1]].title:"لم يُحدّد";
+    saveTheory.disabled=pair.length!==2||note.value.trim().length<8;
+    renderTheories();
+  }
+  function selectBoardEvidence(id){
+    if(pair.includes(id))pair=pair.filter(x=>x!==id);
+    else if(pair.length<2)pair.push(id);
+    else pair=[id];
+    renderBoard();
+  }
+  function renderTheories(){
+    const host=$("theory-list");host.innerHTML="";
+    $("theory-count").textContent=theories.length+" فرضيات";
+    if(!theories.length){const p=document.createElement("p");p.className="no-theories";p.textContent="لم تسجّل أي روابط بعد.";host.appendChild(p);return}
+    theories.forEach((t,index)=>{
+      const card=document.createElement("article");card.className="theory-card";
+      const head=document.createElement("div");head.className="theory-pair";
+      head.textContent=evidence[t.a].title+"  ↔  "+evidence[t.b].title;
+      const body=document.createElement("p");body.textContent=t.note;
+      const foot=document.createElement("small");foot.textContent="فرضية اللاعب · "+(index+1);
+      card.append(head,body,foot);host.appendChild(card);
+    });
+  }
+  note.addEventListener("input",()=>{saveTheory.disabled=pair.length!==2||note.value.trim().length<8});
+  saveTheory.addEventListener("click",()=>{
+    if(pair.length!==2||note.value.trim().length<8)return;
+    theories.push({a:pair[0],b:pair[1],note:note.value.trim(),createdAt:Date.now()});
+    localStorage.setItem(theoryKey,JSON.stringify(theories));pair=[];note.value="";renderBoard();
+  });
+  renderBoard();
 
   let soundOn=localStorage.getItem("thecase-sound")!=="off",audioContext,ambienceGain,ambienceSource;
   const soundButton=$("sound-toggle");
