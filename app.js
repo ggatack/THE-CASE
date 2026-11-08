@@ -62,7 +62,7 @@
   render();
 
   // Phone puzzle: the player combines the floor number with the stopped-clock time.
-  const phoneCode="7140",phoneKey="thecase-case01-phone-open";
+  const phoneCode="0714",phoneKey="thecase-case01-phone-open";
   let phoneDigits="";
   let phoneOpened=localStorage.getItem(phoneKey)==="yes";
   function renderPhonePuzzle(){
