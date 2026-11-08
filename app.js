@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
@@ -13,6 +13,8 @@
   $("open-logs").addEventListener("click",()=>{show("logs-screen");selectLog(null)});
   $("leave-timeline").addEventListener("click",()=>show("office-screen"));
   $("open-timeline").addEventListener("click",()=>{renderTimeline();show("timeline-screen");selectTimelineEvent(null)});
+  $("leave-archive").addEventListener("click",()=>show("office-screen"));
+  $("open-archive").addEventListener("click",()=>{renderArchive();show("archive-screen");selectArchiveDoc(null)});
 
   $("back-briefing").addEventListener("click",()=>show("briefing-screen"));
   $("open-investigation").addEventListener("click",()=>{show("investigation-screen");startAmbience();});
@@ -29,6 +31,9 @@
     cup:{title:"فنجان القهوة",number:"01 / TRACE EVIDENCE",description:"فنجان خزفي تُرك على الطرف الأيسر من المكتب. بقيت آثار سائل داكن في قاعه، ولا يظهر من النظرة الأولى إن كان قد شُرب قبل المواجهة أم بعدها. حافته سليمة ولا توجد شظايا حوله.",caution:"ما يمكن إثباته الآن: وجود الفنجان في المكان. البصمات، إن استُخرجت، تثبت ملامسة شخص له في وقت غير محدد؛ لا تثبت وجوده ساعة الوفاة."},
     phone:{title:"هاتف سليم",number:"02 / DIGITAL EVIDENCE",description:"هاتف ذكي أسود عُثر عليه فوق المكتب. بعد تجاوز القفل، أمكن استعادة معاينات رسائل وسجل مكالمات جزئي من ذاكرته المحلية.",caution:"محتويات الهاتف تسجل أسماء محفوظة وتوقيتات محلية، لا هوية مؤكدة للشخص الذي استخدم الجهاز أو التحويلة. يلزم corroboration من سجلات مستقلة."},
     "phone-data":{title:"محتويات الهاتف",number:"05 / DIGITAL FORENSICS",description:"استُعيدت أربع معاينات رسائل وثلاثة سجلات مكالمات. يظهر تواصل مع مازن، ورسالة من تحويلة داخلية 204 عند 01:28، ومكالمة واردة من التحويلة نفسها عند 01:32.",caution:"هذه سجلات محلية جزئية. اسم جهة الاتصال ليس إثبات هوية، والتحويلة قد يستخدمها أكثر من شخص. كما أن وقت الجهاز قابل للتعديل ولا يثبت وحده ترتيب الأحداث."},
+    "archive-permissions":{title:"طلب توسيع صلاحيات الوصول",number:"07 / ARCHIVE DOCUMENT",description:"نسخة من طلب داخلي مؤرخ قبل ثلاث سنوات، يطلب توسيع صلاحيات الوصول إلى قواعد بيانات المستخدمين وربطها بواجهة تصدير خارجية. خانة مقدم الطلب تحمل اسم فارس الكيلاني.",caution:"النسخة تشير إلى أن فارس بدأ مسار توسيع الصلاحيات، لكنها لا تثبت وحدها أن البيانات بيعت أو أنه نفذ ذلك بنفسه. يلزم سجل تنفيذ مستقل."},
+    "archive-payments":{title:"كشف التحويلات إلى المورد",number:"08 / FINANCIAL TRACE",description:"كشف يربط دفعات شهرية متكررة بمورد تقني يحمل اسماً تجارياً لا يظهر في قائمة الموردين المعتادة. بدأت الدفعات بعد طلب الصلاحيات بفترة قصيرة، ورمز الاعتماد الإداري يعود إلى وحدة فارس.",caution:"تزامن الدفعات مع الصلاحيات ورمز الوحدة يثيران شبهة وجود مخطط منظم، لكن اسم المورد وحده لا يثبت المستفيد الحقيقي ولا طبيعة الخدمة."},
+    "archive-executive":{title:"مذكرة مراجعة تنفيذية",number:"09 / EXECUTIVE MEMO",description:"مذكرة محدودة التداول تشير إلى أن تقريراً عن حركة البيانات عُرض على مكتب المدير التنفيذي نادر القيسي بعد بدء التحويلات. على الهامش عبارة بخط اليد: «تُراجع الاستثناءات قبل إيقاف الخدمة»، وبجانبها أحرف N.Q.",caution:"قد تعني المذكرة أن نادر علم بالمشكلة لاحقاً، لكنها لا تثبت أنه وافق على البيع أو أمر بإيذاء سليم. نحتاج إلى أصل المذكرة وبيانات تداولها ومصدر مستقل."},
     "access-log":{title:"مستخرج سجل الحركة والدخول",number:"06 / ACCESS CONTROL",description:"مستخرج أولي يجمع ستة أحداث من نظام البطاقات وحساسات الأبواب خلال الفترة 01:12–01:47. يتضمن خروج مازن، وحالة باب غرفة الاجتماعات، ووصول بطاقة فارس، واستخدام بطاقة سليم لدخول غرفة الخوادم.",caution:"السجل يثبت أن بيانات بطاقة معينة استُخدمت أو أن حساس الباب تغيّر؛ لا يثبت وحده هوية حامل البطاقة. يجب مقارنة التوقيت بمصدر مستقل وبالإفادات."},
     paper:{title:"أوراق على المكتب",number:"03 / DOCUMENT TRACE",description:"ورقتان فوق حافظة جلدية. إحداهما تحمل أرقاماً مكتوبة بخط اليد، والأخرى ممزقة من طرفها. لا تكفي المعاينة الحالية لترتيب الأرقام أو استعادة الجزء المفقود.",caution:"وجود كتابة بخط سليم لا يحدد متى كُتبت. سنحتاج إلى مقارنة الأرقام بملفات الشركة قبل استنتاج معناها."},
     clock:{title:"ساعة الحائط",number:"04 / SCENE DETAIL",description:"ساعة حائط دائرية متوقفة عند 01:40. لا نعرف إن كانت توقفت بسبب عطل أو صدمة أو نفاد البطارية. لا يوجد حتى الآن ما يثبت أنها ضُبطت على الوقت الصحيح.",caution:"01:40 ليست وقت وفاة مؤكداً. يجب مقارنتها بالتسجيلات وسجلات الحركة والتقدير الطبي."}
@@ -229,6 +234,48 @@
     $("timeline-feedback").textContent="تم حفظ تصنيفك. يمكنك تغييره متى ظهرت قرائن جديدة.";
   });
   renderTimeline();
+
+  // Archive cabinet: each document is independently reviewed and saved as evidence.
+  const archiveDocs={
+    permissions:{evidence:"archive-permissions",title:"طلب توسيع صلاحيات الوصول",intro:"الطلب مؤرخ قبل ثلاث سنوات، ويصف توسيع نطاق الوصول إلى بيانات المستخدمين وإتاحة تصديرها.",extract:"مقدم الطلب: فارس الكيلاني.\nالجهة: إدارة الأبحاث المالية.\nالمطلوب: صلاحيات موسعة على قاعدة بيانات المستخدمين وواجهة تصدير خارجية.\nملاحظة اعتماد: «للاستخدام التحليلي الداخلي».",caution:"اسم فارس في الطلب يربطه ببداية مسار الصلاحيات، لا يثبت وحده ما حدث للبيانات بعد ذلك."},
+    payments:{evidence:"archive-payments",title:"كشف التحويلات إلى المورد",intro:"دفعات متكررة بدأت بعد طلب الصلاحيات. اسم المورد غير مألوف في قائمة الموردين الأساسية.",extract:"المورد: Northbridge Data Services.\nنمط الدفع: شهري، بمبالغ متقاربة.\nبداية النشاط: بعد اعتماد الصلاحيات الموسعة.\nرمز الاعتماد: FIN-RD / F.K.",caution:"التطابق الزمني ورمز الوحدة قرينتان تستحقان التتبع. لا تكشف هذه النسخة المالك الحقيقي للمورد أو وجهة الأموال."},
+    executive:{evidence:"archive-executive",title:"مذكرة مراجعة تنفيذية",intro:"مذكرة داخلية تشير إلى وصول تقرير حركة البيانات إلى مكتب المدير التنفيذي بعد بدء النشاط.",extract:"المستلم: مكتب المدير التنفيذي — نادر القيسي.\nالموضوع: استثناءات تصدير البيانات.\nملاحظة هامشية: «تُراجع الاستثناءات قبل إيقاف الخدمة».\nالأحرف بجانب الملاحظة: N.Q.",caution:"قد تثبت المذكرة أن الأمر وصل إلى مكتب نادر، لكنها لا تثبت أنه أصبح شريكاً في المخطط أو أنه أصدر أمراً ضد سليم."}
+  };
+  let selectedArchive=null;
+  function renderArchive(){
+    const ready=collected.includes("access-log");
+    $("archive-card-state").textContent=ready?"افتح خزانة الأرشيف ←":"تُفتح بعد توثيق سجل الدخول ←";
+    $("open-archive").disabled=!ready;
+    document.querySelectorAll("[data-archive]").forEach(btn=>{
+      const id=btn.dataset.archive,done=collected.includes(archiveDocs[id].evidence);
+      btn.classList.toggle("document-recorded",done);
+      let state=btn.querySelector(".archive-doc-state");
+      if(!state){state=document.createElement("small");state.className="archive-doc-state";btn.appendChild(state)}
+      state.textContent=done?"✓ محفوظ في ملف القضية":"لم يُوثّق بعد";
+    });
+  }
+  function selectArchiveDoc(id){
+    selectedArchive=id;
+    const doc=id?archiveDocs[id]:null;
+    $("archive-title").textContent=doc?doc.title:"اختر ملفاً من الخزانة";
+    $("archive-text").textContent=doc?doc.intro:"بعض الأوراق قد تبدو إدارية وعادية. اقرأ التواريخ والأسماء والصلاحيات قبل أن تربطها بالقضية.";
+    $("archive-extract").textContent=doc?doc.extract:"لم يُفتح مستند بعد.";
+    $("archive-caution").textContent=doc?doc.caution:"لا تعتبر نسخة الأرشيف دليلاً مكتملاً قبل التحقق من مصدرها وسلامة سجلها.";
+    const done=doc&&collected.includes(doc.evidence);
+    $("record-archive").disabled=!doc||done;
+    $("record-archive").textContent=done?"✓ المستند محفوظ بالفعل":"＋ إضافة المستند إلى ملف القضية";
+    $("archive-recorded").classList.toggle("hidden",!done);
+    document.querySelectorAll("[data-archive]").forEach(btn=>btn.classList.toggle("selected",btn.dataset.archive===id));
+  }
+  document.querySelectorAll("[data-archive]").forEach(btn=>btn.addEventListener("click",()=>selectArchiveDoc(btn.dataset.archive)));
+  $("record-archive").addEventListener("click",()=>{
+    if(!selectedArchive)return;
+    const id=archiveDocs[selectedArchive].evidence;
+    if(collected.includes(id))return;
+    collected.push(id);localStorage.setItem(key,JSON.stringify(collected));
+    render();renderBoard();renderArchive();selectArchiveDoc(selectedArchive);
+  });
+  renderArchive();
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
