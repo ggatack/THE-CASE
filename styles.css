@@ -287,3 +287,20 @@
 .server-card:disabled{opacity:.42;cursor:not-allowed}
 @media(max-width:700px){.server-header{grid-template-columns:1fr auto}.server-header .back-link{grid-column:1/-1}.server-header h2{font-size:27px}.server-grid{grid-template-columns:1fr}.server-item{min-height:110px}.server-item b{margin-top:8px}}
 @media(orientation:landscape) and (max-height:600px){.server-forensics-screen{margin:8px auto 14px}.server-header{padding-bottom:8px}.server-header h2{font-size:27px}.server-alert{margin:8px 0;padding:7px 10px}.server-grid{gap:8px}.server-item{min-height:110px;padding:10px}.server-item b{margin-top:8px}.server-reader{margin-top:8px;padding:10px}.forensic-observation,.forensic-limit{margin-top:6px;padding:7px}.server-reader h3{margin:5px 0}}
+
+/* Supplemental interview with Layan */
+.layan-screen{max-width:1000px;margin:22px auto 35px;animation:appear .35s ease}
+.layan-header{display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:18px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.layan-header h2{font-size:35px;font-weight:400;margin:0}.layan-header h2 em{font-style:normal;color:var(--copper)}.layan-header p:last-child{font-size:10px;color:#9da09d;margin:5px 0 0}
+.layan-stamp{border:1px solid #8c6951;color:#c69b70;padding:7px 10px;font-size:9px}
+.layan-alert{display:flex;gap:12px;align-items:center;margin:14px 0;padding:11px 14px;background:#34251f;border:1px solid #795541;color:#d4c0aa;font-size:10px;line-height:1.8}.layan-alert b{color:#e2ad7d;white-space:nowrap}
+.layan-room{display:grid;grid-template-columns:220px 1fr;gap:16px}
+.layan-person,.layan-dialogue,.layan-record{background:linear-gradient(145deg,#1a2025,#101519);border:1px solid #374148;padding:18px}
+.layan-person{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px}
+.layan-silhouette{width:104px;height:104px;border:1px solid #82694f;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#68605b 0 18%,#3c3636 19% 38%,#171d21 39%);color:#d4b18a;font-size:34px;box-shadow:0 0 0 10px #bd8b6210;margin-bottom:18px}
+.layan-person b{font-size:14px;font-weight:500;color:#e8dfd2}.layan-person small{font-size:9px;color:#a58e76;margin-top:7px}.layan-person>span{font-size:9px;color:#8fa895;margin-top:12px}
+.layan-dialogue .dialogue-response{min-height:112px}.layan-dialogue .dialogue-options{grid-template-columns:1fr 1fr}
+.layan-record{margin-top:13px}.layan-record>b{font-size:10px;color:#c7a47d}.layan-record ul{margin:10px 0 0;padding-right:18px;color:#aeb4af;font-size:10px;line-height:2.1}
+.layan-card:disabled{opacity:.42;cursor:not-allowed}
+@media(max-width:700px){.layan-header{grid-template-columns:1fr auto}.layan-header .back-link{grid-column:1/-1}.layan-header h2{font-size:27px}.layan-room{grid-template-columns:1fr}.layan-person{min-height:160px}.layan-silhouette{width:70px;height:70px;margin-bottom:10px}.layan-dialogue .dialogue-options{grid-template-columns:1fr}}
+@media(orientation:landscape) and (max-height:600px){.layan-screen{margin:8px auto 14px}.layan-header{padding-bottom:8px}.layan-room{grid-template-columns:170px 1fr;gap:9px}.layan-person{min-height:240px}.layan-dialogue{padding:12px}.layan-dialogue .dialogue-response{min-height:65px;padding:9px 4px;font-size:12px}.layan-dialogue .dialogue-options button{min-height:35px}.layan-record{margin-top:8px;padding:10px}}
