@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
@@ -9,6 +9,8 @@
   $("enter-office").addEventListener("click",()=>show("office-screen"));
   $("leave-interview").addEventListener("click",()=>show("office-screen"));
   $("open-interview").addEventListener("click",()=>{renderInterview();show("interview-screen")});
+  $("leave-logs").addEventListener("click",()=>show("office-screen"));
+  $("open-logs").addEventListener("click",()=>{show("logs-screen");selectLog(null)});
 
   $("back-briefing").addEventListener("click",()=>show("briefing-screen"));
   $("open-investigation").addEventListener("click",()=>{show("investigation-screen");startAmbience();});
@@ -25,6 +27,7 @@
     cup:{title:"فنجان القهوة",number:"01 / TRACE EVIDENCE",description:"فنجان خزفي تُرك على الطرف الأيسر من المكتب. بقيت آثار سائل داكن في قاعه، ولا يظهر من النظرة الأولى إن كان قد شُرب قبل المواجهة أم بعدها. حافته سليمة ولا توجد شظايا حوله.",caution:"ما يمكن إثباته الآن: وجود الفنجان في المكان. البصمات، إن استُخرجت، تثبت ملامسة شخص له في وقت غير محدد؛ لا تثبت وجوده ساعة الوفاة."},
     phone:{title:"هاتف سليم",number:"02 / DIGITAL EVIDENCE",description:"هاتف ذكي أسود عُثر عليه فوق المكتب. بعد تجاوز القفل، أمكن استعادة معاينات رسائل وسجل مكالمات جزئي من ذاكرته المحلية.",caution:"محتويات الهاتف تسجل أسماء محفوظة وتوقيتات محلية، لا هوية مؤكدة للشخص الذي استخدم الجهاز أو التحويلة. يلزم corroboration من سجلات مستقلة."},
     "phone-data":{title:"محتويات الهاتف",number:"05 / DIGITAL FORENSICS",description:"استُعيدت أربع معاينات رسائل وثلاثة سجلات مكالمات. يظهر تواصل مع مازن، ورسالة من تحويلة داخلية 204 عند 01:28، ومكالمة واردة من التحويلة نفسها عند 01:32.",caution:"هذه سجلات محلية جزئية. اسم جهة الاتصال ليس إثبات هوية، والتحويلة قد يستخدمها أكثر من شخص. كما أن وقت الجهاز قابل للتعديل ولا يثبت وحده ترتيب الأحداث."},
+    "access-log":{title:"مستخرج سجل الحركة والدخول",number:"06 / ACCESS CONTROL",description:"مستخرج أولي يجمع ستة أحداث من نظام البطاقات وحساسات الأبواب خلال الفترة 01:12–01:47. يتضمن خروج مازن، وحالة باب غرفة الاجتماعات، ووصول بطاقة فارس، واستخدام بطاقة سليم لدخول غرفة الخوادم.",caution:"السجل يثبت أن بيانات بطاقة معينة استُخدمت أو أن حساس الباب تغيّر؛ لا يثبت وحده هوية حامل البطاقة. يجب مقارنة التوقيت بمصدر مستقل وبالإفادات."},
     paper:{title:"أوراق على المكتب",number:"03 / DOCUMENT TRACE",description:"ورقتان فوق حافظة جلدية. إحداهما تحمل أرقاماً مكتوبة بخط اليد، والأخرى ممزقة من طرفها. لا تكفي المعاينة الحالية لترتيب الأرقام أو استعادة الجزء المفقود.",caution:"وجود كتابة بخط سليم لا يحدد متى كُتبت. سنحتاج إلى مقارنة الأرقام بملفات الشركة قبل استنتاج معناها."},
     clock:{title:"ساعة الحائط",number:"04 / SCENE DETAIL",description:"ساعة حائط دائرية متوقفة عند 01:40. لا نعرف إن كانت توقفت بسبب عطل أو صدمة أو نفاد البطارية. لا يوجد حتى الآن ما يثبت أنها ضُبطت على الوقت الصحيح.",caution:"01:40 ليست وقت وفاة مؤكداً. يجب مقارنتها بالتسجيلات وسجلات الحركة والتقدير الطبي."}
   };
@@ -147,6 +150,33 @@
   });
   document.querySelectorAll("[data-question]").forEach(button=>{if(asked.includes(button.dataset.question)){button.disabled=true;button.classList.add("asked")}});
   renderInterview();
+
+  // Company access-control extract: raw credential events, not person identification.
+  const logFacts={
+    mazen:{title:"01:12 — خروج مازن",text:"يسجل النظام استخدام بطاقة مازن العابد عند بوابة الطابق السابع للخروج.",caution:"هذا يدعم توقيت مغادرته المعلن، لكنه لا يستبعد استخدام شخص آخر للبطاقة أو وجوده في مكان آخر لاحقاً."},
+    "door-open":{title:"01:18 — فتح باب غرفة الاجتماعات",text:"سجل حساس الباب انتقاله إلى حالة الفتح. لا يوجد في هذا السطر رقم بطاقة أو اسم مستخدم.",caution:"لا نعرف من فتح الباب، ولا نعرف إن كان الداخل شخصاً واحداً أو أكثر."},
+    "door-close":{title:"01:24 — إغلاق باب غرفة الاجتماعات",text:"سجل الحساس عودة الباب إلى حالة الإغلاق بعد ست دقائق.",caution:"مدة بقاء الباب مغلقاً لا تكشف هوية من كان داخل الغرفة، ولا تثبت أن الباب لم يُفتح من الداخل."},
+    fares:{title:"01:26 — وصول بطاقة فارس",text:"استخدمت بيانات بطاقة فارس الكيلاني عند قارئ المصعد المتجه إلى الطابق السابع.",caution:"يثبت السجل استخدام بيانات بطاقته، لا أنه كان ممسكاً بها بنفسه. يلزم فحص الكاميرات أو شاهد مستقل."},
+    server:{title:"01:43 — بطاقة سليم في غرفة الخوادم",text:"سجل قارئ غرفة الخوادم استخدام بطاقة سليم ناصر للدخول، بعد وقت قصير من المواجهة المفترضة.",caution:"هذه نقطة غير عادية: سليم كان قد يكون مصاباً أو ميتاً حينها. لا تستنتج أنه دخل بنفسه؛ قد تكون البطاقة انتقلت إلى شخص آخر."},
+    exit:{title:"01:47 — خروج بطاقة فارس",text:"سجل قارئ مصعد الخدمة استخدام بيانات بطاقة فارس للخروج من الطابق.",caution:"تسلسل الوصول والخروج يضع استخدام بطاقته في نافذة زمنية مهمة، لكنه لا يثبت وحده ما فعله بين الحدثين."}
+  };
+  let selectedLog=null;
+  function selectLog(id){
+    selectedLog=id;
+    $("log-detail-title").textContent=id?logFacts[id].title:"اختر حدثاً من القائمة";
+    $("log-detail-text").textContent=id?logFacts[id].text:"لا تتعامل مع السجل كأنه تسجيل مرئي. إنه أثر إلكتروني يحتاج إلى تفسير ومقارنة.";
+    $("log-detail-caution").textContent=id?logFacts[id].caution:"البيانات الخام لا تجيب وحدها عن سؤال: من كان هنا فعلياً؟";
+    $("record-log-evidence").disabled=!id||collected.includes("access-log");
+    $("record-log-evidence").textContent=collected.includes("access-log")?"✓ التقرير موثّق بالفعل":"＋ توثيق التقرير في ملف القضية";
+    $("log-recorded").classList.toggle("hidden",!collected.includes("access-log"));
+    document.querySelectorAll("[data-log]").forEach(btn=>btn.classList.toggle("selected",btn.dataset.log===id));
+  }
+  document.querySelectorAll("[data-log]").forEach(btn=>btn.addEventListener("click",()=>selectLog(btn.dataset.log)));
+  $("record-log-evidence").addEventListener("click",()=>{
+    if(collected.includes("access-log"))return;
+    collected.push("access-log");localStorage.setItem(key,JSON.stringify(collected));
+    render();renderBoard();selectLog(selectedLog);
+  });
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
