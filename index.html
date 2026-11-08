@@ -7,7 +7,7 @@
   <meta name="description" content="THE CASE — لعبة تحقيق وغموض سينمائية باللغة العربية.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
-  <link rel="stylesheet" href="styles.css?v=archive1">
+  <link rel="stylesheet" href="styles.css?v=crosscheck1">
   <title>THE CASE | القضية</title>
 </head>
 <body>
@@ -78,6 +78,7 @@
         <button class="office-card timeline-card" id="open-timeline"><span class="card-index">06</span><div class="card-symbol">⌁</div><h3>إعادة بناء التسلسل</h3><p>رتّب ما نعرفه وما لا نعرفه</p><span class="card-state">افحص الخط الزمني ←</span></button>
         <button class="office-card archive-card" id="open-archive"><span class="card-index">07</span><div class="card-symbol">▤</div><h3>أرشيف الشركة</h3><p>ملفات الصلاحيات والتحويلات القديمة</p><span class="card-state" id="archive-card-state">تُفتح بعد توثيق سجل الدخول ←</span></button>
       </div>
+      <button class="office-card compare-card" id="open-crosscheck"><span class="card-index">08</span><div class="card-symbol">⌗</div><h3>مطابقة المستندات</h3><p>قارن الأرشيف وابحث عن التناقضات</p><span class="card-state" id="crosscheck-card-state">تُفتح بعد توثيق مستندات الأرشيف ←</span></button>
       <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
     </section>
 
@@ -210,6 +211,33 @@
       </div>
       <p class="scene-footnote">قاعدة آدم: الورقة قد تكشف من فتح الباب، لكنها لا تثبت وحدها من عبره.</p>
     </section>
+    <section class="crosscheck-screen hidden" id="crosscheck-screen">
+      <div class="crosscheck-header">
+        <button class="back-link" id="leave-crosscheck">← العودة إلى مكتب آدم</button>
+        <div><p class="eyebrow"><span class="status-dot"></span> تحليل المستندات · ملف 001</p><h2>مطابقة <em>السجلات.</em></h2><p>لا تقرأ كل وثيقة وحدها. ابحث عما يتغير عندما تضعها بجانب الأخرى.</p></div>
+        <span class="crosscheck-stamp">مراجعة تقاطعية</span>
+      </div>
+      <div class="crosscheck-warning"><b>قاعدة الفحص</b><span>التوافق بين وثيقتين يقوي مساراً للتحقيق، لكنه لا يحوّل النسخ إلى دليل أصلي ولا يثبت وحده المسؤولية الجنائية.</span></div>
+      <div class="crosscheck-layout">
+        <div class="crosscheck-sources">
+          <div class="board-section-title"><span>01 / اختر مصدرين</span><small>يلزم توثيق مستندات الأرشيف الثلاثة أولاً</small></div>
+          <button type="button" class="crosscheck-source" data-cross="permissions"><b>طلب الصلاحيات</b><small>فارس الكيلاني · قبل ثلاث سنوات</small></button>
+          <button type="button" class="crosscheck-source" data-cross="payments"><b>كشف التحويلات</b><small>Northbridge Data Services · رمز F.K.</small></button>
+          <button type="button" class="crosscheck-source" data-cross="executive"><b>المذكرة التنفيذية</b><small>مكتب نادر القيسي · الأحرف N.Q.</small></button>
+          <div class="crosscheck-pair"><span>المصدر الأول</span><b id="cross-one">لم يُحدّد</b><i>↔</i><span>المصدر الثاني</span><b id="cross-two">لم يُحدّد</b></div>
+          <button type="button" class="save-crosscheck" id="run-crosscheck" disabled>مطابقة المصدرين</button>
+        </div>
+        <aside class="crosscheck-result" aria-live="polite">
+          <span class="log-detail-kicker">نتيجة المقارنة</span>
+          <h3 id="cross-title">اختر وثيقتين للبدء</h3>
+          <p id="cross-text">قد تكشف التواريخ ورموز الاعتماد مساراً مشتركاً، لكن انتبه إلى ما لا تثبته الوثائق.</p>
+          <div class="crosscheck-limits" id="cross-limits">لم تُجرَ مقارنة بعد.</div>
+          <button type="button" class="collect-button" id="record-crosscheck" disabled>＋ حفظ تقرير المطابقة في ملف القضية</button>
+          <p class="crosscheck-saved hidden" id="cross-saved">✓ تقرير المطابقة محفوظ.</p>
+        </aside>
+      </div>
+      <p class="scene-footnote">ملاحظة آدم: الترتيب الزمني قد يكشف علاقة، لكنه لا يكشف وحده من أصدر الأمر.</p>
+    </section>
     <section class="timeline-screen hidden" id="timeline-screen">
       <div class="timeline-header">
         <button class="back-link" id="leave-timeline">← العودة إلى مكتب آدم</button>
@@ -284,6 +312,6 @@
     </section>
     <footer class="site-footer"><span>THE CASE © 2026</span><span>صُممت لتُكتشف، لا لتُخمن.</span><span>نسخة تطويرية 0.1</span></footer>
   </main>
-  <script src="app.js?v=records1"></script>
+  <script src="app.js?v=crosscheck1"></script>
 </body>
 </html>
