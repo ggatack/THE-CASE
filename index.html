@@ -71,7 +71,7 @@
       <h2>لنبدأ من<br><em>ما نعرفه.</em></h2>
       <div class="office-grid">
         <button class="office-card active-card file-card" id="open-investigation"><span class="card-index">01</span><div class="card-symbol">▤</div><h3>ملف القضية</h3><p>سليم ناصر — الطابق السابع</p><span class="card-state">ابدأ فحص مسرح الجريمة ←</span></button>
-        <article class="office-card"><span class="card-index">02</span><div class="card-symbol">⌕</div><h3>لوحة الأدلة</h3><p>ستُفتح مع أول دليل</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
+        <button class="office-card board-card" id="open-board"><span class="card-index">02</span><div class="card-symbol">⌕</div><h3>لوحة الأدلة</h3><p>اربط القرائن واكتب فرضياتك</p><span class="card-state" id="board-card-state">تُفتح بعد جمع دليلين ←</span></button>
         <article class="office-card"><span class="card-index">03</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
       </div>
       <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
@@ -84,7 +84,7 @@
         <div class="investigation-title"><p class="eyebrow"><span class="status-dot"></span> مسرح الجريمة · شركة نواة</p><h2>مكتب <em>سليم ناصر</em></h2><p>الطابق السابع — بعد اكتشاف الجثة</p></div>
         <div class="evidence-progress"><span>الأدلة المجموعة</span><b id="evidence-count">0 / 4</b><div class="progress-track"><i id="progress-fill"></i></div></div>
       </div>
-      <div class="scene-toolbar"><span><i class="live-dot"></i> تسجيل مسرح الجريمة محفوظ</span><span>انقر على العلامات لفحص الأشياء</span></div>
+      <div class="scene-toolbar"><span><i class="live-dot"></i> تسجيل مسرح الجريمة محفوظ</span><button class="board-shortcut" id="open-board-from-scene">لوحة الأدلة <b>⌕</b></button></div>
       <div class="scene-layout">
         <div class="crime-room" aria-label="رسم تفصيلي لمكتب سليم ناصر ليلاً">
           <img class="crime-art" src="assets/scenes/salim-office.svg" alt="مكتب سليم ناصر في شركة نواة، نافذة ممطرة ومكتب عليه هاتف وفنجان وأوراق">
@@ -111,7 +111,31 @@
       </div>
       <p class="scene-footnote">ملاحظة آدم: لا تقفز إلى الاستنتاج. ما نراه ليس دائماً ما حدث.</p>
     </section>
-\n    <section class="modal hidden" id="files-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+\n    <section class="evidence-board-screen hidden" id="evidence-board-screen">
+      <div class="board-header">
+        <button class="back-link" id="leave-board">← العودة إلى مكتب آدم</button>
+        <div><p class="eyebrow"><span class="status-dot"></span> مساحة التحليل · ملف 001</p><h2>لوحة <em>الأدلة.</em></h2><p>الأدلة حقائق. الروابط بينها فرضيات تحتاج إلى اختبار.</p></div>
+        <div class="board-count"><span>أدلة موثّقة</span><b id="board-evidence-count">0</b></div>
+      </div>
+      <div class="board-content">
+        <section class="board-evidence-area">
+          <div class="board-section-title"><span>01 / الأدلة المتاحة</span><small>اختر دليلين للمقارنة</small></div>
+          <div class="board-evidence-grid" id="board-evidence-grid"></div>
+          <div class="board-empty hidden" id="board-empty">لا توجد أدلة كافية بعد.<br><small>ارجع إلى مسرح الجريمة ووثّق دليلين على الأقل.</small></div>
+        </section>
+        <section class="theory-area">
+          <div class="board-section-title"><span>02 / بناء رابط</span><small>تحليل آدم</small></div>
+          <div class="link-selection"><div class="link-slot">الدليل الأول <b id="slot-one">لم يُحدّد</b></div><div class="link-symbol">↔</div><div class="link-slot">الدليل الثاني <b id="slot-two">لم يُحدّد</b></div></div>
+          <label class="theory-label" for="theory-note">ما العلاقة التي تلاحظها؟</label>
+          <textarea id="theory-note" rows="3" maxlength="280" placeholder="اكتب فرضيتك، وما الذي يدعمها أو قد ينقضها..."></textarea>
+          <p class="theory-warning">هذا رابط تحليلي من صنعك، وليس حقيقة مثبتة داخل القضية. يمكنك تعديله عندما تظهر أدلة جديدة.</p>
+          <button class="save-theory" id="save-theory" disabled>حفظ الفرضية في اللوحة</button>
+          <div class="saved-theories"><div class="board-section-title"><span>03 / الروابط المسجّلة</span><small id="theory-count">0 فرضيات</small></div><div id="theory-list" class="theory-list"><p class="no-theories">لم تسجّل أي روابط بعد.</p></div></div>
+        </section>
+      </div>
+      <p class="scene-footnote">قاعدة آدم: لا تجعل الدليل يقول أكثر مما يستطيع إثباته.</p>
+    </section>
+    <section class="modal hidden" id="files-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-card"><button class="close-button" id="close-files" aria-label="إغلاق">×</button><p class="eyebrow">الأرشيف</p><h2 id="modal-title">ملفات القضايا</h2><div class="archive-row"><span class="archive-number">001</span><div><b>الطابق السابع</b><small>قضية نشطة · قيد التطوير</small></div><span class="archive-tag">قريباً</span></div><p class="modal-note">ستظهر هنا القضايا التي تفتحها خلال رحلتك.</p></div>
     </section>
     <footer class="site-footer"><span>THE CASE © 2026</span><span>صُممت لتُكتشف، لا لتُخمن.</span><span>نسخة تطويرية 0.1</span></footer>
