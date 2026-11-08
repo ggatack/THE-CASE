@@ -88,6 +88,7 @@
     $("phone-code-display").classList.toggle("hidden",!ready||phoneOpened);
     $("phone-feedback").classList.toggle("hidden",!ready||phoneOpened);
     $("phone-unlocked").classList.toggle("hidden",!phoneOpened);
+    renderInterview();
     renderPhoneCode();
     $("phone-feedback").textContent="";
   }
