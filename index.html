@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="THE CASE — لعبة تحقيق وغموض سينمائية باللغة العربية.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>THE CASE | القضية</title>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main id="app" class="app-shell">
+    <header class="topbar">
+      <a class="brand-mark" href="#" aria-label="THE CASE">
+        <img src="assets/icons/app-icon.svg" alt="" class="brand-icon">
+        <span><b>THE CASE</b><small>ملفات لا تُغلق</small></span>
+      </a>
+      <button class="icon-button" id="sound-toggle" aria-label="تشغيل أو إيقاف المؤثرات الصوتية" title="الصوت">♫</button>
+    </header>
+
+    <section class="hero" id="home-screen">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> ملف التحقيق رقم 001</p>
+        <h1>الحقيقة لا<br><em>تختبئ للأبد.</em></h1>
+        <p class="hero-text">كل شخص لديه رواية. وكل رواية تخفي شيئاً.<br>هل تستطيع جمع ما يكفي من الأدلة لتعرف الحقيقة؟</p>
+        <div class="hero-actions">
+          <button class="primary-button" id="start-case"><span>ابدأ التحقيق</span><b>←</b></button>
+          <button class="secondary-button" id="open-files">ملفات القضايا</button>
+        </div>
+        <p class="micro-copy">قضية واحدة. روايات كثيرة. حقيقة واحدة.</p>
+      </div>
+      <div class="case-art" aria-label="ملف قضية على مكتب مظلم">
+        <div class="window-glow"></div>
+        <div class="cityline"></div>
+        <div class="desk"></div>
+        <div class="folder">
+          <div class="folder-tab"></div>
+          <div class="folder-stamp">سري للغاية</div>
+          <div class="folder-title">THE<br>SEVENTH<br>FLOOR</div>
+          <div class="folder-number">CASE FILE <strong>001</strong></div>
+          <div class="paper-edge"></div>
+        </div>
+        <div class="red-thread thread-one"></div><div class="red-thread thread-two"></div>
+        <div class="pin pin-one"></div><div class="pin pin-two"></div>
+        <span class="art-caption">NAWA CORPORATION · 01:40 AM</span>
+      </div>
+      <div class="hero-footer"><span>قضية 01 — الطابق السابع</span><span>ملف التحقيق <b>مفتوح</b></span></div>
+    </section>
+
+    <section class="briefing hidden" id="briefing-screen">
+      <button class="back-link" id="back-home">← العودة للقائمة</button>
+      <p class="eyebrow"><span class="status-dot"></span> القضية الأولى · الطابق السابع</p>
+      <h2>موتٌ في<br><em>الطابق السابع.</em></h2>
+      <div class="briefing-card">
+        <div class="briefing-label">ملخص أولي · 08 نوفمبر</div>
+        <p>عُثر على <strong>سليم ناصر</strong>، مدير الأبحاث المالية في شركة «نواة»، ميتاً داخل مكتبه.</p>
+        <p>لا توجد حتى الآن رواية متماسكة لما حدث في تلك الليلة. سجلات الدخول لا تتطابق، وبعض التفاصيل تبدو وكأن أحدهم أراد لها أن تُفهم بطريقة معينة.</p>
+        <div class="briefing-meta"><span>الموقع <b>شركة نواة</b></span><span>الحالة <b class="danger">تحقيق نشط</b></span></div>
+      </div>
+      <button class="primary-button" id="enter-office"><span>دخول مكتب آدم</span><b>←</b></button>
+      <p class="micro-copy">آدم مراد — محقق خاص</p>
+    </section>
+
+    <section class="office-screen hidden" id="office-screen">
+      <button class="back-link" id="back-briefing">← العودة إلى ملخص القضية</button>
+      <p class="eyebrow"><span class="status-dot"></span> مكتب آدم مراد · 02:17 AM</p>
+      <h2>لنبدأ من<br><em>ما نعرفه.</em></h2>
+      <div class="office-grid">
+        <article class="office-card active-card"><span class="card-index">01</span><div class="card-symbol">▤</div><h3>ملف القضية</h3><p>سليم ناصر — الطابق السابع</p><span class="card-state">متاح الآن</span></article>
+        <article class="office-card"><span class="card-index">02</span><div class="card-symbol">⌕</div><h3>لوحة الأدلة</h3><p>ستُفتح مع أول دليل</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
+        <article class="office-card"><span class="card-index">03</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
+      </div>
+      <div class="notice"><span>i</span><p>هذه نسخة تأسيسية للواجهة. سنضيف التحقيق الفعلي والأدلة والحفظ على مراحل، ولن نعرض أدلة وهمية على أنها قابلة للفحص.</p></div>
+    </section>
+
+    <section class="modal hidden" id="files-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-card"><button class="close-button" id="close-files" aria-label="إغلاق">×</button><p class="eyebrow">الأرشيف</p><h2 id="modal-title">ملفات القضايا</h2><div class="archive-row"><span class="archive-number">001</span><div><b>الطابق السابع</b><small>قضية نشطة · قيد التطوير</small></div><span class="archive-tag">قريباً</span></div><p class="modal-note">ستظهر هنا القضايا التي تفتحها خلال رحلتك.</p></div>
+    </section>
+    <footer class="site-footer"><span>THE CASE © 2026</span><span>صُممت لتُكتشف، لا لتُخمن.</span><span>نسخة تطويرية 0.1</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
