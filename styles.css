@@ -135,3 +135,24 @@
 .saved-theories{margin-top:20px}.theory-list{display:grid;gap:8px}.no-theories{font-size:10px;color:#7e8787;margin:0;padding:8px 0}.theory-card{border:1px solid #3d4649;background:#11171b;padding:10px 12px}.theory-pair{font-size:10px;color:#d3b18b}.theory-card p{font-size:10px;line-height:1.9;color:#c0c0b9;margin:7px 0}.theory-card small{font-size:8px;color:#7c8884}
 @media(max-width:760px){.board-header{grid-template-columns:1fr auto;gap:10px}.board-header .back-link{grid-column:1/-1}.board-header h2{font-size:29px}.board-content{grid-template-columns:1fr}.board-evidence-area,.theory-area{min-height:auto;padding:14px}.board-evidence-card{min-height:88px}}
 @media(orientation:landscape) and (max-height:600px){.evidence-board-screen{margin:8px auto 15px}.board-header{padding-bottom:9px}.board-header h2{font-size:28px}.board-content{margin-top:10px;gap:10px}.board-evidence-area,.theory-area{padding:12px;min-height:290px}.board-evidence-card{min-height:82px;padding:9px}.link-selection{margin:10px 0}.saved-theories{margin-top:10px}}
+
+/* Locked phone puzzle */
+.phone-puzzle{margin-top:16px;padding:13px;background:#0c1216;border:1px solid #4a4035}
+.phone-puzzle-head{display:flex;justify-content:space-between;align-items:center;color:#d9bd9a;font-size:11px;border-bottom:1px solid #ffffff18;padding-bottom:8px}
+.phone-puzzle-head small{font:8px 'Cormorant Garamond';letter-spacing:1px;color:#7e8988}
+.phone-puzzle>p{font-size:10px;line-height:1.8;color:#aeb3ae;margin:10px 0}
+.phone-clues{display:grid;gap:7px;margin:10px 0}
+.phone-clues>div{padding:8px 9px;background:#ffffff06;border-right:2px solid #bd8b62}
+.phone-clues b{display:block;font-size:9px;color:#d0aa7e;margin-bottom:4px}
+.phone-clues span{display:block;font-size:9px;line-height:1.8;color:#b2b6b0}
+.phone-code-display{margin:12px auto;width:150px;text-align:center;letter-spacing:8px;padding:10px;background:#05090c;border:1px solid #6d5a46;color:#e6c69e;font:22px 'Cormorant Garamond'}
+.phone-keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:210px;margin:0 auto}
+.phone-keypad button{min-height:35px;background:#20282d;border:1px solid #414b50;color:#e8e0d3;font:12px 'IBM Plex Sans Arabic';cursor:pointer}
+.phone-keypad button:active{background:#bd8b62;color:#17130f}
+.phone-feedback{min-height:18px;text-align:center;color:#d0a176!important}
+.phone-unlocked{padding:12px;margin-top:12px;background:#1b2a24;border:1px solid #526c58}
+.phone-unlocked>span{font-size:11px;color:#a8c5a8}
+.phone-unlocked p{font-size:9px;color:#9ca99f;margin:8px 0}
+.phone-unlocked blockquote{margin:8px 0;padding:10px;border-right:2px solid #bd8b62;color:#e7dfd2;font-size:12px;line-height:2}
+.phone-unlocked small{font-size:9px;line-height:1.8;color:#a5aaa1}
+@media(orientation:landscape) and (max-height:600px){.phone-puzzle{padding:8px;margin-top:8px}.phone-clues{gap:4px}.phone-clues>div{padding:5px 7px}.phone-code-display{margin:6px auto;padding:5px}.phone-keypad button{min-height:28px}}
