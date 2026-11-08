@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
@@ -14,6 +14,8 @@
   $("leave-timeline").addEventListener("click",()=>show("office-screen"));
   $("open-timeline").addEventListener("click",()=>{renderTimeline();show("timeline-screen");selectTimelineEvent(null)});
   $("leave-archive").addEventListener("click",()=>show("office-screen"));
+  $("leave-crosscheck").addEventListener("click",()=>show("office-screen"));
+  $("open-crosscheck").addEventListener("click",()=>{renderCrosscheck();show("crosscheck-screen");resetCrosscheck()});
   $("open-archive").addEventListener("click",()=>{renderArchive();show("archive-screen");selectArchiveDoc(null)});
 
   $("back-briefing").addEventListener("click",()=>show("briefing-screen"));
@@ -33,6 +35,7 @@
     "phone-data":{title:"محتويات الهاتف",number:"05 / DIGITAL FORENSICS",description:"استُعيدت أربع معاينات رسائل وثلاثة سجلات مكالمات. يظهر تواصل مع مازن، ورسالة من تحويلة داخلية 204 عند 01:28، ومكالمة واردة من التحويلة نفسها عند 01:32.",caution:"هذه سجلات محلية جزئية. اسم جهة الاتصال ليس إثبات هوية، والتحويلة قد يستخدمها أكثر من شخص. كما أن وقت الجهاز قابل للتعديل ولا يثبت وحده ترتيب الأحداث."},
     "archive-permissions":{title:"طلب توسيع صلاحيات الوصول",number:"07 / ARCHIVE DOCUMENT",description:"نسخة من طلب داخلي مؤرخ قبل ثلاث سنوات، يطلب توسيع صلاحيات الوصول إلى قواعد بيانات المستخدمين وربطها بواجهة تصدير خارجية. خانة مقدم الطلب تحمل اسم فارس الكيلاني.",caution:"النسخة تشير إلى أن فارس بدأ مسار توسيع الصلاحيات، لكنها لا تثبت وحدها أن البيانات بيعت أو أنه نفذ ذلك بنفسه. يلزم سجل تنفيذ مستقل."},
     "archive-payments":{title:"كشف التحويلات إلى المورد",number:"08 / FINANCIAL TRACE",description:"كشف يربط دفعات شهرية متكررة بمورد تقني يحمل اسماً تجارياً لا يظهر في قائمة الموردين المعتادة. بدأت الدفعات بعد طلب الصلاحيات بفترة قصيرة، ورمز الاعتماد الإداري يعود إلى وحدة فارس.",caution:"تزامن الدفعات مع الصلاحيات ورمز الوحدة يثيران شبهة وجود مخطط منظم، لكن اسم المورد وحده لا يثبت المستفيد الحقيقي ولا طبيعة الخدمة."},
+    "archive-crosscheck":{title:"تقرير المطابقة التقاطعية",number:"10 / CROSS-REFERENCE REPORT",description:"مقارنة بين طلب توسيع الصلاحيات وكشف التحويلات والمذكرة التنفيذية. تُظهر الوثائق تسلسلاً إدارياً يبدأ بتوسيع الوصول، ثم مدفوعات تحمل رمز وحدة فارس، ثم وصول تقرير الاستثناءات إلى مكتب المدير التنفيذي.",caution:"التقرير يلخص روابط بين نسخ أرشيفية. لا يثبت المستفيد النهائي من الأموال، ولا يثبت أن نادر أصدر أمراً أو أن فارس ارتكب جريمة القتل."},
     "archive-executive":{title:"مذكرة مراجعة تنفيذية",number:"09 / EXECUTIVE MEMO",description:"مذكرة محدودة التداول تشير إلى أن تقريراً عن حركة البيانات عُرض على مكتب المدير التنفيذي نادر القيسي بعد بدء التحويلات. على الهامش عبارة بخط اليد: «تُراجع الاستثناءات قبل إيقاف الخدمة»، وبجانبها أحرف N.Q.",caution:"قد تعني المذكرة أن نادر علم بالمشكلة لاحقاً، لكنها لا تثبت أنه وافق على البيع أو أمر بإيذاء سليم. نحتاج إلى أصل المذكرة وبيانات تداولها ومصدر مستقل."},
     "access-log":{title:"مستخرج سجل الحركة والدخول",number:"06 / ACCESS CONTROL",description:"مستخرج أولي يجمع ستة أحداث من نظام البطاقات وحساسات الأبواب خلال الفترة 01:12–01:47. يتضمن خروج مازن، وحالة باب غرفة الاجتماعات، ووصول بطاقة فارس، واستخدام بطاقة سليم لدخول غرفة الخوادم.",caution:"السجل يثبت أن بيانات بطاقة معينة استُخدمت أو أن حساس الباب تغيّر؛ لا يثبت وحده هوية حامل البطاقة. يجب مقارنة التوقيت بمصدر مستقل وبالإفادات."},
     paper:{title:"أوراق على المكتب",number:"03 / DOCUMENT TRACE",description:"ورقتان فوق حافظة جلدية. إحداهما تحمل أرقاماً مكتوبة بخط اليد، والأخرى ممزقة من طرفها. لا تكفي المعاينة الحالية لترتيب الأرقام أو استعادة الجزء المفقود.",caution:"وجود كتابة بخط سليم لا يحدد متى كُتبت. سنحتاج إلى مقارنة الأرقام بملفات الشركة قبل استنتاج معناها."},
@@ -276,6 +279,64 @@
     render();renderBoard();renderArchive();selectArchiveDoc(selectedArchive);
   });
   renderArchive();
+
+
+  // Cross-reference archive records without turning correlation into proof.
+  const crossSources={
+    permissions:{label:"طلب الصلاحيات",title:"توسيع الوصول سبق التحويلات",text:"طلب فارس توسيع صلاحيات الوصول إلى بيانات المستخدمين قبل بدء الدفعات إلى المورد. هذا يضعه في بداية المسار الإداري الذي أتاح التصدير.",limits:"ما لا يثبته: أن الطلب استُخدم فعلاً للبيع، أو أن فارس كان المستفيد من الأموال. نحتاج إلى سجلات تنفيذ وأصل مالي."},
+    payments:{label:"كشف التحويلات",title:"رمز الوحدة يربط الدفعات بمسار فارس",text:"تظهر الدفعات بعد طلب الصلاحيات، ويحمل رمز اعتمادها FIN-RD / F.K. هذا يربط المعاملة بوحدة الأبحاث المالية ورمز فارس.",limits:"ما لا يثبته: مالك المورد الحقيقي أو من وقّع التحويل فعلياً. الرمز قد يكون اعتماداً إدارياً لا توقيعاً شخصياً."},
+    executive:{label:"المذكرة التنفيذية",title:"تقرير الاستثناءات وصل إلى مكتب نادر",text:"المذكرة تشير إلى أن تقرير حركة البيانات وصل إلى مكتب المدير التنفيذي بعد بدء النشاط المالي. هذا يجعل احتمال علم الإدارة العليا مساراً يستحق التحقيق.",limits:"ما لا يثبته: أن نادر قرأ المذكرة بنفسه أو وافق على المخطط أو أصدر أمراً ضد سليم. نحتاج إلى أصل المذكرة وسجل تداول مستقل."}
+  };
+  let crossPair=[];
+  let crossResult=null;
+  function renderCrosscheck(){
+    const ready=["archive-permissions","archive-payments","archive-executive"].every(id=>collected.includes(id));
+    $("crosscheck-card-state").textContent=ready?"افتح مساحة المطابقة ←":"تُفتح بعد توثيق مستندات الأرشيف ←";
+    $("open-crosscheck").disabled=!ready;
+    document.querySelectorAll("[data-cross]").forEach(btn=>{
+      const done=collected.includes("archive-"+btn.dataset.cross);
+      btn.disabled=!ready||!done;
+      btn.classList.toggle("selected",crossPair.includes(btn.dataset.cross));
+      btn.classList.toggle("source-saved",done);
+    });
+    $("cross-one").textContent=crossPair[0]?crossSources[crossPair[0]].label:"لم يُحدّد";
+    $("cross-two").textContent=crossPair[1]?crossSources[crossPair[1]].label:"لم يُحدّد";
+    $("run-crosscheck").disabled=crossPair.length!==2;
+    const saved=collected.includes("archive-crosscheck");
+    $("record-crosscheck").disabled=!crossResult||saved;
+    $("record-crosscheck").textContent=saved?"✓ التقرير محفوظ بالفعل":"＋ حفظ تقرير المطابقة في ملف القضية";
+    $("cross-saved").classList.toggle("hidden",!saved);
+  }
+  function resetCrosscheck(){
+    crossPair=[];crossResult=null;
+    $("cross-title").textContent="اختر وثيقتين للبدء";
+    $("cross-text").textContent="قد تكشف التواريخ ورموز الاعتماد مساراً مشتركاً، لكن انتبه إلى ما لا تثبته الوثائق.";
+    $("cross-limits").textContent="لم تُجرَ مقارنة بعد.";
+    renderCrosscheck();
+  }
+  document.querySelectorAll("[data-cross]").forEach(btn=>btn.addEventListener("click",()=>{
+    if(btn.disabled)return;
+    const id=btn.dataset.cross;
+    if(crossPair.includes(id))crossPair=crossPair.filter(x=>x!==id);
+    else if(crossPair.length<2)crossPair.push(id);
+    else crossPair=[id];
+    renderCrosscheck();
+  }));
+  $("run-crosscheck").addEventListener("click",()=>{
+    if(crossPair.length!==2)return;
+    const a=crossSources[crossPair[0]],b=crossSources[crossPair[1]];
+    crossResult={a:crossPair[0],b:crossPair[1]};
+    $("cross-title").textContent=a.title+" + "+b.title;
+    $("cross-text").textContent=a.text+" "+b.text;
+    $("cross-limits").textContent=a.limits+" "+b.limits;
+    renderCrosscheck();
+  });
+  $("record-crosscheck").addEventListener("click",()=>{
+    if(!crossResult||collected.includes("archive-crosscheck"))return;
+    collected.push("archive-crosscheck");localStorage.setItem(key,JSON.stringify(collected));
+    render();renderBoard();renderCrosscheck();
+  });
+  renderCrosscheck();
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
