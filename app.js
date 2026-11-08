@@ -70,7 +70,7 @@
     display.setAttribute("dir","ltr");
     display.style.direction="ltr";
     display.style.unicodeBidi="isolate";
-    display.textContent="\\u2066"+phoneDigits.padEnd(4,"_").split("").join(" ")+"\\u2069";
+    display.textContent="\u2066"+phoneDigits.padEnd(4,"_").split("").join(" ")+"\u2069";
   }
   function renderPhonePuzzle(){
     const ready=collected.includes("paper")&&collected.includes("clock");
