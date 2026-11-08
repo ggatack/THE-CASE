@@ -73,6 +73,7 @@
         <button class="office-card active-card file-card" id="open-investigation"><span class="card-index">01</span><div class="card-symbol">▤</div><h3>ملف القضية</h3><p>سليم ناصر — الطابق السابع</p><span class="card-state">ابدأ فحص مسرح الجريمة ←</span></button>
         <button class="office-card board-card" id="open-board"><span class="card-index">02</span><div class="card-symbol">⌕</div><h3>لوحة الأدلة</h3><p>اربط القرائن واكتب فرضياتك</p><span class="card-state" id="board-card-state">تُفتح بعد جمع دليلين ←</span></button>
         <article class="office-card"><span class="card-index">03</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
+        <button class="office-card interview-card" id="open-interview"><span class="card-index">04</span><div class="card-symbol">◉</div><h3>مقابلة مازن</h3><p>استمع إلى روايته واختبرها</p><span class="card-state" id="interview-card-state">تُفتح بعد فحص الهاتف ←</span></button>
       </div>
       <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
     </section>
@@ -130,7 +131,30 @@
       </div>
       <p class="scene-footnote">ملاحظة آدم: لا تقفز إلى الاستنتاج. ما نراه ليس دائماً ما حدث.</p>
     </section>
-\n    <section class="evidence-board-screen hidden" id="evidence-board-screen">
+\n    <section class="interview-screen hidden" id="interview-screen">
+      <div class="interview-header">
+        <button class="back-link" id="leave-interview">← العودة إلى مكتب آدم</button>
+        <div><p class="eyebrow"><span class="status-dot"></span> محضر استجواب · شاهد 02</p><h2>مازن <em>العابد.</em></h2><p>موظف في قسم الأبحاث المالية · شركة نواة</p></div>
+        <span class="interview-status">مقابلة أولية</span>
+      </div>
+      <div class="interview-room">
+        <div class="interview-person"><div class="person-silhouette">م</div><b>مازن العابد</b><small>حالة الشاهد: متوتر، متحفظ</small></div>
+        <div class="interview-dialogue">
+          <div class="dialogue-label">آدم مراد <span>· اختر موضوعاً للسؤال</span></div>
+          <div class="dialogue-response" id="dialogue-response" aria-live="polite">«أعرف لماذا استدعيتني. لكنني قلت للشرطة كل ما أعرفه.»</div>
+          <div class="dialogue-options" id="dialogue-options">
+            <button type="button" data-question="argument">الخلاف الذي حدث بينك وبين سليم</button>
+            <button type="button" data-question="records">اختلاف سجلات الصلاحيات</button>
+            <button type="button" data-question="warning">لماذا كان سليم يشعر أنه مراقَب؟</button>
+            <button type="button" data-question="timeline">متى غادرت الطابق السابع؟</button>
+            <button type="button" data-question="message" id="question-message" class="hidden">مواجهته برسالة الهاتف عند 00:54</button>
+          </div>
+          <p class="dialogue-note" id="dialogue-note">دوّن آدم الإجابات كما قيلت. التناقض يستحق الفحص، لكنه لا يثبت الكذب وحده.</p>
+        </div>
+      </div>
+      <div class="interview-record"><b>ملاحظات المقابلة</b><ul id="interview-notes"><li>لم تُسجّل إجابات بعد.</li></ul></div>
+    </section>
+    <section class="evidence-board-screen hidden" id="evidence-board-screen">
       <div class="board-header">
         <button class="back-link" id="leave-board">← العودة إلى مكتب آدم</button>
         <div><p class="eyebrow"><span class="status-dot"></span> مساحة التحليل · ملف 001</p><h2>لوحة <em>الأدلة.</em></h2><p>الأدلة حقائق. الروابط بينها فرضيات تحتاج إلى اختبار.</p></div>
