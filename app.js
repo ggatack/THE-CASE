@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
@@ -15,6 +15,8 @@
   $("open-timeline").addEventListener("click",()=>{renderTimeline();show("timeline-screen");selectTimelineEvent(null)});
   $("leave-archive").addEventListener("click",()=>show("office-screen"));
   $("leave-crosscheck").addEventListener("click",()=>show("office-screen"));
+  $("leave-server-forensics").addEventListener("click",()=>show("office-screen"));
+  $("open-server-forensics").addEventListener("click",()=>{renderServerForensics();show("server-forensics-screen");selectForensic(null)});
   $("open-crosscheck").addEventListener("click",()=>{renderCrosscheck();show("crosscheck-screen");resetCrosscheck()});
   $("open-archive").addEventListener("click",()=>{renderArchive();show("archive-screen");selectArchiveDoc(null)});
 
@@ -35,6 +37,9 @@
     "phone-data":{title:"محتويات الهاتف",number:"05 / DIGITAL FORENSICS",description:"استُعيدت أربع معاينات رسائل وثلاثة سجلات مكالمات. يظهر تواصل مع مازن، ورسالة من تحويلة داخلية 204 عند 01:28، ومكالمة واردة من التحويلة نفسها عند 01:32.",caution:"هذه سجلات محلية جزئية. اسم جهة الاتصال ليس إثبات هوية، والتحويلة قد يستخدمها أكثر من شخص. كما أن وقت الجهاز قابل للتعديل ولا يثبت وحده ترتيب الأحداث."},
     "archive-permissions":{title:"طلب توسيع صلاحيات الوصول",number:"07 / ARCHIVE DOCUMENT",description:"نسخة من طلب داخلي مؤرخ قبل ثلاث سنوات، يطلب توسيع صلاحيات الوصول إلى قواعد بيانات المستخدمين وربطها بواجهة تصدير خارجية. خانة مقدم الطلب تحمل اسم فارس الكيلاني.",caution:"النسخة تشير إلى أن فارس بدأ مسار توسيع الصلاحيات، لكنها لا تثبت وحدها أن البيانات بيعت أو أنه نفذ ذلك بنفسه. يلزم سجل تنفيذ مستقل."},
     "archive-payments":{title:"كشف التحويلات إلى المورد",number:"08 / FINANCIAL TRACE",description:"كشف يربط دفعات شهرية متكررة بمورد تقني يحمل اسماً تجارياً لا يظهر في قائمة الموردين المعتادة. بدأت الدفعات بعد طلب الصلاحيات بفترة قصيرة، ورمز الاعتماد الإداري يعود إلى وحدة فارس.",caution:"تزامن الدفعات مع الصلاحيات ورمز الوحدة يثيران شبهة وجود مخطط منظم، لكن اسم المورد وحده لا يثبت المستفيد الحقيقي ولا طبيعة الخدمة."},
+    "forensic-audit":{title:"سجل تدقيق قارئ غرفة الخوادم",number:"11 / DIGITAL FORENSICS",description:"نسخة من سجل التدقيق تُظهر أن حدث استخدام بطاقة سليم عند 01:43 أُنشئ في النظام بوقته المسجل، ثم عُدّلت خانة مصدر المزامنة عند 02:06 عبر حساب خدمة إداري.",caution:"التعديل يثبت أن سجل الحدث لم يبقَ دون تغيير. حساب الخدمة قد تستخدمه أكثر من جهة، ولا يحدد هذا المستخرج من نفّذ التعديل أو إن كان التعديل لإخفاء دخول غير مشروع."},
+    "forensic-camera":{title:"إطار كاميرا ممر الخوادم",number:"12 / VIDEO TRACE",description:"إطار منخفض الدقة عند 01:44 يُظهر شخصاً بملابس داكنة يغادر نطاق باب غرفة الخوادم. الوجه خارج مجال الرؤية، ولا تظهر بطاقة تعريف أو علامة شخصية واضحة.",caution:"الإطار يثبت وجود شخص في الممر ضمن تلك اللحظة إذا صحت سلامة التسجيل، لكنه لا يثبت هويته ولا يثبت أنه دخل الغرفة أو استخدم بطاقة سليم."},
+    "forensic-trace":{title:"أثر مادي قرب قارئ البطاقة",number:"13 / TRACE EVIDENCE",description:"أثناء فحص محيط القارئ، سُجل خدش حديث على الغطاء المعدني وألياف داكنة دقيقة عالقة بحافته. لم تُجرَ بعد مقارنة مخبرية مع ملابس أو أدوات أي شخص.",caution:"الخدش والألياف قد ينتجان عن صيانة أو احتكاك عادي. لا توجد مطابقة نوعية أو بصمة تربطهما بشخص محدد."},
     "archive-crosscheck":{title:"تقرير المطابقة التقاطعية",number:"10 / CROSS-REFERENCE REPORT",description:"مقارنة بين طلب توسيع الصلاحيات وكشف التحويلات والمذكرة التنفيذية. تُظهر الوثائق تسلسلاً إدارياً يبدأ بتوسيع الوصول، ثم مدفوعات تحمل رمز وحدة فارس، ثم وصول تقرير الاستثناءات إلى مكتب المدير التنفيذي.",caution:"التقرير يلخص روابط بين نسخ أرشيفية. لا يثبت المستفيد النهائي من الأموال، ولا يثبت أن نادر أصدر أمراً أو أن فارس ارتكب جريمة القتل."},
     "archive-executive":{title:"مذكرة مراجعة تنفيذية",number:"09 / EXECUTIVE MEMO",description:"مذكرة محدودة التداول تشير إلى أن تقريراً عن حركة البيانات عُرض على مكتب المدير التنفيذي نادر القيسي بعد بدء التحويلات. على الهامش عبارة بخط اليد: «تُراجع الاستثناءات قبل إيقاف الخدمة»، وبجانبها أحرف N.Q.",caution:"قد تعني المذكرة أن نادر علم بالمشكلة لاحقاً، لكنها لا تثبت أنه وافق على البيع أو أمر بإيذاء سليم. نحتاج إلى أصل المذكرة وبيانات تداولها ومصدر مستقل."},
     "access-log":{title:"مستخرج سجل الحركة والدخول",number:"06 / ACCESS CONTROL",description:"مستخرج أولي يجمع ستة أحداث من نظام البطاقات وحساسات الأبواب خلال الفترة 01:12–01:47. يتضمن خروج مازن، وحالة باب غرفة الاجتماعات، ووصول بطاقة فارس، واستخدام بطاقة سليم لدخول غرفة الخوادم.",caution:"السجل يثبت أن بيانات بطاقة معينة استُخدمت أو أن حساس الباب تغيّر؛ لا يثبت وحده هوية حامل البطاقة. يجب مقارنة التوقيت بمصدر مستقل وبالإفادات."},
@@ -337,6 +342,48 @@
     render();renderBoard();renderCrosscheck();
   });
   renderCrosscheck();
+
+
+  // Server-room forensic review: independent traces with explicit evidentiary limits.
+  const forensicItems={
+    audit:{evidence:"forensic-audit",title:"سجل تدقيق قارئ الباب",description:"حدث استخدام بطاقة سليم عند 01:43، ثم تعديل خانة مصدر المزامنة عند 02:06 بواسطة حساب خدمة إداري.",observation:"المادة تسجل تعديلًا لاحقًا على بيانات الحدث. يلزم الحصول على سجل الخادم الأصلي وسجل صلاحيات حساب الخدمة.",limit:"لا نعرف من استخدم حساب الخدمة، ولا نعرف إن كان التعديل متعمداً لإخفاء هوية الداخل. التعديل وحده لا يثبت من دخل."},
+    camera:{evidence:"forensic-camera",title:"إطار كاميرا الممر",description:"إطار عند 01:44 يظهر شخصاً بملابس داكنة يغادر نطاق باب غرفة الخوادم. الوجه خارج مجال الرؤية.",observation:"يمكن مقارنة اتجاه الحركة والوقت مع سجل الدخول والخروج، لكن جودة الصورة لا تسمح بتحديد ملامح أو هوية.",limit:"لا يثبت الإطار أن الشخص دخل الغرفة أو حمل بطاقة سليم. لا تستخدم لون الملابس كتعريف لشخص بعينه."},
+    trace:{evidence:"forensic-trace",title:"أثر قرب قارئ البطاقة",description:"خدش حديث على الغطاء المعدني وألياف داكنة دقيقة عالقة بحافته. لا توجد نتيجة تحليل مخبري حتى الآن.",observation:"الأثر يستحق الحفظ والفحص المجهري ومقارنته بعينات مرجعية موثقة.",limit:"قد يكون الأثر ناتجاً عن صيانة أو احتكاك عادي. لا توجد مطابقة تربطه بفارس أو بأي شخص آخر."}
+  };
+  let selectedForensic=null;
+  function renderServerForensics(){
+    const ready=collected.includes("archive-crosscheck");
+    $("server-card-state").textContent=ready?"افتح محطة الفحص ←":"تُفتح بعد تقرير المطابقة ←";
+    $("open-server-forensics").disabled=!ready;
+    const count=Object.values(forensicItems).filter(x=>collected.includes(x.evidence)).length;
+    $("forensic-progress").textContent=count+" / 3";
+    document.querySelectorAll("[data-forensic]").forEach(btn=>{
+      const item=forensicItems[btn.dataset.forensic];
+      btn.classList.toggle("forensic-done",collected.includes(item.evidence));
+    });
+  }
+  function selectForensic(id){
+    selectedForensic=id;
+    const item=id?forensicItems[id]:null,done=item&&collected.includes(item.evidence);
+    $("forensic-title").textContent=item?item.title:"اختر مادة للفحص";
+    $("forensic-description").textContent=item?item.description:"كل مادة قد تضيف تفصيلاً، لكنها لا تجيب وحدها عن هوية الشخص الذي دخل غرفة الخوادم.";
+    $("forensic-observation").textContent=item?item.observation:"لم تُفحص مادة بعد.";
+    $("forensic-limit").textContent=item?item.limit:"افصل بين ما تراه وما تستنتجه.";
+    $("record-forensic").disabled=!item||done;
+    $("record-forensic").textContent=done?"✓ المادة موثّقة بالفعل":"＋ توثيق المادة في ملف القضية";
+    $("forensic-recorded").classList.toggle("hidden",!done);
+    document.querySelectorAll("[data-forensic]").forEach(btn=>btn.classList.toggle("selected",btn.dataset.forensic===id));
+    renderServerForensics();
+  }
+  document.querySelectorAll("[data-forensic]").forEach(btn=>btn.addEventListener("click",()=>selectForensic(btn.dataset.forensic)));
+  $("record-forensic").addEventListener("click",()=>{
+    if(!selectedForensic)return;
+    const evidenceId=forensicItems[selectedForensic].evidence;
+    if(collected.includes(evidenceId))return;
+    collected.push(evidenceId);localStorage.setItem(key,JSON.stringify(collected));
+    render();renderBoard();renderServerForensics();selectForensic(selectedForensic);
+  });
+  renderServerForensics();
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
