@@ -84,28 +84,29 @@
         <div class="investigation-title"><p class="eyebrow"><span class="status-dot"></span> مسرح الجريمة · شركة نواة</p><h2>مكتب <em>سليم ناصر</em></h2><p>الطابق السابع — بعد اكتشاف الجثة</p></div>
         <div class="evidence-progress"><span>الأدلة المجموعة</span><b id="evidence-count">0 / 4</b><div class="progress-track"><i id="progress-fill"></i></div></div>
       </div>
+      <div class="scene-toolbar"><span><i class="live-dot"></i> تسجيل مسرح الجريمة محفوظ</span><span>انقر على العلامات لفحص الأشياء</span></div>
       <div class="scene-layout">
-        <div class="crime-room" aria-label="رسم تخطيطي لمكتب سليم ناصر">
-          <div class="room-window"><i></i><i></i><i></i><i></i></div>
-          <div class="room-shelf"><span></span><span></span><span></span></div>
-          <div class="room-desk"><div class="desk-leg"></div><div class="desk-leg second"></div></div>
-          <div class="room-clock"><span>01:40</span></div>
-          <button class="scene-object coffee-object" data-evidence="cup" aria-label="فحص فنجان القهوة"><span>☕</span><small>01</small></button>
-          <button class="scene-object phone-object" data-evidence="phone" aria-label="فحص الهاتف"><span>▰</span><small>02</small></button>
-          <button class="scene-object paper-object" data-evidence="paper" aria-label="فحص الورقة الممزقة"><span>▤</span><small>03</small></button>
-          <button class="scene-object clock-object" data-evidence="clock" aria-label="فحص ساعة الحائط"><span>◷</span><small>04</small></button>
-          <div class="room-label">مكتب سليم ناصر <span>NAWA / FLOOR 07</span></div>
+        <div class="crime-room" aria-label="رسم تفصيلي لمكتب سليم ناصر ليلاً">
+          <img class="crime-art" src="assets/scenes/salim-office.svg" alt="مكتب سليم ناصر في شركة نواة، نافذة ممطرة ومكتب عليه هاتف وفنجان وأوراق">
+          <div class="scene-vignette"></div>
+          <button class="scene-object coffee-object" data-evidence="cup" aria-label="فحص فنجان القهوة"><span>01</span><b>فنجان القهوة</b></button>
+          <button class="scene-object phone-object" data-evidence="phone" aria-label="فحص هاتف سليم"><span>02</span><b>هاتف سليم</b></button>
+          <button class="scene-object paper-object" data-evidence="paper" aria-label="فحص الأوراق الممزقة"><span>03</span><b>الأوراق</b></button>
+          <button class="scene-object clock-object" data-evidence="clock" aria-label="فحص ساعة الحائط"><span>04</span><b>ساعة الحائط</b></button>
+          <div class="room-caption"><strong>مكتب سليم ناصر</strong><span>شركة نواة · الطابق السابع</span></div>
+          <div class="scene-coordinate">SCENE 01 <i>•</i> 01:40 AM</div>
         </div>
         <aside class="inspection-panel" aria-live="polite">
-          <div class="panel-kicker">دفتر المعاينة <span>FIELD NOTES</span></div>
-          <div id="inspection-empty" class="inspection-empty"><div class="inspect-crosshair">⌖</div><h3>اختر شيئاً لفحصه</h3><p>اضغط على أحد العناصر المحددة في المشهد. افحصه أولاً، ثم قرر إن كان يستحق إضافته إلى ملف الأدلة.</p></div>
+          <div class="panel-kicker"><span>دفتر المعاينة</span><small>FIELD NOTES / 001</small></div>
+          <div id="inspection-empty" class="inspection-empty"><div class="inspect-reticle">⌖</div><h3>المكان لا يتحدث وحده.</h3><p>تحرّك بين تفاصيل المكتب. افحص كل شيء بعناية، وميّز بين ما تراه وما تستطيع إثباته.</p><div class="inspect-hint"><span>01</span> ابدأ بفحص أحد العناصر المعلّمة في المشهد</div></div>
           <div id="inspection-details" class="inspection-details hidden">
-            <div class="detail-number" id="detail-number">01 / OBJECT</div>
+            <div class="detail-topline"><span class="detail-number" id="detail-number">01 / OBJECT</span><span class="detail-status">قابل للفحص</span></div>
             <h3 id="detail-title"></h3><p id="detail-description"></p>
-            <div class="detail-caution" id="detail-caution"></div>
-            <button class="collect-button" id="collect-evidence">＋ إضافة إلى ملف الأدلة</button>
+            <div class="detail-section"><span>قراءة آدم</span><p id="detail-caution"></p></div>
+            <button class="collect-button" id="collect-evidence">＋ توثيق في ملف القضية</button>
           </div>
-          <div class="collected-list"><div class="collected-heading">سجل الأدلة <span id="collected-label">لا توجد أدلة بعد</span></div><ul id="collected-items"></ul></div>
+          <div class="collected-list"><div class="collected-heading"><span>المعروضات الموثّقة</span><b id="collected-label">0 / 4</b></div><ul id="collected-items"></ul></div>
+          <div class="panel-footer"><span>ADAM MURAD</span><span>PRIVATE INVESTIGATOR</span></div>
         </aside>
       </div>
       <p class="scene-footnote">ملاحظة آدم: لا تقفز إلى الاستنتاج. ما نراه ليس دائماً ما حدث.</p>
