@@ -7,7 +7,7 @@
   <meta name="description" content="THE CASE — لعبة تحقيق وغموض سينمائية باللغة العربية.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
-  <link rel="stylesheet" href="styles.css?v=phonefix2">
+  <link rel="stylesheet" href="styles.css?v=phonecontents1">
   <title>THE CASE | القضية</title>
 </head>
 <body>
@@ -104,7 +104,25 @@
             <h3 id="detail-title"></h3><p id="detail-description"></p>
             <div class="detail-section"><span>قراءة آدم</span><p id="detail-caution"></p></div>
             <button class="collect-button" id="collect-evidence">＋ توثيق في ملف القضية</button>
-            <div class="phone-puzzle hidden" id="phone-puzzle"><div class="phone-puzzle-head"><span>قفل الجهاز</span><small>SECURE DEVICE / 04 DIGITS</small></div><p id="phone-puzzle-intro">الهاتف مقفل. افحص القرائن الورقية والساعة قبل محاولة فتحه.</p><div id="phone-clues" class="phone-clues hidden"><div><b>01 / الفاتورة والتقويم</b><span>فاتورة الأرشيف تحمل مرجع 0714، والتقويم يؤكد أن 14/07 هو تاريخ الموعد المسجل.</span></div><div><b>02 / ترتيب سليم</b><span>ملاحظة على ظهر الفاتورة: «المكان أولاً، ثم التوقيت».</span></div><div><b>03 / المكان والوقت</b><span>المكتب في الطابق 07. ساعة الحائط متوقفة عند 01:40. الملاحظة: «المكان أولاً، ثم التاريخ». رقم المكان هو 07، والتاريخ المثبت في التقويم هو 14/07؛ اقرأ الرقمين بهذا الترتيب. الساعة قرينة زمنية منفصلة.</span></div></div><div class="phone-code-display" id="phone-code-display" aria-live="polite">____</div><div class="phone-keypad" id="phone-keypad"><button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button><button type="button" data-digit="4">4</button><button type="button" data-digit="5">5</button><button type="button" data-digit="6">6</button><button type="button" data-digit="7">7</button><button type="button" data-digit="8">8</button><button type="button" data-digit="9">9</button><button type="button" data-action="clear">مسح</button><button type="button" data-digit="0">0</button><button type="button" data-action="enter">↵</button></div><p class="phone-feedback" id="phone-feedback" aria-live="polite"></p><div id="phone-unlocked" class="phone-unlocked hidden"><span>تم فتح الجهاز</span><p>مسودة رسالة غير مرسلة — 01:36 AM</p><blockquote>«إذا وصلت لهذا الهاتف، لا تثق بأول شخص يعطيك القصة كاملة.»</blockquote><small>حالة الرسالة: لم تُرسل · آخر تعديل قبل المواجهة بأربع دقائق تقريباً.</small></div></div>
+            <div class="phone-puzzle hidden" id="phone-puzzle"><div class="phone-puzzle-head"><span>قفل الجهاز</span><small>SECURE DEVICE / 04 DIGITS</small></div><p id="phone-puzzle-intro">الهاتف مقفل. افحص القرائن الورقية والساعة قبل محاولة فتحه.</p><div id="phone-clues" class="phone-clues hidden"><div><b>01 / الفاتورة والتقويم</b><span>فاتورة الأرشيف تحمل مرجع 0714، والتقويم يؤكد أن 14/07 هو تاريخ الموعد المسجل.</span></div><div><b>02 / ترتيب سليم</b><span>ملاحظة على ظهر الفاتورة: «المكان أولاً، ثم التوقيت».</span></div><div><b>03 / المكان والوقت</b><span>المكتب في الطابق 07. ساعة الحائط متوقفة عند 01:40. الملاحظة: «المكان أولاً، ثم التاريخ». رقم المكان هو 07، والتاريخ المثبت في التقويم هو 14/07؛ اقرأ الرقمين بهذا الترتيب. الساعة قرينة زمنية منفصلة.</span></div></div><div class="phone-code-display" id="phone-code-display" aria-live="polite">____</div><div class="phone-keypad" id="phone-keypad"><button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button><button type="button" data-digit="4">4</button><button type="button" data-digit="5">5</button><button type="button" data-digit="6">6</button><button type="button" data-digit="7">7</button><button type="button" data-digit="8">8</button><button type="button" data-digit="9">9</button><button type="button" data-action="clear">مسح</button><button type="button" data-digit="0">0</button><button type="button" data-action="enter">↵</button></div><p class="phone-feedback" id="phone-feedback" aria-live="polite"></p><div id="phone-unlocked" class="phone-unlocked hidden">
+  <div class="phone-open-banner"><span>تم فتح الجهاز</span><small>LOCAL DEVICE CACHE · PARTIAL RECOVERY</small></div>
+  <div class="phone-tabs" role="tablist" aria-label="محتويات الهاتف">
+    <button type="button" class="phone-tab active" data-phone-tab="messages" role="tab" aria-selected="true">الرسائل <span>03</span></button>
+    <button type="button" class="phone-tab" data-phone-tab="calls" role="tab" aria-selected="false">سجل المكالمات <span>03</span></button>
+  </div>
+  <div class="phone-tab-panel" id="phone-messages-panel" role="tabpanel">
+    <article class="phone-record"><div class="phone-record-head"><b>مازن العابد</b><time>00:54</time></div><p>نسخة سجل الصلاحيات فيها اختلاف. لا تعتمد على التقرير المطبوع.</p><small>رسالة واردة · الاسم من جهات الاتصال المحفوظة</small></article>
+    <article class="phone-record phone-record-out"><div class="phone-record-head"><b>سليم ناصر</b><time>01:09</time></div><p>احتفظ بالنسخة الأصلية. لا تفتحها من شبكة الشركة.</p><small>رسالة صادرة · مستعادة من ذاكرة الجهاز</small></article>
+    <article class="phone-record phone-record-unknown"><div class="phone-record-head"><b>تحويلة داخلية 204</b><time>01:28</time></div><p>غرفة الاجتماعات. الآن. تعال وحدك.</p><small>معاينة إشعار فقط · هوية المرسل غير مؤكدة</small></article>
+    <article class="phone-record phone-record-draft"><div class="phone-record-head"><b>مسودة غير مرسلة</b><time>01:36</time></div><p>إذا وصلت لهذا الهاتف، لا تثق بأول شخص يعطيك القصة كاملة.</p><small>لم تُرسل · آخر تعديل محفوظ</small></article>
+  </div>
+  <div class="phone-tab-panel hidden" id="phone-calls-panel" role="tabpanel">
+    <article class="phone-call"><span class="call-symbol missed">↙</span><div><b>تحويلة داخلية 204</b><small>مكالمة واردة فائتة</small></div><time>01:26</time><em>—</em></article>
+    <article class="phone-call"><span class="call-symbol incoming">↙</span><div><b>تحويلة داخلية 204</b><small>مكالمة واردة · تم الرد</small></div><time>01:32</time><em>00:19</em></article>
+    <article class="phone-call"><span class="call-symbol outgoing">↗</span><div><b>رقم غير محفوظ</b><small>مكالمة صادرة</small></div><time>01:35</time><em>00:06</em></article>
+  </div>
+  <div class="phone-forensic-note"><b>ملاحظة آدم</b><p>هذه البيانات مستعادة من ذاكرة الهاتف ومعاينات الإشعارات. أسماء جهات الاتصال لا تثبت هوية من أمسك الجهاز، والتحويلة 204 لا تحدد الشخص الذي استخدمها. نحتاج إلى مطابقة السجلات بمصدر مستقل.</p></div>
+</div></div>
           </div>
           <div class="collected-list"><div class="collected-heading"><span>المعروضات الموثّقة</span><b id="collected-label">0 / 4</b></div><ul id="collected-items"></ul></div>
           <div class="panel-footer"><span>ADAM MURAD</span><span>PRIVATE INVESTIGATOR</span></div>
@@ -141,6 +159,6 @@
     </section>
     <footer class="site-footer"><span>THE CASE © 2026</span><span>صُممت لتُكتشف، لا لتُخمن.</span><span>نسخة تطويرية 0.1</span></footer>
   </main>
-  <script src="app.js?v=phonefix2"></script>
+  <script src="app.js?v=phonecontents1"></script>
 </body>
 </html>
