@@ -7,7 +7,7 @@
   <meta name="description" content="THE CASE — لعبة تحقيق وغموض سينمائية باللغة العربية.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
-  <link rel="stylesheet" href="styles.css?v=interview1">
+  <link rel="stylesheet" href="styles.css?v=records1">
   <title>THE CASE | القضية</title>
 </head>
 <body>
@@ -74,6 +74,7 @@
         <button class="office-card board-card" id="open-board"><span class="card-index">02</span><div class="card-symbol">⌕</div><h3>لوحة الأدلة</h3><p>اربط القرائن واكتب فرضياتك</p><span class="card-state" id="board-card-state">تُفتح بعد جمع دليلين ←</span></button>
         <article class="office-card"><span class="card-index">03</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
         <button class="office-card interview-card" id="open-interview"><span class="card-index">04</span><div class="card-symbol">◉</div><h3>مقابلة مازن</h3><p>استمع إلى روايته واختبرها</p><span class="card-state" id="interview-card-state">تُفتح بعد فحص الهاتف ←</span></button>
+        <button class="office-card logs-card" id="open-logs"><span class="card-index">05</span><div class="card-symbol">▥</div><h3>سجلات الشركة</h3><p>حركة البطاقات وأجهزة الأبواب</p><span class="card-state">فحص سجل الدخول الأولي ←</span></button>
       </div>
       <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
     </section>
@@ -154,6 +155,34 @@
       </div>
       <div class="interview-record"><b>ملاحظات المقابلة</b><ul id="interview-notes"><li>لم تُسجّل إجابات بعد.</li></ul></div>
     </section>
+    <section class="logs-screen hidden" id="logs-screen">
+      <div class="logs-header">
+        <button class="back-link" id="leave-logs">← العودة إلى مكتب آدم</button>
+        <div><p class="eyebrow"><span class="status-dot"></span> مستندات الشركة · مستخرج 01</p><h2>سجل <em>الحركة والدخول.</em></h2><p>بيانات أولية من نظام البطاقات وحساسات الأبواب — ليلة وفاة سليم</p></div>
+        <span class="logs-stamp">نسخة غير مكتملة</span>
+      </div>
+      <div class="logs-warning"><b>تنبيه فني</b><span>سجل البطاقة يثبت استخدام بيانات اعتماد، لا هوية الشخص الذي حمل البطاقة. وحساس الباب يسجل فتحه وإغلاقه فقط.</span></div>
+      <div class="logs-layout">
+        <div class="logs-list">
+          <div class="logs-list-title">الأحداث المستخرجة <small>اضغط على أي حدث لفحص تفاصيله</small></div>
+          <button type="button" class="log-entry" data-log="mazen"><time>01:12</time><span><b>بوابة الطابق السابع</b><small>بطاقة مازن العابد · خروج مسجل</small></span><i>←</i></button>
+          <button type="button" class="log-entry" data-log="door-open"><time>01:18</time><span><b>باب غرفة الاجتماعات</b><small>حساس الباب · فتح</small></span><i>⌄</i></button>
+          <button type="button" class="log-entry" data-log="door-close"><time>01:24</time><span><b>باب غرفة الاجتماعات</b><small>حساس الباب · إغلاق</small></span><i>⌄</i></button>
+          <button type="button" class="log-entry" data-log="fares"><time>01:26</time><span><b>مصعد الطابق السابع</b><small>بطاقة فارس الكيلاني · وصول مسجل</small></span><i>↑</i></button>
+          <button type="button" class="log-entry" data-log="server"><time>01:43</time><span><b>باب غرفة الخوادم</b><small>بطاقة سليم ناصر · دخول مسجل</small></span><i>→</i></button>
+          <button type="button" class="log-entry" data-log="exit"><time>01:47</time><span><b>مصعد الخدمة</b><small>بطاقة فارس الكيلاني · خروج مسجل</small></span><i>↓</i></button>
+        </div>
+        <aside class="log-detail" aria-live="polite">
+          <span class="log-detail-kicker">قراءة السجل</span>
+          <h3 id="log-detail-title">اختر حدثاً من القائمة</h3>
+          <p id="log-detail-text">لا تتعامل مع السجل كأنه تسجيل مرئي. إنه أثر إلكتروني يحتاج إلى تفسير ومقارنة.</p>
+          <div class="log-detail-caution" id="log-detail-caution">البيانات الخام لا تجيب وحدها عن سؤال: من كان هنا فعلياً؟</div>
+          <button type="button" id="record-log-evidence" class="collect-button" disabled>＋ توثيق التقرير في ملف القضية</button>
+          <p class="log-recorded hidden" id="log-recorded">✓ تم توثيق التقرير كدليل مستقل.</p>
+        </aside>
+      </div>
+      <p class="scene-footnote">قاعدة آدم: البطاقة ليست الشخص، والتوقيت المسجل ليس رواية كاملة.</p>
+    </section>
     <section class="evidence-board-screen hidden" id="evidence-board-screen">
       <div class="board-header">
         <button class="back-link" id="leave-board">← العودة إلى مكتب آدم</button>
@@ -183,6 +212,6 @@
     </section>
     <footer class="site-footer"><span>THE CASE © 2026</span><span>صُممت لتُكتشف، لا لتُخمن.</span><span>نسخة تطويرية 0.1</span></footer>
   </main>
-  <script src="app.js?v=interview1"></script>
+  <script src="app.js?v=records1"></script>
 </body>
 </html>
