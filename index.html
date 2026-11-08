@@ -75,6 +75,7 @@
         <article class="office-card"><span class="card-index">03</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
         <button class="office-card interview-card" id="open-interview"><span class="card-index">04</span><div class="card-symbol">◉</div><h3>مقابلة مازن</h3><p>استمع إلى روايته واختبرها</p><span class="card-state" id="interview-card-state">تُفتح بعد فحص الهاتف ←</span></button>
         <button class="office-card logs-card" id="open-logs"><span class="card-index">05</span><div class="card-symbol">▥</div><h3>سجلات الشركة</h3><p>حركة البطاقات وأجهزة الأبواب</p><span class="card-state">فحص سجل الدخول الأولي ←</span></button>
+        <button class="office-card timeline-card" id="open-timeline"><span class="card-index">06</span><div class="card-symbol">⌁</div><h3>إعادة بناء التسلسل</h3><p>رتّب ما نعرفه وما لا نعرفه</p><span class="card-state">افحص الخط الزمني ←</span></button>
       </div>
       <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
     </section>
@@ -182,6 +183,51 @@
         </aside>
       </div>
       <p class="scene-footnote">قاعدة آدم: البطاقة ليست الشخص، والتوقيت المسجل ليس رواية كاملة.</p>
+    </section>
+    <section class="timeline-screen hidden" id="timeline-screen">
+      <div class="timeline-header">
+        <button class="back-link" id="leave-timeline">← العودة إلى مكتب آدم</button>
+        <div><p class="eyebrow"><span class="status-dot"></span> تحليل زمني · ملف 001</p><h2>إعادة بناء <em>الليلة.</em></h2><p>رتّب درجة الثقة في كل حدث. لا تخلط بين ما سجّله النظام وما تستنتجه.</p></div>
+        <span class="timeline-stamp">مسودة تحليل</span>
+      </div>
+      <div class="timeline-legend">
+        <span><i class="legend-verified"></i> سجل / أثر موثق</span>
+        <span><i class="legend-witness"></i> إفادة شخص</span>
+        <span><i class="legend-inference"></i> استنتاج</span>
+        <span><i class="legend-unknown"></i> غير محسوم</span>
+      </div>
+      <div class="timeline-layout">
+        <div class="timeline-events" id="timeline-events">
+          <button class="timeline-event" data-event="mazen"><time>01:12</time><span><b>مغادرة مازن للطابق</b><small>بطاقة خروج + إفادته</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="meeting-open"><time>01:18</time><span><b>فتح باب غرفة الاجتماعات</b><small>حساس باب</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="meeting-close"><time>01:24</time><span><b>إغلاق باب غرفة الاجتماعات</b><small>حساس باب</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="fares-arrive"><time>01:26</time><span><b>وصول بطاقة فارس للطابق</b><small>سجل مصعد</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="corridor"><time>01:30</time><span><b>مرور محتمل عبر الممر الداخلي</b><small>غير مثبت بعد</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="draft"><time>01:36</time><span><b>آخر مسودة محفوظة على الهاتف</b><small>بيانات محلية</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="confrontation"><time>01:39</time><span><b>بداية مواجهة محتملة</b><small>استنتاج من القرائن</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="death"><time>~01:40</time><span><b>الوفاة المقدّرة</b><small>تقدير أولي لا توقيت قطعي</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="server"><time>01:43</time><span><b>استخدام بطاقة سليم بالخوادم</b><small>سجل قارئ الباب</small></span><i>›</i></button>
+          <button class="timeline-event" data-event="fares-exit"><time>01:47</time><span><b>خروج بطاقة فارس</b><small>سجل مصعد الخدمة</small></span><i>›</i></button>
+        </div>
+        <aside class="timeline-detail" aria-live="polite">
+          <span class="log-detail-kicker">فحص الحدث</span>
+          <h3 id="timeline-detail-title">اختر حدثاً من التسلسل</h3>
+          <p id="timeline-detail-text">كل توقيت يحتاج إلى مصدر. بعض الأحداث لم تُثبت بعد، حتى لو بدت منطقية.</p>
+          <div class="timeline-source" id="timeline-source">المصدر: لم يُحدّد</div>
+          <label for="timeline-classification">كيف تصنّف هذا الحدث؟</label>
+          <select id="timeline-classification">
+            <option value="">اختر درجة الإثبات</option>
+            <option value="verified">سجل أو أثر موثق</option>
+            <option value="witness">إفادة شخص</option>
+            <option value="inference">استنتاج يحتاج إلى اختبار</option>
+            <option value="unknown">غير محسوم / لا دليل كافٍ</option>
+          </select>
+          <button type="button" class="save-timeline" id="save-timeline" disabled>حفظ التصنيف</button>
+          <p class="timeline-feedback" id="timeline-feedback" aria-live="polite">تصنيفاتك تحفظ محلياً على جهازك.</p>
+        </aside>
+      </div>
+      <div class="timeline-progress"><span>الأحداث التي راجعتها</span><b id="timeline-progress-count">0 / 10</b></div>
+      <p class="scene-footnote">قاعدة آدم: لا تحوّل الاحتمال إلى حقيقة لمجرد أنه يملأ فراغاً في القصة.</p>
     </section>
     <section class="evidence-board-screen hidden" id="evidence-board-screen">
       <div class="board-header">
