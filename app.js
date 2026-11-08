@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
@@ -11,6 +11,8 @@
   $("open-interview").addEventListener("click",()=>{renderInterview();show("interview-screen")});
   $("leave-logs").addEventListener("click",()=>show("office-screen"));
   $("open-logs").addEventListener("click",()=>{show("logs-screen");selectLog(null)});
+  $("leave-timeline").addEventListener("click",()=>show("office-screen"));
+  $("open-timeline").addEventListener("click",()=>{renderTimeline();show("timeline-screen");selectTimelineEvent(null)});
 
   $("back-briefing").addEventListener("click",()=>show("briefing-screen"));
   $("open-investigation").addEventListener("click",()=>{show("investigation-screen");startAmbience();});
@@ -177,6 +179,56 @@
     collected.push("access-log");localStorage.setItem(key,JSON.stringify(collected));
     render();renderBoard();selectLog(selectedLog);
   });
+
+  // Timeline reconstruction: distinguish source quality from the player's interpretation.
+  const timelineData={
+    mazen:{time:"01:12",title:"مغادرة مازن للطابق",text:"سجل البوابة استخدام بطاقة مازن للخروج، ومازن قال في المقابلة إنه غادر عند الوقت نفسه.",source:"سجل بطاقة + إفادة مازن. مصدران متوافقان، لكنهما لا يثبتان استحالة عودته أو انتقال بطاقته."},
+    "meeting-open":{time:"01:18",title:"فتح باب غرفة الاجتماعات",text:"حساس الباب سجّل انتقاله إلى حالة الفتح. لا يظهر اسم مستخدم أو رقم بطاقة.",source:"حساس باب فقط؛ لا يحدد من فتحه أو من دخل."},
+    "meeting-close":{time:"01:24",title:"إغلاق باب غرفة الاجتماعات",text:"عاد الحساس إلى حالة الإغلاق بعد ست دقائق. لا نعرف ما حدث داخل الغرفة خلال تلك الفترة.",source:"حساس باب فقط؛ لا يثبت هوية الموجودين أو عددهم."},
+    "fares-arrive":{time:"01:26",title:"وصول بطاقة فارس للطابق",text:"سجل المصعد استخدام بيانات بطاقة فارس للوصول إلى الطابق السابع.",source:"سجل بطاقة؛ يثبت استخدام بيانات الاعتماد ولا يثبت حاملها."},
+    corridor:{time:"01:30",title:"مرور محتمل عبر الممر الداخلي",text:"هذا توقيت ضمن إعادة البناء الأولية، وليس لدينا حتى الآن تسجيل مرئي موثق يثبت مرور شخص بعينه.",source:"فرضية زمنية مبنية على نافذة الحركة؛ نحتاج إلى كاميرا أو شاهد مستقل."},
+    draft:{time:"01:36",title:"آخر مسودة محفوظة على الهاتف",text:"المسودة غير مرسلة وتحمل توقيتاً محلياً قدره 01:36. قد تساعد في ترتيب الأحداث لكنها لا تثبت وحدها أن سليم كان يمسك الهاتف عند ذلك الوقت.",source:"بيانات محلية مستعادة من الهاتف؛ التوقيت قابل للتعديل ويحتاج إلى مطابقة."},
+    confrontation:{time:"01:39",title:"بداية مواجهة محتملة",text:"قد تكون المواجهة بدأت في هذه النافذة، لكن لا يوجد حتى الآن شاهد مباشر أو تسجيل صوتي كامل يحدد بدايتها.",source:"استنتاج مؤقت من المسودة وسجلات الحركة؛ لا يُعامل كحدث مثبت."},
+    death:{time:"~01:40",title:"الوفاة المقدّرة",text:"الساعة المتوقفة تشير إلى 01:40، لكنها ليست ساعة موثوقة بعد. وقت الوفاة يجب أن يبقى نطاقاً تقديرياً إلى أن يظهر تقرير طبي أو دليل مستقل.",source:"قرينة مشهد + تقدير أولي؛ لا يوجد توقيت قطعي."},
+    server:{time:"01:43",title:"استخدام بطاقة سليم بالخوادم",text:"قارئ غرفة الخوادم سجّل استخدام بطاقة سليم. هذا لا يعني أن سليم نفسه دخل؛ ربما استُخدمت بطاقته بواسطة شخص آخر.",source:"سجل قارئ باب؛ هوية حامل البطاقة مجهولة."},
+    "fares-exit":{time:"01:47",title:"خروج بطاقة فارس",text:"سجل مصعد الخدمة استخدام بيانات بطاقة فارس للخروج من الطابق.",source:"سجل بطاقة؛ يثبت استخدام بيانات الاعتماد ولا يثبت حاملها."}
+  };
+  const timelineKey="thecase-case01-timeline";
+  let timelineMarks={};try{timelineMarks=JSON.parse(localStorage.getItem(timelineKey)||"{}")}catch(_){}
+  let selectedTimeline=null;
+  function renderTimeline(){
+    $("timeline-progress-count").textContent=Object.keys(timelineMarks).filter(k=>timelineData[k]&&timelineMarks[k]).length+" / "+Object.keys(timelineData).length;
+    document.querySelectorAll("[data-event]").forEach(btn=>{
+      const mark=timelineMarks[btn.dataset.event];
+      btn.classList.toggle("reviewed",!!mark);
+      const label=mark?({verified:"موثق",witness:"إفادة",inference:"استنتاج",unknown:"غير محسوم"}[mark]):"لم يُراجع";
+      let badge=btn.querySelector(".timeline-mark");
+      if(!badge){badge=document.createElement("small");badge.className="timeline-mark";btn.querySelector("span").appendChild(badge)}
+      badge.textContent=label;
+      badge.dataset.kind=mark||"";
+    });
+  }
+  function selectTimelineEvent(id){
+    selectedTimeline=id;
+    const item=id?timelineData[id]:null;
+    $("timeline-detail-title").textContent=item?item.time+" — "+item.title:"اختر حدثاً من التسلسل";
+    $("timeline-detail-text").textContent=item?item.text:"كل توقيت يحتاج إلى مصدر. بعض الأحداث لم تُثبت بعد، حتى لو بدت منطقية.";
+    $("timeline-source").textContent=item?"المصدر: "+item.source:"المصدر: لم يُحدّد";
+    $("timeline-classification").value=id?(timelineMarks[id]||""):"";
+    $("save-timeline").disabled=!id||!$("timeline-classification").value;
+    $("timeline-feedback").textContent=id&&timelineMarks[id]?"تصنيفك الحالي: "+({verified:"سجل أو أثر موثق",witness:"إفادة شخص",inference:"استنتاج يحتاج إلى اختبار",unknown:"غير محسوم"}[timelineMarks[id]]):"اختر التصنيف الذي يطابق قوة المصدر، لا ما تتمنى أن يكون صحيحاً.";
+    document.querySelectorAll("[data-event]").forEach(btn=>btn.classList.toggle("selected",btn.dataset.event===id));
+  }
+  document.querySelectorAll("[data-event]").forEach(btn=>btn.addEventListener("click",()=>selectTimelineEvent(btn.dataset.event)));
+  $("timeline-classification").addEventListener("change",()=>{$("save-timeline").disabled=!selectedTimeline||!$("timeline-classification").value});
+  $("save-timeline").addEventListener("click",()=>{
+    if(!selectedTimeline||!$("timeline-classification").value)return;
+    timelineMarks[selectedTimeline]=$("timeline-classification").value;
+    localStorage.setItem(timelineKey,JSON.stringify(timelineMarks));
+    renderTimeline();selectTimelineEvent(selectedTimeline);
+    $("timeline-feedback").textContent="تم حفظ تصنيفك. يمكنك تغييره متى ظهرت قرائن جديدة.";
+  });
+  renderTimeline();
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
