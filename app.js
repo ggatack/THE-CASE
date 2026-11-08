@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen","layan-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
@@ -40,6 +40,7 @@
     "forensic-audit":{title:"سجل تدقيق قارئ غرفة الخوادم",number:"11 / DIGITAL FORENSICS",description:"نسخة من سجل التدقيق تُظهر أن حدث استخدام بطاقة سليم عند 01:43 أُنشئ في النظام بوقته المسجل، ثم عُدّلت خانة مصدر المزامنة عند 02:06 عبر حساب خدمة إداري.",caution:"التعديل يثبت أن سجل الحدث لم يبقَ دون تغيير. حساب الخدمة قد تستخدمه أكثر من جهة، ولا يحدد هذا المستخرج من نفّذ التعديل أو إن كان التعديل لإخفاء دخول غير مشروع."},
     "forensic-camera":{title:"إطار كاميرا ممر الخوادم",number:"12 / VIDEO TRACE",description:"إطار منخفض الدقة عند 01:44 يُظهر شخصاً بملابس داكنة يغادر نطاق باب غرفة الخوادم. الوجه خارج مجال الرؤية، ولا تظهر بطاقة تعريف أو علامة شخصية واضحة.",caution:"الإطار يثبت وجود شخص في الممر ضمن تلك اللحظة إذا صحت سلامة التسجيل، لكنه لا يثبت هويته ولا يثبت أنه دخل الغرفة أو استخدم بطاقة سليم."},
     "forensic-trace":{title:"أثر مادي قرب قارئ البطاقة",number:"13 / TRACE EVIDENCE",description:"أثناء فحص محيط القارئ، سُجل خدش حديث على الغطاء المعدني وألياف داكنة دقيقة عالقة بحافته. لم تُجرَ بعد مقارنة مخبرية مع ملابس أو أدوات أي شخص.",caution:"الخدش والألياف قد ينتجان عن صيانة أو احتكاك عادي. لا توجد مطابقة نوعية أو بصمة تربطهما بشخص محدد."},
+     "layan-statement":{title:"إفادة ليان سالم التكميلية",number:"14 / WITNESS STATEMENT",description:"تقر ليان بأنها عادت إلى الطابق بعد مغادرتها المسجلة عند 01:05، ولمست هاتف سليم بعد الوفاة وحذفت رسالة كانت قد وصلته. تقول إن فارس طلب منها حذفها، وإنها خافت أن تُتهم بإخفاء معلومات.",caution:"الإفادة اعتراف بسلوك لاحق لا بجريمة القتل. يجب التحقق من عودة ليان وطلب فارس ومحتوى الرسالة من سجلات مستقلة؛ لا توجد نسخة مستعادة من الرسالة حتى الآن."},
     "archive-crosscheck":{title:"تقرير المطابقة التقاطعية",number:"10 / CROSS-REFERENCE REPORT",description:"مقارنة بين طلب توسيع الصلاحيات وكشف التحويلات والمذكرة التنفيذية. تُظهر الوثائق تسلسلاً إدارياً يبدأ بتوسيع الوصول، ثم مدفوعات تحمل رمز وحدة فارس، ثم وصول تقرير الاستثناءات إلى مكتب المدير التنفيذي.",caution:"التقرير يلخص روابط بين نسخ أرشيفية. لا يثبت المستفيد النهائي من الأموال، ولا يثبت أن نادر أصدر أمراً أو أن فارس ارتكب جريمة القتل."},
     "archive-executive":{title:"مذكرة مراجعة تنفيذية",number:"09 / EXECUTIVE MEMO",description:"مذكرة محدودة التداول تشير إلى أن تقريراً عن حركة البيانات عُرض على مكتب المدير التنفيذي نادر القيسي بعد بدء التحويلات. على الهامش عبارة بخط اليد: «تُراجع الاستثناءات قبل إيقاف الخدمة»، وبجانبها أحرف N.Q.",caution:"قد تعني المذكرة أن نادر علم بالمشكلة لاحقاً، لكنها لا تثبت أنه وافق على البيع أو أمر بإيذاء سليم. نحتاج إلى أصل المذكرة وبيانات تداولها ومصدر مستقل."},
     "access-log":{title:"مستخرج سجل الحركة والدخول",number:"06 / ACCESS CONTROL",description:"مستخرج أولي يجمع ستة أحداث من نظام البطاقات وحساسات الأبواب خلال الفترة 01:12–01:47. يتضمن خروج مازن، وحالة باب غرفة الاجتماعات، ووصول بطاقة فارس، واستخدام بطاقة سليم لدخول غرفة الخوادم.",caution:"السجل يثبت أن بيانات بطاقة معينة استُخدمت أو أن حساس الباب تغيّر؛ لا يثبت وحده هوية حامل البطاقة. يجب مقارنة التوقيت بمصدر مستقل وبالإفادات."},
@@ -357,6 +358,7 @@
     $("open-server-forensics").disabled=!ready;
     const count=Object.values(forensicItems).filter(x=>collected.includes(x.evidence)).length;
     $("forensic-progress").textContent=count+" / 3";
+    renderLayanInterview();
     document.querySelectorAll("[data-forensic]").forEach(btn=>{
       const item=forensicItems[btn.dataset.forensic];
       btn.classList.toggle("forensic-done",collected.includes(item.evidence));
@@ -384,6 +386,39 @@
     render();renderBoard();renderServerForensics();selectForensic(selectedForensic);
   });
   renderServerForensics();
+
+  // Layan's supplemental interview opens only after two independent server-room traces are documented.
+  const layanInterviewKey="thecase-case01-layan-interview";
+  let layanAsked=[];try{layanAsked=JSON.parse(localStorage.getItem(layanInterviewKey)||"[]")}catch(_){}
+  const layanAnswers={
+    return:{label:"العودة إلى الطابق",text:"«نعم. غادرت عند 01:05 كما يظهر في السجل، لكنني عدت من مدخل الخدمة بعد الثانية. لم أستخدم بطاقتي؛ اتصلت بأحدهم وفتح لي الباب. لم أقل ذلك للشرطة لأنني لم أكن أملك إذناً بالعودة.»",note:"تقر ليان بعودة غير مسجلة بعد الثانية. يلزم تحديد من فتح لها الباب ومراجعة كاميرا مدخل الخدمة."},
+    message:{label:"الرسالة المحذوفة",text:"«رأيت إشعار رسالة على هاتف سليم عندما عدت. لم أفتح المحادثة كاملة. حذفت الإشعار والمحادثة من الشاشة لأنني خفت أن يُعرف أنني عدت إلى المكتب.»",note:"تقر بلمس الهاتف وحذف محتوى، لكنها لا تقدم نسخة من الرسالة ولا تثبت توقيتها أو مرسلها."},
+    fares:{label:"طلب فارس",text:"«فارس هو من اتصل بي. قال إن وجود الرسالة سيجرّني إلى مشكلة، وطلب مني أن أحذفها وألا أذكر عودتي. لم يقل إنه قتل سليم. أنا صدقته عندما قال إن الأمر إداري.»",note:"تسمي فارس كمصدر الطلب، لكن المكالمة لم تُطابق بعد بسجل اتصالات مستقل. لا تعتبر ذلك إثباتاً للأمر أو للقتل."},
+    time:{label:"وقت لمس الهاتف",text:"«كان ذلك بعد الثانية بقليل، وقبل أن أغادر المبنى نهائياً. لا أستطيع تحديد الدقيقة. لم أقترب من غرفة الخوادم ولم أحمل بطاقة سليم.»",note:"تضع ليان فعل الحذف بعد تعديل سجل الخدمة عند 02:06 أو قريباً منه، لكن تقديرها غير دقيق ولا يثبت التسلسل."}
+  };
+  function renderLayanInterview(){
+    const traces=["forensic-audit","forensic-camera","forensic-trace"].filter(id=>collected.includes(id)).length;
+    const ready=traces>=2;
+    $("layan-card-state").textContent=ready?"افتح المقابلة التكميلية ←":"تُفتح بعد توثيق أثرين جنائيين ←";
+    $("open-layan-interview").disabled=!ready;
+    const host=$("layan-notes");host.innerHTML="";
+    if(!layanAsked.length){const li=document.createElement("li");li.textContent="لم تُسجّل إجابات بعد.";host.appendChild(li)}
+    layanAsked.forEach(k=>{const li=document.createElement("li");li.textContent=layanAnswers[k].label+" — "+layanAnswers[k].note;host.appendChild(li)});
+    document.querySelectorAll("[data-layan-question]").forEach(button=>{
+      const done=layanAsked.includes(button.dataset.layanQuestion);
+      button.disabled=done;button.classList.toggle("asked",done);
+    });
+  }
+  $("layan-options").addEventListener("click",e=>{
+    const button=e.target.closest("[data-layan-question]");if(!button)return;
+    const id=button.dataset.layanQuestion,answer=layanAnswers[id];
+    if(!answer||layanAsked.includes(id))return;
+    $("layan-response").textContent=answer.text;
+    $("layan-note").textContent="ملاحظة آدم: "+answer.note;
+    layanAsked.push(id);localStorage.setItem(layanInterviewKey,JSON.stringify(layanAsked));
+    renderLayanInterview();
+  });
+  renderLayanInterview();
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
