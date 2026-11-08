@@ -42,17 +42,21 @@
   }
   function inspect(id){
     selected=id;const item=evidence[id];empty.classList.add("hidden");details.classList.remove("hidden");
+    // Inspecting a scene hotspot records it automatically; no hidden second step.
+    if(!collected.includes(id)){
+      collected.push(id);
+      localStorage.setItem(key,JSON.stringify(collected));
+      render();
+      renderBoard();
+    }
     $("detail-number").textContent=item.number;$("detail-title").textContent=item.title;
     $("detail-description").textContent=item.description;$("detail-caution").textContent=item.caution;
-    const done=collected.includes(id);$("collect-evidence").disabled=done;
-    $("collect-evidence").textContent=done?"✓ موثّق في ملف القضية":"＋ توثيق في ملف القضية";
+    $("collect-evidence").disabled=true;
+    $("collect-evidence").textContent="✓ تمت إضافة الدليل إلى ملف القضية";
     document.querySelectorAll(".scene-object").forEach(btn=>btn.classList.toggle("selected",btn.dataset.evidence===id));
   }
   document.querySelectorAll(".scene-object").forEach(btn=>btn.addEventListener("click",()=>inspect(btn.dataset.evidence)));
-  $("collect-evidence").addEventListener("click",()=>{
-    if(!selected||collected.includes(selected))return;
-    collected.push(selected);localStorage.setItem(key,JSON.stringify(collected));render();inspect(selected);
-  });
+  $("collect-evidence").addEventListener("click",()=>{if(selected)inspect(selected)});
   render();
 
 
