@@ -358,7 +358,6 @@
     $("open-server-forensics").disabled=!ready;
     const count=Object.values(forensicItems).filter(x=>collected.includes(x.evidence)).length;
     $("forensic-progress").textContent=count+" / 3";
-    renderLayanInterview();
     document.querySelectorAll("[data-forensic]").forEach(btn=>{
       const item=forensicItems[btn.dataset.forensic];
       btn.classList.toggle("forensic-done",collected.includes(item.evidence));
@@ -383,7 +382,7 @@
     const evidenceId=forensicItems[selectedForensic].evidence;
     if(collected.includes(evidenceId))return;
     collected.push(evidenceId);localStorage.setItem(key,JSON.stringify(collected));
-    render();renderBoard();renderServerForensics();selectForensic(selectedForensic);
+    render();renderBoard();renderServerForensics();renderLayanInterview();selectForensic(selectedForensic);
   });
   renderServerForensics();
 
