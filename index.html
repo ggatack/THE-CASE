@@ -70,14 +70,47 @@
       <p class="eyebrow"><span class="status-dot"></span> مكتب آدم مراد · 02:17 AM</p>
       <h2>لنبدأ من<br><em>ما نعرفه.</em></h2>
       <div class="office-grid">
-        <article class="office-card active-card"><span class="card-index">01</span><div class="card-symbol">▤</div><h3>ملف القضية</h3><p>سليم ناصر — الطابق السابع</p><span class="card-state">متاح الآن</span></article>
+        <button class="office-card active-card file-card" id="open-investigation"><span class="card-index">01</span><div class="card-symbol">▤</div><h3>ملف القضية</h3><p>سليم ناصر — الطابق السابع</p><span class="card-state">ابدأ فحص مسرح الجريمة ←</span></button>
         <article class="office-card"><span class="card-index">02</span><div class="card-symbol">⌕</div><h3>لوحة الأدلة</h3><p>ستُفتح مع أول دليل</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
         <article class="office-card"><span class="card-index">03</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
       </div>
-      <div class="notice"><span>i</span><p>هذه نسخة تأسيسية للواجهة. سنضيف التحقيق الفعلي والأدلة والحفظ على مراحل، ولن نعرض أدلة وهمية على أنها قابلة للفحص.</p></div>
+      <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
     </section>
 
-    <section class="modal hidden" id="files-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <section class="investigation-screen hidden" id="investigation-screen">
+      <div class="investigation-head">
+        <button class="back-link" id="leave-investigation">← العودة إلى مكتب آدم</button>
+        <div class="investigation-title"><p class="eyebrow"><span class="status-dot"></span> مسرح الجريمة · شركة نواة</p><h2>مكتب <em>سليم ناصر</em></h2><p>الطابق السابع — بعد اكتشاف الجثة</p></div>
+        <div class="evidence-progress"><span>الأدلة المجموعة</span><b id="evidence-count">0 / 4</b><div class="progress-track"><i id="progress-fill"></i></div></div>
+      </div>
+      <div class="scene-layout">
+        <div class="crime-room" aria-label="رسم تخطيطي لمكتب سليم ناصر">
+          <div class="room-window"><i></i><i></i><i></i><i></i></div>
+          <div class="room-shelf"><span></span><span></span><span></span></div>
+          <div class="room-desk"><div class="desk-leg"></div><div class="desk-leg second"></div></div>
+          <div class="room-clock"><span>01:40</span></div>
+          <button class="scene-object coffee-object" data-evidence="cup" aria-label="فحص فنجان القهوة"><span>☕</span><small>01</small></button>
+          <button class="scene-object phone-object" data-evidence="phone" aria-label="فحص الهاتف"><span>▰</span><small>02</small></button>
+          <button class="scene-object paper-object" data-evidence="paper" aria-label="فحص الورقة الممزقة"><span>▤</span><small>03</small></button>
+          <button class="scene-object clock-object" data-evidence="clock" aria-label="فحص ساعة الحائط"><span>◷</span><small>04</small></button>
+          <div class="room-label">مكتب سليم ناصر <span>NAWA / FLOOR 07</span></div>
+        </div>
+        <aside class="inspection-panel" aria-live="polite">
+          <div class="panel-kicker">دفتر المعاينة <span>FIELD NOTES</span></div>
+          <div id="inspection-empty" class="inspection-empty"><div class="inspect-crosshair">⌖</div><h3>اختر شيئاً لفحصه</h3><p>اضغط على أحد العناصر المحددة في المشهد. افحصه أولاً، ثم قرر إن كان يستحق إضافته إلى ملف الأدلة.</p></div>
+          <div id="inspection-details" class="inspection-details hidden">
+            <div class="detail-number" id="detail-number">01 / OBJECT</div>
+            <h3 id="detail-title"></h3><p id="detail-description"></p>
+            <div class="detail-caution" id="detail-caution"></div>
+            <button class="collect-button" id="collect-evidence">＋ إضافة إلى ملف الأدلة</button>
+          </div>
+          <div class="collected-list"><div class="collected-heading">سجل الأدلة <span id="collected-label">لا توجد أدلة بعد</span></div><ul id="collected-items"></ul></div>
+        </aside>
+      </div>
+      <p class="scene-footnote">ملاحظة آدم: لا تقفز إلى الاستنتاج. ما نراه ليس دائماً ما حدث.</p>
+    </section>
+\n    <section class="modal hidden" id="files-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-card"><button class="close-button" id="close-files" aria-label="إغلاق">×</button><p class="eyebrow">الأرشيف</p><h2 id="modal-title">ملفات القضايا</h2><div class="archive-row"><span class="archive-number">001</span><div><b>الطابق السابع</b><small>قضية نشطة · قيد التطوير</small></div><span class="archive-tag">قريباً</span></div><p class="modal-note">ستظهر هنا القضايا التي تفتحها خلال رحلتك.</p></div>
     </section>
     <footer class="site-footer"><span>THE CASE © 2026</span><span>صُممت لتُكتشف، لا لتُخمن.</span><span>نسخة تطويرية 0.1</span></footer>
