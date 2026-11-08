@@ -28,3 +28,44 @@
   .rotate-card b{display:block;color:var(--text);font-size:17px;font-weight:600}
   .rotate-card p{color:#a7a49d;font-size:12px;line-height:2;margin:12px 0 0}
 }
+
+/* First playable investigation scene */
+.file-card{width:100%;text-align:right;color:inherit;font-family:inherit;cursor:pointer}
+.file-card:hover{border-color:var(--copper);transform:translateY(-2px)}
+.investigation-screen{width:100%;margin:24px auto 34px;animation:appear .4s ease}
+.investigation-head{display:grid;grid-template-columns:180px 1fr 190px;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding-bottom:15px}
+.investigation-head .back-link{padding:0}
+.investigation-title .eyebrow{margin:0 0 4px;font-size:9px}
+.investigation-title h2{font-size:27px;font-weight:500;margin:0}
+.investigation-title h2 em{font-style:normal;color:var(--copper)}
+.investigation-title>p:last-child{font-size:10px;color:var(--muted);margin:2px 0 0}
+.evidence-progress{border-right:1px solid var(--line);padding-right:17px}
+.evidence-progress span{display:block;font-size:10px;color:var(--muted)}
+.evidence-progress b{display:block;color:var(--copper);font:20px 'Cormorant Garamond';margin:2px 0 7px}
+.progress-track{height:3px;background:#33383d}.progress-track i{display:block;width:0;height:100%;background:var(--copper);transition:width .3s}
+.scene-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,.8fr);gap:16px;margin-top:17px}
+.crime-room{height:clamp(270px,52vh,430px);position:relative;overflow:hidden;border:1px solid #3b4146;background:linear-gradient(180deg,#202a31 0%,#151c22 53%,#0d1115 54%,#171513 100%);box-shadow:inset 0 0 70px #0009}
+.crime-room:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#0004,transparent 45%,#0005),linear-gradient(0deg,#0006,transparent 45%)}
+.room-window{position:absolute;top:8%;left:8%;width:36%;height:37%;border:7px solid #343d44;background:linear-gradient(145deg,#263e4c,#101923 72%);box-shadow:0 0 35px #91a7b21c}
+.room-window:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:#46515a}.room-window:after{content:"";position:absolute;top:50%;left:0;right:0;height:4px;background:#46515a}
+.room-window i{position:absolute;bottom:0;width:8%;height:28%;background:#111820}.room-window i:nth-child(1){left:8%;height:42%}.room-window i:nth-child(2){left:25%;height:25%}.room-window i:nth-child(3){right:16%;height:52%}.room-window i:nth-child(4){right:3%;height:33%}
+.room-shelf{position:absolute;right:7%;top:12%;width:31%;height:12%;border-bottom:7px solid #554333;display:flex;align-items:flex-end;gap:9%;padding:0 5%}
+.room-shelf span{width:13%;height:70%;background:#80664b;border:2px solid #342b24}.room-shelf span:nth-child(2){height:55%;background:#46515a}.room-shelf span:nth-child(3){height:82%}
+.room-desk{position:absolute;left:18%;bottom:19%;width:64%;height:13%;background:linear-gradient(180deg,#80644a,#46372b);border-top:5px solid #a0805b;transform:perspective(120px) rotateX(4deg);box-shadow:0 18px 25px #0008}
+.desk-leg{position:absolute;top:100%;left:10%;height:95px;width:9px;background:#352a22}.desk-leg.second{left:auto;right:10%}
+.room-clock{position:absolute;right:18%;top:30%;width:51px;height:51px;border:3px solid #8d8a7e;border-radius:50%;background:#d2c9b4;color:#252321;display:grid;place-items:center;font:11px 'Cormorant Garamond';box-shadow:0 3px 14px #0008;z-index:1}
+.scene-object{position:absolute;z-index:2;border:1px solid #d2a77b99;background:#16191ddf;color:#e8d8c6;border-radius:50%;width:47px;height:47px;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 0 5px #bd8b6220,0 5px 16px #0009;transition:.2s}
+.scene-object:hover,.scene-object.selected{background:var(--copper);color:#171310;transform:scale(1.1)}
+.scene-object>span{font-size:20px}.scene-object small{position:absolute;top:-9px;right:-8px;background:var(--red);color:white;border-radius:10px;padding:2px 5px;font:9px Arial}
+.scene-object.collected{border-color:#8caa8d;box-shadow:0 0 0 5px #789b7620}.scene-object.collected small{background:#628264}
+.coffee-object{left:34%;bottom:30%}.phone-object{left:58%;bottom:30%}.paper-object{left:46%;bottom:48%;transform:rotate(-9deg)}.clock-object{right:19%;top:29%}
+.room-label{position:absolute;bottom:12px;right:15px;z-index:1;color:#b7b0a5;font-size:10px}.room-label span{display:block;color:#777d7e;font:9px 'Cormorant Garamond';letter-spacing:2px;margin-top:3px}
+.inspection-panel{min-height:270px;border:1px solid var(--line);background:linear-gradient(145deg,#171c21,#101418);padding:17px;display:flex;flex-direction:column}
+.panel-kicker{font-size:10px;color:var(--copper);border-bottom:1px solid var(--line);padding-bottom:12px;letter-spacing:.7px}.panel-kicker span{float:left;color:#62686a;font:9px 'Cormorant Garamond';letter-spacing:1.5px}
+.inspection-empty{text-align:center;padding:18px 6px 15px}.inspect-crosshair{font-size:32px;color:#806347}.inspection-empty h3,.inspection-details h3{font-size:16px;font-weight:500;margin:7px 0}.inspection-empty p{font-size:10px;color:#92938e;line-height:1.9;margin:0 auto;max-width:240px}
+.inspection-details{padding:13px 2px 12px}.detail-number{font:9px 'Cormorant Garamond';color:var(--copper);letter-spacing:1.5px}.inspection-details h3{font-size:17px}.inspection-details>p{font-size:11px;color:#b2b0a9;line-height:1.9;margin:7px 0}.detail-caution{font-size:10px;line-height:1.8;color:#c28c79;border-right:2px solid var(--red);padding:5px 9px;margin:10px 0}
+.collect-button{height:36px;width:100%;background:#bd8b621c;border:1px solid #bd8b6277;color:var(--copper);font:11px 'IBM Plex Sans Arabic';cursor:pointer}.collect-button:disabled{opacity:.45;cursor:default}
+.collected-list{margin-top:auto;border-top:1px solid var(--line);padding-top:10px}.collected-heading{font-size:10px;color:#c8c3b8;display:flex;justify-content:space-between}.collected-heading span{color:#777d7e;font-size:9px}#collected-items{padding:0 15px 0 0;margin:7px 0 0;color:#9eaa9d;font-size:10px;line-height:1.9}
+.scene-footnote{font-size:10px;color:#747b7c;margin:11px 0 0}
+@media(max-width:760px){.investigation-head{grid-template-columns:1fr auto;gap:8px}.investigation-head .back-link{grid-column:1/-1}.investigation-title h2{font-size:23px}.evidence-progress{padding-right:10px}.scene-layout{grid-template-columns:1fr}.crime-room{height:300px}.inspection-panel{min-height:250px}.room-desk{bottom:17%}.coffee-object{left:32%}.phone-object{left:59%}}
+@media(orientation:landscape) and (max-height:600px){.investigation-screen{margin:8px auto 16px}.investigation-head{padding-bottom:8px}.scene-layout{margin-top:10px;grid-template-columns:minmax(0,1.65fr) minmax(230px,.75fr)}.crime-room{height:calc(100svh - 185px);min-height:230px}.inspection-panel{min-height:230px;padding:12px}.inspection-empty{padding:8px 4px}.inspection-details{padding:8px 2px}.inspection-details>p{font-size:10px}.collect-button{height:32px}.scene-footnote{margin-top:6px}}
