@@ -54,11 +54,43 @@
     $("collect-evidence").disabled=true;
     $("collect-evidence").textContent="✓ تمت إضافة الدليل إلى ملف القضية";
     document.querySelectorAll(".scene-object").forEach(btn=>btn.classList.toggle("selected",btn.dataset.evidence===id));
+    $("phone-puzzle").classList.toggle("hidden",id!=="phone");
+    if(id==="phone")renderPhonePuzzle();
   }
   document.querySelectorAll(".scene-object").forEach(btn=>btn.addEventListener("click",()=>inspect(btn.dataset.evidence)));
   $("collect-evidence").addEventListener("click",()=>{if(selected)inspect(selected)});
   render();
 
+  // Phone puzzle: the player combines the floor number with the stopped-clock time.
+  const phoneCode="7140",phoneKey="thecase-case01-phone-open";
+  let phoneDigits="";
+  let phoneOpened=localStorage.getItem(phoneKey)==="yes";
+  function renderPhonePuzzle(){
+    const ready=collected.includes("paper")&&collected.includes("clock");
+    $("phone-puzzle-intro").textContent=phoneOpened?"تم تجاوز قفل الجهاز. عُثر على مسودة محفوظة محلياً.":ready?"القرائن اللازمة أصبحت متاحة. اقرأها ثم أدخل الرمز المكوّن من أربعة أرقام.":"لفتح الهاتف، وثّق أولاً الأوراق والساعة؛ فهما يحملان القرائن اللازمة.";
+    $("phone-clues").classList.toggle("hidden",!ready||phoneOpened);
+    $("phone-keypad").classList.toggle("hidden",!ready||phoneOpened);
+    $("phone-code-display").classList.toggle("hidden",!ready||phoneOpened);
+    $("phone-feedback").classList.toggle("hidden",!ready||phoneOpened);
+    $("phone-unlocked").classList.toggle("hidden",!phoneOpened);
+    $("phone-code-display").textContent=phoneDigits.padEnd(4,"_").split("").join(" ");
+    $("phone-feedback").textContent="";
+  }
+  $("phone-keypad").addEventListener("click",e=>{
+    const b=e.target.closest("button");if(!b||phoneOpened)return;
+    if(b.dataset.digit!==undefined){if(phoneDigits.length<4)phoneDigits+=b.dataset.digit;}
+    else if(b.dataset.action==="clear")phoneDigits="";
+    else if(b.dataset.action==="enter"){
+      if(phoneDigits.length!==4){$("phone-feedback").textContent="أدخل أربعة أرقام أولاً.";return}
+      if(phoneDigits===phoneCode){
+        phoneOpened=true;localStorage.setItem(phoneKey,"yes");renderPhonePuzzle();
+      }else{
+        $("phone-feedback").textContent="رمز غير صحيح. راجع ترتيب القرائن؛ لا توجد عقوبة على المحاولة.";
+        phoneDigits="";
+      }
+    }
+    $("phone-code-display").textContent=phoneDigits.padEnd(4,"_").split("").join(" ");
+  });
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
