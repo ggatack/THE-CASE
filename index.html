@@ -7,7 +7,7 @@
   <meta name="description" content="THE CASE — لعبة تحقيق وغموض سينمائية باللغة العربية.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
-  <link rel="stylesheet" href="styles.css?v=records1">
+  <link rel="stylesheet" href="styles.css?v=archive1">
   <title>THE CASE | القضية</title>
 </head>
 <body>
@@ -76,6 +76,7 @@
         <button class="office-card interview-card" id="open-interview"><span class="card-index">04</span><div class="card-symbol">◉</div><h3>مقابلة مازن</h3><p>استمع إلى روايته واختبرها</p><span class="card-state" id="interview-card-state">تُفتح بعد فحص الهاتف ←</span></button>
         <button class="office-card logs-card" id="open-logs"><span class="card-index">05</span><div class="card-symbol">▥</div><h3>سجلات الشركة</h3><p>حركة البطاقات وأجهزة الأبواب</p><span class="card-state">فحص سجل الدخول الأولي ←</span></button>
         <button class="office-card timeline-card" id="open-timeline"><span class="card-index">06</span><div class="card-symbol">⌁</div><h3>إعادة بناء التسلسل</h3><p>رتّب ما نعرفه وما لا نعرفه</p><span class="card-state">افحص الخط الزمني ←</span></button>
+        <button class="office-card archive-card" id="open-archive"><span class="card-index">07</span><div class="card-symbol">▤</div><h3>أرشيف الشركة</h3><p>ملفات الصلاحيات والتحويلات القديمة</p><span class="card-state" id="archive-card-state">تُفتح بعد توثيق سجل الدخول ←</span></button>
       </div>
       <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
     </section>
@@ -183,6 +184,31 @@
         </aside>
       </div>
       <p class="scene-footnote">قاعدة آدم: البطاقة ليست الشخص، والتوقيت المسجل ليس رواية كاملة.</p>
+    </section>
+    <section class="archive-screen hidden" id="archive-screen">
+      <div class="archive-header">
+        <button class="back-link" id="leave-archive">← العودة إلى مكتب آدم</button>
+        <div><p class="eyebrow"><span class="status-dot"></span> مستندات داخلية · خزانة 07</p><h2>أرشيف <em>نواة.</em></h2><p>نسخ ورقية ورقمية جُمعت من غرفة الأرشيف. افحص كل مستند على حدة.</p></div>
+        <span class="archive-stamp">وصول مقيّد</span>
+      </div>
+      <div class="archive-warning"><b>ملاحظة توثيقية</b><span>هذه نسخ مستخرجة من الأرشيف وليست النسخ الأصلية المختومة. محتواها يفتح مسارات تحقيق، لكنه يحتاج إلى مصادقة مستقلة قبل استخدامه كدليل نهائي.</span></div>
+      <div class="archive-layout">
+        <div class="archive-documents">
+          <button type="button" class="archive-document" data-archive="permissions"><span class="archive-doc-index">ARCHIVE 07 / 01</span><b>طلب توسيع صلاحيات الوصول</b><small>قبل ثلاث سنوات · إدارة الأبحاث المالية</small><i>افتح المستند ←</i></button>
+          <button type="button" class="archive-document" data-archive="payments"><span class="archive-doc-index">ARCHIVE 07 / 02</span><b>كشف التحويلات إلى المورد</b><small>سجلات مالية متكررة · ثلاث سنوات</small><i>افتح المستند ←</i></button>
+          <button type="button" class="archive-document" data-archive="executive"><span class="archive-doc-index">ARCHIVE 07 / 03</span><b>مذكرة مراجعة تنفيذية</b><small>بعد بدء التحويلات · تداول محدود</small><i>افتح المستند ←</i></button>
+        </div>
+        <aside class="archive-reader" aria-live="polite">
+          <span class="log-detail-kicker">قارئ المستندات</span>
+          <h3 id="archive-title">اختر ملفاً من الخزانة</h3>
+          <p id="archive-text">بعض الأوراق قد تبدو إدارية وعادية. اقرأ التواريخ والأسماء والصلاحيات قبل أن تربطها بالقضية.</p>
+          <div class="archive-extract" id="archive-extract">لم يُفتح مستند بعد.</div>
+          <div class="archive-caution" id="archive-caution">لا تعتبر نسخة الأرشيف دليلاً مكتملاً قبل التحقق من مصدرها وسلامة سجلها.</div>
+          <button type="button" class="collect-button" id="record-archive" disabled>＋ إضافة المستند إلى ملف القضية</button>
+          <p class="archive-recorded hidden" id="archive-recorded">✓ تم حفظ المستند في ملف القضية.</p>
+        </aside>
+      </div>
+      <p class="scene-footnote">قاعدة آدم: الورقة قد تكشف من فتح الباب، لكنها لا تثبت وحدها من عبره.</p>
     </section>
     <section class="timeline-screen hidden" id="timeline-screen">
       <div class="timeline-header">
