@@ -152,7 +152,7 @@
         <span class="interview-status">مقابلة أولية</span>
       </div>
       <div class="interview-room">
-        <div class="interview-person"><div class="person-silhouette">م</div><b>مازن العابد</b><small>حالة الشاهد: متوتر، متحفظ</small></div>
+        <div class="interview-person"><img class="character-portrait mazen-portrait" src="assets/portraits/mazen.svg" alt="مازن العابد بتعبير متوتر ومتحفظ"><b>مازن العابد</b><small>حالة الشاهد: متوتر، متحفظ</small></div>
         <div class="interview-dialogue">
           <div class="dialogue-label">آدم مراد <span>· اختر موضوعاً للسؤال</span></div>
           <div class="dialogue-response" id="dialogue-response" aria-live="polite">«أعرف لماذا استدعيتني. لكنني قلت للشرطة كل ما أعرفه.»</div>
@@ -280,7 +280,7 @@
       </div>
       <div class="layan-alert"><b>سبب إعادة المقابلة</b><span>تُظهر مواد الفحص أن بعض سجلات ما بعد الوفاة عُدّلت. عادت ليان إلى دائرة التحقيق بسبب نشاط لاحق على هاتف سليم.</span></div>
       <div class="layan-room">
-        <div class="layan-person"><div class="layan-silhouette">ل</div><b>ليان سالم</b><small>حالة الشاهدة: قلقة، مترددة</small><span>01:05 — مغادرة مسجلة</span></div>
+        <div class="layan-person"><img class="character-portrait layan-portrait" src="assets/portraits/layan.svg" alt="ليان سالم بتعبير قلق ومتردد"><b>ليان سالم</b><small>حالة الشاهدة: قلقة، مترددة</small><span>01:05 — مغادرة مسجلة</span></div>
         <div class="layan-dialogue">
           <div class="dialogue-label">آدم مراد <span>· اختر موضوعاً للسؤال</span></div>
           <div class="dialogue-response" id="layan-response" aria-live="polite">«قلت للشرطة إنني غادرت قبل منتصف الليل... لا أريد أن أكون جزءاً من هذا.»</div>
@@ -345,10 +345,10 @@
     <section class="suspect-interviews-screen hidden" id="suspect-interviews-screen">
       <header class="suspect-header"><button class="back-link" id="leave-suspect-interviews">← العودة إلى مكتب آدم</button><div><p class="eyebrow"><span class="status-dot"></span> وحدة التحقيق · مواجهات رسمية</p><h2>غرفة <em>الاستجواب.</em></h2><p>لا تطرح سؤالاً قبل أن تملك ما يسنده. كل إجابة تُسجّل كإفادة قابلة للتحقق.</p></div><span class="interview-status" id="suspect-question-count">0 إجابات موثقة</span></header>
       <div class="suspect-layout"><aside class="suspect-list">
-       <button type="button" data-suspect="fares" class="suspect-person selected"><b>فارس الكيلاني</b><small>المواجهة غير متاحة بعد</small></button>
-       <button type="button" data-suspect="nader" class="suspect-person" disabled><b>نادر القيسي</b><small>المواجهة غير متاحة بعد</small></button>
+       <button type="button" data-suspect="fares" class="suspect-person selected"><img src="assets/portraits/fares.svg" alt="" class="suspect-avatar"><span><b>فارس الكيلاني</b><small>المواجهة غير متاحة بعد</small></span></button>
+       <button type="button" data-suspect="nader" class="suspect-person" disabled><img src="assets/portraits/nader.svg" alt="" class="suspect-avatar"><span><b>نادر القيسي</b><small>المواجهة غير متاحة بعد</small></span></button>
        <div class="suspect-warning">تنبيه: الاعتراف الجزئي أو التناقض لا يساوي إثبات الجريمة.</div>
-      </aside><main class="suspect-panel"><div class="suspect-identity"><p class="eyebrow" id="suspect-stage">المواجهة الأولى</p><h3 id="suspect-name">فارس الكيلاني</h3><p id="suspect-role">نائب مدير الأبحاث المالية</p></div>
+      </aside><main class="suspect-panel"><div class="suspect-identity"><img class="suspect-focus-portrait" id="suspect-focus-portrait" src="assets/portraits/fares.svg" alt="صورة فارس الكيلاني"><div class="suspect-identity-copy"><p class="eyebrow" id="suspect-stage">المواجهة الأولى</p><h3 id="suspect-name">فارس الكيلاني</h3><p id="suspect-role">نائب مدير الأبحاث المالية</p></div></div>
        <div class="suspect-response" id="suspect-response">«أعرف سبب وجودي هنا. لكنني لن أجيب عن اتهامات مبنية على التخمين.»</div><p class="suspect-observation" id="suspect-observation">اختر موضوعاً تملك دليلاً يسمح بطرحه.</p><div class="suspect-question-list" id="suspect-question-list"></div></main></div>
       <section class="suspect-record"><div class="board-section-title"><span>محضر المواجهات</span><small>إفادات مسجلة · لا أحكام نهائية</small></div><ul id="suspect-notes"><li>لم تُسجّل أي مواجهة بعد.</li></ul></section>
     </section>
