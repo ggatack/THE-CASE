@@ -446,11 +446,11 @@
     order:{label:"من أصدر الأمر بإسكات سليم؟",requires:()=>suspectAsked.fares.includes("arrival")&&layanAsked.includes("fares"),text:"«هذا اتهام خطير. لم تقدم رسالة موثقة أو تسجيلاً يثبت أنني أصدرت أمراً كهذا.»",note:"يرفض السؤال لغياب دليل مباشر. هذه فجوة تحقيق وليست براءة أو إدانة."}
    }
   };
-  function suspectReady(id){return id==="fares"?(layanAsked.includes("fares")&&collected.includes("forensic-audit")):(collected.includes("archive-executive")&&collected.includes("archive-crosscheck")&&suspectAsked.fares.length>=3)}
+  function suspectReady(id){return id==="fares"?(["return","message","fares","time"].every(q=>layanAsked.includes(q))):(collected.includes("archive-executive")&&collected.includes("archive-crosscheck")&&suspectAsked.fares.length>=3)}
   function renderSuspectInterview(){
    const fr=suspectReady("fares"),nr=suspectReady("nader");
    $("open-suspect-interviews").disabled=!fr;
-   $("suspect-card-state").textContent=fr?(nr?"مواجهات متاحة · فارس ونادر ←":"استجواب فارس متاح ←"):"تُفتح بعد مطابقة إفادة ليان بسجل التدقيق ←";
+   $("suspect-card-state").textContent=fr?(nr?"مواجهات متاحة · فارس ونادر ←":"استجواب فارس متاح ←"):"تُفتح بعد استكمال محاور إفادة ليان الأربعة ←";
    document.querySelectorAll("[data-suspect]").forEach(b=>{const id=b.dataset.suspect,ready=id==="fares"?fr:nr;b.disabled=!ready;b.classList.toggle("selected",id===activeSuspect);b.querySelector("small").textContent=ready?(suspectAsked[id].length+" / 4 محاور سُئلت"):"المواجهة غير متاحة بعد"});
    const names={fares:["فارس الكيلاني","نائب مدير الأبحاث المالية","المواجهة الأولى · الصلاحيات والحركة"],nader:["نادر القيسي","المدير التنفيذي لشركة نواة","المواجهة الثانية · المسؤولية والأمر"]},info=names[activeSuspect];
    $("suspect-name").textContent=info[0];$("suspect-role").textContent=info[1];$("suspect-stage").textContent=info[2];
