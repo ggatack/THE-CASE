@@ -670,3 +670,32 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
  .zone-cards{min-height:102px!important;grid-auto-rows:minmax(102px,auto)!important}
  .office-screen .office-card,.office-screen button.office-card{min-height:102px!important}
 }
+
+
+/* Correct the actual cause: legacy width rules on special cards override CSS Grid */
+.office-screen .zone-cards{display:grid!important;align-items:stretch!important}
+.office-screen .zone-cards>.office-card,
+.office-screen .zone-cards>button.office-card,
+.office-screen .zone-cards>article.office-card{
+ box-sizing:border-box!important;
+ width:100%!important;
+ min-width:0!important;
+ max-width:none!important;
+ margin:0!important;
+ float:none!important;
+ display:flex!important;
+ position:relative!important;
+ vertical-align:initial!important;
+}
+.office-screen .zone-cards>.office-card h3,
+.office-screen .zone-cards>.office-card p,
+.office-screen .zone-cards>.office-card .card-state{max-width:100%!important;overflow-wrap:anywhere!important}
+.office-screen .zone-cards>.office-card .card-index{position:absolute!important}
+@media(max-width:900px) and (orientation:landscape){
+ .board-zone.records-zone .zone-cards,
+ .board-zone.analysis-zone .zone-cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .office-screen .zone-cards>.office-card{min-height:112px!important;padding:8px 7px!important}
+ .office-screen .zone-cards>.office-card h3{font-size:9px!important;line-height:1.35!important}
+ .office-screen .zone-cards>.office-card p{font-size:7px!important;line-height:1.4!important}
+ .office-screen .zone-cards>.office-card .card-state{font-size:7px!important}
+}
