@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen","layan-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen","layan-screen","suspect-interviews-screen"];
   const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
@@ -424,6 +424,45 @@
     renderLayanInterview();
   });
   renderLayanInterview();
+
+
+  // Evidence-gated suspect confrontations
+  const suspectKey="thecase-case01-suspect-interviews";
+  let suspectAsked={fares:[],nader:[]};try{suspectAsked=Object.assign(suspectAsked,JSON.parse(localStorage.getItem(suspectKey)||"{}"))}catch(_){}
+  let activeSuspect="fares";
+  const suspectQuestions={
+   fares:{
+    permissions:{label:"طلب توسيع الصلاحيات",requires:()=>collected.includes("archive-permissions"),text:"«كان طلباً إدارياً عادياً. كل مدير قسم يطلب صلاحيات إضافية عندما تتوسع المشاريع.»",note:"لم ينكر تقديم الطلب، لكنه يصفه كإجراء إداري. يلزم ربط الطلب بسجل التنفيذ."},
+    payments:{label:"الدفعات إلى Northbridge",requires:()=>collected.includes("archive-payments"),text:"«رمز الوحدة لا يعني أنني أجريت التحويل. فريق المالية يستخدم رموز الأقسام، اطلبوا سجل الاعتماد الأصلي.»",note:"دفع المسؤولية نحو آلية القسم. تفسير قابل للفحص وليس نفياً موثقاً."},
+    arrival:{label:"وجودك في الطابق عند 01:26",requires:()=>collected.includes("access-log")&&collected.includes("forensic-camera"),text:"«مررت بالطابق، نعم. كان لدي اجتماع قصير، ولم أدخل مكتب سليم. الكاميرا لا تظهر وجهي، أليس كذلك؟»",note:"أقرّ بالوجود في الطابق لكنه ينفي دخول المكتب. الإطار لا يثبت هويته وحده."},
+    layan:{label:"طلبك من ليان حذف الرسالة",requires:()=>layanAsked.includes("fares"),text:"«طلبت منها ألا تعبث بهاتف موظف متوفى. لم أطلب حذف دليل.»",note:"لم ينكر التواصل معها، لكنه ينازع في معنى الطلب. نحتاج إلى سجل المكالمة."}
+   },
+   nader:{
+    memo:{label:"المذكرة التي وصلت إلى مكتبك",requires:()=>collected.includes("archive-executive"),text:"«مكتبي يستقبل عشرات المذكرات. وجود الأحرف الأولى لا يثبت أنني قرأتها أو وافقت عليها. أين سجل الاستلام؟»",note:"يفصل بين وصول الورقة للمكتب واطلاعه الشخصي. لا توجد مصادقة على الاستلام."},
+    exports:{label:"استمرار تصدير البيانات",requires:()=>collected.includes("archive-crosscheck"),text:"«لم أكن أدير العمليات اليومية. المسؤولية تقع على من نفذ التحويلات وأخفى مسارها.»",note:"ينقل المسؤولية للمستوى الأدنى. التقرير لا يثبت علمه الشخصي أو موافقته."},
+    fares:{label:"دور فارس في المخطط",requires:()=>suspectAsked.fares.includes("payments")&&suspectAsked.fares.includes("permissions"),text:"«فارس كان مسؤولاً عن الأبحاث المالية. لا تخلط بين الإشراف الإداري والمشاركة في فعل غير قانوني.»",note:"يقر بمسؤولية فارس الوظيفية لكنه ينفي أن يكون ذلك دليلاً على شراكة نادر."},
+    order:{label:"من أصدر الأمر بإسكات سليم؟",requires:()=>suspectAsked.fares.includes("arrival")&&layanAsked.includes("fares"),text:"«هذا اتهام خطير. لم تقدم رسالة موثقة أو تسجيلاً يثبت أنني أصدرت أمراً كهذا.»",note:"يرفض السؤال لغياب دليل مباشر. هذه فجوة تحقيق وليست براءة أو إدانة."}
+   }
+  };
+  function suspectReady(id){return id==="fares"?(layanAsked.includes("fares")&&collected.includes("forensic-audit")):(collected.includes("archive-executive")&&collected.includes("archive-crosscheck")&&suspectAsked.fares.length>=3)}
+  function renderSuspectInterview(){
+   const fr=suspectReady("fares"),nr=suspectReady("nader");
+   $("open-suspect-interviews").disabled=!fr;
+   $("suspect-card-state").textContent=fr?(nr?"مواجهات متاحة · فارس ونادر ←":"استجواب فارس متاح ←"):"تُفتح بعد مطابقة إفادة ليان بسجل التدقيق ←";
+   document.querySelectorAll("[data-suspect]").forEach(b=>{const id=b.dataset.suspect,ready=id==="fares"?fr:nr;b.disabled=!ready;b.classList.toggle("selected",id===activeSuspect);b.querySelector("small").textContent=ready?(suspectAsked[id].length+" / 4 محاور سُئلت"):"المواجهة غير متاحة بعد"});
+   const names={fares:["فارس الكيلاني","نائب مدير الأبحاث المالية","المواجهة الأولى · الصلاحيات والحركة"],nader:["نادر القيسي","المدير التنفيذي لشركة نواة","المواجهة الثانية · المسؤولية والأمر"]},info=names[activeSuspect];
+   $("suspect-name").textContent=info[0];$("suspect-role").textContent=info[1];$("suspect-stage").textContent=info[2];
+   const host=$("suspect-question-list");host.innerHTML="";
+   Object.entries(suspectQuestions[activeSuspect]).forEach(([id,q])=>{const b=document.createElement("button");b.type="button";b.className="suspect-question";const ready=q.requires(),asked=suspectAsked[activeSuspect].includes(id);b.disabled=!ready||asked;b.textContent=(asked?"✓ ":"")+q.label+(ready?"":" · يتطلب دليلاً");b.addEventListener("click",()=>askSuspect(id));host.appendChild(b)});
+   const notes=$("suspect-notes");notes.innerHTML="";let count=0;
+   ["fares","nader"].forEach(person=>suspectAsked[person].forEach(id=>{const q=suspectQuestions[person][id];if(!q)return;count++;const li=document.createElement("li");li.textContent=(person==="fares"?"فارس: ":"نادر: ")+q.label+" — "+q.note;notes.appendChild(li)}));
+   $("suspect-question-count").textContent=count+" إجابات موثقة";if(!count){const li=document.createElement("li");li.textContent="لم تُسجّل أي مواجهة بعد.";notes.appendChild(li)}
+  }
+  function askSuspect(id){const q=suspectQuestions[activeSuspect][id];if(!q||!q.requires()||suspectAsked[activeSuspect].includes(id))return;$("suspect-response").textContent=q.text;$("suspect-observation").textContent="ملاحظة آدم: "+q.note;suspectAsked[activeSuspect].push(id);localStorage.setItem(suspectKey,JSON.stringify(suspectAsked));renderSuspectInterview()}
+  document.querySelectorAll("[data-suspect]").forEach(b=>b.addEventListener("click",()=>{if(!b.disabled){activeSuspect=b.dataset.suspect;renderSuspectInterview()}}));
+  $("leave-suspect-interviews").addEventListener("click",()=>show("office-screen"));
+  $("open-suspect-interviews").addEventListener("click",()=>{activeSuspect="fares";renderSuspectInterview();show("suspect-interviews-screen")});
+  renderSuspectInterview();
 
   // Player-authored evidence links are hypotheses, never automatic conclusions.
   const theoryKey="thecase-case01-theories";
