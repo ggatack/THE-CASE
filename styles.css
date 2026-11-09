@@ -792,11 +792,11 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
 @media(max-width:760px){.suspect-identity{gap:14px}.suspect-focus-portrait{width:88px;height:88px;flex-basis:88px}.character-portrait{width:104px;height:104px}.suspect-avatar{width:48px;height:48px;flex-basis:48px}.suspect-person{padding:9px;gap:8px}}
 
 
-/* Cinematic screen transitions */
-.screen-enter{animation:caseScreenReveal .38s cubic-bezier(.2,.72,.24,1) both;transform-origin:center}
+/* Lightweight transitions: avoid blur/filter on full-screen mobile panels */
+.screen-enter{animation:caseScreenReveal .16s ease-out both}
 @keyframes caseScreenReveal{
-  from{opacity:0;transform:translateY(9px) scale(.995);filter:blur(2px)}
-  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+  from{opacity:.82;transform:translate3d(0,3px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
 }
 @media(prefers-reduced-motion:reduce){
   .screen-enter{animation:none!important}
