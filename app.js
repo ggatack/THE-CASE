@@ -453,7 +453,7 @@
    $("suspect-card-state").textContent=fr?(nr?"مواجهات متاحة · فارس ونادر ←":"استجواب فارس متاح ←"):"تُفتح بعد استكمال محاور إفادة ليان الأربعة ←";
    document.querySelectorAll("[data-suspect]").forEach(b=>{const id=b.dataset.suspect,ready=id==="fares"?fr:nr;b.disabled=!ready;b.classList.toggle("selected",id===activeSuspect);b.querySelector("small").textContent=ready?(suspectAsked[id].length+" / 4 محاور سُئلت"):"المواجهة غير متاحة بعد"});
    const names={fares:["فارس الكيلاني","نائب مدير الأبحاث المالية","المواجهة الأولى · الصلاحيات والحركة"],nader:["نادر القيسي","المدير التنفيذي لشركة نواة","المواجهة الثانية · المسؤولية والأمر"]},info=names[activeSuspect];
-   $("suspect-name").textContent=info[0];$("suspect-role").textContent=info[1];$("suspect-stage").textContent=info[2];const portrait=$("suspect-focus-portrait");portrait.src=activeSuspect==="fares"?"assets/portraits/fares.svg":"assets/portraits/nader.svg";portrait.alt="صورة "+info[0];
+   $("suspect-name").textContent=info[0];$("suspect-role").textContent=info[1];$("suspect-stage").textContent=info[2];const portrait=$("suspect-focus-portrait");portrait.src=activeSuspect==="fares"?"assets/portraits/fares.webp":"assets/portraits/nader.webp";portrait.alt="صورة "+info[0];
    const host=$("suspect-question-list");host.innerHTML="";
    Object.entries(suspectQuestions[activeSuspect]).forEach(([id,q])=>{const b=document.createElement("button");b.type="button";b.className="suspect-question";const ready=q.requires(),asked=suspectAsked[activeSuspect].includes(id);b.disabled=!ready||asked;b.textContent=(asked?"✓ ":"")+q.label+(ready?"":" · يتطلب دليلاً");b.addEventListener("click",()=>askSuspect(id));host.appendChild(b)});
    const notes=$("suspect-notes");notes.innerHTML="";let count=0;
