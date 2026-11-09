@@ -699,3 +699,59 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
  .office-screen .zone-cards>.office-card p{font-size:7px!important;line-height:1.4!important}
  .office-screen .zone-cards>.office-card .card-state{font-size:7px!important}
 }
+
+
+/* CINEMATIC TITLE SCREEN — built as a game scene, not a landing-page split layout */
+.hero{
+ display:block!important;position:relative!important;isolation:isolate;
+ width:100%!important;min-height:0!important;height:calc(100svh - 126px)!important;
+ max-height:850px!important;padding:0!important;margin:20px 0 12px!important;
+ overflow:hidden!important;border:1px solid #987451;
+ background:#090b0d;box-shadow:0 24px 80px #000b;
+}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#080a0de8 0%,#080a0dc9 33%,#080a0d30 61%,#080a0d10 100%),linear-gradient(0deg,#050607b8 0%,transparent 35%,#05060745 100%)}
+.hero:after{content:"";position:absolute;inset:12px;z-index:2;pointer-events:none;border:1px solid #d0a06d44}
+.cinematic-entry-art{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;margin:0!important;
+ background:#111 url('assets/scenes/title-investigation.svg') center center/cover no-repeat!important;
+ border:0!important;box-shadow:none!important;overflow:hidden!important;
+}
+.hero-copy{
+ position:absolute!important;z-index:3!important;right:7%!important;top:50%!important;left:auto!important;
+ transform:translateY(-50%)!important;width:min(44%,590px)!important;max-width:590px;
+ padding:clamp(20px,3vw,46px)!important;
+ background:linear-gradient(135deg,#0b0e11d9,#0b0e11a8);
+ border-right:2px solid #bd8b62;box-shadow:0 18px 55px #0008;backdrop-filter:blur(4px);
+ text-align:right;
+}
+.hero-copy .eyebrow{justify-content:flex-start;margin:0 0 18px;font-size:10px;letter-spacing:2px}
+.hero h1{font-size:clamp(38px,5vw,72px)!important;line-height:1.16!important;margin:0 0 16px!important;letter-spacing:-1px!important;text-shadow:0 4px 20px #000}
+.hero h1 em{color:#d0a071!important}
+.hero-text{font-size:clamp(11px,1.15vw,15px)!important;line-height:2!important;color:#d0c6b8!important;margin:0 0 22px!important}
+.hero-actions{justify-content:flex-start;gap:10px}
+.primary-button{min-width:170px;height:49px;background:linear-gradient(110deg,#d0a071,#a97950)!important;box-shadow:0 7px 24px #0008;border:1px solid #edc18e}
+.secondary-button{height:49px;background:#101316a8;border-color:#b58b63;color:#e5d4bd}
+.micro-copy{margin-top:16px!important;color:#a99c8c!important;font-size:9px!important;letter-spacing:1px}
+.hero-footer{z-index:3;bottom:22px!important;right:5%!important;left:5%!important;padding-top:10px!important;border-color:#c49a7044!important;color:#c1b19e!important;font-size:9px!important}
+.hero-footer b{color:#d5a06e!important}
+.topbar{position:relative;z-index:4;border-bottom-color:#bd8b6244!important}
+.site-footer{position:relative;z-index:3}
+@media(orientation:landscape) and (max-height:600px){
+ .app-shell{padding:8px 3vw 8px!important}
+ .topbar{height:42px!important;flex:0 0 42px}
+ .brand-icon{width:30px;height:30px}
+ .hero{height:calc(100svh - 78px)!important;max-height:none!important;margin:8px 0 6px!important}
+ .hero-copy{right:5%!important;width:min(45%,500px)!important;padding:clamp(12px,2.4vh,23px)!important}
+ .hero-copy .eyebrow{margin-bottom:8px!important;font-size:8px!important}
+ .hero h1{font-size:clamp(28px,6.8vh,48px)!important;margin-bottom:8px!important}
+ .hero-text{font-size:clamp(9px,2.1vh,12px)!important;line-height:1.7!important;margin-bottom:10px!important}
+ .primary-button,.secondary-button{height:38px!important;min-width:130px;padding:0 12px!important;font-size:11px!important}
+ .micro-copy{margin-top:7px!important;font-size:7px!important}
+ .hero-footer{bottom:14px!important}
+}
+@media(max-width:760px) and (orientation:portrait){
+ .hero{height:calc(100svh - 105px)!important;min-height:500px!important}
+ .hero-copy{right:5%!important;left:5%!important;width:auto!important;max-width:none!important;padding:22px!important}
+ .hero h1{font-size:clamp(42px,10vw,58px)!important}
+ .cinematic-entry-art{background-position:58% center!important}
+}
