@@ -16,6 +16,8 @@
   $("leave-archive").addEventListener("click",()=>show("office-screen"));
   $("leave-crosscheck").addEventListener("click",()=>show("office-screen"));
   $("leave-server-forensics").addEventListener("click",()=>show("office-screen"));
+  $("leave-layan").addEventListener("click",()=>show("office-screen"));
+  $("open-layan-interview").addEventListener("click",()=>{renderLayanInterview();show("layan-screen")});
   $("open-server-forensics").addEventListener("click",()=>{renderServerForensics();show("server-forensics-screen");selectForensic(null)});
   $("open-crosscheck").addEventListener("click",()=>{renderCrosscheck();show("crosscheck-screen");resetCrosscheck()});
   $("open-archive").addEventListener("click",()=>{renderArchive();show("archive-screen");selectArchiveDoc(null)});
