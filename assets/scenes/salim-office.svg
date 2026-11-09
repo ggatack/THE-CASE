@@ -96,4 +96,65 @@
 <rect width="1600" height="900" fill="none" stroke="#07090b" stroke-width="100" opacity=".55"/>
 <text x="65" y="850" fill="#c3b7a5" opacity=".65" font-family="Georgia" font-size="18" letter-spacing="5">NAWA CORPORATION / FLOOR 07</text>
 <text x="1530" y="850" text-anchor="end" fill="#c3b7a5" opacity=".65" font-family="Georgia" font-size="18" letter-spacing="5">01:40 AM — CASE 001</text>
+<!-- Cinematic crime-scene dressing: architectural depth, disturbed furniture and forensic perimeter -->
+<defs>
+ <linearGradient id="crimeTape" x2="0" y2="1"><stop stop-color="#e2b85e"/><stop offset="1" stop-color="#98713b"/></linearGradient>
+ <radialGradient id="overheadPool"><stop stop-color="#e0b77b" stop-opacity=".26"/><stop offset="1" stop-color="#e0b77b" stop-opacity="0"/></radialGradient>
+ <filter id="deepShadow"><feGaussianBlur stdDeviation="18"/></filter>
+ <pattern id="rainFine" width="27" height="38" patternUnits="userSpaceOnUse"><path d="M8 0L1 25M24 13L18 37" stroke="#dce6e7" stroke-opacity=".2" stroke-width="1.5"/></pattern>
+</defs>
+<!-- ceiling beams and wall seams -->
+<path d="M0 74H1600M0 570H1600" stroke="#8d9999" stroke-opacity=".18" stroke-width="5"/>
+<path d="M720 0V570M1090 0V570" stroke="#080d11" stroke-opacity=".22" stroke-width="12"/>
+<path d="M720 0V570M1090 0V570" stroke="#a4a9a4" stroke-opacity=".08" stroke-width="2"/>
+<!-- rain and distant reflected light over the window -->
+<rect x="102" y="110" width="570" height="410" fill="url(#rainFine)" opacity=".7"/>
+<path d="M125 470Q250 420 360 475T650 462" fill="none" stroke="#9eb5c0" stroke-opacity=".12" stroke-width="9" filter="url(#deepShadow)"/>
+<!-- stronger practical light from desk lamp -->
+<ellipse cx="1110" cy="580" rx="420" ry="280" fill="url(#overheadPool)"/>
+<path d="M1250 300L1030 615H1515L1365 300Z" fill="#e5b875" opacity=".045"/>
+<!-- wall-mounted case file and pinned records -->
+<g transform="translate(720 330)">
+ <rect width="320" height="205" fill="#10171b" stroke="#79634b" stroke-width="8"/>
+ <rect x="13" y="13" width="294" height="179" fill="#252d30" stroke="#b08b61" stroke-opacity=".5" stroke-width="2"/>
+ <path d="M32 42h105v116H32zM158 32h125v75H158zM160 120h120v55H160z" fill="#d4c7ad" stroke="#756957" stroke-width="3"/>
+ <path d="M44 58h80m-80 13h66m-66 13h78m-78 13h49" stroke="#71695c" stroke-width="3"/>
+ <path d="M171 48h98m-98 12h82m-82 12h91m-91 12h62" stroke="#756b5d" stroke-width="3"/>
+ <path d="M171 136h95m-95 12h72" stroke="#756b5d" stroke-width="3"/>
+ <path d="M138 85L160 67M138 85L160 145" stroke="#a34f46" stroke-width="3" fill="none"/>
+ <circle cx="138" cy="85" r="7" fill="#a64e45"/><circle cx="160" cy="67" r="7" fill="#a64e45"/><circle cx="160" cy="145" r="7" fill="#a64e45"/>
+ <path d="M160 67L220 70L220 136" stroke="#a64e45" stroke-width="2" fill="none"/>
+ <circle cx="220" cy="136" r="6" fill="#a64e45"/>
+</g>
+<!-- floor: displaced chair and a folded evidence tarp at the edge of the desk -->
+<ellipse cx="360" cy="780" rx="245" ry="72" fill="#000" opacity=".45" filter="url(#deepShadow)"/>
+<g transform="translate(270 600) rotate(-18)">
+ <path d="M0 15L170 0L205 140L35 162Z" fill="#20272a" stroke="#8b755b" stroke-width="10"/>
+ <path d="M22 155L-5 290M180 140L225 265M45 150L85 282" stroke="#3d3025" stroke-width="16"/>
+ <path d="M16 31L155 17" stroke="#d4b58b" stroke-opacity=".25" stroke-width="3"/>
+</g>
+<!-- body-shaped covered form, kept non-graphic and partly obscured by the desk -->
+<g opacity=".88">
+ <ellipse cx="790" cy="820" rx="260" ry="40" fill="#000" opacity=".58" filter="url(#deepShadow)"/>
+ <path d="M620 772Q665 720 735 739L805 754Q860 760 912 789L1018 820Q1040 838 1000 855L790 874Q700 865 624 836Q592 820 620 772Z" fill="#252a2b" stroke="#6f6b60" stroke-width="5"/>
+ <path d="M620 780Q700 753 785 786T1005 829" fill="none" stroke="#a9a08e" stroke-opacity=".2" stroke-width="7"/>
+ <path d="M642 815Q730 842 832 833T1001 841" fill="none" stroke="#090d10" stroke-opacity=".45" stroke-width="8"/>
+ <path d="M1000 810q50-25 76 5q10 22-22 39l-56-5" fill="#24292b" stroke="#6f6b60" stroke-width="4"/>
+</g>
+<!-- forensic tents with strong silhouette -->
+<g font-family="Arial" font-weight="700" text-anchor="middle">
+ <path d="M400 718l27-21 27 21v33h-54z" fill="#d9c9a8" stroke="#5c5142" stroke-width="3"/><text x="427" y="742" font-size="19" fill="#24201a">01</text>
+ <path d="M690 720l27-21 27 21v33h-54z" fill="#d9c9a8" stroke="#5c5142" stroke-width="3"/><text x="717" y="744" font-size="19" fill="#24201a">02</text>
+ <path d="M1190 720l27-21 27 21v33h-54z" fill="#d9c9a8" stroke="#5c5142" stroke-width="3"/><text x="1217" y="744" font-size="19" fill="#24201a">03</text>
+</g>
+<!-- yellow perimeter tape across foreground edge -->
+<path d="M0 505L1600 565" stroke="url(#crimeTape)" stroke-width="22" opacity=".9"/>
+<path d="M0 505L1600 565" stroke="#2a241b" stroke-width="3" stroke-dasharray="25 18" opacity=".85"/>
+<g fill="#2b241a" font-family="Arial" font-size="18" font-weight="700" letter-spacing="3">
+ <text x="70" y="510" transform="rotate(2 70 510)">POLICE LINE • DO NOT CROSS</text>
+ <text x="1180" y="557" transform="rotate(2 1180 557)">SCENE SEALED / 02:14</text>
+</g>
+<!-- dust, subtle lens falloff -->
+<rect width="1600" height="900" fill="#05090d" opacity=".08"/>
+<rect x="8" y="8" width="1584" height="884" fill="none" stroke="#05080a" stroke-width="42" opacity=".34"/>
 </svg>
