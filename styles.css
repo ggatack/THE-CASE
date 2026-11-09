@@ -769,7 +769,7 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
 .suspect-layout{display:grid;grid-template-columns:260px 1fr;gap:18px;margin-top:20px}
 .suspect-list,.suspect-panel,.suspect-record{background:linear-gradient(145deg,#171d21,#0d1114);border:1px solid #80674766;box-shadow:0 14px 38px #0006}
 .suspect-list{padding:14px;display:flex;flex-direction:column;gap:10px}.suspect-person{background:#20282c;border:1px solid #75604788;color:#e8ddcc;padding:15px;text-align:right;cursor:pointer}
-.suspect-person b,.suspect-person small{display:block}.suspect-person small{font-size:10px;color:#b5a58f;margin-top:7px}.suspect-person.selected{border-color:#d0a071;background:#2a2925}.suspect-person:disabled{opacity:.42;cursor:not-allowed}
+.suspect-person b,.suspect-person small{display:block}.suspect-person small{font-size:10px;color:#b5a58f;margin-top:7px}.suspect-person.selected{border-color:#d0a071;background:#2a2925}.suspect-person:disabled{opacity:1;cursor:not-allowed}
 .suspect-warning{font-size:11px;line-height:1.8;color:#c39a70;border-top:1px solid #7b624455;padding-top:12px;margin-top:auto}
 .suspect-panel{padding:clamp(18px,3vw,34px);min-height:350px}.suspect-identity{border-right:3px solid #bd8b62;padding-right:15px}.suspect-identity h3{font-size:28px;margin:5px 0}.suspect-identity p{color:#b7a995;font-size:12px}
 .suspect-response{margin:24px 0 10px;padding:20px;background:#080c0f;border:1px solid #58606666;color:#eee2d0;font-size:17px;line-height:2;min-height:90px}.suspect-observation{color:#c6a77f;font-size:12px;line-height:1.9;min-height:38px}
