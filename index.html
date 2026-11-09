@@ -7,7 +7,7 @@
   <meta name="description" content="THE CASE — لعبة تحقيق وغموض سينمائية باللغة العربية.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
-  <link rel="stylesheet" href="styles.css?v=cinematic02">
+  <link rel="stylesheet" href="styles.css?v=board01">
   <title>THE CASE | القضية</title>
 </head>
 <body>
@@ -66,24 +66,45 @@
     </section>
 
     <section class="office-screen hidden" id="office-screen">
-      <button class="back-link" id="back-briefing">← العودة إلى ملخص القضية</button>
-      <p class="eyebrow"><span class="status-dot"></span> مكتب آدم مراد · 02:17 AM</p>
-      <h2>لنبدأ من<br><em>ما نعرفه.</em></h2>
-      <div class="office-grid">
-        <button class="office-card active-card file-card" id="open-investigation"><span class="card-index">01</span><div class="card-symbol">▤</div><h3>ملف القضية</h3><p>سليم ناصر — الطابق السابع</p><span class="card-state">ابدأ فحص مسرح الجريمة ←</span></button>
-        <button class="office-card board-card" id="open-board"><span class="card-index">02</span><div class="card-symbol">⌕</div><h3>لوحة الأدلة</h3><p>اربط القرائن واكتب فرضياتك</p><span class="card-state" id="board-card-state">تُفتح بعد جمع دليلين ←</span></button>
-        <article class="office-card"><span class="card-index">03</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
-        <button class="office-card interview-card" id="open-interview"><span class="card-index">04</span><div class="card-symbol">◉</div><h3>مقابلة مازن</h3><p>استمع إلى روايته واختبرها</p><span class="card-state" id="interview-card-state">تُفتح بعد فحص الهاتف ←</span></button>
-        <button class="office-card logs-card" id="open-logs"><span class="card-index">05</span><div class="card-symbol">▥</div><h3>سجلات الشركة</h3><p>حركة البطاقات وأجهزة الأبواب</p><span class="card-state">فحص سجل الدخول الأولي ←</span></button>
-        <button class="office-card timeline-card" id="open-timeline"><span class="card-index">06</span><div class="card-symbol">⌁</div><h3>إعادة بناء التسلسل</h3><p>رتّب ما نعرفه وما لا نعرفه</p><span class="card-state">افحص الخط الزمني ←</span></button>
-        <button class="office-card archive-card" id="open-archive"><span class="card-index">07</span><div class="card-symbol">▤</div><h3>أرشيف الشركة</h3><p>ملفات الصلاحيات والتحويلات القديمة</p><span class="card-state" id="archive-card-state">تُفتح بعد توثيق سجل الدخول ←</span></button>
+      <div class="board-heading">
+        <button class="back-link" id="back-briefing">← العودة إلى ملخص القضية</button>
+        <div class="board-case-title"><span class="board-stamp">CASE 001 · ACTIVE</span><p class="eyebrow"><span class="status-dot"></span> مكتب آدم مراد · لوحة التحقيق الرئيسية</p><h2>الطابق السابع <em>— ملف سليم ناصر</em></h2></div>
+        <div class="board-meta"><span>المحقق المسؤول</span><b>آدم مراد</b><small>02:17 AM · PRIVATE INVESTIGATION</small></div>
       </div>
-      <button class="office-card compare-card" id="open-crosscheck"><span class="card-index">08</span><div class="card-symbol">⌗</div><h3>مطابقة المستندات</h3><p>قارن الأرشيف وابحث عن التناقضات</p><span class="card-state" id="crosscheck-card-state">تُفتح بعد توثيق مستندات الأرشيف ←</span></button>
-      <button class="office-card server-card" id="open-server-forensics"><span class="card-index">09</span><div class="card-symbol">⌬</div><h3>فحص غرفة الخوادم</h3><p>أثر رقمي ومادي من موقع الدخول</p><span class="card-state" id="server-card-state">تُفتح بعد تقرير المطابقة ←</span></button>
-      <button class="office-card layan-card" id="open-layan-interview" disabled><span class="card-index">10</span><div class="card-symbol">◌</div><h3>مقابلة ليان</h3><p>عودة شاهد إلى الطابق بعد مغادرته</p><span class="card-state" id="layan-card-state">تُفتح بعد توثيق أثرين جنائيين ←</span></button>
-      <div class="notice"><span>i</span><p>كل دليل تجمعه سيُحفظ على جهازك. تذكّر: وجود دليل في المكان لا يعني أن صاحبه هو القاتل.</p></div>
+      <div class="investigation-board">
+        <section class="board-zone crime-zone">
+          <header><span class="zone-number">01</span><div><b>مسرح الجريمة</b><small>SCENE & EVIDENCE</small></div><i>الموقع الأولي</i></header>
+          <div class="zone-cards">
+            <button class="office-card active-card file-card" id="open-investigation"><span class="card-index">01-A</span><div class="card-symbol">▣</div><h3>معاينة مكتب سليم</h3><p>فحص الأشياء والآثار داخل موقع الوفاة</p><span class="card-state">فتح مسرح الجريمة ←</span></button>
+            <button class="office-card board-card" id="open-board"><span class="card-index">01-B</span><div class="card-symbol">⌘</div><h3>لوحة ربط الأدلة</h3><p>اجمع القرائن واكتب فرضياتك الخاصة</p><span class="card-state" id="board-card-state">تُفتح بعد جمع دليلين ←</span></button>
+          </div>
+        </section>
+        <section class="board-zone witness-zone">
+          <header><span class="zone-number">02</span><div><b>الشهادات والمقابلات</b><small>WITNESS STATEMENTS</small></div><i>روايات تحتاج تحققاً</i></header>
+          <div class="zone-cards">
+            <button class="office-card interview-card" id="open-interview"><span class="card-index">02-A</span><div class="card-symbol">◉</div><h3>مقابلة مازن</h3><p>اختبر روايته بشأن الخلاف والمغادرة</p><span class="card-state" id="interview-card-state">تُفتح بعد فحص الهاتف ←</span></button>
+            <button class="office-card layan-card" id="open-layan-interview" disabled><span class="card-index">02-B</span><div class="card-symbol">◌</div><h3>مقابلة ليان</h3><p>تحقيق عودتها إلى الطابق بعد المغادرة</p><span class="card-state" id="layan-card-state">تُفتح بعد توثيق أثرين جنائيين ←</span></button>
+          </div>
+        </section>
+        <section class="board-zone records-zone">
+          <header><span class="zone-number">03</span><div><b>السجلات والأدلة التقنية</b><small>RECORDS & FORENSICS</small></div><i>مصادر مستقلة</i></header>
+          <div class="zone-cards">
+            <button class="office-card logs-card" id="open-logs"><span class="card-index">03-A</span><div class="card-symbol">▤</div><h3>سجلات الشركة</h3><p>حركة البطاقات وحساسات الأبواب</p><span class="card-state">فحص سجل الدخول الأولي ←</span></button>
+            <button class="office-card archive-card" id="open-archive"><span class="card-index">03-B</span><div class="card-symbol">▥</div><h3>أرشيف الشركة</h3><p>الصلاحيات والتحويلات والمذكرات</p><span class="card-state" id="archive-card-state">تُفتح بعد توثيق سجل الدخول ←</span></button>
+            <button class="office-card server-card" id="open-server-forensics"><span class="card-index">03-C</span><div class="card-symbol">⌬</div><h3>فحص غرفة الخوادم</h3><p>آثار رقمية ومادية من موقع الدخول</p><span class="card-state" id="server-card-state">تُفتح بعد تقرير المطابقة ←</span></button>
+          </div>
+        </section>
+        <section class="board-zone analysis-zone">
+          <header><span class="zone-number">04</span><div><b>التحليل وإعادة البناء</b><small>ANALYSIS & RECONSTRUCTION</small></div><i>اختبر الاستنتاجات</i></header>
+          <div class="zone-cards">
+            <button class="office-card timeline-card" id="open-timeline"><span class="card-index">04-A</span><div class="card-symbol">⌁</div><h3>الخط الزمني</h3><p>ميّز الوقائع عن الأقوال والاستنتاجات</p><span class="card-state">إعادة بناء الأحداث ←</span></button>
+            <button class="office-card compare-card" id="open-crosscheck"><span class="card-index">04-B</span><div class="card-symbol">⟷</div><h3>مطابقة المستندات</h3><p>اربط الأرشيف وابحث عن التناقضات</p><span class="card-state" id="crosscheck-card-state">تُفتح بعد توثيق مستندات الأرشيف ←</span></button>
+            <article class="office-card notes-card"><span class="card-index">04-C</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة خاصة لتدوين أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
+          </div>
+        </section>
+      </div>
+      <div class="board-footer"><span><b>تنبيه المحقق:</b> الدليل يثبت ما حدث أمامه فقط، ولا يثبت وحده هوية الفاعل.</span><span>THE CASE <i> / </i> INVESTIGATION WALL 001</span></div>
     </section>
-
 
     <section class="investigation-screen hidden" id="investigation-screen">
       <div class="investigation-head">
