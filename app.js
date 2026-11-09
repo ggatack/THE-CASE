@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen","layan-screen","suspect-interviews-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen","layan-screen","suspect-interviews-screen","case-review-screen"];
   const show = id => {
     screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
     const active=$(id);
@@ -526,6 +526,52 @@
     localStorage.setItem(theoryKey,JSON.stringify(theories));pair=[];note.value="";renderBoard();
   });
   renderBoard();
+
+
+  // Final evidence-led decision: unlock only when every investigation strand has been reviewed.
+  const reviewDecisionKey="thecase-case01-final-decision";
+  const reviewRequiredEvidence=["archive-permissions","archive-payments","archive-executive","archive-crosscheck","forensic-audit","forensic-camera","forensic-trace"];
+  const reviewRequiredTimeline=["mazen","meeting-open","meeting-close","fares-arrive","corridor","draft","confrontation","death","server","fares-exit"];
+  let savedReview=null;try{savedReview=JSON.parse(localStorage.getItem(reviewDecisionKey)||"null")}catch(_){}
+  function caseReviewReady(){
+    return reviewRequiredEvidence.every(id=>collected.includes(id)) &&
+      ["return","message","fares","time"].every(id=>layanAsked.includes(id)) &&
+      ["permissions","payments","arrival","layan"].every(id=>suspectAsked.fares.includes(id)) &&
+      ["memo","exports","fares","order"].every(id=>suspectAsked.nader.includes(id)) &&
+      reviewRequiredTimeline.every(id=>!!timelineMarks[id]);
+  }
+  function renderCaseReview(){
+    const ready=caseReviewReady();$("open-case-review").disabled=!ready;
+    $("case-review-state").textContent=ready?"كل مسارات التحقيق مكتملة · ابدأ المراجعة ←":"تتطلب الأدلة والمقابلات ومراجعة الأحداث العشرة ←";
+    if(savedReview){
+      $("review-perpetrator").value=savedReview.perpetrator||"";$("review-order").value=savedReview.order||"";$("review-audit").value=savedReview.audit||"";
+      showCaseReviewResult(savedReview);
+    }
+    updateReviewSubmit();
+  }
+  function updateReviewSubmit(){
+    $("submit-case-review").disabled=!["review-perpetrator","review-order","review-audit"].every(id=>$(id).value);
+  }
+  function showCaseReviewResult(answer){
+    const correct=answer.perpetrator==="fares"&&answer.order==="nader"&&answer.audit==="edited";
+    $("case-review-result").classList.remove("hidden");
+    $("review-result-title").textContent=correct?"الصورة اتضحت... لكن الملف لم يُغلق بعد.":"بعض الخيوط ما زالت في غير موضعها.";
+    $("review-result-text").textContent=correct?
+      "يرجّح تسلسل الوقائع أن فارس هو من واجه سليم وتسبب في سقوطه، وأن نادر كان مصدر الأمر. لكن قوة الاستنتاج ليست واحدة: دور فارس تدعمه حركة البطاقة وإطار الكاميرا وإفادة ليان والقرائن المتقاطعة، بينما أمر نادر ما زال استنتاجاً تدعمه المذكرة وسياق التسجيل ولا يرقى وحده إلى إثبات قضائي قاطع.":
+      "راجع الفارق بين المنفّذ المباشر وصاحب الأمر، ولا تمنح سجل التدقيق أكثر مما يقول. يمكنك تعديل اختياراتك قبل تثبيت النسخة النهائية من القرار.";
+    $("review-next-note").textContent=correct?
+      "ملاحظة مهمة: سجل 02:06 يثبت تعديل خانة في السجل عبر حساب خدمة إداري، لكنه لا يحدد الشخص الذي استخدم الحساب. ليان اعترفت بحذف الرسالة، لا بالقتل. القضية تقود إلى خيوط أوسع من حادثة الطابق السابع.":
+      "تذكّر: استخدام بيانات البطاقة لا يثبت هوية حاملها، والمذكرة التي وصلت إلى مكتب نادر لا تثبت وحدها أنه أصدر أمراً. افصل بين القرينة والواقعة.";
+  }
+  ["review-perpetrator","review-order","review-audit"].forEach(id=>$(id).addEventListener("change",updateReviewSubmit));
+  $("open-case-review").addEventListener("click",()=>{renderCaseReview();show("case-review-screen")});
+  $("leave-case-review").addEventListener("click",()=>show("office-screen"));
+  $("submit-case-review").addEventListener("click",()=>{
+    if(!caseReviewReady())return;
+    savedReview={perpetrator:$("review-perpetrator").value,order:$("review-order").value,audit:$("review-audit").value,submittedAt:Date.now()};
+    localStorage.setItem(reviewDecisionKey,JSON.stringify(savedReview));showCaseReviewResult(savedReview);
+  });
+  renderCaseReview();
 
   let soundOn=localStorage.getItem("thecase-sound")!=="off",audioContext,ambienceGain,ambienceSource;
   const soundButton=$("sound-toggle");
