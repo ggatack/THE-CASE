@@ -545,3 +545,111 @@ button.office-card:hover:not(:disabled){transform:translateY(-3px);border-color:
  .office-screen .card-symbol{margin:4px 0 2px}
 }
 @media(orientation:portrait) and (max-width:900px){.office-screen{height:auto;min-height:calc(100svh - 68px);background-size:cover}.investigation-board{grid-template-columns:1fr;grid-template-rows:auto}.board-zone{min-height:170px}.zone-cards{min-height:115px}.board-heading{grid-template-columns:1fr}.board-meta{text-align:right;border-right:0}.board-footer{flex-wrap:wrap}}
+
+
+/* FIX: investigation board cards were being vertically crushed on short landscape screens */
+.office-screen{
+ height:auto!important;
+ min-height:0!important;
+ max-height:none!important;
+ overflow:visible!important;
+ margin:8px auto 18px!important;
+ padding:12px clamp(12px,2vw,28px) 14px!important;
+}
+.investigation-board{
+ flex:none!important;
+ min-height:0!important;
+ grid-template-rows:repeat(2,minmax(166px,auto))!important;
+ gap:12px!important;
+}
+.board-zone{
+ min-height:166px!important;
+ height:auto!important;
+ overflow:visible!important;
+ padding:10px 12px!important;
+}
+.board-zone>header{
+ min-height:32px!important;
+ margin-bottom:9px!important;
+ padding-bottom:7px!important;
+}
+.zone-cards{
+ height:auto!important;
+ min-height:104px!important;
+ align-content:stretch!important;
+ grid-auto-rows:minmax(104px,auto)!important;
+ gap:8px!important;
+}
+.office-screen .office-card,
+.office-screen button.office-card{
+ height:auto!important;
+ min-height:104px!important;
+ overflow:visible!important;
+ display:flex!important;
+ flex-direction:column!important;
+ justify-content:center!important;
+ align-items:flex-start!important;
+ padding:10px 12px 9px!important;
+}
+.office-screen .card-index{position:absolute!important;top:7px!important;right:9px!important;left:auto!important}
+.office-screen .card-symbol{
+ flex:0 0 27px!important;
+ width:32px!important;height:27px!important;
+ margin:4px 0 7px!important;
+ font-size:18px!important;
+}
+.office-screen .office-card h3{
+ display:block!important;
+ width:100%!important;
+ white-space:normal!important;
+ overflow:visible!important;
+ font-size:clamp(11px,1vw,14px)!important;
+ line-height:1.35!important;
+ margin:0 0 4px!important;
+}
+.office-screen .office-card p{
+ display:block!important;
+ width:100%!important;
+ font-size:clamp(8px,.72vw,10px)!important;
+ line-height:1.45!important;
+ margin:0 0 5px!important;
+ color:#c2b19d!important;
+}
+.office-screen .card-state{
+ display:block!important;
+ width:100%!important;
+ font-size:clamp(8px,.7vw,9px)!important;
+ line-height:1.4!important;
+ margin-top:auto!important;
+}
+.board-heading{grid-template-columns:170px minmax(0,1fr) 165px!important;gap:12px!important}
+.board-meta{direction:ltr!important;text-align:left!important;white-space:nowrap!important}
+.board-meta span,.board-meta small{font-size:7px!important;letter-spacing:.45px!important}
+.board-meta b{font-size:12px!important}
+.board-footer{min-height:22px!important;margin-top:2px!important}
+@media(max-width:900px) and (orientation:landscape){
+ .office-screen{padding:9px 11px 12px!important}
+ .investigation-board{grid-template-rows:repeat(2,minmax(150px,auto))!important;gap:8px!important}
+ .board-zone{min-height:150px!important;padding:7px 8px!important}
+ .board-zone>header{min-height:26px!important;margin-bottom:6px!important;padding-bottom:4px!important}
+ .zone-cards{min-height:96px!important;grid-auto-rows:minmax(96px,auto)!important;gap:6px!important}
+ .office-screen .office-card,.office-screen button.office-card{min-height:96px!important;padding:7px 8px!important}
+ .office-screen .card-symbol{width:26px!important;height:23px!important;flex-basis:23px!important;margin:2px 0 4px!important;font-size:15px!important}
+ .office-screen .office-card h3{font-size:10px!important}
+ .office-screen .office-card p{font-size:8px!important}
+ .office-screen .card-state{font-size:7px!important}
+ .board-heading{grid-template-columns:125px minmax(0,1fr) 132px!important;gap:7px!important}
+ .board-case-title h2{font-size:clamp(17px,3vh,24px)!important}
+ .board-footer{font-size:7px!important}
+}
+@media(max-width:680px) and (orientation:landscape){
+ .investigation-board{grid-template-columns:1fr 1fr!important;grid-template-rows:repeat(2,minmax(145px,auto))!important}
+ .board-zone.records-zone .zone-cards,.board-zone.analysis-zone .zone-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .office-screen .office-card p{display:block!important}
+}
+@media(orientation:portrait) and (max-width:900px){
+ .office-screen{height:auto!important;min-height:0!important}
+ .investigation-board{grid-template-columns:1fr!important;grid-template-rows:auto!important}
+ .board-zone{min-height:160px!important}
+ .zone-cards{min-height:100px!important}
+}
