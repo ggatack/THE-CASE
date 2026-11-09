@@ -572,6 +572,9 @@
     localStorage.setItem(reviewDecisionKey,JSON.stringify(savedReview));showCaseReviewResult(savedReview);
   });
   renderCaseReview();
+  // Refresh the review lock after any evidence, interview, or timeline action.
+  document.addEventListener("click",()=>window.setTimeout(renderCaseReview,0));
+  document.addEventListener("change",()=>window.setTimeout(renderCaseReview,0));
 
   let soundOn=localStorage.getItem("thecase-sound")!=="off",audioContext,ambienceGain,ambienceSource;
   const soundButton=$("sound-toggle");
