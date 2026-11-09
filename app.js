@@ -2,7 +2,16 @@
 (() => {
   const $ = id => document.getElementById(id);
   const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen","layan-screen","suspect-interviews-screen"];
-  const show = id => screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
+  const show = id => {
+    screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
+    const active=$(id);
+    if(active){
+      active.classList.remove("screen-enter");
+      void active.offsetWidth;
+      active.classList.add("screen-enter");
+      window.setTimeout(()=>active.classList.remove("screen-enter"),420);
+    }
+  };
   const modal = $("files-modal");
   $("start-case").addEventListener("click",()=>show("briefing-screen"));
   $("back-home").addEventListener("click",()=>show("home-screen"));
