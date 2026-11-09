@@ -430,3 +430,43 @@ button.office-card:hover:not(:disabled){transform:translateY(-3px);border-color:
  .rotate-overlay{background:radial-gradient(ellipse at center,#202a31,#07090c 75%)}
  .rotate-card{border:1px solid #b98a5b;background:linear-gradient(145deg,#242522,#10151a);box-shadow:0 20px 70px #000c}
 }
+
+
+/* Art direction alignment: detective office as a playable scene, not a web dashboard */
+.office-screen{
+ background:#0a0d10 url('assets/scenes/adam-office.svg') center center/cover no-repeat;
+ border:1px solid #9b7650;
+ padding:clamp(14px,2vw,28px);
+ min-height:calc(100svh - 68px);
+ display:flex;flex-direction:column;
+ box-shadow:0 24px 80px #000c,inset 0 0 100px #0008;
+}
+.office-screen:before{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+ background:linear-gradient(90deg,#070a0dcc 0%,#070a0d55 36%,#070a0d22 70%,#070a0d99 100%),linear-gradient(0deg,#07090bdc 0%,transparent 42%,#07090b55 100%);
+}
+.office-screen>.back-link{align-self:flex-start;margin-bottom:clamp(8px,2vh,22px)}
+.office-screen>.eyebrow,.office-screen>h2{max-width:560px;text-shadow:0 3px 18px #000}
+.office-screen>h2{font-size:clamp(28px,4vh,46px);line-height:1.12;margin-bottom:12px}
+.office-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:10px 0 8px}
+.office-card{min-height:clamp(102px,16vh,142px);padding:12px 14px;background:linear-gradient(145deg,#29251fee,#101519ed);border:1px solid #9b7956;box-shadow:0 12px 28px #000a,inset 0 1px #fff2;backdrop-filter:blur(7px)}
+.office-card h3{font-size:clamp(12px,1.2vw,16px)}
+.office-card p{font-size:10px}
+.office-card .card-symbol{margin:5px 0 8px;width:39px;height:36px}
+.office-screen>.compare-card,.office-screen>.server-card,.office-screen>.layan-card{width:calc((100% - 40px)/5);min-height:100px;margin:0 6px 8px 0;display:inline-block;vertical-align:top}
+.office-screen>.notice{margin-top:auto;max-width:850px;background:#080c10dd;border-color:#9a754e}
+@media(max-width:900px) and (orientation:landscape){
+ .office-screen{padding:9px 13px}
+ .office-screen>.back-link{margin-bottom:3px;padding-bottom:4px}
+ .office-screen>h2{font-size:25px;margin-bottom:4px}
+ .office-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin:5px 0}
+ .office-card{min-height:86px;padding:7px 9px}
+ .office-card p{display:none}
+ .office-card .card-symbol{width:30px;height:28px;margin:2px 0 4px}
+ .office-screen>.compare-card,.office-screen>.server-card,.office-screen>.layan-card{width:calc((100% - 24px)/5);min-height:78px;margin:0 4px 4px 0;padding:7px}
+ .office-screen>.notice{padding:5px 8px}
+}
+@media(max-width:760px) and (orientation:landscape){
+ .office-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .office-screen>.compare-card,.office-screen>.server-card,.office-screen>.layan-card{width:calc((100% - 18px)/4)}
+}
