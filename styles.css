@@ -304,3 +304,129 @@
 .layan-card:disabled{opacity:.42;cursor:not-allowed}
 @media(max-width:700px){.layan-header{grid-template-columns:1fr auto}.layan-header .back-link{grid-column:1/-1}.layan-header h2{font-size:27px}.layan-room{grid-template-columns:1fr}.layan-person{min-height:160px}.layan-silhouette{width:70px;height:70px;margin-bottom:10px}.layan-dialogue .dialogue-options{grid-template-columns:1fr}}
 @media(orientation:landscape) and (max-height:600px){.layan-screen{margin:8px auto 14px}.layan-header{padding-bottom:8px}.layan-room{grid-template-columns:170px 1fr;gap:9px}.layan-person{min-height:240px}.layan-dialogue{padding:12px}.layan-dialogue .dialogue-response{min-height:65px;padding:9px 4px;font-size:12px}.layan-dialogue .dialogue-options button{min-height:35px}.layan-record{margin-top:8px;padding:10px}}
+
+
+/* =========================================================
+   THE CASE — CINEMATIC MOBILE GAME PASS / 01
+   Full-screen landscape composition, tactile case-file UI,
+   and scene-anchored evidence markers.
+   ========================================================= */
+:root{--bg:#080a0d;--panel:#11161b;--line:#554332;--text:#eee5d8;--muted:#a39a8c;--copper:#d0a06d;--red:#a83e35;--gold-glow:#d9a86b}
+html,body{width:100%;min-height:100%;background:#080a0d}
+body{background:radial-gradient(ellipse at 52% 0%,#26313a 0%,#11171d 42%,#07090c 100%)}
+.app-shell{width:100%;max-width:none;min-height:100svh;margin:0;padding:12px clamp(16px,3vw,48px) 12px}
+.topbar{height:52px;flex:0 0 52px;border-bottom:1px solid #d0a06d35}
+.brand-icon{width:42px;height:42px;filter:drop-shadow(0 0 10px #bd8b6240)}
+.brand-mark b{font-size:17px;letter-spacing:4px}
+.icon-button{background:linear-gradient(145deg,#252b30,#0c1014);border-color:#8c6b4b;color:#e0b47f;box-shadow:0 4px 18px #0008}
+.hero{min-height:calc(100svh - 78px);padding:22px 0 48px;gap:3vw}
+.hero h1{font-size:clamp(48px,6vw,86px);text-shadow:0 5px 25px #000}
+.case-art{height:min(72svh,650px);border:1px solid #b78a5c66;box-shadow:0 24px 90px #000c,inset 0 0 70px #0008}
+.folder{box-shadow:18px 24px 45px #000c}
+.hero-footer{bottom:7px;border-color:#c89b6a45;color:#9e968a}
+.briefing,.office-screen{max-width:none;width:min(1500px,100%);margin:18px auto 10px}
+.briefing{max-width:1050px}
+.briefing-card{background:linear-gradient(145deg,#25231fdd,#11171c);border-color:#806044;padding:20px 28px;box-shadow:0 18px 50px #0008}
+.primary-button{background:linear-gradient(110deg,#b77b4c,#e0b17b);box-shadow:0 8px 24px #0008,0 0 22px #c58d5230}
+.secondary-button{border-color:#92704d;color:#e3d0b8}
+.office-screen{position:relative;min-height:calc(100svh - 78px);padding:18px 26px 16px;overflow:hidden;border:1px solid #76583d;background:linear-gradient(90deg,#080b0ed9,#11171bd9),url('assets/scenes/salim-office.svg') center/cover;box-shadow:0 25px 80px #000b}
+.office-screen:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,#bd8b6212,transparent 35%,#0005),repeating-linear-gradient(0deg,transparent 0 58px,#ffffff06 59px 60px)}
+.office-screen>*{position:relative;z-index:1}
+.office-screen>.back-link{padding:0 0 10px}
+.office-screen>.eyebrow{margin:0 0 5px}
+.office-screen h2{font-size:clamp(30px,4vh,46px);margin:0;text-shadow:0 4px 20px #000}
+.office-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0 10px}
+.office-card{min-height:clamp(116px,18vh,158px);padding:16px 17px 13px;background:linear-gradient(145deg,#292722ed,#11171beF);border:1px solid #876747;box-shadow:0 9px 24px #0009,inset 0 1px #ffffff12;backdrop-filter:blur(5px);text-align:right;transition:transform .2s,border-color .2s,filter .2s}
+button.office-card{cursor:pointer;color:var(--text);font-family:inherit}
+button.office-card:hover:not(:disabled){transform:translateY(-3px);border-color:#e0b47f;filter:brightness(1.15)}
+.office-card:disabled{opacity:.48;filter:grayscale(.55)}
+.active-card{background:linear-gradient(145deg,#503b29ee,#15191ced);border-color:#d0a06d}
+.card-index{left:auto;right:14px;top:10px;color:#d1a36f;font:12px 'Cormorant Garamond';letter-spacing:1px}
+.card-symbol{height:42px;width:46px;margin:7px 0 10px;display:grid;place-items:center;border:1px solid #b98c5e66;background:linear-gradient(145deg,#443426,#171a1d);color:#e2b780;font-size:0;box-shadow:inset 0 0 15px #d4a36b15}
+.card-symbol:before{font-family:Arial,sans-serif;font-size:25px;line-height:1;text-shadow:0 0 12px #d4a36b55}
+#open-investigation .card-symbol:before{content:"▣"}
+#open-board .card-symbol:before{content:"⌘"}
+#open-interview .card-symbol:before{content:"◉"}
+#open-logs .card-symbol:before{content:"▤"}
+#open-timeline .card-symbol:before{content:"⌁"}
+#open-archive .card-symbol:before{content:"▥"}
+#open-crosscheck .card-symbol:before{content:"⟷"}
+#open-server-forensics .card-symbol:before{content:"⌬"}
+#open-layan-interview .card-symbol:before{content:"◌"}
+.office-card h3{font-size:clamp(13px,1.25vw,17px);font-weight:600;margin:0 0 4px;color:#f0e3d1}
+.office-card p{font-size:10px;margin:0 0 5px;color:#b3a99a}
+.card-state{font-size:10px;color:#d5a36d}
+.notice{background:#0b1014d9;border-color:#98704a;padding:9px 13px;box-shadow:0 6px 20px #0007}
+.compare-card,.server-card,.layan-card{width:calc((100% - 36px)/4);display:inline-block;vertical-align:top;margin:0 10px 10px 0;min-height:115px}
+.notice{margin-top:3px}
+.investigation-screen{width:100%;max-width:1800px;margin:4px auto 0;min-height:calc(100svh - 68px)}
+.investigation-head{grid-template-columns:190px 1fr 210px;padding:5px 0 10px;border-color:#b68a5d55}
+.investigation-title .eyebrow{font-size:10px}
+.investigation-title h2{font-size:clamp(22px,3vh,32px)}
+.scene-toolbar{padding:5px 4px 0}
+.scene-layout{grid-template-columns:minmax(0,1.85fr) minmax(280px,.72fr);gap:12px;margin-top:7px;height:calc(100svh - 174px);min-height:300px;max-height:690px}
+.crime-room{height:100%;min-height:0;aspect-ratio:16/9;align-self:center;border:1px solid #a17b55;box-shadow:0 16px 50px #000c,inset 0 0 80px #0008;background:#080c10}
+.crime-art{width:100%;height:100%;object-fit:fill}
+.scene-vignette{background:linear-gradient(0deg,#080b0edb 0%,transparent 20%,transparent 76%,#080b0e4a 100%),linear-gradient(90deg,#0005,transparent 20%,transparent 80%,#0004)}
+.scene-object{position:absolute;transform:translate(-50%,-50%);width:clamp(38px,4.3vw,54px);height:clamp(38px,4.3vw,54px);min-width:0;min-height:0;padding:0;border-radius:50%;background:#101820eF;border:1px solid #f0c68d;box-shadow:0 0 0 4px #d6a66b35,0 0 22px #d6a66b55,0 5px 16px #000d}
+.scene-object:before{inset:-6px;border:1px solid #f0c68d88}
+.scene-object span{font:700 15px 'Cormorant Garamond';color:#ffe0b2}
+.scene-object b{top:calc(100% + 8px);right:50%;transform:translate(50%,-4px);background:#0b1015f2;border:1px solid #b68a5d;color:#f4e5d2;padding:5px 9px;font-size:10px;z-index:4}
+.scene-object:hover b,.scene-object:focus-visible b,.scene-object.selected b{transform:translate(50%,0)}
+/* Hotspots are anchored to the SVG's 1600x900 viewBox, not to guessed layout positions. */
+.coffee-object{left:29.1%;top:70%}
+.phone-object{left:70.6%;top:70.8%}
+.paper-object{left:45.5%;top:67.5%}
+.clock-object{left:63.1%;top:38.9%}
+.scene-object.collected{background:#1d3329;border-color:#b4d1a9;box-shadow:0 0 0 4px #91b18c35,0 0 20px #91b18c55,0 5px 16px #000d}
+.scene-object.collected span{font-family:Arial,sans-serif;font-size:19px}
+.room-caption,.scene-coordinate{bottom:12px}
+.inspection-panel{height:100%;min-height:0;overflow:auto;padding:14px 15px 10px;background:linear-gradient(150deg,#242a2d,#0c1115 80%);border-color:#8e6b49;box-shadow:0 16px 40px #000b}
+.inspection-empty{padding:24px 8px}
+.inspect-reticle{box-shadow:0 0 0 8px #bd8b6212,0 0 28px #d2a06b33}
+.inspection-details{padding:15px 2px 10px}
+.inspection-details h3{font-size:clamp(17px,2vh,22px)}
+.inspection-details>p{font-size:clamp(10px,1.25vh,12px);line-height:1.9}
+.detail-section{margin:12px 0;padding:9px 11px}
+.detail-section p{font-size:10px}
+.collect-button{height:40px}
+.collected-list{padding-top:8px}
+#collected-items{max-height:90px;overflow:auto}
+.scene-footnote{display:none}
+@media (orientation:landscape) and (max-height:600px){
+ .app-shell{padding:7px 20px}
+ .topbar{height:42px;flex-basis:42px}
+ .office-screen{min-height:calc(100svh - 56px);padding:10px 18px}
+ .office-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:9px 0}
+ .office-card{min-height:105px;padding:10px}
+ .card-symbol{height:32px;width:36px;margin:3px 0 5px}
+ .card-symbol:before{font-size:20px}
+ .compare-card,.server-card,.layan-card{width:calc((100% - 32px)/5);min-height:95px;margin:0 5px 5px 0}
+ .notice{padding:6px 10px}
+ .investigation-screen{min-height:calc(100svh - 48px)}
+ .investigation-head{grid-template-columns:150px 1fr 175px;padding:0 0 6px}
+ .scene-layout{height:calc(100svh - 142px);min-height:250px}
+ .inspection-panel{padding:10px}
+ .inspection-empty{padding:12px 6px}
+ .inspect-reticle{width:42px;height:42px;font-size:25px;margin-bottom:10px}
+ .inspection-empty h3{font-size:16px}
+ .inspection-empty p{font-size:10px}
+ .inspection-details{padding:9px 2px}
+ .detail-section{margin:8px 0;padding:7px}
+ .collect-button{height:34px}
+}
+@media (max-width:900px) and (orientation:landscape){
+ .app-shell{padding:8px 14px}
+ .office-screen{padding:12px}
+ .office-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+ .office-card{min-height:104px;padding:10px}
+ .compare-card,.server-card,.layan-card{width:calc((100% - 24px)/4);min-height:96px;margin-right:5px}
+ .scene-layout{grid-template-columns:minmax(0,1.7fr) minmax(220px,.8fr);gap:8px}
+ .investigation-head{grid-template-columns:125px 1fr 150px;gap:10px}
+ .investigation-title h2{font-size:20px}
+ .inspection-panel{padding:9px}
+}
+@media (orientation:portrait) and (max-width:900px){
+ .rotate-overlay{background:radial-gradient(ellipse at center,#202a31,#07090c 75%)}
+ .rotate-card{border:1px solid #b98a5b;background:linear-gradient(145deg,#242522,#10151a);box-shadow:0 20px 70px #000c}
+}
