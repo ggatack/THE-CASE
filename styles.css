@@ -653,3 +653,20 @@ button.office-card:hover:not(:disabled){transform:translateY(-3px);border-color:
  .board-zone{min-height:160px!important}
  .zone-cards{min-height:100px!important}
 }
+
+
+/* Final mobile landscape correction: let the board grow instead of flex-shrinking */
+html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
+.app-shell{height:auto!important;min-height:100svh!important;overflow:visible!important;flex:0 0 auto!important}
+.app-shell>.topbar{flex:0 0 48px!important}
+.office-screen{flex:0 0 auto!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
+.investigation-board{flex:0 0 auto!important;grid-template-rows:repeat(2,minmax(164px,auto))!important}
+.board-zone{min-height:164px!important}
+.zone-cards{min-height:108px!important;grid-auto-rows:minmax(108px,auto)!important}
+.office-screen .office-card,.office-screen button.office-card{min-height:108px!important}
+@media(max-width:900px) and (orientation:landscape){
+ .investigation-board{grid-template-rows:repeat(2,minmax(152px,auto))!important}
+ .board-zone{min-height:152px!important}
+ .zone-cards{min-height:102px!important;grid-auto-rows:minmax(102px,auto)!important}
+ .office-screen .office-card,.office-screen button.office-card{min-height:102px!important}
+}
