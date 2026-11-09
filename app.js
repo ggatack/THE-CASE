@@ -433,6 +433,7 @@
     $("layan-note").textContent="ملاحظة آدم: "+answer.note;
     layanAsked.push(id);localStorage.setItem(layanInterviewKey,JSON.stringify(layanAsked));
     renderLayanInterview();
+    renderSuspectInterview();
   });
   renderLayanInterview();
 
