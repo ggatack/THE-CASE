@@ -86,7 +86,7 @@
           <div class="zone-cards">
             <button class="office-card timeline-card" id="open-timeline"><span class="card-index">04-A</span><div class="card-symbol">⌁</div><h3>الخط الزمني</h3><p>ميّز الوقائع عن الأقوال والاستنتاجات</p><span class="card-state">إعادة بناء الأحداث ←</span></button>
             <button class="office-card compare-card" id="open-crosscheck"><span class="card-index">04-B</span><div class="card-symbol">⟷</div><h3>مطابقة المستندات</h3><p>اربط الأرشيف وابحث عن التناقضات</p><span class="card-state" id="crosscheck-card-state">تُفتح بعد توثيق مستندات الأرشيف ←</span></button>
-            <article class="office-card notes-card"><span class="card-index">04-C</span><div class="card-symbol">▧</div><h3>دفتر الملاحظات</h3><p>مساحة خاصة لتدوين أفكار آدم</p><span class="card-state muted-state">مقفل مؤقتاً</span></article>
+            <button class="office-card case-review-card" id="open-case-review" disabled><span class="card-index">04-C</span><div class="card-symbol">⚑</div><h3>مراجعة القضية</h3><p>رتّب الأدلة واتخذ قرار آدم النهائي</p><span class="card-state" id="case-review-state">تُفتح بعد استكمال التحقيق ←</span></button>
           </div>
         </section>
       </div>
@@ -353,6 +353,19 @@
       <section class="suspect-record"><div class="board-section-title"><span>محضر المواجهات</span><small>إفادات مسجلة · لا أحكام نهائية</small></div><ul id="suspect-notes"><li>لم تُسجّل أي مواجهة بعد.</li></ul></section>
     </section>
 
+
+    <section class="case-review-screen hidden" id="case-review-screen">
+      <header class="review-header"><button class="back-link" id="leave-case-review">← العودة إلى مكتب آدم</button><div><p class="eyebrow"><span class="status-dot"></span> المرحلة الأخيرة · ملف 001</p><h2>مراجعة <em>القضية.</em></h2><p>لا تبحث عن إجابة ترضي القصة. اختر ما تسمح الأدلة بإثباته، واترك ما لا يزال مجهولاً.</p></div><span class="interview-status">FINAL CASE REVIEW</span></header>
+      <div class="review-brief"><b>ملاحظة آدم</b><p>أمامك ثلاثة أسئلة مختلفة: من نفّذ المواجهة؟ من يُرجّح أنه أصدر الأمر؟ وما الذي يثبته سجل التدقيق فعلاً؟ لا تخلط بين الاستنتاج والدليل القطعي.</p></div>
+      <div class="review-grid">
+        <label class="review-question"><span>01 / المنفّذ المباشر</span><b>من تشير إليه الأدلة بوصفه من واجه سليم؟</b><select id="review-perpetrator"><option value="">اختر استنتاجك</option><option value="fares">فارس الكيلاني</option><option value="nader">نادر القيسي</option><option value="unknown">لا يمكن الترجيح</option></select></label>
+        <label class="review-question"><span>02 / مصدر الأمر</span><b>من تشير إليه خيوط القضية بوصفه صاحب الأمر؟</b><select id="review-order"><option value="">اختر استنتاجك</option><option value="nader">نادر القيسي</option><option value="fares">فارس الكيلاني</option><option value="unknown">لا يوجد دليل كافٍ لتحديده</option></select></label>
+        <label class="review-question"><span>03 / حدود الدليل الرقمي</span><b>ماذا يثبت تعديل سجل التدقيق عند 02:06؟</b><select id="review-audit"><option value="">اختر ما يمكن إثباته</option><option value="edited">أن بيانات سجل الحدث عُدّلت لاحقاً، دون تحديد من فعل ذلك</option><option value="nader">أن نادر استخدم حساب الخدمة</option><option value="fares">أن فارس هو من دخل غرفة الخوادم</option></select></label>
+      </div>
+      <button class="primary-button review-submit" id="submit-case-review" disabled><span>اعتماد استنتاج آدم</span><b>←</b></button>
+      <div class="review-result hidden" id="case-review-result" aria-live="polite"><div class="review-result-stamp">CASE 001 · DECISION RECORDED</div><h3 id="review-result-title">القرار</h3><p id="review-result-text"></p><div class="review-next-note" id="review-next-note"></div></div>
+      <p class="scene-footnote">الحكم الجنائي يحتاج إلى أدلة قابلة للتحقق، لا إلى رواية تبدو مكتملة.</p>
+    </section>
     <section class="evidence-board-screen hidden" id="evidence-board-screen">
       <div class="board-header">
         <button class="back-link" id="leave-board">← العودة إلى مكتب آدم</button>
