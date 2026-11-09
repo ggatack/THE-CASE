@@ -1,132 +1,99 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
 <defs>
- <linearGradient id="backWall" x2="0" y2="1"><stop stop-color="#283039"/><stop offset=".55" stop-color="#171e24"/><stop offset="1" stop-color="#101418"/></linearGradient>
- <linearGradient id="floor" x2="0" y2="1"><stop stop-color="#34302b"/><stop offset="1" stop-color="#121314"/></linearGradient>
- <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#927052"/><stop offset=".18" stop-color="#59432f"/><stop offset="1" stop-color="#241d18"/></linearGradient>
- <linearGradient id="window" x2="0" y2="1"><stop stop-color="#263d4c"/><stop offset=".58" stop-color="#152532"/><stop offset="1" stop-color="#101821"/></linearGradient>
- <linearGradient id="lampShade" x2="0" y2="1"><stop stop-color="#c5a477"/><stop offset="1" stop-color="#67513a"/></linearGradient>
- <radialGradient id="lampPool"><stop stop-color="#d7b27b" stop-opacity=".24"/><stop offset="1" stop-color="#d7b27b" stop-opacity="0"/></radialGradient>
- <radialGradient id="vignette"><stop offset=".52" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#050709" stop-opacity=".72"/></radialGradient>
- <filter id="soft"><feGaussianBlur stdDeviation="16"/></filter><filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter>
- <pattern id="wallgrain" width="70" height="70" patternUnits="userSpaceOnUse"><path d="M0 18h70M0 53h70" stroke="#fff" opacity=".018"/><circle cx="14" cy="31" r="1" fill="#fff" opacity=".07"/><circle cx="55" cy="8" r="1" fill="#fff" opacity=".04"/></pattern>
- <pattern id="rain" width="57" height="82" patternUnits="userSpaceOnUse"><path d="M10 0L0 32M43 18L31 60M57 58L49 82" stroke="#b9d0dc" stroke-width="2" opacity=".17"/></pattern>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#28343d"/><stop offset=".62" stop-color="#1a232b"/><stop offset="1" stop-color="#101519"/></linearGradient>
+ <linearGradient id="floor" x2="0" y2="1"><stop stop-color="#3b3027"/><stop offset="1" stop-color="#151311"/></linearGradient>
+ <linearGradient id="desk" x2="0" y2="1"><stop stop-color="#9a7450"/><stop offset=".12" stop-color="#5b412e"/><stop offset="1" stop-color="#281f19"/></linearGradient>
+ <linearGradient id="glass" x2="1" y2="1"><stop stop-color="#304b5a"/><stop offset=".45" stop-color="#172b3b"/><stop offset="1" stop-color="#0d1724"/></linearGradient>
+ <linearGradient id="lamp" x2="0" y2="1"><stop stop-color="#d6ad73" stop-opacity=".34"/><stop offset="1" stop-color="#d6ad73" stop-opacity="0"/></linearGradient>
+ <radialGradient id="pool"><stop stop-color="#c48d50" stop-opacity=".34"/><stop offset="1" stop-color="#c48d50" stop-opacity="0"/></radialGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="24"/></filter>
+ <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="15"/></filter>
+ <pattern id="grain" width="90" height="90" patternUnits="userSpaceOnUse"><circle cx="7" cy="12" r="1" fill="#fff" opacity=".09"/><circle cx="52" cy="63" r="1" fill="#fff" opacity=".07"/><path d="M20 80l5 -8M70 20l3 -6" stroke="#fff" opacity=".04"/></pattern>
 </defs>
-<!-- architectural shell -->
-<rect width="1600" height="900" fill="url(#backWall)"/>
-<path d="M0 0H1600V625H0Z" fill="#1b232a"/>
-<path d="M0 0H1600V28H0Z" fill="#0b1014" opacity=".8"/>
-<path d="M0 72H1600M0 590H1600" stroke="#697078" opacity=".18" stroke-width="3"/>
-<!-- left window, wet glass and city -->
-<rect x="58" y="70" width="610" height="475" fill="#0a1016" stroke="#4b5358" stroke-width="18"/>
-<rect x="77" y="89" width="572" height="437" fill="url(#window)"/>
-<g opacity=".95">
- <path d="M77 380H649V526H77Z" fill="#0c141c"/>
- <path d="M87 366h58v160H87zm73-88h72v248h-72zm91 45h62v203h-62zm80-136h78v339h-78zm97 85h62v254h-62zm82-59h69v313h-69z" fill="#101922"/>
- <path d="M90 364h52v-20h-52zm74-87h65v-18h-65zm91 46h57v-19h-57zm80-136h72v-20h-72zm97 85h57v-17h-57zm82-59h64v-19h-64z" fill="#26313a"/>
- <g fill="#b28b62" opacity=".55"><path d="M105 370h7v12h-7zm21 0h7v12h-7zm55-75h7v12h-7zm23 0h7v12h-7zm-22 26h7v12h-7zm125 20h7v12h-7zm20-110h7v12h-7zm24 0h7v12h-7zm102 80h7v12h-7zm23 0h7v12h-7zm92-62h7v12h-7zm21 0h7v12h-7z"/></g>
+<!-- room shell -->
+<rect width="1600" height="900" fill="url(#wall)"/>
+<path d="M0 0H1600V670H0Z" fill="#1c262e"/>
+<path d="M0 0H1600V80H0Z" fill="#11181e" opacity=".5"/>
+<!-- rainy window -->
+<rect x="82" y="90" width="610" height="450" fill="#10171d" stroke="#59636a" stroke-width="18"/>
+<rect x="102" y="110" width="570" height="410" fill="url(#glass)"/>
+<g opacity=".9">
+ <path d="M102 380h570v140H102Z" fill="#101923"/>
+ <path d="M115 360h65v160h-65zm80-80h78v240h-78zm94 54h62v186h-62zm83-116h86v302h-86zm105 85h63v217h-63zm82-55h45v272h-45z" fill="#101820"/>
+ <g fill="#d0a56a" opacity=".55"><path d="M210 310h8v12h-8zm20 0h8v12h-8zm-20 28h8v12h-8zm120-3h8v12h-8zm22 0h8v12h-8zm115-45h8v12h-8zm25 0h8v12h-8zm-25 28h8v12h-8zm85 20h8v12h-8z"/></g>
+ <path d="M386 110V520M102 318H672" stroke="#69767c" stroke-width="13"/>
 </g>
-<rect x="77" y="89" width="572" height="437" fill="url(#rain)"/>
-<g stroke="#a8c1ce" stroke-width="2" opacity=".23"><path d="M128 105l-29 110m83-74l-31 122m160-138l-27 112m88-83l-29 125m158-132l-32 120m87-64l-27 109m-390 38l-22 89m264-53l-24 93m180-70l-22 84"/></g>
-<path d="M364 89V526M77 310H649" stroke="#515d66" stroke-width="12"/>
-<path d="M47 58H680V557H47Z" fill="none" stroke="#080d11" stroke-width="10"/>
-<!-- vertical blinds and wall trim -->
-<path d="M700 0V590M1070 0V590" stroke="#0c1115" stroke-width="18" opacity=".5"/>
-<g opacity=".2" stroke="#899096" stroke-width="2"><path d="M715 72H1045M715 84H1045M715 96H1045M715 108H1045"/></g>
-<!-- wall cabinet / folders -->
-<rect x="1150" y="85" width="380" height="440" fill="#11171c" stroke="#485057" stroke-width="9"/>
-<path d="M1150 230H1530M1150 380H1530" stroke="#73563d" stroke-width="13"/>
+<g stroke="#a9c1cd" stroke-width="3" opacity=".25"><path d="M150 130l-24 96m85-62l-28 112m180-128l-23 93m84-61l-26 108m145-125l-26 102m87-60l-22 95m-435 22l-18 67m260-45l-18 68m180-51l-20 72"/></g>
+<rect x="90" y="80" width="594" height="470" fill="none" stroke="#080d12" stroke-width="18" opacity=".7"/>
+<!-- shelves and archive -->
+<rect x="1110" y="115" width="390" height="420" fill="#12191e" stroke="#39434a" stroke-width="10"/>
+<path d="M1110 260H1500M1110 400H1500" stroke="#795a3e" stroke-width="17"/>
 <g>
- <g fill="#46545c"><rect x="1173" y="110" width="35" height="110"/><rect x="1215" y="125" width="48" height="95"/><rect x="1270" y="105" width="33" height="115"/><rect x="1310" y="132" width="48" height="88"/></g>
- <g fill="#796047"><rect x="1367" y="116" width="38" height="104"/><rect x="1412" y="101" width="48" height="119"/><rect x="1468" y="135" width="42" height="85"/></g>
- <g fill="#35434b"><rect x="1173" y="250" width="47" height="117"/><rect x="1228" y="265" width="35" height="102"/><rect x="1271" y="247" width="49" height="120"/><rect x="1328" y="259" width="37" height="108"/></g>
- <g fill="#876648"><rect x="1375" y="251" width="40" height="116"/><rect x="1423" y="240" width="50" height="127"/><rect x="1481" y="270" width="30" height="97"/></g>
- <rect x="1172" y="398" width="336" height="108" fill="#1b242a"/>
- <path d="M1190 420h280m-280 18h230m-230 18h260" stroke="#718087" stroke-width="3" opacity=".2"/>
+ <g fill="#596a70"><rect x="1140" y="155" width="35" height="92"/><rect x="1180" y="142" width="43" height="105"/><rect x="1230" y="167" width="31" height="80"/><rect x="1268" y="150" width="47" height="97"/></g>
+ <g fill="#795c43"><rect x="1325" y="160" width="33" height="87"/><rect x="1365" y="143" width="42" height="104"/><rect x="1414" y="173" width="36" height="74"/></g>
+ <g fill="#485a63"><rect x="1140" y="283" width="45" height="108"/><rect x="1192" y="300" width="35" height="91"/><rect x="1235" y="280" width="46" height="111"/><rect x="1290" y="294" width="33" height="97"/></g>
+ <g fill="#816344"><rect x="1340" y="286" width="38" height="105"/><rect x="1386" y="276" width="49" height="115"/><rect x="1444" y="305" width="30" height="86"/></g>
+ <g fill="#1b252c"><rect x="1140" y="425" width="330" height="85"/></g>
 </g>
-<!-- wall case board: restrained paper evidence -->
-<rect x="735" y="100" width="330" height="210" fill="#10161a" stroke="#665744" stroke-width="8"/>
-<rect x="750" y="115" width="300" height="180" fill="#aaa18d"/>
-<g fill="#ded5c2" stroke="#786c5a" stroke-width="2">
- <rect x="770" y="132" width="84" height="111" transform="rotate(-3 770 132)"/>
- <rect x="868" y="126" width="78" height="96" transform="rotate(4 868 126)"/>
- <rect x="960" y="135" width="72" height="112" transform="rotate(-2 960 135)"/>
-</g>
-<g stroke="#6e665b" stroke-width="3" opacity=".65"><path d="M782 157h55m-55 12h46m-46 12h51m-51 12h33M878 151h53m-53 12h45m-45 12h47m-47 12h34M970 159h50m-50 12h43m-43 12h48"/></g>
-<g fill="#914b43"><circle cx="811" cy="130" r="5"/><circle cx="907" cy="125" r="5"/><circle cx="995" cy="134" r="5"/></g>
-<path d="M811 130L907 125L995 134" fill="none" stroke="#9c5148" stroke-width="2" opacity=".8"/>
-<!-- framed company photo -->
-<rect x="785" y="355" width="205" height="135" fill="#0b1014" stroke="#6b5a47" stroke-width="8"/>
-<rect x="798" y="368" width="179" height="109" fill="#33434a"/>
-<path d="M800 458l42-48 30 27 35-43 70 64z" fill="#1a252c"/>
-<g fill="#b7a184"><circle cx="846" cy="397" r="13"/><circle cx="895" cy="390" r="13"/><circle cx="940" cy="401" r="13"/></g>
-<path d="M846 410v43m49-48v48m45-41v41" stroke="#263239" stroke-width="14"/>
-<!-- wall clock precisely at hotspot center 1010,350 -->
-<circle cx="1010" cy="350" r="71" fill="#000" opacity=".48" filter="url(#shadow)"/>
-<circle cx="1010" cy="350" r="58" fill="#171d21" stroke="#8b8170" stroke-width="7"/>
-<circle cx="1010" cy="350" r="49" fill="#d9d0bd"/>
-<circle cx="1010" cy="350" r="44" fill="#e5ddca"/>
-<g stroke="#474139" stroke-width="3"><path d="M1010 313v8m0 58v8m-37-37h8m58 0h8m-63-26l6 6m40 40l6 6m0-52l-6 6m-40 40l-6 6"/></g>
-<path d="M1010 350l-2-27m2 27l25 11" stroke="#302d28" stroke-width="5" stroke-linecap="round"/>
-<circle cx="1010" cy="350" r="5" fill="#914b43"/>
+<!-- framed photo -->
+<rect x="790" y="130" width="190" height="140" fill="#11171b" stroke="#7a6854" stroke-width="10"/>
+<rect x="804" y="144" width="162" height="112" fill="#34434a"/>
+<path d="M815 230l35-46 26 29 22-35 57 52z" fill="#1a262b"/>
+<g fill="#bd9a71"><circle cx="848" cy="180" r="13"/><circle cx="892" cy="175" r="13"/><circle cx="934" cy="182" r="13"/></g>
+<path d="M848 194v38m44-42v42m42-34v34" stroke="#283239" stroke-width="13"/>
+<!-- clock -->
+<circle cx="1010" cy="360" r="64" fill="#11171a" opacity=".55" filter="url(#shadow)"/>
+<circle cx="1010" cy="350" r="53" fill="#d6c9ad" stroke="#5b5145" stroke-width="10"/>
+<circle cx="1010" cy="350" r="43" fill="#e3d8c2"/>
+<g stroke="#423d35" stroke-width="3"><path d="M1010 315v7m0 56v7m-35-35h7m56 0h7m-60-25l5 5m40 40l5 5m0-50l-5 5m-40 40l-5 5"/></g>
+<path d="M1010 350l-2-27m2 27l25 11" stroke="#332e28" stroke-width="4" stroke-linecap="round"/>
+<circle cx="1010" cy="350" r="5" fill="#9e5546"/>
 <!-- floor -->
-<path d="M0 615H1600V900H0Z" fill="url(#floor)"/>
-<path d="M0 655H1600M0 760H1600" stroke="#9b8973" stroke-width="3" opacity=".14"/>
-<g stroke="#9b8973" stroke-width="2" opacity=".12"><path d="M180 615L80 900M480 615L430 900M900 615L970 900M1320 615L1460 900"/></g>
-<!-- desk shadow and lamp pool -->
-<ellipse cx="810" cy="760" rx="660" ry="190" fill="#000" opacity=".68" filter="url(#soft)"/>
-<ellipse cx="850" cy="630" rx="520" ry="300" fill="url(#lampPool)"/>
-<!-- desk silhouette -->
-<path d="M145 548L1445 548L1540 661L65 661Z" fill="url(#wood)" stroke="#b08a62" stroke-width="6"/>
-<path d="M65 661H1540L1490 866H120Z" fill="#29211b"/>
-<path d="M120 866H1490" stroke="#100e0c" stroke-width="20"/>
-<path d="M160 685H1460" stroke="#b28d67" stroke-width="3" opacity=".24"/>
-<!-- leather blotter -->
-<path d="M405 574L1210 574L1280 653L350 653Z" fill="#20272b" stroke="#6b716f" stroke-width="4"/>
-<path d="M423 585L1193 585" stroke="#a1a39b" stroke-width="2" opacity=".18"/>
-<!-- paper stack: main torn document hotspot center approx 728,608 -->
-<path d="M578 565l250-7 25 82-253 8z" fill="#d5cbb7" stroke="#8b7b65" stroke-width="4"/>
-<path d="M590 577l222-6 7 62-223 6z" fill="#e5dcc8"/>
-<path d="M610 592l172-4m-168 15l152-4m-145 15l131-4m-123 14l94-3" stroke="#777064" stroke-width="3" opacity=".7"/>
-<path d="M703 565l13 9-8 7 14 9-10 8 15 9-8 10" fill="none" stroke="#8a4b42" stroke-width="3"/>
-<path d="M821 566l16 9-8 7 12 8" fill="none" stroke="#8a4b42" stroke-width="3"/>
-<!-- pen, paper clip and pencil -->
-<path d="M852 627l113-27" stroke="#171b1d" stroke-width="10" stroke-linecap="round"/>
-<path d="M852 627l17-4" stroke="#b68a62" stroke-width="5"/>
-<path d="M975 590q25 25 0 48q-15 13-27 0" fill="none" stroke="#a7a49a" stroke-width="4"/>
-<!-- phone hotspot center approx 1130,637 -->
-<g transform="translate(1091 574) rotate(8)">
- <rect x="0" y="0" width="78" height="126" rx="12" fill="#080d11" stroke="#8a8b84" stroke-width="5"/>
- <rect x="8" y="12" width="62" height="97" rx="5" fill="#1d2a33"/>
- <path d="M17 28h42M17 39h35M17 50h39" stroke="#7d8b8d" stroke-width="3" opacity=".55"/>
- <circle cx="39" cy="117" r="4" fill="#687176"/>
- <path d="M31 5h16" stroke="#a6aaa6" stroke-width="2"/>
+<path d="M0 620L1600 620V900H0Z" fill="url(#floor)"/>
+<path d="M0 675L1600 675M0 765L1600 765M250 620L120 900M620 620L560 900M1040 620L1100 900M1390 620L1510 900" stroke="#75604a" stroke-width="3" opacity=".22"/>
+<!-- desk shadow and pool of lamp light -->
+<ellipse cx="790" cy="740" rx="590" ry="180" fill="#000" opacity=".6" filter="url(#blur)"/>
+<ellipse cx="790" cy="620" rx="470" ry="270" fill="url(#pool)"/>
+<!-- desk body -->
+<path d="M210 560L1410 560L1510 655L110 655Z" fill="url(#desk)" stroke="#b08a62" stroke-width="7"/>
+<path d="M110 655L1510 655L1470 850L170 850Z" fill="#30241c"/>
+<path d="M210 675H1400" stroke="#c39a6d" stroke-width="3" opacity=".28"/>
+<path d="M220 850V900M1390 850V900" stroke="#17120f" stroke-width="35"/>
+<!-- desk blotter -->
+<path d="M460 582L1190 582L1240 650L420 650Z" fill="#20292d" stroke="#657078" stroke-width="4"/>
+<!-- papers -->
+<path d="M580 572l235-4 18 57-240 7z" fill="#d6cbb5" stroke="#8b7b65" stroke-width="3"/>
+<path d="M602 586l164-3m-159 14l143-2m-133 13l112-2" stroke="#756c60" stroke-width="3" opacity=".7"/>
+<path d="M885 578l170-5 17 60-181 5z" fill="#e2d8c3" stroke="#88775f" stroke-width="3"/>
+<path d="M907 592h130m-123 12h115m-108 12h80" stroke="#857969" stroke-width="3" opacity=".65"/>
+<!-- phone -->
+<g transform="translate(1090 574) rotate(8)">
+ <rect x="0" y="0" width="78" height="126" rx="12" fill="#090d11" stroke="#777d7e" stroke-width="5"/>
+ <rect x="8" y="13" width="62" height="94" rx="5" fill="#24333d"/>
+ <path d="M18 27h42M18 37h34" stroke="#72818a" stroke-width="3" opacity=".55"/>
+ <circle cx="39" cy="116" r="4" fill="#5c6568"/>
 </g>
-<!-- coffee cup hotspot center approx 466,631 -->
+<!-- coffee cup -->
 <g transform="translate(465 574)">
- <ellipse cx="0" cy="65" rx="54" ry="14" fill="#080a0b" opacity=".65"/>
- <path d="M-34 0h65l-7 55q-26 19-51 0z" fill="#d8d1c2" stroke="#817666" stroke-width="4"/>
- <ellipse cx="-1" cy="2" rx="32" ry="10" fill="#3b2a20"/>
- <path d="M30 13q39-9 31 24q-5 18-34 13" fill="none" stroke="#d0c5b0" stroke-width="9"/>
- <path d="M-13 -10q-14-20 0-35m13 35q-9-17 4-31" fill="none" stroke="#c3b8a5" stroke-width="4" opacity=".45"/>
- <path d="M-25 32h47" stroke="#f0e8d8" stroke-width="2" opacity=".25"/>
+ <ellipse cx="0" cy="57" rx="48" ry="13" fill="#090b0d" opacity=".6"/>
+ <path d="M-32 0h62l-7 53q-23 18-48 0z" fill="#d8d0bd" stroke="#766d5e" stroke-width="4"/>
+ <ellipse cx="-1" cy="2" rx="31" ry="9" fill="#493226"/>
+ <path d="M30 13q39-9 31 24q-5 18-34 13" fill="none" stroke="#c9bea9" stroke-width="9"/>
+ <path d="M-13 -12q-15-21 0-35m12 35q-10-17 4-31" fill="none" stroke="#b9b0a1" stroke-width="4" opacity=".5"/>
 </g>
-<!-- desk lamp -->
-<path d="M1360 555V265" stroke="#222a2e" stroke-width="16"/>
-<path d="M1287 266Q1360 180 1432 266L1408 307H1310Z" fill="url(#lampShade)" stroke="#544735" stroke-width="6"/>
-<path d="M1302 304L1190 583H1510L1418 304Z" fill="#d4b07b" opacity=".08"/>
-<ellipse cx="1355" cy="572" rx="155" ry="42" fill="#d6b17b" opacity=".13" filter="url(#soft)"/>
-<!-- evidence tent cards and subtle scene markers -->
-<g font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle">
- <path d="M405 684l34-18 34 18v24h-68z" fill="#e1d8c6" stroke="#82745e" stroke-width="2"/><text x="439" y="701" fill="#5d5143">01</text>
- <path d="M1038 686l34-18 34 18v24h-68z" fill="#e1d8c6" stroke="#82745e" stroke-width="2"/><text x="1072" y="701" fill="#5d5143">02</text>
- <path d="M654 684l34-18 34 18v24h-68z" fill="#e1d8c6" stroke="#82745e" stroke-width="2"/><text x="688" y="701" fill="#5d5143">03</text>
-</g>
-<!-- crime-scene tape in distant doorway -->
-<path d="M0 485L245 532M0 508L245 555" stroke="#a14f45" stroke-width="12" opacity=".65"/>
-<path d="M0 485L245 532M0 508L245 555" stroke="#d7c7ae" stroke-width="2" stroke-dasharray="18 15" opacity=".7"/>
-<text x="22" y="479" fill="#d5c4aa" font-family="Arial" font-size="12" letter-spacing="3" opacity=".6">SCENE SECURED</text>
-<!-- labels -->
-<text x="64" y="855" fill="#c9c0b1" opacity=".56" font-family="Georgia" font-size="17" letter-spacing="4">NAWA CORPORATION / FLOOR 07</text>
-<text x="1530" y="855" text-anchor="end" fill="#c9c0b1" opacity=".56" font-family="Georgia" font-size="17" letter-spacing="4">01:40 AM — CASE 001</text>
-<rect width="1600" height="900" fill="url(#wallgrain)"/><rect width="1600" height="900" fill="url(#vignette)"/>
+<!-- lamp and light -->
+<path d="M1310 560L1310 250" stroke="#242a2d" stroke-width="15"/>
+<path d="M1245 260Q1310 180 1375 260L1352 300H1268Z" fill="#b18b5e" stroke="#594a39" stroke-width="6"/>
+<path d="M1260 295L1160 585H1450L1360 295Z" fill="url(#lamp)"/>
+<ellipse cx="1305" cy="575" rx="145" ry="38" fill="#d5a66d" opacity=".12" filter="url(#blur)"/>
+<!-- pen and small objects -->
+<path d="M730 620l118-25" stroke="#15191b" stroke-width="10" stroke-linecap="round"/>
+<path d="M732 619l18-4" stroke="#bd8b62" stroke-width="5"/>
+<rect x="270" y="585" width="105" height="43" rx="4" fill="#5b4531" stroke="#a37d55" stroke-width="3"/>
+<path d="M282 596h80m-80 10h56" stroke="#c0a27c" stroke-width="2" opacity=".6"/>
+<!-- subtle dust and vignette -->
+<rect width="1600" height="900" fill="url(#grain)"/>
+<rect width="1600" height="900" fill="none" stroke="#07090b" stroke-width="100" opacity=".55"/>
+<text x="65" y="850" fill="#c3b7a5" opacity=".65" font-family="Georgia" font-size="18" letter-spacing="5">NAWA CORPORATION / FLOOR 07</text>
+<text x="1530" y="850" text-anchor="end" fill="#c3b7a5" opacity=".65" font-family="Georgia" font-size="18" letter-spacing="5">01:40 AM — CASE 001</text>
 </svg>
