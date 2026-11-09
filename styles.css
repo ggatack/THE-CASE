@@ -776,3 +776,17 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
 .suspect-question-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:18px}.suspect-question{padding:13px;text-align:right;background:#242b2e;color:#e5dac8;border:1px solid #80674788;cursor:pointer;font-size:12px}.suspect-question:disabled{opacity:.38;cursor:not-allowed}.suspect-question:not(:disabled):hover{border-color:#d0a071;background:#34302a}
 .suspect-record{margin-top:16px;padding:16px 20px}.suspect-record ul{padding-right:20px;color:#c7bdaf;font-size:11px;line-height:2.1}
 @media(max-width:760px){.suspect-interviews-screen{padding:12px}.suspect-header{grid-template-columns:1fr auto;gap:8px}.suspect-header .back-link{grid-column:1/-1}.suspect-layout{grid-template-columns:1fr}.suspect-list{display:grid;grid-template-columns:1fr 1fr}.suspect-warning{grid-column:1/-1}.suspect-question-list{grid-template-columns:1fr}.suspect-panel{min-height:0}.suspect-response{font-size:14px}}
+
+
+/* Character portraits — unified illustrated dossier style */
+.character-portrait,.suspect-avatar,.suspect-focus-portrait{display:block;object-fit:cover;object-position:center;border:1px solid #bd966c;box-shadow:0 8px 24px #0008;background:#171d21}
+.character-portrait{width:clamp(112px,14vw,170px);height:clamp(112px,14vw,170px);border-radius:50%;margin:0 auto 13px;object-position:center 27%;box-shadow:0 0 0 5px #0d1215,0 0 0 6px #92704f,0 14px 34px #0009}
+.suspect-person{display:flex;align-items:center;gap:12px;min-height:88px}
+.suspect-person span{min-width:0;display:block}
+.suspect-avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;object-position:center 25%;box-shadow:0 0 0 3px #101518,0 0 0 4px #806747}
+.suspect-identity{display:flex;align-items:center;gap:20px;border-right:0;padding-right:0}
+.suspect-focus-portrait{width:124px;height:124px;flex:0 0 124px;border-radius:50%;object-position:center 24%;box-shadow:0 0 0 5px #101518,0 0 0 6px #bd8b62,0 12px 30px #0008}
+.suspect-identity-copy{border-right:3px solid #bd8b62;padding-right:15px}
+.suspect-identity-copy h3{font-size:28px;margin:5px 0}
+.suspect-identity-copy p{color:#b7a995;font-size:12px}
+@media(max-width:760px){.suspect-identity{gap:14px}.suspect-focus-portrait{width:88px;height:88px;flex-basis:88px}.character-portrait{width:104px;height:104px}.suspect-avatar{width:48px;height:48px;flex-basis:48px}.suspect-person{padding:9px;gap:8px}}
