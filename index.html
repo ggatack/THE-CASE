@@ -69,7 +69,8 @@
           <header><span class="zone-number">02</span><div><b>الشهادات والمقابلات</b><small>WITNESS STATEMENTS</small></div><i>روايات تحتاج تحققاً</i></header>
           <div class="zone-cards">
             <button class="office-card interview-card" id="open-interview"><span class="card-index">02-A</span><div class="card-symbol">◉</div><h3>مقابلة مازن</h3><p>اختبر روايته بشأن الخلاف والمغادرة</p><span class="card-state" id="interview-card-state">تُفتح بعد فحص الهاتف ←</span></button>
-            <button class="office-card layan-card" id="open-layan-interview" disabled><span class="card-index">02-B</span><div class="card-symbol">◌</div><h3>مقابلة ليان</h3><p>تحقيق عودتها إلى الطابق بعد المغادرة</p><span class="card-state" id="layan-card-state">تُفتح بعد توثيق أثرين جنائيين ←</span></button>
+            <button class="office-card suspect-card" id="open-suspect-interviews" disabled><span class="card-index">02-C</span><div class="card-symbol">⚖</div><h3>مواجهات المشتبه بهم</h3><p>اختبر رواية فارس ثم واجه نادر</p><span class="card-state" id="suspect-card-state">تُفتح بعد مطابقة الأدلة ←</span></button>
+          <button class="office-card layan-card" id="open-layan-interview" disabled><span class="card-index">02-B</span><div class="card-symbol">◌</div><h3>مقابلة ليان</h3><p>تحقيق عودتها إلى الطابق بعد المغادرة</p><span class="card-state" id="layan-card-state">تُفتح بعد توثيق أثرين جنائيين ←</span></button>
           </div>
         </section>
         <section class="board-zone records-zone">
@@ -340,6 +341,18 @@
       <div class="timeline-progress"><span>الأحداث التي راجعتها</span><b id="timeline-progress-count">0 / 10</b></div>
       <p class="scene-footnote">قاعدة آدم: لا تحوّل الاحتمال إلى حقيقة لمجرد أنه يملأ فراغاً في القصة.</p>
     </section>
+
+    <section class="suspect-interviews-screen hidden" id="suspect-interviews-screen">
+      <header class="suspect-header"><button class="back-link" id="leave-suspect-interviews">← العودة إلى مكتب آدم</button><div><p class="eyebrow"><span class="status-dot"></span> وحدة التحقيق · مواجهات رسمية</p><h2>غرفة <em>الاستجواب.</em></h2><p>لا تطرح سؤالاً قبل أن تملك ما يسنده. كل إجابة تُسجّل كإفادة قابلة للتحقق.</p></div><span class="interview-status" id="suspect-question-count">0 إجابات موثقة</span></header>
+      <div class="suspect-layout"><aside class="suspect-list">
+       <button type="button" data-suspect="fares" class="suspect-person selected"><b>فارس الكيلاني</b><small>المواجهة غير متاحة بعد</small></button>
+       <button type="button" data-suspect="nader" class="suspect-person" disabled><b>نادر القيسي</b><small>المواجهة غير متاحة بعد</small></button>
+       <div class="suspect-warning">تنبيه: الاعتراف الجزئي أو التناقض لا يساوي إثبات الجريمة.</div>
+      </aside><main class="suspect-panel"><div class="suspect-identity"><p class="eyebrow" id="suspect-stage">المواجهة الأولى</p><h3 id="suspect-name">فارس الكيلاني</h3><p id="suspect-role">نائب مدير الأبحاث المالية</p></div>
+       <div class="suspect-response" id="suspect-response">«أعرف سبب وجودي هنا. لكنني لن أجيب عن اتهامات مبنية على التخمين.»</div><p class="suspect-observation" id="suspect-observation">اختر موضوعاً تملك دليلاً يسمح بطرحه.</p><div class="suspect-question-list" id="suspect-question-list"></div></main></div>
+      <section class="suspect-record"><div class="board-section-title"><span>محضر المواجهات</span><small>إفادات مسجلة · لا أحكام نهائية</small></div><ul id="suspect-notes"><li>لم تُسجّل أي مواجهة بعد.</li></ul></section>
+    </section>
+
     <section class="evidence-board-screen hidden" id="evidence-board-screen">
       <div class="board-header">
         <button class="back-link" id="leave-board">← العودة إلى مكتب آدم</button>
