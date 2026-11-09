@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#263039"/><stop offset=".55" stop-color="#151d23"/><stop offset="1" stop-color="#0b1014"/></linearGradient>
+ <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#735239"/><stop offset=".12" stop-color="#3d2c21"/><stop offset="1" stop-color="#171310"/></linearGradient>
+ <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#e2d3b6"/><stop offset="1" stop-color="#a99678"/></linearGradient>
+ <linearGradient id="glass" x2="1" y2="1"><stop stop-color="#233d4b"/><stop offset="1" stop-color="#0b1721"/></linearGradient>
+ <radialGradient id="warm"><stop stop-color="#d7a56b" stop-opacity=".35"/><stop offset="1" stop-color="#d7a56b" stop-opacity="0"/></radialGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="18"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
+ <pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="8" cy="12" r="1" fill="#fff" opacity=".08"/><circle cx="61" cy="75" r="1" fill="#fff" opacity=".06"/><path d="M24 80l5-7m40-42l3-6" stroke="#fff" opacity=".04"/></pattern>
+</defs>
+<rect width="1600" height="900" fill="url(#wall)"/>
+<path d="M0 0H1600V710H0Z" fill="#202a31"/>
+<path d="M0 0H1600V110H0Z" fill="#0c1217" opacity=".55"/>
+<!-- Rain-lit city window -->
+<rect x="55" y="105" width="385" height="420" fill="#0b1117" stroke="#525b60" stroke-width="18"/>
+<rect x="75" y="125" width="345" height="380" fill="url(#glass)"/>
+<path d="M75 370h345v135H75Z" fill="#0a121b"/>
+<g fill="#101b24"><path d="M88 320h50v185H88zm62-110h62v295h-62zm75 78h48v217h-48zm60-142h70v359h-70zm82 105h43v254h-43z"/></g>
+<g fill="#d0a16a" opacity=".55"><path d="M166 250h8v14h-8zm22 0h8v14h-8zm-22 28h8v14h-8zm134-80h8v14h-8zm24 0h8v14h-8zm-24 30h8v14h-8zm-174 120h8v14h-8z"/></g>
+<path d="M248 125v380M75 318h345" stroke="#65727a" stroke-width="12"/>
+<g stroke="#a8c1cb" stroke-width="3" opacity=".23"><path d="M112 145l-25 90m105-66l-24 100m115-110l-24 90m96-65l-25 98m-170 70l-19 65m250-50l-20 72"/></g>
+<!-- Investigation wall -->
+<rect x="500" y="85" width="1035" height="470" rx="4" fill="#11171b" stroke="#806345" stroke-width="12"/>
+<rect x="520" y="105" width="995" height="430" fill="#25231f"/>
+<path d="M520 145H1515" stroke="#6b533b" stroke-width="3"/>
+<text x="555" y="133" fill="#d2a979" font-family="Georgia" font-size="18" letter-spacing="5">CASE BOARD / 001 — THE SEVENTH FLOOR</text>
+<!-- pinned evidence photos -->
+<g transform="rotate(-3 675 270)"><rect x="575" y="170" width="195" height="160" fill="#d4c5a8" stroke="#907756" stroke-width="8"/><rect x="590" y="185" width="165" height="130" fill="#3d4a50"/><path d="M590 280l55-55 35 36 28-42 47 61z" fill="#19262c"/><circle cx="645" cy="221" r="18" fill="#c3a27a"/><circle cx="700" cy="218" r="18" fill="#b99770"/><path d="M645 240v48m55-50v50" stroke="#1c282d" stroke-width="17"/></g>
+<g transform="rotate(2 900 270)"><rect x="810" y="170" width="180" height="155" fill="#d8cbb4" stroke="#8d7656" stroke-width="8"/><rect x="825" y="185" width="150" height="125" fill="#c1b39a"/><path d="M840 210h120m-120 20h105m-105 20h115m-115 20h80m-80 20h112" stroke="#726655" stroke-width="5" opacity=".8"/><text x="845" y="300" fill="#8c493e" font-family="Georgia" font-size="15">FIN / 07</text></g>
+<g transform="rotate(-2 1200 270)"><rect x="1080" y="170" width="220" height="165" fill="#d5c6a8" stroke="#8d7656" stroke-width="8"/><rect x="1095" y="185" width="190" height="135" fill="#39464b"/><path d="M1110 290l35-48 35 22 35-58 55 84z" fill="#17232a"/><circle cx="1180" cy="225" r="16" fill="#b99a76"/></g>
+<!-- red thread and pins -->
+<g stroke="#a9433d" stroke-width="4" fill="none" opacity=".9"><path d="M770 245L810 245L1080 250M990 250L1080 250M770 270L840 380L1190 360"/></g>
+<g fill="#d4a16c" stroke="#171a1b" stroke-width="5"><circle cx="770" cy="245" r="8"/><circle cx="810" cy="245" r="8"/><circle cx="1080" cy="250" r="8"/><circle cx="990" cy="250" r="8"/><circle cx="840" cy="380" r="8"/><circle cx="1190" cy="360" r="8"/></g>
+<!-- clipped notes -->
+<g transform="rotate(3 690 430)"><rect x="585" y="365" width="220" height="135" fill="url(#paper)" stroke="#8d7656" stroke-width="5"/><path d="M610 400h160m-160 18h145m-145 18h155m-155 18h115" stroke="#82735f" stroke-width="4" opacity=".7"/><text x="610" y="480" fill="#8b493f" font-family="Georgia" font-size="18">01:40 AM</text></g>
+<g transform="rotate(-2 1000 440)"><rect x="900" y="375" width="200" height="125" fill="#d4c4a4" stroke="#8d7656" stroke-width="5"/><text x="920" y="410" fill="#594b3a" font-family="Georgia" font-size="17">NAWA / INTERNAL</text><path d="M920 430h155m-155 18h130m-130 18h150" stroke="#82735f" stroke-width="4"/></g>
+<!-- desk -->
+<ellipse cx="900" cy="755" rx="780" ry="140" fill="#000" opacity=".7" filter="url(#shadow)"/>
+<path d="M0 625L1600 625V900H0Z" fill="#141311"/>
+<path d="M0 655L1600 655" stroke="#786047" stroke-width="5" opacity=".6"/>
+<path d="M130 625L1480 625L1570 710L40 710Z" fill="url(#wood)" stroke="#9a7651" stroke-width="7"/>
+<path d="M40 710H1570L1515 900H100Z" fill="#241a14"/>
+<path d="M170 730H1440" stroke="#c39a6d" stroke-width="3" opacity=".2"/>
+<ellipse cx="850" cy="660" rx="520" ry="220" fill="url(#warm)"/>
+<!-- case file -->
+<g transform="translate(470 600) rotate(-5)">
+ <rect x="0" y="0" width="360" height="225" rx="5" fill="#876342" stroke="#c09a6b" stroke-width="5"/>
+ <path d="M0 0h145v-22h125v22h90" fill="#a17a51" stroke="#c09a6b" stroke-width="4"/>
+ <rect x="28" y="28" width="304" height="165" fill="#c8b28e" stroke="#604a35" stroke-width="3"/>
+ <rect x="50" y="48" width="105" height="32" fill="none" stroke="#8b4c40" stroke-width="3"/>
+ <text x="58" y="70" fill="#8b4c40" font-family="Georgia" font-size="17">CONFIDENTIAL</text>
+ <text x="52" y="120" fill="#33281f" font-family="Georgia" font-size="35" font-weight="bold">THE CASE</text>
+ <text x="52" y="151" fill="#4a3a2b" font-family="Georgia" font-size="17" letter-spacing="3">FILE 001 / NAWA</text>
+ <path d="M52 168h255" stroke="#8a755a" stroke-width="2"/>
+</g>
+<!-- desk lamp -->
+<path d="M1320 625V400l-80-85" stroke="#171b1d" stroke-width="18" fill="none"/>
+<path d="M1175 300Q1240 230 1310 300L1288 340H1198Z" fill="#b28a5a" stroke="#554532" stroke-width="7"/>
+<path d="M1190 340L1080 625H1430L1295 340Z" fill="#d5a66d" opacity=".08"/>
+<ellipse cx="1260" cy="620" rx="210" ry="60" fill="#d7a56b" opacity=".12" filter="url(#soft)"/>
+<!-- mug, notebook and pen -->
+<g transform="translate(1040 660)"><ellipse cx="0" cy="58" rx="55" ry="14" fill="#050607" opacity=".6"/><path d="M-38 0h72l-8 56q-28 17-56 0z" fill="#d8d0bd" stroke="#6d6254" stroke-width="5"/><ellipse cx="-2" cy="2" rx="36" ry="10" fill="#39271e"/><path d="M34 13q45-8 34 29q-7 20-39 13" fill="none" stroke="#c9bea9" stroke-width="10"/></g>
+<g transform="rotate(7 1280 770)"><rect x="1190" y="700" width="250" height="150" fill="#c9b99b" stroke="#715a40" stroke-width="5"/><path d="M1210 735h205m-205 20h180m-180 20h190m-190 20h130" stroke="#84745d" stroke-width="4"/></g>
+<path d="M850 705l140-42" stroke="#171a1b" stroke-width="11" stroke-linecap="round"/><path d="M850 705l25-8" stroke="#c28e5b" stroke-width="5"/>
+<!-- atmosphere -->
+<rect width="1600" height="900" fill="url(#grain)"/>
+<rect width="1600" height="900" fill="none" stroke="#050709" stroke-width="100" opacity=".5"/>
+<text x="65" y="860" fill="#c3b7a5" opacity=".65" font-family="Georgia" font-size="17" letter-spacing="5">ADAM MURAD / PRIVATE INVESTIGATOR</text>
+<text x="1535" y="860" text-anchor="end" fill="#c3b7a5" opacity=".65" font-family="Georgia" font-size="17" letter-spacing="5">CASE 001 — THE SEVENTH FLOOR</text>
+</svg>
