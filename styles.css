@@ -786,3 +786,8 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
  .scene-layout{height:calc(100svh - 142px);min-height:240px}
  .crime-room{height:100%;min-height:0}
 }
+
+
+/* Navigation visibility hotfix: the cinematic hero must obey the shared screen state. */
+.hero.hidden{display:none!important;visibility:hidden!important;pointer-events:none!important}
+.hero:not(.hidden){display:block}
