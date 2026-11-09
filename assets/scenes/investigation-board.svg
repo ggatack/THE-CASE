@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+ <linearGradient id="frame" x2="0" y2="1"><stop stop-color="#5a402d"/><stop offset=".5" stop-color="#211a16"/><stop offset="1" stop-color="#100e0c"/></linearGradient>
+ <linearGradient id="cork" x2="0" y2="1"><stop stop-color="#77563a"/><stop offset=".45" stop-color="#5d402d"/><stop offset="1" stop-color="#39291f"/></linearGradient>
+ <pattern id="speck" width="48" height="42" patternUnits="userSpaceOnUse"><circle cx="5" cy="8" r="1.5" fill="#d4a16d" opacity=".18"/><circle cx="30" cy="22" r="1" fill="#1d120d" opacity=".32"/><path d="M14 34l5-3m17-25l4 2" stroke="#d2a276" stroke-width="1" opacity=".12"/></pattern>
+ <filter id="soft"><feGaussianBlur stdDeviation="22"/></filter>
+ <filter id="drop" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="10"/><feOffset dy="12"/><feComponentTransfer><feFuncA type="linear" slope=".5"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1600" height="900" fill="#080a0c"/>
+<rect x="24" y="22" width="1552" height="856" rx="12" fill="url(#frame)" stroke="#a17b55" stroke-width="5"/>
+<rect x="48" y="46" width="1504" height="808" rx="5" fill="url(#cork)" stroke="#241912" stroke-width="14"/>
+<rect x="62" y="60" width="1476" height="780" fill="url(#speck)"/>
+<path d="M65 70H1535M65 832H1535" stroke="#d2a16d" stroke-opacity=".22" stroke-width="2"/>
+<g opacity=".14" fill="#d4b18a" font-family="Georgia" letter-spacing="8"><text x="88" y="118" font-size="19">PRIVATE INVESTIGATION / ADAM MURAD</text><text x="1510" y="815" text-anchor="end" font-size="17">NAWA CORPORATION · FLOOR 07</text></g>
+<!-- pinned source fragments around the working surface -->
+<g filter="url(#drop)">
+ <g transform="translate(95 155) rotate(-5)"><rect width="180" height="128" fill="#d9cfb8" stroke="#9a876d" stroke-width="5"/><path d="M18 27h140M18 46h110M18 65h130M18 84h82" stroke="#817663" stroke-width="4" opacity=".55"/><text x="18" y="111" font-family="Georgia" font-size="12" fill="#594b3b">FIELD REPORT / 01</text></g>
+ <g transform="translate(1320 160) rotate(4)"><rect width="150" height="190" fill="#c5b89e" stroke="#80684f" stroke-width="5"/><rect x="16" y="18" width="118" height="88" fill="#39464a"/><path d="M16 85l38-36 24 22 26-31 30 42" fill="#1b252a"/><path d="M18 130h112M18 147h94M18 164h105" stroke="#71624f" stroke-width="4" opacity=".6"/></g>
+ <g transform="translate(132 640) rotate(3)"><rect width="155" height="116" fill="#d9d0bd" stroke="#8f7b61" stroke-width="4"/><text x="14" y="26" font-family="Georgia" font-size="12" fill="#684b38">NAWA / 07</text><path d="M14 42h126M14 59h110M14 76h118" stroke="#8d806b" stroke-width="3" opacity=".55"/><circle cx="120" cy="91" r="13" fill="none" stroke="#9d4b43" stroke-width="3"/></g>
+</g>
+<!-- red investigation threads, deliberately behind the interface cards -->
+<g fill="none" stroke="#9e3d35" stroke-width="4" opacity=".78">
+ <path d="M250 280C370 340 430 370 545 420S770 500 880 420"/>
+ <path d="M280 690C420 620 510 570 650 560S920 620 1090 680"/>
+ <path d="M760 110C810 220 870 280 990 340S1190 390 1370 320"/>
+ <path d="M470 220C600 270 700 320 810 440"/>
+</g>
+<g fill="#c18d5c" stroke="#261912" stroke-width="4">
+ <circle cx="250" cy="280" r="9"/><circle cx="545" cy="420" r="9"/><circle cx="880" cy="420" r="9"/>
+ <circle cx="280" cy="690" r="9"/><circle cx="650" cy="560" r="9"/><circle cx="1090" cy="680" r="9"/>
+ <circle cx="760" cy="110" r="9"/><circle cx="990" cy="340" r="9"/><circle cx="1370" cy="320" r="9"/>
+</g>
+<g opacity=".18" stroke="#f0d2aa" stroke-width="2"><path d="M70 145h20M70 145v20M1530 145h-20M1530 145v20M70 755h20M70 755v-20M1530 755h-20M1530 755v-20"/></g>
+<rect x="24" y="22" width="1552" height="856" rx="12" fill="none" stroke="#d4b18a" stroke-opacity=".16" stroke-width="2"/>
+</svg>
