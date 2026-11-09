@@ -335,7 +335,13 @@
     $("cross-title").textContent=a.title+" + "+b.title;
     $("cross-text").textContent=a.text+" "+b.text;
     $("cross-limits").textContent=a.limits+" "+b.limits;
-    renderCrosscheck();
+    // Completing a comparison records its report automatically and unlocks the next step.
+    if(!collected.includes("archive-crosscheck")){
+      collected.push("archive-crosscheck");
+      localStorage.setItem(key,JSON.stringify(collected));
+      render();renderBoard();
+    }
+    renderCrosscheck();renderServerForensics();
   });
   $("record-crosscheck").addEventListener("click",()=>{
     if(!crossResult||collected.includes("archive-crosscheck"))return;
