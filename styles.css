@@ -1647,3 +1647,5 @@ html,body{background:#090b0e!important}
  #briefing-screen .back-link{margin-bottom:5vh!important}
  #briefing-screen .briefing-card{padding:16px!important}
 }
+
+#briefing-screen.hidden{display:none!important}
