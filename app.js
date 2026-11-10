@@ -1,7 +1,7 @@
 
 (() => {
   const $ = id => document.getElementById(id);
-  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen","layan-screen","suspect-interviews-screen","case-review-screen"];
+  const screens = ["home-screen","briefing-screen","office-screen","investigation-screen","evidence-board-screen","interview-screen","logs-screen","timeline-screen","archive-screen","crosscheck-screen","server-forensics-screen","layan-screen","suspect-interviews-screen","case-review-screen","case-ending-screen"];
   const show = id => {
     screens.forEach(s => $(s).classList.toggle("hidden",s!==id));
     const active=$(id);
@@ -559,6 +559,7 @@
     $("review-result-text").textContent=correct?
       "يرجّح تسلسل الوقائع أن فارس هو من واجه سليم وتسبب في سقوطه، وأن نادر كان مصدر الأمر. لكن قوة الاستنتاج ليست واحدة: دور فارس تدعمه حركة البطاقة وإطار الكاميرا وإفادة ليان والقرائن المتقاطعة، بينما أمر نادر ما زال استنتاجاً تدعمه المذكرة وسياق التسجيل ولا يرقى وحده إلى إثبات قضائي قاطع.":
       "راجع الفارق بين المنفّذ المباشر وصاحب الأمر، ولا تمنح سجل التدقيق أكثر مما يقول. يمكنك تعديل اختياراتك قبل تثبيت النسخة النهائية من القرار.";
+    $("continue-to-ending").classList.remove("hidden");
     $("review-next-note").textContent=correct?
       "ملاحظة مهمة: سجل 02:06 يثبت تعديل خانة في السجل عبر حساب خدمة إداري، لكنه لا يحدد الشخص الذي استخدم الحساب. ليان اعترفت بحذف الرسالة، لا بالقتل. القضية تقود إلى خيوط أوسع من حادثة الطابق السابع.":
       "تذكّر: استخدام بيانات البطاقة لا يثبت هوية حاملها، والمذكرة التي وصلت إلى مكتب نادر لا تثبت وحدها أنه أصدر أمراً. افصل بين القرينة والواقعة.";
@@ -572,6 +573,27 @@
     localStorage.setItem(reviewDecisionKey,JSON.stringify(savedReview));showCaseReviewResult(savedReview);
   });
   renderCaseReview();
+
+  // The ending is a deliberate three-beat sequence: report, archive photograph, then the next case hook.
+  $("continue-to-ending").addEventListener("click",()=>show("case-ending-screen"));
+  $("leave-ending").addEventListener("click",()=>show("case-review-screen"));
+  $("open-ending-attachment").addEventListener("click",()=>{
+    $("ending-report-stage").classList.add("hidden");
+    $("ending-photo-stage").classList.remove("hidden");
+    show("case-ending-screen");
+  });
+  $("inspect-ending-photo").addEventListener("click",()=>{
+    $("photo-inspection").classList.remove("hidden");
+    $("ending-photo-stage").classList.add("photo-inspected");
+    $("ending-photo-stage").insertAdjacentHTML("beforeend",'<div class="ending-photo-continue"><span class="ending-step">مرفق تم فحصه · 02 / 02</span><button class="ending-primary" id="receive-ending-message">متابعة <b>←</b></button></div>');
+    $("inspect-ending-photo").disabled=true;
+    $("receive-ending-message").addEventListener("click",()=>{
+      $("ending-photo-stage").classList.add("hidden");
+      $("ending-teaser-stage").classList.remove("hidden");
+      show("case-ending-screen");
+    });
+  });
+  $("return-ending-office").addEventListener("click",()=>show("office-screen"));
   // Refresh the review lock after any evidence, interview, or timeline action.
   document.addEventListener("click",()=>window.setTimeout(renderCaseReview,0));
   document.addEventListener("change",()=>window.setTimeout(renderCaseReview,0));
