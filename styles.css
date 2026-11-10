@@ -1037,3 +1037,152 @@ button:focus-visible{outline:2px solid #edc18c;outline-offset:3px}
  .hero-text{font-size:11px;line-height:1.75}
  .briefing{padding:16px}
 }
+
+
+/* THE CASE — FINAL ART DIRECTION / INVESTIGATION WALL */
+:root{
+ --bg:#080a0c;--panel:#151310;--line:#71583e;--text:#eee4d5;
+ --muted:#a99a87;--copper:#d2a16e;--red:#a64e43;
+}
+html,body{width:100%;min-height:100%;background:#080a0c}
+body{background:radial-gradient(ellipse at 50% 0%,#29221a 0%,#10100f 42%,#07090b 100%);color:#eee4d5}
+.app-shell{max-width:none;width:100%;padding:14px clamp(14px,2vw,30px) 12px}
+.topbar{height:48px;flex:0 0 48px;border-bottom:1px solid #9b765044}
+.brand-icon{width:31px;height:31px;filter:sepia(.25)}
+.brand-mark b{font-size:17px;letter-spacing:3px;color:#f1e4d0}
+.brand-mark small{font-size:9px;color:#b8946b;letter-spacing:1.4px}
+.icon-button{width:34px;height:34px;border-radius:3px;border-color:#96734d;background:#17130f;color:#e2b17c}
+.hidden{display:none!important}
+
+/* Home, briefing and the main investigation wall use the same in-world frame. */
+.hero{margin:12px 0 0!important;height:calc(100svh - 88px)!important;min-height:420px!important;max-height:none!important;border:1px solid #a27c53!important;box-shadow:0 24px 90px #000d,inset 0 0 0 5px #d0a06d12!important}
+.hero:after{inset:9px!important;border:1px solid #d0a06d55!important}
+.hero-copy{right:5%!important;width:min(42%,590px)!important;padding:clamp(18px,3vw,38px)!important;background:linear-gradient(135deg,#090b0df2,#17120ee8)!important;border-right:3px solid #d0a06d!important;outline:1px solid #b88b5d66!important;outline-offset:-8px!important;box-shadow:0 20px 65px #000d!important}
+.hero h1{font-size:clamp(38px,6vw,76px)!important;color:#f1e7d9!important}
+.hero h1 em{color:#d3a06a!important}
+.hero-text{color:#d0c4b2!important}
+.hero-copy .eyebrow{color:#d7a875!important}
+.hero-footer{color:#d1b18b!important}
+.primary-button,.ending-primary{background:linear-gradient(135deg,#d5ad7e,#a9784c)!important;color:#1b1712!important;border:1px solid #f0d2a6!important;box-shadow:0 5px 18px #0008,inset 0 1px #fff8!important}
+.secondary-button{background:#111417e8!important;border:1px solid #a27a50!important;color:#e6d6c1!important}
+.briefing{max-width:1180px!important;margin:14px auto 0!important;padding:clamp(18px,2.6vw,34px)!important;border:1px solid #a17a51!important;background:linear-gradient(90deg,#090b0df0,#17120ee8),url('assets/scenes/adam-office.svg') center/cover!important;box-shadow:0 22px 70px #000c,inset 0 0 0 5px #d0a06d12!important}
+.briefing h2{color:#f0e4d3!important}
+.briefing-card{background:linear-gradient(135deg,#e0d2bbf5,#bca98dF2)!important;color:#29241e!important;border:1px solid #f0dfc4!important;box-shadow:0 12px 35px #0008!important}
+.briefing-card p{color:#302a23!important}
+.briefing-label,.briefing-meta{color:#705b43!important}
+.briefing-card strong,.briefing-meta b{color:#211d18!important}
+
+/* Investigation hub: a single wall, four deliberate evidence departments. */
+.office-screen{
+ position:relative!important;isolation:isolate!important;
+ width:100%!important;max-width:none!important;
+ height:calc(100svh - 78px)!important;min-height:470px!important;
+ margin:8px auto 0!important;padding:clamp(12px,1.5vh,19px) clamp(14px,2vw,28px) 11px!important;
+ overflow:hidden!important;border:1px solid #a9845b!important;
+ background:#17110c url('assets/scenes/investigation-board.svg') center/cover no-repeat!important;
+ box-shadow:0 22px 75px #000d,inset 0 0 0 5px #d0a06d12,inset 0 0 90px #000b!important;
+ display:flex!important;flex-direction:column!important;gap:clamp(8px,1.2vh,13px)!important;
+}
+.office-screen:before{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none!important;background:linear-gradient(90deg,#0b0908e8,#100d0ac4 48%,#0b0908e8),linear-gradient(0deg,#080706c9,transparent 42%,#0807067a)!important}
+.board-heading{display:grid!important;grid-template-columns:minmax(135px,190px) minmax(0,1fr) minmax(135px,200px)!important;align-items:center!important;gap:clamp(8px,1.2vw,18px)!important;flex:0 0 auto!important;padding:0 0 10px!important;border-bottom:1px solid #c69a6b66!important}
+.board-heading .back-link{padding:0!important;color:#d8c1a4!important;font-size:11px!important}
+.board-case-title .eyebrow{margin:0 0 4px!important;font-size:9px!important;color:#d9a873!important}
+.board-case-title h2{font-size:clamp(22px,3.3vh,36px)!important;line-height:1.1!important;margin:0!important;color:#f4e8d8!important}
+.board-case-title h2 em{color:#d3a06a!important}
+.board-stamp{border:1px solid #b77c55!important;color:#d7a77a!important;padding:3px 8px!important;margin-bottom:5px!important;font:9px 'Cormorant Garamond'!important;letter-spacing:2px!important;transform:rotate(-2deg)}
+.board-meta{text-align:left!important;border-right:1px solid #d0a06d88!important;padding-right:13px!important;color:#b6a18a!important}
+.board-meta span,.board-meta small{display:block!important;font-size:8px!important;letter-spacing:1px!important}
+.board-meta b{display:block!important;font-size:13px!important;color:#f0dfc8!important;margin:3px 0!important}
+.investigation-board{flex:1 1 auto!important;min-height:0!important;display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr 1fr!important;gap:clamp(9px,1.1vw,15px)!important}
+.board-zone{position:relative!important;min-width:0!important;min-height:0!important;padding:clamp(9px,1.15vh,14px)!important;border:1px solid #b18a5eaa!important;background:linear-gradient(145deg,#2b2119ed,#15120ff2)!important;box-shadow:0 10px 28px #000b,inset 0 1px #f5d6ad30,inset 0 0 0 4px #d0a06d0b!important;backdrop-filter:blur(4px)!important}
+.board-zone:before{content:""!important;position:absolute!important;inset:4px!important;border:1px solid #d6b48a35!important;pointer-events:none!important}
+.board-zone>header{display:flex!important;align-items:center!important;gap:10px!important;min-height:30px!important;margin:0 0 9px!important;padding:0 0 8px!important;border-bottom:1px solid #c39a6c77!important;color:#f4e6d2!important}
+.zone-number{display:grid!important;place-items:center!important;width:29px!important;height:29px!important;flex:0 0 29px!important;border:1px solid #c28d5d!important;background:#120f0c!important;color:#e2b27e!important;font:13px 'Cormorant Garamond'!important;box-shadow:0 0 0 3px #c28d5d14!important}
+.board-zone>header div{min-width:0!important}
+.board-zone>header b{display:block!important;font-size:clamp(11px,1.15vw,15px)!important;font-weight:600!important;color:#f4e6d2!important}
+.board-zone>header small{display:block!important;color:#d1a06b!important;font:8px 'Cormorant Garamond'!important;letter-spacing:1.5px!important}
+.board-zone>header i{margin-right:auto!important;color:#b5a38b!important;font-size:8px!important;font-style:normal!important}
+.zone-cards{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;height:calc(100% - 40px)!important;align-content:stretch!important}
+.board-zone.records-zone .zone-cards,.board-zone.analysis-zone .zone-cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.office-screen .zone-cards>.office-card,.office-screen .zone-cards>button.office-card{
+ position:relative!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+ width:100%!important;max-width:none!important;min-width:0!important;min-height:0!important;height:100%!important;
+ margin:0!important;padding:clamp(9px,1.2vh,15px) clamp(9px,.9vw,14px)!important;
+ text-align:right!important;overflow:hidden!important;
+ border:1px solid #9e7a55!important;border-right:3px solid #b88b5c!important;
+ background:linear-gradient(145deg,#3a3026f5,#191613fa)!important;
+ box-shadow:0 7px 18px #000a,inset 0 1px #fff3!important;
+ transition:transform .18s ease,border-color .18s ease,background .18s ease!important;
+}
+.office-screen .zone-cards>.office-card:after{content:""!important;position:absolute!important;left:0!important;bottom:0!important;width:100%!important;height:2px!important;background:linear-gradient(90deg,transparent,#c79b6d88,transparent)!important}
+.office-screen .zone-cards>.office-card:hover:not(:disabled){transform:translateY(-2px)!important;border-color:#e0b17b!important;background:linear-gradient(145deg,#51402e,#211a14)!important}
+.office-screen .office-card:disabled{opacity:.52!important;filter:saturate(.55)!important}
+.office-screen .office-card.active-card{background:linear-gradient(145deg,#654a30,#2a2018)!important;border-color:#e0b17b!important;border-right-color:#e0b17b!important}
+.office-screen .office-card .card-index{position:absolute!important;top:8px!important;left:10px!important;right:auto!important;color:#d5aa7d!important;font:9px 'Cormorant Garamond'!important;letter-spacing:1.2px!important}
+.office-screen .office-card .card-symbol{display:grid!important;place-items:center!important;width:34px!important;height:32px!important;flex:0 0 32px!important;margin:10px 0 8px!important;border:1px solid #c092627e!important;background:#171411!important;color:#e2b780!important;font-size:21px!important;box-shadow:inset 0 0 13px #d4a36b1e!important}
+.office-screen .office-card h3{display:block!important;width:100%!important;margin:0 0 5px!important;color:#f4e6d2!important;font-size:clamp(11px,1.05vw,14px)!important;font-weight:600!important;line-height:1.45!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+.office-screen .office-card p{display:block!important;width:100%!important;margin:0 0 7px!important;color:#c9b9a3!important;font-size:clamp(8px,.78vw,10px)!important;line-height:1.65!important}
+.office-screen .office-card .card-state{display:block!important;width:100%!important;margin-top:auto!important;color:#e3b47d!important;font-size:clamp(8px,.73vw,9px)!important;line-height:1.5!important}
+.board-footer{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:10px!important;flex:0 0 auto!important;padding-top:7px!important;border-top:1px solid #c39a6c55!important;color:#c5b39b!important;font-size:9px!important}
+.board-footer b{color:#e2b27e!important}
+.board-footer span:last-child{font:9px 'Cormorant Garamond'!important;letter-spacing:1.5px!important;color:#c1a27c!important}
+.board-footer i{color:#a34d40!important;font-style:normal!important}
+
+/* All investigation workspaces retain the same dossier materials and brass hierarchy. */
+.briefing,.investigation-screen,.interview-screen,.logs-screen,.archive-screen,.crosscheck-screen,.server-forensics-screen,.layan-screen,.timeline-screen,.suspect-interviews-screen,.case-review-screen,.case-ending-screen,.evidence-board-screen{color:#eee4d5!important}
+.back-link{color:#d9b68c!important}
+.archive-documents,.archive-reader,.log-detail,.timeline-detail,.crosscheck-result,.server-reader,.inspection-panel,.suspect-record,.suspect-list,.suspect-panel,.review-question,.board-evidence-area,.theory-area{background:linear-gradient(145deg,#201a14,#0d1012)!important;border-color:#9b795677!important;box-shadow:0 14px 38px #0009,inset 0 1px #fff1!important}
+.archive-document,.suspect-person,.timeline-event,.log-row,.evidence-card,.board-evidence-card{background:linear-gradient(145deg,#33281e,#191613)!important;border-color:#94704e!important;color:#eee2d0!important}
+.archive-document:hover,.archive-document.selected,.suspect-person.selected,.timeline-event.selected,.log-row.selected{border-color:#e0b17b!important;background:linear-gradient(145deg,#493725,#211b16)!important}
+.suspect-question,.question-option,.answer-option{background:#211d19!important;border-color:#8c6a49!important;color:#eadcc8!important}
+.ending-report-paper{background:linear-gradient(135deg,#e8ddc9,#c9b99e)!important;color:#28231d!important;border-color:#f6e9d3!important;box-shadow:0 25px 75px #000c,0 0 0 5px #9c795033!important}
+.ending-seal{border-color:#9d7751!important;color:#956d43!important}
+button{-webkit-tap-highlight-color:transparent}
+button:focus-visible{outline:2px solid #edc18c!important;outline-offset:3px!important}
+
+/* Landscape handset composition — full board remains visible without clipped controls. */
+@media(max-width:900px) and (orientation:landscape){
+ .app-shell{padding:7px 9px 8px!important}
+ .topbar{height:39px!important;flex-basis:39px!important;margin:0!important}
+ .office-screen{height:calc(100svh - 55px)!important;min-height:0!important;padding:7px 10px 6px!important;gap:5px!important}
+ .board-heading{grid-template-columns:112px minmax(0,1fr) 122px!important;gap:7px!important;padding-bottom:5px!important}
+ .board-heading .back-link{font-size:9px!important}
+ .board-stamp{font-size:7px!important;padding:2px 5px!important;margin-bottom:3px!important}
+ .board-case-title .eyebrow{font-size:7px!important}
+ .board-case-title h2{font-size:clamp(17px,3.2vh,23px)!important}
+ .board-meta{padding-right:7px!important}
+ .board-meta span,.board-meta small{font-size:6px!important}
+ .board-meta b{font-size:10px!important}
+ .investigation-board{gap:6px!important}
+ .board-zone{padding:5px 6px!important}
+ .board-zone>header{min-height:20px!important;margin-bottom:4px!important;padding-bottom:4px!important;gap:6px!important}
+ .zone-number{width:21px!important;height:21px!important;flex-basis:21px!important;font-size:10px!important}
+ .board-zone>header b{font-size:9px!important}
+ .board-zone>header small{font-size:6px!important}
+ .board-zone>header i{font-size:6px!important}
+ .zone-cards{height:calc(100% - 25px)!important;gap:5px!important}
+ .office-screen .zone-cards>.office-card{padding:5px 6px!important;border-right-width:2px!important}
+ .office-screen .office-card .card-index{top:4px!important;left:6px!important;font-size:7px!important}
+ .office-screen .office-card .card-symbol{width:23px!important;height:22px!important;flex-basis:22px!important;margin:7px 0 4px!important;font-size:15px!important}
+ .office-screen .office-card h3{font-size:clamp(8px,1.8vh,10px)!important;line-height:1.3!important;margin-bottom:2px!important}
+ .office-screen .office-card p{font-size:clamp(6px,1.35vh,8px)!important;line-height:1.35!important;margin-bottom:3px!important}
+ .office-screen .office-card .card-state{font-size:clamp(6px,1.25vh,7px)!important;line-height:1.3!important}
+ .board-footer{font-size:7px!important;padding-top:4px!important}
+ .board-footer span:last-child{font-size:7px!important}
+ .hero{height:calc(100svh - 58px)!important;min-height:0!important;margin:8px 0 0!important}
+ .hero-copy{right:3%!important;width:min(48%,500px)!important;padding:12px 16px!important}
+ .hero h1{font-size:clamp(28px,6vh,48px)!important}
+ .hero-text{font-size:10px!important;line-height:1.6!important;margin-bottom:10px!important}
+ .hero-actions .primary-button,.hero-actions .secondary-button{height:38px!important}
+ .briefing{margin:7px auto 0!important;padding:10px 15px!important}
+ .briefing h2{font-size:clamp(26px,5.5vh,39px)!important;margin-bottom:8px!important}
+ .briefing-card{padding:9px 14px!important;margin:8px 0!important}
+ .briefing-card p{font-size:10px!important;line-height:1.7!important;margin:4px 0!important}
+}
+@media(max-width:680px) and (orientation:landscape){
+ .board-heading{grid-template-columns:92px minmax(0,1fr) 100px!important}
+ .board-meta small{display:none!important}
+ .board-zone>header i{display:none!important}
+ .office-screen .office-card p{display:block!important}
+}
+@media(prefers-reduced-motion:reduce){.office-screen .office-card{transition:none!important}}
