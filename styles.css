@@ -1038,3 +1038,134 @@ button:focus-visible{outline:2px solid #edc18c;outline-offset:3px}
  .briefing{padding:16px}
 }
 
+
+
+/* === THE CASE: rebuild the six reference compositions (lightweight, no filters) === */
+:root{--ref-ink:#0a0b0e;--ref-paper:#c9b99f;--ref-gold:#d9a75f;--ref-rust:#9d302b}
+html,body{background:#090a0c}
+body{color:#eee5d8;background:#090a0c}
+.app-shell{width:100%;max-width:none;padding:0 10px}
+.topbar{height:34px;min-height:34px;border:0;border-bottom:1px solid #8f6d4b66;padding:0 10px}
+.brand-mark b{letter-spacing:2px}.brand-icon{width:25px;height:25px}
+.site-footer{display:none}
+/* 1 — Main menu: office panorama, logo and vertical menu */
+.hero#home-screen{position:relative;isolation:isolate;height:calc(100svh - 38px);min-height:390px;max-height:none;padding:18px 3.5vw 38px;display:grid;grid-template-columns:minmax(220px,.72fr) minmax(300px,1.28fr);gap:2vw;align-items:center;border:1px solid #70543c;background:linear-gradient(90deg,#08090b 0%,#08090b55 43%,#08090b10 100%),url('assets/scenes/salim-office.svg') center/cover no-repeat;box-shadow:inset 0 0 70px #000b}
+.hero#home-screen:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#050609c9 0%,#05060960 38%,transparent 75%)}
+.hero-copy{grid-column:1;grid-row:1;max-width:430px;padding:8px 12px;background:transparent;border:0;box-shadow:none}
+.hero-copy:before{content:"THE CASE";display:block;direction:ltr;text-align:left;font:900 clamp(42px,6vw,78px)/.9 Georgia,serif;letter-spacing:2px;color:#eee5d8;text-shadow:0 3px 4px #000;margin:0 0 20px}
+.hero-copy .eyebrow{font-size:9px;color:#d7b17c}
+.hero h1{font-size:clamp(23px,2.5vw,34px);line-height:1.15;margin:0 0 9px;color:#f4e9d8}
+.hero h1 em{color:#d8a45d}.hero-text{font-size:11px;line-height:1.7;color:#d2c5b5;margin:0 0 12px}
+.hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:5px;max-width:220px}
+.hero-actions button{width:100%;min-height:34px;height:34px;padding:0 12px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;text-align:right;background:linear-gradient(90deg,#08090bdc,#171411e8);border:1px solid #766044;color:#f0e4d2;font-size:11px;box-shadow:0 2px 6px #0009}
+.hero-actions .primary-button{background:linear-gradient(90deg,#1a1510,#3b2a1a);color:#f6dfb8;border-color:#b48b53}
+.hero-actions button:hover{border-color:#f0c477;background:#3a2b1d}
+.hero .case-art{display:block!important;grid-column:2;grid-row:1;min-height:100%;width:100%;background:transparent!important;border:0!important;box-shadow:none!important}
+.hero-footer{position:absolute;bottom:7px;right:3.5vw;left:3.5vw;display:flex;justify-content:space-between;border-top:1px solid #a9845b55;padding-top:5px;color:#d2c2ac;font-size:9px}
+/* 2 — Case selector as two physical file cards */
+.modal{background:#050608d9;backdrop-filter:none}
+.modal-card{width:min(780px,94vw);max-width:780px;padding:24px;background:linear-gradient(145deg,#2c2119,#0d0e11);border:1px solid #a27b4d;border-radius:2px;box-shadow:0 12px 36px #000d}
+.modal-card:before{content:"⚖  اختيار القضية";display:block;font-size:18px;color:#f0d5a7;border-bottom:1px solid #94704766;padding-bottom:12px;margin-bottom:15px}
+.modal-card .eyebrow{display:none}.modal-card h2{font-size:0;margin:0}
+.modal-card h2:after{content:"ملفات التحقيق";font-size:22px;color:#f1e5d3}
+.archive-row{display:inline-flex;vertical-align:top;position:relative;box-sizing:border-box;width:48%;min-height:190px;margin:1%;padding:18px 14px 14px;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#d1bea0,#8f785e);border:2px solid #8b6945;color:#2b2118;box-shadow:0 5px 14px #0009}
+.archive-row:before{content:"";position:absolute;inset:9px;border:1px solid #5b4430;pointer-events:none}
+.archive-number{font:700 30px Georgia;color:#7d2924}
+.archive-row b{display:block;color:#21180f;font-size:18px}.archive-row small{display:block;color:#594632;margin-top:8px}
+.archive-tag{margin-top:12px;color:#7e2b25;border:1px solid #8c3930;padding:4px 12px;background:#e0cfb5}
+.modal-note{color:#d0bea3;font-size:11px;margin-top:12px}
+/* 3 — Investigation hub: a real pinboard composition */
+#office-screen{max-width:none;width:100%;min-height:calc(100svh - 50px);margin:8px auto;padding:12px 18px;background:linear-gradient(#100e0cdd,#100e0cdd),url('assets/scenes/salim-office.svg') center/cover no-repeat;border:1px solid #795a3d;box-shadow:inset 0 0 0 5px #17110d,0 8px 24px #000a}
+#office-screen .board-heading{grid-template-columns:130px 1fr auto;gap:12px;border-bottom:1px solid #9b764c;padding-bottom:8px}
+#office-screen .board-heading h2{font-size:clamp(20px,2.5vw,30px);color:#f1e2ce}
+#office-screen .board-heading .board-stamp{color:#d7ae73}
+#office-screen .investigation-board{margin:10px 0;padding:12px;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr));background:linear-gradient(135deg,#57402d,#2b2018);border:7px solid #261b14;box-shadow:inset 0 0 0 2px #a27b50,0 8px 20px #000a}
+#office-screen .board-zone{padding:9px;background:linear-gradient(145deg,#d5c4a7,#a99170);border:1px solid #5b432d;box-shadow:2px 4px 8px #0008;color:#2a2018}
+#office-screen .board-zone>header{margin-bottom:7px;padding-bottom:6px;border-color:#6f553b}
+#office-screen .board-zone>header b{font-size:12px;color:#21180f}
+#office-screen .board-zone>header small,#office-screen .board-zone>header i{font-size:8px;color:#72583e}
+#office-screen .zone-cards{gap:6px;grid-template-columns:repeat(2,minmax(0,1fr))}
+#office-screen .office-card{min-height:86px;padding:7px;background:linear-gradient(145deg,#eee1ca,#c6b18f);border:1px solid #886542;border-radius:1px;box-shadow:2px 3px 6px #0006;color:#2a2118}
+#office-screen .office-card h3{font-size:11px;color:#21180f}
+#office-screen .office-card p{font-size:9px;color:#67513a}
+#office-screen .office-card .card-index,#office-screen .office-card .card-state{font-size:8px;color:#8f3028}
+#office-screen .office-card:hover:not(:disabled){outline:2px solid #e7b968;outline-offset:1px}
+#office-screen .office-card:disabled{opacity:.6}
+#office-screen .board-footer{font-size:9px;color:#d2c0a5}
+/* 4 — Interrogation: portrait and dialogue on one cinematic stage */
+#interview-screen{max-width:none;min-height:calc(100svh - 50px);margin:8px auto;padding:12px 18px;background:linear-gradient(90deg,#10151b 0%,#10151bdc 55%,#0a0d12 100%),url('assets/scenes/salim-office.svg') center/cover no-repeat;border:1px solid #70543c;position:relative}
+#interview-screen .interview-header{padding-bottom:7px;border-bottom:1px solid #8d6c49}
+#interview-screen .interview-room{min-height:250px;grid-template-columns:minmax(160px,220px) minmax(0,1fr);gap:16px;align-items:center}
+#interview-screen .interview-person{align-self:stretch;background:#101216;border:1px solid #8e6a45;padding:7px;box-shadow:0 6px 18px #000b}
+#interview-screen .interview-person img{width:100%;height:190px;object-fit:cover;object-position:top;border:1px solid #a17b50}
+#interview-screen .interview-person b{display:block;padding:6px;text-align:center;color:#f2e5d2;font-size:14px}
+#interview-screen .interview-person small{display:block;text-align:center;color:#c5aa83;font-size:9px}
+#interview-screen .interview-dialogue{background:transparent;border:0;box-shadow:none;padding:12px}
+#interview-screen .dialogue-response{max-width:680px;min-height:65px;margin-bottom:12px;padding:14px 18px;background:#111318eF;border:1px solid #80613f;color:#eee4d7;box-shadow:0 4px 15px #0009}
+#interview-screen .dialogue-options{display:grid;grid-template-columns:1fr;max-width:620px;gap:6px}
+#interview-screen .dialogue-options button{padding:9px 14px;text-align:right;background:linear-gradient(90deg,#17191d,#090b0e);border:1px solid #574631;color:#eadbc6;border-radius:2px;font-size:11px}
+#interview-screen .dialogue-options button:before{content:"●";font-size:9px;color:#d5b27e;margin-left:10px}
+#interview-screen .dialogue-options button:hover{border-color:#e1b365;background:#30261d}
+#interview-screen .interview-record{background:#c8b697;color:#2a2118;border:1px solid #76583b}
+/* Suspect interviews share the same cinematic interrogation language */
+#suspect-interviews-screen{max-width:none;min-height:calc(100svh - 50px);background:linear-gradient(90deg,#0c1016ee,#0c1016bb),url('assets/scenes/salim-office.svg') center/cover no-repeat;border:1px solid #795b3e}
+#suspect-interviews-screen .suspect-list{background:#121316;border:1px solid #7b5d3d;padding:8px}
+#suspect-interviews-screen .suspect-person{background:#1c1b1a;border:1px solid #6f5539;color:#eee0cc}
+#suspect-interviews-screen .suspect-person.selected{border-color:#e0b367;box-shadow:0 0 0 1px #e0b367}
+#suspect-interviews-screen .suspect-panel{background:#171719eF;border:1px solid #775a3d;padding:14px}
+#suspect-interviews-screen .suspect-response{background:#c9b89c;color:#2a2118;border:1px solid #735639}
+#suspect-interviews-screen .suspect-question-list button{background:#211d19;border:1px solid #74583b;color:#eddfca}
+/* 5 — Evidence/archive: paper documents and black investigator notes */
+#archive-screen{max-width:none;min-height:calc(100svh - 50px);background:linear-gradient(90deg,#11100eec,#11100ecb),url('assets/scenes/salim-office.svg') center/cover no-repeat;border:1px solid #795a3d}
+#archive-screen .archive-layout{grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr);gap:12px}
+#archive-screen .archive-documents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#archive-screen .archive-document{min-height:170px;padding:14px 10px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;background:linear-gradient(145deg,#d9c8ac,#b39a76);border:1px solid #765437;border-radius:1px;box-shadow:2px 5px 12px #0009;color:#2a2118}
+#archive-screen .archive-document b{font-size:12px;color:#241a12}
+#archive-screen .archive-document small{font-size:9px;color:#6c5338}
+#archive-screen .archive-document i{color:#8b3028;font-size:9px}
+#archive-screen .archive-reader{background:#171719;border:1px solid #80603e;color:#eee0cd;padding:14px;box-shadow:0 5px 15px #0009}
+#archive-screen .archive-reader h3{color:#e9d6b7}
+#archive-screen .archive-extract{background:#cbb99b;color:#2a2118;border:1px solid #81603e;padding:12px}
+#archive-screen .archive-caution{color:#c9b89f}
+/* 6 — Final report is a physical case dossier */
+#case-ending-screen{max-width:none;min-height:calc(100svh - 50px);margin:8px auto;padding:12px 18px;background:radial-gradient(ellipse at 45% 30%,#463427,#17110e 65%,#08090b);border:1px solid #8c6845}
+#case-ending-screen .ending-topline{border-color:#9c754b}
+#case-ending-screen .ending-report-paper{background:linear-gradient(145deg,#e0cfb3,#bba17e);color:#2b2118;border:1px solid #765536;box-shadow:4px 8px 18px #000b;transform:rotate(-.5deg)}
+#case-ending-screen .ending-report-paper h2,#case-ending-screen .ending-report-paper p,#case-ending-screen .ending-findings p{color:#2b2118}
+#case-ending-screen .ending-report-paper h2 em{color:#8e3028}
+#case-ending-screen .ending-seal{color:#9b302b;border:2px solid #9b302b;transform:rotate(-7deg)}
+#case-ending-screen .ending-next-copy{color:#e9d7bc}
+#case-ending-screen .ending-primary,#case-ending-screen .ending-return{background:linear-gradient(#d9ad69,#96683b);color:#20170f;border:1px solid #edc47d;border-radius:2px}
+#case-ending-screen .ending-message-window{background:#111;border:1px solid #8a6844}
+#case-ending-screen .ending-message-window .message-bubble{background:#cdbb9e;color:#2a2118}
+#case-ending-screen .ending-photo-layout .photo-note{background:#d2bea0;color:#2a2118}
+/* Keep the mobile game responsive without expensive blur, fixed layers or filters */
+@media(max-width:760px){
+ .app-shell{padding:0 5px}.topbar{height:29px;min-height:29px}
+ #home-screen.hero{height:calc(100svh - 32px);min-height:360px;padding:10px 12px 32px;grid-template-columns:minmax(150px,.75fr) minmax(180px,1.25fr);gap:6px}
+ #home-screen .hero-copy{padding:4px}#home-screen .hero-copy:before{font-size:clamp(30px,6vw,48px);margin-bottom:12px}
+ #home-screen .hero h1{font-size:20px}#home-screen .hero-text{font-size:9px}
+ #home-screen .hero-actions{max-width:160px;gap:4px}#home-screen .hero-actions button{height:29px;min-height:29px;font-size:9px}
+ #office-screen{padding:8px;margin:5px auto}
+ #office-screen .board-heading{grid-template-columns:90px 1fr;gap:6px}
+ #office-screen .board-meta{display:none}
+ #office-screen .investigation-board{padding:6px;gap:5px;border-width:5px}
+ #office-screen .board-zone{padding:5px}#office-screen .zone-cards{gap:4px}
+ #office-screen .office-card{min-height:74px;padding:5px}
+ #office-screen .office-card h3{font-size:9px}#office-screen .office-card p{font-size:7px}
+ #interview-screen .interview-room{grid-template-columns:125px minmax(0,1fr);gap:6px}
+ #interview-screen .interview-person img{height:145px}
+ #interview-screen .interview-dialogue{padding:5px}
+ #interview-screen .dialogue-options button{font-size:9px;padding:6px}
+ #archive-screen .archive-documents{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+ #archive-screen .archive-document{min-height:130px;padding:7px 4px}
+ #archive-screen .archive-document b{font-size:9px}
+ #archive-screen .archive-reader{padding:8px}
+ #case-ending-screen{padding:8px;margin:5px auto}
+ .modal-card{padding:14px}.archive-row{min-height:140px;padding:10px 5px}
+}
+@media(max-width:760px) and (orientation:portrait){
+ #home-screen.hero{height:auto;min-height:calc(100svh - 32px);grid-template-columns:1fr}
+ #home-screen .hero-copy{max-width:350px;margin:auto}
+ #home-screen .case-art{display:none!important}
+}
