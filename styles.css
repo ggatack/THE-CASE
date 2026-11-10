@@ -837,3 +837,203 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
 @media(prefers-reduced-motion:reduce){.ending-stage{animation:none}}
 
 .review-edit-button{display:inline-flex;align-items:center;justify-content:center;margin:14px 12px 0 0;padding:10px 16px;background:transparent;border:1px solid #8c704f;color:#d9c4a7;font:12px 'IBM Plex Sans Arabic',sans-serif;cursor:pointer}.review-edit-button:hover{background:#292720;border-color:#d0a071}
+
+
+/* THE CASE — unified cinematic interface pass (concept-board direction) */
+:root{
+ --bg:#080a0d;--panel:#111519;--line:#66513d;--text:#eee4d5;--muted:#a99c89;
+ --copper:#d1a06b;--red:#a94339;--paper:#d9cbb3;--ink:#27231e;
+}
+html,body{background:#080a0d}
+body{
+ background:
+ radial-gradient(ellipse at 50% 0%,#26313b 0%,transparent 48%),
+ linear-gradient(145deg,#090b0e,#11100e 58%,#080a0d);
+}
+.app-shell{max-width:1560px;padding:18px clamp(14px,2.5vw,38px) 16px}
+.topbar{
+ height:54px;border-bottom:1px solid #c49a7044;
+ background:linear-gradient(90deg,#080a0dcc,#11100dd9);
+ padding:0 12px;margin-bottom:8px;
+}
+.brand-icon{filter:sepia(.3) brightness(1.15)}
+.brand-mark b{font-size:18px;letter-spacing:3.5px;color:#f1e4d0}
+.brand-mark small{color:#c09a72}
+.icon-button,.close-button{border-radius:2px;border-color:#8a6948;background:#171411;color:#e1b47f}
+.hero{
+ min-height:calc(100svh - 94px);padding:0;gap:0;overflow:hidden;
+ border:1px solid #a47d55;box-shadow:0 24px 70px #000c;
+ background:#0b0e11;
+}
+.hero:after{inset:9px;border:1px solid #d0a06d55}
+.cinematic-entry-art{
+ background-position:center center!important;
+ filter:saturate(.82) contrast(1.08) brightness(.82);
+}
+.hero-copy{
+ right:5%!important;width:min(43%,600px)!important;
+ background:linear-gradient(135deg,#0a0d10ed,#171411d9);
+ border-right:3px solid #d0a06d;
+ outline:1px solid #b88b5d55;outline-offset:-8px;
+ box-shadow:0 20px 65px #000c;
+}
+.hero-copy .eyebrow{color:#d7a875}
+.hero h1{color:#f1e7d9!important;text-shadow:0 4px 20px #000}
+.hero h1 em{color:#d3a06a!important}
+.hero-text{color:#d0c4b2}
+.primary-button,.ending-primary{
+ background:linear-gradient(135deg,#d5ad7e,#a9784c);
+ color:#1b1712;border:1px solid #f0d2a6;
+ box-shadow:0 5px 18px #0008,inset 0 1px #fff8;
+}
+.primary-button:hover{background:#e2bd8f}
+.secondary-button{
+ background:#111417dd;border:1px solid #a27a50;color:#e6d6c1;
+}
+.hero-footer{color:#d1b18b}
+.micro-copy{color:#b5a28a}
+
+/* Case briefing and all investigation workspaces share the same dark brass frame */
+.briefing,.office-screen,.investigation-screen,.interview-screen,.logs-screen,
+.archive-screen,.crosscheck-screen,.server-forensics-screen,.layan-screen,
+.timeline-screen,.suspect-interviews-screen,.case-review-screen,
+.case-ending-screen,.evidence-board-screen{
+ color:#eee4d5;
+}
+.briefing{
+ max-width:1120px;margin:18px auto 24px;padding:clamp(18px,3vw,34px);
+ border:1px solid #9b7650;
+ background:linear-gradient(90deg,#0b0d0ee8,#17130fe8),url('assets/scenes/adam-office.svg') center/cover;
+ box-shadow:0 22px 65px #000b,inset 0 0 0 6px #d0a06d12;
+}
+.briefing h2{color:#f0e4d3}
+.briefing-card{
+ background:linear-gradient(135deg,#d9cbb3f2,#b9a98fef);
+ color:#29241e;border:1px solid #f0dfc4;
+ box-shadow:0 12px 35px #0008;
+}
+.briefing-label,.briefing-meta{color:#705b43}
+.briefing-card p{color:#302a23}
+.briefing-card strong,.briefing-meta b{color:#211d18}
+.briefing-meta{border-color:#806b514d}
+.briefing-meta .danger{color:#9c3d34}
+
+/* Main investigation board: pinned files, warm paper and brass dividers */
+.office-screen{
+ border-color:#b38b5e;
+ background-color:#15100d;
+ box-shadow:0 24px 75px #000c,inset 0 0 0 6px #d0a06d12;
+}
+.office-screen:before{
+ background:
+ linear-gradient(90deg,#090807dc,#100c09a8 50%,#090807dc),
+ linear-gradient(0deg,#080706b8,transparent 38%,#08070666);
+}
+.board-zone{
+ border:1px solid #b58c5d99;
+ background:linear-gradient(145deg,#2a2119ed,#171411f2);
+ box-shadow:0 8px 25px #0009,inset 0 1px #f5d6ad25;
+}
+.board-zone:before{border-color:#d6b48a30}
+.board-zone>header{border-color:#bd956d88;color:#f4e6d2}
+.board-zone>header small{color:#d1a06b}
+.office-screen .office-card{
+ background:linear-gradient(145deg,#383027f5,#1b1916f7);
+ border-color:#a47e57;
+ box-shadow:0 7px 18px #000a,inset 0 1px #fff2;
+}
+.office-screen .office-card h3{color:#f4e6d2}
+.office-screen .office-card p{color:#c9b9a3}
+.office-screen .office-card .card-state{color:#e3b47d}
+.office-screen .active-card{background:linear-gradient(145deg,#674b30,#2a2119);border-color:#e0b17b}
+.board-footer{color:#c5b39b}
+
+/* Paper-like evidence records and investigation notes */
+.archive-documents,.archive-reader,.log-detail,.timeline-detail,
+.crosscheck-result,.server-reader,.inspection-panel,.suspect-record,
+.suspect-list,.suspect-panel,.review-question,.board-evidence-area,.theory-area{
+ background:linear-gradient(145deg,#1d211f,#0d1113);
+ border-color:#9b795655;
+ box-shadow:0 14px 38px #0008,inset 0 1px #fff1;
+}
+.archive-document,.suspect-person,.timeline-event,.log-row,
+.evidence-card,.board-evidence-card{
+ background:linear-gradient(145deg,#30271f,#191715);
+ border-color:#8e6e4c;
+ color:#eee2d0;
+}
+.archive-document:hover,.archive-document.selected,.suspect-person.selected,
+.timeline-event.selected,.log-row.selected{
+ border-color:#e0b17b;background:linear-gradient(145deg,#493725,#211b16);
+}
+.archive-warning,.review-brief{
+ background:linear-gradient(120deg,#392b20,#171614);
+ border-color:#a47b53;color:#e1d0b9;
+}
+.archive-warning b,.review-brief b{color:#f0bf84}
+.review-question{border-color:#94734f}
+.review-question>span{color:#e0b17b}
+button{ -webkit-tap-highlight-color:transparent }
+button:focus-visible{outline:2px solid #edc18c;outline-offset:3px}
+
+/* Interrogation: make the witness the focal point, not a generic form */
+.suspect-header,.review-header,.investigation-head{
+ border-color:#a17c55aa;
+}
+.suspect-identity,.interview-title,.investigation-title{
+ border-color:#c092626e;
+}
+.suspect-warning{color:#d2a16e;border-color:#a17c5555}
+.suspect-panel{background:linear-gradient(145deg,#1c211f,#0b0f12)}
+.suspect-person{border-right:3px solid #8d6a48}
+.suspect-person b{color:#f0e4d5}
+.suspect-person small{color:#c3ad91}
+.suspect-question,.question-option,.answer-option{
+ background:#211d19;border-color:#8c6a49;color:#eadcc8;
+}
+.suspect-question:hover,.question-option:hover,.answer-option:hover{
+ border-color:#d9aa76;background:#33271d;
+}
+
+/* Final report keeps the warm paper dossier and the red closure stamp */
+.ending-report-paper{
+ background:linear-gradient(135deg,#e8ddc9,#c9b99e);
+ color:#28231d;border-color:#f6e9d3;
+ box-shadow:0 25px 75px #000c,0 0 0 5px #9c795033;
+}
+.ending-report-paper:before{border-color:#705d453d}
+.ending-seal{border-color:#9d7751;color:#956d43}
+.ending-photo-frame,.photo-note,.ending-message,.ending-locked{
+ border-color:#a47b53;
+ box-shadow:0 16px 42px #0009;
+}
+.ending-locked{background:linear-gradient(145deg,#211c17,#0c1013)}
+.ending-locked h2{color:#e4b17a}
+
+/* Consistent navigation and readable touch targets on landscape phones */
+.back-link{
+ color:#d9b68c!important;
+ border-bottom-color:#a47b53!important;
+}
+.board-shortcut,.collect-button,.ending-primary{
+ border-color:#b68a5d;
+}
+@media(max-width:900px) and (orientation:landscape){
+ .app-shell{padding:8px 10px}
+ .topbar{height:42px;margin-bottom:5px}
+ .hero{min-height:calc(100svh - 62px)}
+ .hero-copy{right:4%!important;width:min(47%,520px)!important;padding:14px 18px!important}
+ .hero h1{font-size:clamp(30px,6vh,50px)!important}
+ .hero-text{font-size:11px;line-height:1.7;margin-bottom:12px}
+ .hero-actions .primary-button,.hero-actions .secondary-button{height:42px}
+ .briefing{margin:8px auto;padding:14px 18px}
+ .briefing h2{font-size:clamp(28px,6vh,42px)}
+}
+@media(max-width:760px){
+ .app-shell{padding:10px 12px}
+ .hero{min-height:calc(100svh - 80px)}
+ .hero-copy{right:4%!important;left:4%!important;top:auto!important;bottom:8%!important;transform:none!important;width:auto!important;max-width:none;padding:16px!important}
+ .hero h1{font-size:clamp(32px,8vw,48px)!important}
+ .hero-text{font-size:11px;line-height:1.75}
+ .briefing{padding:16px}
+}
