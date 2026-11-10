@@ -1361,3 +1361,102 @@ html,body{background:#090b0e!important}
 #office-screen .office-card .card-state{display:none!important}
 #office-screen .board-footer{padding:3px 7px!important}
 }
+
+
+/* SCREEN 03 — rebuild the investigation office as a left tool rail + right evidence scene */
+#office-screen{
+ box-sizing:border-box!important;position:relative!important;isolation:isolate!important;
+ display:grid!important;grid-template-columns:minmax(270px,31%) minmax(0,69%)!important;
+ grid-template-rows:auto minmax(0,1fr) auto!important;
+ grid-template-areas:"head head" "tools scene" "foot foot"!important;
+ width:100vw!important;height:100dvh!important;min-height:0!important;max-width:none!important;
+ margin:0!important;padding:12px 18px 10px!important;gap:10px 16px!important;overflow:hidden!important;
+ background:#0b0d10 url('assets/scenes/investigation-board.svg') center/cover no-repeat!important
+}
+#office-screen:before{content:""!important;position:absolute!important;inset:0!important;z-index:-2!important;background:linear-gradient(90deg,rgba(5,7,9,.96) 0%,rgba(7,8,9,.88) 31%,rgba(7,8,9,.28) 58%,rgba(5,6,7,.52) 100%)!important}
+#office-screen:after{
+ content:"هدف التحقيق\A معرفة من عبث وراء\A تعديل سجل المزامنة\A وماذا كان هدفه الحقيقي."!important;
+ white-space:pre-line!important;position:absolute!important;z-index:0!important;
+ right:5.5%!important;top:39%!important;width:clamp(175px,19vw,290px)!important;
+ min-height:155px!important;padding:24px 20px!important;box-sizing:border-box!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;
+ color:#30271d!important;font-family:inherit!important;font-size:clamp(13px,1.25vw,18px)!important;
+ line-height:2!important;font-weight:700!important;transform:rotate(2deg)!important;
+ background:linear-gradient(135deg,#e8d8b6,#cbb58d)!important;
+ border:1px solid #8e7552!important;box-shadow:4px 9px 20px #000b, inset 0 0 0 5px #d8c6a5!important;
+ pointer-events:none!important
+}
+#office-screen .board-heading{
+ grid-area:head!important;position:relative!important;z-index:2!important;
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ width:100%!important;max-width:none!important;min-height:66px!important;margin:0!important;padding:0 12px 9px!important;
+ border-bottom:1px solid #98724d!important;direction:rtl!important
+}
+#office-screen .board-heading .back-link{display:block!important;order:0!important;margin:0!important}
+#office-screen .board-heading .board-case-title{order:1!important;margin:0!important}
+#office-screen .board-heading .board-meta{order:2!important;display:block!important;text-align:left!important;margin:0!important}
+#office-screen .board-heading .board-stamp{display:inline-block!important;font-size:10px!important;letter-spacing:2px!important;padding:5px 10px!important;background:#0c0d0e!important;border:1px solid #b08a5e!important;color:#ead7b8!important}
+#office-screen .board-heading .eyebrow{margin:4px 0!important;color:#d0b28a!important;font-size:10px!important}
+#office-screen .board-heading h2{margin:2px 0!important;color:#f0e3ce!important;font-size:clamp(19px,2vw,29px)!important}
+#office-screen .board-heading h2 em{color:#d9b487!important}
+#office-screen .board-meta span,#office-screen .board-meta small{color:#bda88e!important;font-size:9px!important}
+#office-screen .board-meta b{color:#f0e1c9!important}
+#office-screen .investigation-board{
+ grid-area:tools!important;position:relative!important;z-index:2!important;
+ display:flex!important;flex-direction:column!important;gap:7px!important;
+ width:100%!important;height:100%!important;max-width:none!important;min-height:0!important;
+ margin:0!important;padding:9px!important;box-sizing:border-box!important;overflow-y:auto!important;
+ background:linear-gradient(180deg,rgba(13,14,15,.97),rgba(20,16,13,.96))!important;
+ border:1px solid #866543!important;box-shadow:inset 0 0 0 3px #241b14,0 9px 24px #000a!important
+}
+#office-screen .board-zone{
+ display:block!important;flex:0 0 auto!important;min-height:0!important;padding:8px!important;
+ background:linear-gradient(135deg,#29221b,#121212)!important;border:1px solid #705338!important;
+ box-shadow:none!important;overflow:visible!important
+}
+#office-screen .board-zone header{
+ display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;
+ padding:0 0 6px!important;margin:0 0 6px!important;border-bottom:1px solid #8c6b483d!important
+}
+#office-screen .board-zone header .zone-number{display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 22px;height:22px;border:1px solid #a17a50;color:#d7b58a!important;font-size:9px!important}
+#office-screen .board-zone header>div{display:flex!important;flex-direction:column!important;gap:1px!important}
+#office-screen .board-zone header b{font-size:11px!important;color:#ead9c0!important}
+#office-screen .board-zone header small{display:block!important;font-size:7px!important;letter-spacing:1px!important;color:#a58b6d!important}
+#office-screen .board-zone header>i{display:none!important}
+#office-screen .zone-cards{display:grid!important;grid-template-columns:1fr!important;gap:4px!important;margin:0!important}
+#office-screen .office-card{
+ display:grid!important;grid-template-columns:22px minmax(0,1fr) auto!important;grid-template-rows:auto!important;
+ align-items:center!important;gap:7px!important;width:100%!important;min-height:34px!important;height:auto!important;
+ padding:6px 8px!important;text-align:right!important;background:linear-gradient(90deg,#211b16,#100f0e)!important;
+ border:1px solid #60482f!important;border-radius:1px!important;box-shadow:none!important
+}
+#office-screen .office-card .card-symbol{display:flex!important;grid-row:1!important;grid-column:1!important;font-size:15px!important;color:#c8a071!important}
+#office-screen .office-card .card-index,#office-screen .office-card p{display:none!important}
+#office-screen .office-card h3{display:block!important;grid-row:1!important;grid-column:2!important;margin:0!important;font-size:10px!important;color:#eee0ca!important}
+#office-screen .office-card .card-state{display:block!important;grid-row:1!important;grid-column:3!important;margin:0!important;max-width:105px!important;text-align:left!important;font-size:7px!important;line-height:1.35!important;color:#b58c67!important}
+#office-screen .office-card.active-card{border-color:#d1a36c!important;box-shadow:inset 0 0 0 1px #d1a36c,0 0 9px #b47a3b55!important}
+#office-screen .office-card:disabled{opacity:.48!important;filter:none!important}
+#office-screen .board-footer{grid-area:foot!important;position:relative!important;z-index:2!important;display:flex!important;justify-content:space-between!important;align-items:center!important;margin:0!important;padding:5px 8px!important;border-top:1px solid #765a3e!important;color:#c9b596!important;font-size:8px!important}
+@media(max-height:520px) and (orientation:landscape){
+ #office-screen{grid-template-columns:minmax(230px,31%) minmax(0,69%)!important;padding:7px 10px 6px!important;gap:6px 10px!important}
+ #office-screen .board-heading{min-height:50px!important;padding-bottom:4px!important}
+ #office-screen .board-heading .board-stamp{font-size:8px!important;padding:3px 7px!important}
+ #office-screen .board-heading .eyebrow{font-size:8px!important}
+ #office-screen .board-heading h2{font-size:18px!important}
+ #office-screen .board-heading .back-link{font-size:9px!important;padding:5px 8px!important}
+ #office-screen .investigation-board{padding:6px!important;gap:4px!important}
+ #office-screen .board-zone{padding:5px!important}
+ #office-screen .board-zone header{padding-bottom:3px!important;margin-bottom:3px!important}
+ #office-screen .board-zone header b{font-size:10px!important}
+ #office-screen .zone-cards{gap:3px!important}
+ #office-screen .office-card{min-height:27px!important;padding:4px 6px!important;gap:5px!important}
+ #office-screen .office-card h3{font-size:9px!important}
+ #office-screen .office-card .card-state{font-size:6px!important}
+ #office-screen:after{top:36%!important;min-height:115px!important;padding:14px!important;font-size:12px!important}
+}
+@media(max-width:650px){
+ #office-screen{grid-template-columns:minmax(210px,37%) minmax(0,63%)!important}
+ #office-screen:after{right:4%!important;width:23%!important;font-size:11px!important}
+ #office-screen .board-meta{display:none!important}
+ #office-screen .board-heading .board-case-title{max-width:70%!important}
+}
