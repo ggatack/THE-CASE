@@ -1502,3 +1502,27 @@ html,body{background:#090b0e!important}
  #home-screen .hero-actions{width:min(100%,290px)!important}
  #home-screen .hero-actions button{height:42px!important}
 }
+
+
+/* HOME RIGHT HALF — give the detective scene its own visible stage */
+#home-screen{
+ background:#080b10!important;
+}
+#home-screen:before{
+ background:linear-gradient(90deg,rgba(3,5,8,.98) 0%,rgba(3,5,8,.78) 27%,rgba(3,5,8,.22) 48%,rgba(3,5,8,.02) 100%)!important;
+}
+#home-screen .cinematic-entry-art{
+ display:block!important;position:absolute!important;z-index:0!important;
+ top:0!important;right:0!important;bottom:0!important;left:auto!important;
+ width:72%!important;height:100%!important;margin:0!important;
+ background-image:url('assets/scenes/title-investigation.svg')!important;
+ background-position:center 46%!important;background-size:cover!important;background-repeat:no-repeat!important;
+ opacity:1!important;filter:brightness(1.16) contrast(1.06)!important;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 9%,#000 26%)!important;
+ mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 9%,#000 26%)!important;
+ pointer-events:none!important;
+}
+#home-screen .hero-copy{z-index:3!important}
+@media(max-height:520px) and (orientation:landscape){
+ #home-screen .cinematic-entry-art{width:75%!important;background-position:center 48%!important}
+}
