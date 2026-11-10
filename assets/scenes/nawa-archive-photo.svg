@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">صورة أرشيفية قديمة أمام مبنى شركة نواة</title><desc id="desc">ثلاثة أشخاص بملامح غير واضحة يقفون أمام مبنى إداري قديم في صورة فوتوغرافية باهتة تعود إلى عام 2023.</desc>
+<defs>
+ <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#d9cfb7"/><stop offset="1" stop-color="#a99d84"/></linearGradient>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#8e9995"/><stop offset=".68" stop-color="#b0ad9b"/><stop offset="1" stop-color="#737a72"/></linearGradient>
+ <linearGradient id="concrete" x2="0" y2="1"><stop stop-color="#8b8e83"/><stop offset=".55" stop-color="#686f69"/><stop offset="1" stop-color="#414a47"/></linearGradient>
+ <linearGradient id="glass" x2="1" y2="1"><stop stop-color="#37494b"/><stop offset=".45" stop-color="#71807a"/><stop offset="1" stop-color="#263739"/></linearGradient>
+ <linearGradient id="coat" x2="1"><stop stop-color="#202a29"/><stop offset=".5" stop-color="#46504a"/><stop offset="1" stop-color="#1d2727"/></linearGradient>
+ <radialGradient id="vignette"><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#252b28" stop-opacity=".5"/></radialGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="2.4"/></filter>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" seed="17"/><feColorMatrix values=".35 0 0 0 .35 .35 0 0 0 .32 .35 0 0 0 .28 0 0 0 .13 0"/></filter>
+ <filter id="shadow"><feGaussianBlur stdDeviation="13"/></filter>
+</defs>
+<rect width="1200" height="760" fill="url(#paper)"/>
+<rect x="18" y="18" width="1164" height="724" fill="#e2d8c2" stroke="#8f846e" stroke-width="2"/>
+<rect x="38" y="38" width="1124" height="684" fill="url(#sky)"/>
+<path d="M38 490 L1162 450 V722 H38Z" fill="#7c8177"/>
+<path d="M80 230 L1115 205 L1094 532 L75 554Z" fill="url(#concrete)" stroke="#535d58" stroke-width="7"/>
+<path d="M62 225 L1133 197 L1117 245 L61 270Z" fill="#444e4a"/>
+<path d="M100 287 L1090 265 L1080 467 L91 490Z" fill="#555f5a"/>
+<g opacity=".9">
+ <path d="M133 301 L312 296 L309 453 L129 458Z" fill="url(#glass)" stroke="#a3a18e" stroke-width="7"/>
+ <path d="M350 292 L529 287 L526 448 L346 452Z" fill="url(#glass)" stroke="#a3a18e" stroke-width="7"/>
+ <path d="M568 286 L748 282 L746 442 L564 447Z" fill="url(#glass)" stroke="#a3a18e" stroke-width="7"/>
+ <path d="M788 280 L969 275 L966 436 L784 441Z" fill="url(#glass)" stroke="#a3a18e" stroke-width="7"/>
+ <path d="M1005 274 L1065 273 L1063 433 L1001 435Z" fill="#384947" stroke="#a3a18e" stroke-width="6"/>
+ <g stroke="#b4b19e" stroke-width="4" opacity=".55"><path d="M220 298 L216 455 M438 291 L433 450 M657 285 L653 444 M877 279 L873 438"/><path d="M128 378 L1081 357"/></g>
+</g>
+<rect x="452" y="150" width="296" height="75" rx="2" fill="#444d49" stroke="#c0b79e" stroke-width="3"/>
+<text x="600" y="198" text-anchor="middle" font-family="serif" font-size="38" letter-spacing="12" fill="#d5cbb1">NAWA</text>
+<path d="M38 555 Q300 530 580 556 T1162 535 V722 H38Z" fill="#626960"/>
+<path d="M38 605 Q300 578 600 603 T1162 582" fill="none" stroke="#b5ad94" stroke-width="5" opacity=".35"/>
+<g opacity=".35" fill="#303a36"><path d="M90 536 l25 -62 24 62z M1010 520 l38 -82 34 82z M1060 531 l29 -65 29 65z"/></g>
+<ellipse cx="600" cy="646" rx="390" ry="42" fill="#1c2422" opacity=".55" filter="url(#shadow)"/>
+<!-- left figure -->
+<g transform="translate(365 0)" filter="url(#soft)">
+ <path d="M-66 425 Q-75 397 -54 375 Q-40 361 -17 360 Q13 357 31 379 Q49 400 43 430 L66 603 Q0 624 -83 604Z" fill="#283230"/>
+ <path d="M-54 425 Q-23 450 25 423 L46 600 Q-8 615 -68 598Z" fill="url(#coat)"/>
+ <path d="M-44 371 Q-51 328 -24 307 Q5 286 29 315 Q48 337 31 379 Q7 403 -24 392Z" fill="#303a36"/>
+ <path d="M-43 337 Q-20 293 19 316 Q36 329 33 349 Q0 334 -43 354Z" fill="#252d2a"/>
+ <path d="M-34 388 L-10 428 L15 389" fill="none" stroke="#9a9885" stroke-width="5" opacity=".4"/>
+ <path d="M-66 447 L-98 565 L-79 572 L-37 475 M39 445 L70 564 L51 571 L14 476" fill="#303a35"/>
+</g>
+<!-- middle figure, slightly forward -->
+<g transform="translate(600 0)" filter="url(#soft)">
+ <path d="M-76 404 Q-62 365 -23 358 Q27 350 63 385 L87 611 Q2 632 -92 610Z" fill="#303833"/>
+ <path d="M-48 390 L-4 444 L38 385 L62 605 Q2 625 -69 604Z" fill="#4b5047"/>
+ <path d="M-48 363 Q-59 318 -29 289 Q1 265 35 295 Q62 321 43 371 Q10 397 -26 384Z" fill="#343c37"/>
+ <path d="M-49 322 Q-39 278 4 279 Q40 282 48 323 Q10 305 -49 337Z" fill="#252d2b"/>
+ <path d="M-12 402 L-2 447 L12 403" fill="none" stroke="#c0b397" stroke-width="5" opacity=".38"/>
+ <path d="M-76 428 L-113 562 L-91 570 L-42 466 M59 426 L98 557 L76 566 L28 466" fill="#303833"/>
+</g>
+<!-- right figure -->
+<g transform="translate(830 0)" filter="url(#soft)">
+ <path d="M-65 424 Q-56 378 -17 368 Q22 359 51 397 L71 601 Q-3 622 -84 603Z" fill="#252f2e"/>
+ <path d="M-46 401 L-8 442 L29 397 L53 601 Q-8 616 -68 598Z" fill="url(#coat)"/>
+ <path d="M-43 370 Q-53 330 -25 304 Q4 280 34 310 Q53 334 34 378 Q3 397 -27 388Z" fill="#343c38"/>
+ <path d="M-42 330 Q-25 287 14 298 Q37 307 40 341 Q0 320 -42 348Z" fill="#252e2b"/>
+ <path d="M-65 445 L-103 559 L-83 570 L-39 470 M48 442 L85 559 L64 569 L23 469" fill="#2c3632"/>
+</g>
+<rect width="1200" height="760" fill="#b6a88c" opacity=".12"/>
+<rect width="1200" height="760" filter="url(#grain)" opacity=".22"/>
+<rect width="1200" height="760" fill="url(#vignette)"/>
+<g opacity=".25" stroke="#e5dcc5" stroke-width="2"><path d="M78 88 L83 215 M1080 102 L1073 196 M142 680 L310 676 M915 694 L1072 689"/></g>
+<rect x="38" y="38" width="1124" height="684" fill="none" stroke="#e4d7bb" stroke-width="4" opacity=".35"/>
+</svg>
