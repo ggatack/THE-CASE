@@ -38,6 +38,8 @@
   $("open-board").addEventListener("click",()=>{renderBoard();show("evidence-board-screen")});
   $("open-board-from-scene").addEventListener("click",()=>{renderBoard();show("evidence-board-screen")});
   $("open-files").addEventListener("click",()=>modal.classList.remove("hidden"));
+  $("home-settings").addEventListener("click",()=>alert("الإعدادات — سيتم تخصيصها لاحقاً."));
+  $("home-exit").addEventListener("click",()=>{if(confirm("هل تريد مغادرة اللعبة؟")){window.location.href="about:blank";}});
   $("close-files").addEventListener("click",()=>modal.classList.add("hidden"));
   modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.add("hidden")});
   document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.add("hidden")});
