@@ -811,3 +811,15 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
 .review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.review-question{display:flex;flex-direction:column;gap:10px;min-width:0;padding:18px;background:linear-gradient(145deg,#1c2326,#101518);border:1px solid #80674788}.review-question>span{font:10px 'Cormorant Garamond';letter-spacing:1.2px;color:#d0a071}.review-question b{font-size:13px;line-height:1.8;min-height:48px;color:#eee2d0}.review-question select{width:100%;min-height:44px;padding:8px;background:#090d10;border:1px solid #8c704f;color:#e8dfd2;font:12px inherit}
 .review-submit{margin:18px 0;min-width:220px}.review-submit:disabled{opacity:.4;cursor:not-allowed}.review-result{padding:22px;background:linear-gradient(145deg,#22221e,#0c1114);border:1px solid #bd8b62;box-shadow:0 14px 40px #0008}.review-result-stamp{font:10px 'Cormorant Garamond';letter-spacing:2px;color:#d0a071}.review-result h3{font-size:25px;color:#eee2d0;margin:10px 0}.review-result p,.review-next-note{font-size:13px;line-height:2;color:#d2c4b2}.review-next-note{margin-top:12px;padding-top:12px;border-top:1px solid #9a795655;color:#cba77c}
 @media(max-width:760px){.case-review-screen{padding:12px}.review-header{grid-template-columns:1fr;gap:8px}.review-grid{grid-template-columns:1fr}.review-question b{min-height:0}.review-submit{width:100%}}
+
+
+/* Audit excerpt shown beside the final digital-evidence question */
+.audit-extract{margin:2px 0 4px;padding:12px;background:#0a1013;border:1px solid #94745188;color:#d9cbb9;font-family:inherit}
+.audit-extract-head{display:flex;justify-content:space-between;gap:8px;padding-bottom:8px;border-bottom:1px solid #80674766;color:#d5a777;font:10px 'Cormorant Garamond',serif;letter-spacing:1px}
+.audit-extract-head small{color:#9f9588;font:10px inherit;letter-spacing:0}
+.audit-log-row{display:grid;grid-template-columns:48px 1fr;gap:3px 8px;padding:9px 0;border-bottom:1px solid #ffffff12;font-size:11px;line-height:1.6}
+.audit-log-row time{grid-row:span 2;color:#d8a36f;font-weight:700}
+.audit-log-row span{color:#e7ded2}
+.audit-log-row b{font-size:10px;color:#aeb9a8;font-weight:500}
+.audit-log-change b{color:#e2b17e}
+.audit-extract>p{margin:9px 0 0;color:#a99e90;font-size:10px;line-height:1.7}
