@@ -1169,3 +1169,6 @@ body{color:#eee5d8;background:#090a0c}
  #home-screen .hero-copy{max-width:350px;margin:auto}
  #home-screen .case-art{display:none!important}
 }
+
+/* Performance safety: remove the full-screen SVG turbulence overlay on mobile. */
+.grain{display:none!important}
