@@ -532,7 +532,7 @@
   const reviewDecisionKey="thecase-case01-final-decision";
   const reviewRequiredEvidence=["archive-permissions","archive-payments","archive-executive","archive-crosscheck","forensic-audit","forensic-camera","forensic-trace"];
   const reviewRequiredTimeline=["mazen","meeting-open","meeting-close","fares-arrive","corridor","draft","confrontation","death","server","fares-exit"];
-  let savedReview=null;try{savedReview=JSON.parse(localStorage.getItem(reviewDecisionKey)||"null")}catch(_){}
+  let savedReview=null;let editingReview=false;try{savedReview=JSON.parse(localStorage.getItem(reviewDecisionKey)||"null")}catch(_){}
   function caseReviewReady(){
     return reviewRequiredEvidence.every(id=>collected.includes(id)) &&
       ["return","message","fares","time"].every(id=>layanAsked.includes(id)) &&
@@ -543,7 +543,7 @@
   function renderCaseReview(){
     const ready=caseReviewReady();$("open-case-review").disabled=!ready;
     $("case-review-state").textContent=ready?"كل مسارات التحقيق مكتملة · ابدأ المراجعة ←":"تتطلب الأدلة والمقابلات ومراجعة الأحداث العشرة ←";
-    if(savedReview){
+    if(savedReview&&!editingReview){
       $("review-perpetrator").value=savedReview.perpetrator||"";$("review-order").value=savedReview.order||"";$("review-audit").value=savedReview.audit||"";
       showCaseReviewResult(savedReview);
     }
@@ -567,8 +567,14 @@
   ["review-perpetrator","review-order","review-audit"].forEach(id=>$(id).addEventListener("change",updateReviewSubmit));
   $("open-case-review").addEventListener("click",()=>{renderCaseReview();show("case-review-screen")});
   $("leave-case-review").addEventListener("click",()=>show("office-screen"));
+  $("edit-case-review").addEventListener("click",()=>{
+    editingReview=true;savedReview=null;localStorage.removeItem(reviewDecisionKey);
+    $("case-review-result").classList.add("hidden");$("continue-to-ending").classList.add("hidden");
+    $("submit-case-review").classList.remove("hidden");updateReviewSubmit();
+  });
   $("submit-case-review").addEventListener("click",()=>{
     if(!caseReviewReady())return;
+    editingReview=false;
     savedReview={perpetrator:$("review-perpetrator").value,order:$("review-order").value,audit:$("review-audit").value,submittedAt:Date.now()};
     localStorage.setItem(reviewDecisionKey,JSON.stringify(savedReview));showCaseReviewResult(savedReview);
   });
