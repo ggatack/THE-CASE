@@ -7,7 +7,7 @@
   <meta name="description" content="THE CASE — لعبة تحقيق وغموض سينمائية باللغة العربية.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="assets/icons/app-icon.svg">
-  <link rel="stylesheet" href="styles.css?v=polish07">
+  <link rel="stylesheet" href="styles.css?v=polish08">
   <title>THE CASE | القضية</title>
 </head>
 <body>
@@ -363,8 +363,35 @@
         <label class="review-question review-audit-question"><span>03 / حدود الدليل الرقمي</span><b>اقرأ المستخرج ثم حدّد ما الذي يثبته تعديل سجل التدقيق عند 02:06.</b><div class="audit-extract" aria-label="مستخرج سجل التدقيق"><div class="audit-extract-head"><span>SERVER ACCESS LOG</span><small>مستخرج 11-B</small></div><div class="audit-log-row"><time>01:43</time><span>حدث استخدام بطاقة سليم</span><b>تم تسجيل الحدث</b></div><div class="audit-log-row audit-log-change"><time>02:06</time><span>تعديل خانة: sync source</span><b>حساب خدمة إداري</b></div><p>لا يحتوي المستخرج على اسم شخص أو جهاز مستخدم لتنفيذ التعديل.</p></div><select id="review-audit"><option value="">اختر ما يمكن إثباته</option><option value="edited">أن بيانات سجل الحدث عُدّلت لاحقاً، دون تحديد من فعل ذلك</option><option value="nader">أن نادر استخدم حساب الخدمة</option><option value="fares">أن فارس هو من دخل غرفة الخوادم</option></select></label>
       </div>
       <button class="primary-button review-submit" id="submit-case-review" disabled><span>اعتماد استنتاج آدم</span><b>←</b></button>
-      <div class="review-result hidden" id="case-review-result" aria-live="polite"><div class="review-result-stamp">CASE 001 · DECISION RECORDED</div><h3 id="review-result-title">القرار</h3><p id="review-result-text"></p><div class="review-next-note" id="review-next-note"></div></div>
+      <div class="review-result hidden" id="case-review-result" aria-live="polite"><div class="review-result-stamp">CASE 001 · DECISION RECORDED</div><h3 id="review-result-title">القرار</h3><p id="review-result-text"></p><div class="review-next-note" id="review-next-note"></div><button class="ending-continue hidden" id="continue-to-ending"><span>فتح المرفق الأخير</span><b>←</b></button></div>
       <p class="scene-footnote">الحكم الجنائي يحتاج إلى أدلة قابلة للتحقق، لا إلى رواية تبدو مكتملة.</p>
+    </section>
+
+
+    <section class="case-ending-screen hidden" id="case-ending-screen">
+      <header class="ending-topline"><button class="back-link" id="leave-ending">← العودة إلى مراجعة القضية</button><div class="ending-case-mark"><span>THE CASE</span><i>ملف 001 / الإغلاق</i></div><span class="ending-confidential">سري للغاية · نسخة المحقق</span></header>
+      <div class="ending-stage" id="ending-report-stage">
+        <div class="ending-report-rail"><span class="ending-overline">PRIVATE INVESTIGATION / FINAL MEMO</span><div class="ending-seal">AM<br><small>ADAM MURAD</small></div><span class="ending-file-no">NAWA / 07F<br>08 NOV · 02:17</span></div>
+        <article class="ending-report-paper">
+          <p class="ending-kicker">تقرير ختامي أولي</p><h2>الطابق السابع<br><em>لم يكن حادثاً معزولاً.</em></h2>
+          <div class="ending-rule"></div>
+          <p class="ending-report-lead">إلى: ملف التحقيق الخاص<br>من: آدم مراد — المحقق المسؤول<br>الموضوع: وفاة سليم ناصر / شركة نواة</p>
+          <div class="ending-findings"><div><span>01</span><p><b>الواقعة الأقرب للأدلة</b>تشير القرائن المتقاطعة إلى أن فارس الكيلاني واجه سليم داخل المكتب، وأن المواجهة انتهت بسقوطه وارتطام رأسه بحافة المكتب.</p></div><div><span>02</span><p><b>الخيط الإداري</b>تضع المذكرة وسياق التسجيل نادر القيسي في موضع صاحب الأمر المحتمل، لكن ذلك لا يزال استنتاجاً يحتاج إلى دليل مباشر.</p></div><div><span>03</span><p><b>ما بقي مجهولاً</b>تعديل سجل التدقيق عند 02:06 ثابت في المستخرج؛ هوية من استخدم حساب الخدمة وسبب التعديل غير محسومين.</p></div></div>
+          <div class="ending-report-footer"><span>هذه خلاصة تحقيق أولي، وليست حكماً قضائياً.</span><b>آدم مراد</b></div>
+        </article>
+        <div class="ending-next-copy"><span class="ending-step">المرفق الأخير · 01 / 02</span><p>كان يفترض أن ينتهي الملف هنا. لكن بين أوراق سليم شيء لم يدخل محضر القضية.</p><button class="ending-primary" id="open-ending-attachment">افتح المرفق غير المسجل <b>←</b></button></div>
+      </div>
+      <div class="ending-stage hidden" id="ending-photo-stage">
+        <div class="ending-photo-heading"><span class="ending-overline">UNREGISTERED ATTACHMENT / FOUND IN PERSONAL ARCHIVE</span><h2>صورة قديمة.<br><em>ثلاثة أشخاص. قبل ثلاث سنوات.</em></h2><p>لا يوجد تاريخ مطبوع. على ظهر الصورة كُتبت عبارة واحدة بخط سليم.</p></div>
+        <div class="ending-photo-layout">
+          <div class="archive-photo" role="img" aria-label="صورة أرشيفية قديمة لثلاثة أشخاص بملامح غير واضحة أمام مبنى شركة نواة قبل ثلاث سنوات"><div class="photo-topline"><span>NAWA — OLD HEADQUARTERS</span><span>ARCHIVE / 03 YEARS AGO</span></div><div class="photo-building"><span class="building-sign">نواة</span><div class="photo-figures"><i class="figure-one"></i><i class="figure-two"></i><i class="figure-three"></i></div><div class="photo-date">— / — / 2023</div></div><div class="photo-bottomline"><span>PRIVATE COLLECTION · S.N.</span><span>FRAME 018</span></div></div>
+          <aside class="photo-note"><span class="ending-step">ملاحظة على ظهر الصورة</span><blockquote>«لم نكن نعرف وقتها<br>أن واحداً منا سيختفي.»</blockquote><p>الحبر باهت، لكن الكتابة تتطابق مبدئياً مع ملاحظات سليم في ملفه الشخصي.</p><button class="ending-primary" id="inspect-ending-photo">افحص الصورة عن قرب <b>←</b></button><div class="photo-inspection hidden" id="photo-inspection"><b>ملاحظة آدم</b><p>الوجوه غير كافية للتعرّف. الشخص الأوسط يحمل شارة موظف قديمة، أما الشعار خلفهم فيعود إلى مبنى نواة السابق. لا يمكن تحديد هوية الاثنين الآخرين من هذه النسخة.</p></div></aside>
+        </div>
+      </div>
+      <div class="ending-stage hidden" id="ending-teaser-stage">
+        <div class="ending-message-window"><span class="ending-overline">INCOMING MESSAGE / UNKNOWN NUMBER</span><div class="message-meta"><span>المرسل: رقم غير معروف</span><time>02:19 AM</time></div><div class="message-bubble">أنت تبحث عن الشخص الخطأ يا آدم.<br><strong>سليم لم يكن أول واحد.</strong></div><p class="message-footnote">تم استلام الرسالة بعد فتح المرفق بـ 00:14 ثانية.</p></div>
+        <div class="ending-final-lock"><span class="ending-overline">THE CASE / NEXT FILE</span><div class="ending-lock-symbol">Ⅱ</div><p class="ending-step">ثلاث سنوات من الصمت.</p><h2>القضية الثانية</h2><div class="ending-case-status"><span></span> CASE 002 — LOCKED</div><p>بعض الملفات لا تُغلق. إنها تنتظر فقط أن يعثر عليها أحد.</p><button class="ending-return" id="return-ending-office">العودة إلى مكتب آدم</button></div>
+      </div>
     </section>
     <section class="evidence-board-screen hidden" id="evidence-board-screen">
       <div class="board-header">
@@ -395,6 +422,6 @@
     </section>
     <footer class="site-footer"><span>THE CASE © 2026</span><span>صُممت لتُكتشف، لا لتُخمن.</span><span>نسخة تطويرية 0.1</span></footer>
   </main>
-  <script src="app.js?v=polish07"></script>
+  <script src="app.js?v=polish08"></script>
 </body>
 </html>
