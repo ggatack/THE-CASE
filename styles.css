@@ -1785,3 +1785,151 @@ html,body{background:#090b0e!important}
  #suspect-interviews-screen .suspect-warning{grid-column:1/-1!important}
  #suspect-interviews-screen .suspect-question-list{grid-template-columns:1fr!important}
 }
+
+
+/* WITNESS INTERVIEWS — unified cinematic dossier treatment */
+#interview-screen,#layan-screen{
+ box-sizing:border-box!important;position:relative!important;isolation:isolate!important;
+ display:flex!important;flex-direction:column!important;width:100vw!important;height:100dvh!important;
+ min-height:0!important;max-width:none!important;margin:0!important;padding:16px 28px 14px!important;
+ overflow:hidden!important;border:0!important;
+ background:#090b0e url('assets/scenes/adam-investigation-presence.jpg?v=01') left center/auto 118% no-repeat!important;
+}
+#interview-screen:before,#layan-screen:before{
+ content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none!important;
+ background:linear-gradient(90deg,rgba(6,8,10,.12) 0%,rgba(6,8,10,.62) 22%,rgba(7,9,11,.94) 46%,#090b0e 100%)!important;
+}
+#interview-screen:after,#layan-screen:after{
+ content:"THE CASE   /   WITNESS INTERVIEW   /   001"!important;position:absolute!important;
+ left:28px!important;bottom:13px!important;color:#9e866b!important;
+ font:9px 'Cormorant Garamond',serif!important;letter-spacing:2px!important;pointer-events:none!important;
+}
+#interview-screen .interview-header,#layan-screen .layan-header{
+ flex:0 0 auto!important;display:grid!important;grid-template-columns:170px 1fr auto!important;
+ align-items:center!important;gap:20px!important;padding:0 0 11px!important;
+ border-bottom:1px solid #b18a5a55!important;
+}
+#interview-screen .interview-header .back-link,#layan-screen .layan-header .back-link{
+ padding:0!important;color:#c6b49b!important;font-size:10px!important
+}
+#interview-screen .interview-header .eyebrow,#layan-screen .layan-header .eyebrow{
+ margin:0 0 4px!important;font-size:8px!important;letter-spacing:1.5px!important
+}
+#interview-screen .interview-header h2,#layan-screen .layan-header h2{
+ margin:0!important;font-size:clamp(25px,3vw,39px)!important;line-height:1.1!important;color:#eee2d0!important
+}
+#interview-screen .interview-header h2 em,#layan-screen .layan-header h2 em{color:#c69a6e!important}
+#interview-screen .interview-header p:not(.eyebrow),#layan-screen .layan-header p:not(.eyebrow){
+ font-size:10px!important;margin:4px 0 0!important;color:#b5a999!important
+}
+#interview-screen .interview-status,#layan-screen .layan-stamp{
+ padding:8px 12px!important;border:1px solid #9e79504d!important;background:#141414d9!important;
+ color:#c5a47d!important;font-size:9px!important;white-space:nowrap!important
+}
+#layan-screen .layan-alert{
+ flex:0 0 auto!important;display:flex!important;align-items:center!important;gap:14px!important;
+ margin:10px 0 0!important;padding:9px 13px!important;background:#1c1915e8!important;
+ border:1px solid #8e6d4c66!important;border-right:3px solid #a47b53!important;
+ color:#c9bba8!important;font-size:9px!important;line-height:1.7!important
+}
+#layan-screen .layan-alert b{color:#d2aa7c!important;white-space:nowrap!important}
+#interview-screen .interview-room,#layan-screen .layan-room{
+ flex:1 1 auto!important;min-height:0!important;display:grid!important;
+ grid-template-columns:190px minmax(0,1fr)!important;gap:14px!important;margin:12px 0 8px!important;
+}
+#interview-screen .interview-person,#layan-screen .layan-person{
+ min-height:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:center!important;padding:13px!important;gap:7px!important;text-align:center!important;
+ background:linear-gradient(155deg,rgba(25,24,21,.96),rgba(9,12,14,.97))!important;
+ border:1px solid #a17a514f!important;border-bottom:2px solid #9b754e!important;
+ box-shadow:0 12px 30px #0009!important;
+}
+#interview-screen .character-portrait,#layan-screen .character-portrait{
+ display:block!important;width:112px!important;height:145px!important;max-width:100%!important;
+ object-fit:cover!important;object-position:center 18%!important;border:1px solid #b18a5e!important;
+ box-shadow:0 0 0 4px #111!important;border-radius:2px!important;
+}
+#interview-screen .interview-person>b,#layan-screen .layan-person>b{
+ margin-top:5px!important;color:#eee2d0!important;font-size:13px!important
+}
+#interview-screen .interview-person>small,#layan-screen .layan-person>small{
+ color:#c4a782!important;font-size:9px!important
+}
+#layan-screen .layan-person>span{
+ color:#a99b88!important;font:9px 'Cormorant Garamond',serif!important;
+ border-top:1px solid #8c6b494d!important;padding-top:8px!important;margin-top:3px!important
+}
+#interview-screen .interview-dialogue,#layan-screen .layan-dialogue{
+ min-height:0!important;overflow:auto!important;display:flex!important;flex-direction:column!important;
+ padding:16px 19px!important;background:linear-gradient(135deg,rgba(19,20,20,.97),rgba(8,11,13,.98))!important;
+ border:1px solid #a17a514f!important;box-shadow:0 12px 30px #0009!important;
+}
+#interview-screen .dialogue-label,#layan-screen .dialogue-label{
+ flex:0 0 auto!important;padding-bottom:10px!important;border-bottom:1px solid #9a754b55!important;
+ color:#c69a6e!important;font-size:10px!important;letter-spacing:.5px!important
+}
+#interview-screen .dialogue-label span,#layan-screen .dialogue-label span{color:#928779!important;font-size:9px!important}
+#interview-screen .dialogue-response,#layan-screen .dialogue-response{
+ flex:0 0 auto!important;min-height:76px!important;margin:13px 0 10px!important;padding:14px 17px!important;
+ display:flex!important;align-items:center!important;background:linear-gradient(110deg,#d4c2a3,#bca587)!important;
+ color:#292219!important;border:1px solid #92704d!important;border-right:3px solid #8d3c32!important;
+ font-size:clamp(12px,1.35vw,16px)!important;line-height:1.9!important;box-shadow:0 7px 18px #0006!important
+}
+#interview-screen .dialogue-options,#layan-screen .dialogue-options{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin-top:4px!important
+}
+#interview-screen .dialogue-options button,#layan-screen .dialogue-options button{
+ min-height:43px!important;padding:8px 12px!important;text-align:right!important;
+ background:linear-gradient(100deg,#211e1a,#111416)!important;border:1px solid #806343!important;
+ color:#e9ddcb!important;font:10px 'IBM Plex Sans Arabic'!important;line-height:1.7!important;
+}
+#interview-screen .dialogue-options button:before,#layan-screen .dialogue-options button:before{
+ content:"↳";color:#c69b70;margin-left:8px
+}
+#interview-screen .dialogue-options button:hover:not(:disabled),#layan-screen .dialogue-options button:hover:not(:disabled){
+ border-color:#d2a16e!important;background:#30271f!important
+}
+#interview-screen .dialogue-options button:disabled,#layan-screen .dialogue-options button:disabled{
+ opacity:.4!important;cursor:default!important
+}
+#interview-screen .dialogue-note,#layan-screen .dialogue-note{
+ flex:0 0 auto!important;margin:10px 0 0!important;padding:8px 11px!important;
+ background:#111619!important;border-right:2px solid #9b754e!important;color:#b8aa96!important;
+ font-size:9px!important;line-height:1.8!important
+}
+#interview-screen .interview-record,#layan-screen .layan-record{
+ flex:0 0 auto!important;max-height:94px!important;overflow:auto!important;margin:0!important;padding:8px 13px!important;
+ background:rgba(13,15,17,.96)!important;border:1px solid #89674555!important;
+}
+#interview-screen .interview-record>b,#layan-screen .layan-record>b{
+ color:#c6a477!important;font-size:10px!important
+}
+#interview-screen .interview-record ul,#layan-screen .layan-record ul{
+ margin:5px 0!important;padding-right:18px!important;font-size:9px!important;line-height:1.75!important;color:#c9bba8!important
+}
+#interview-screen.hidden,#layan-screen.hidden{display:none!important}
+@media(max-height:520px) and (orientation:landscape){
+ #interview-screen,#layan-screen{padding:9px 18px 8px!important;background-size:auto 125%!important}
+ #interview-screen .interview-header,#layan-screen .layan-header{grid-template-columns:130px 1fr auto!important;padding-bottom:7px!important;gap:12px!important}
+ #interview-screen .interview-header h2,#layan-screen .layan-header h2{font-size:25px!important}
+ #interview-screen .interview-room,#layan-screen .layan-room{grid-template-columns:160px minmax(0,1fr)!important;margin:7px 0 5px!important;gap:8px!important}
+ #interview-screen .character-portrait,#layan-screen .character-portrait{width:82px!important;height:100px!important}
+ #interview-screen .interview-person,#layan-screen .layan-person{padding:7px!important;gap:4px!important}
+ #interview-screen .interview-dialogue,#layan-screen .layan-dialogue{padding:9px 13px!important}
+ #interview-screen .dialogue-response,#layan-screen .dialogue-response{min-height:52px!important;margin:7px 0 5px!important;padding:7px 10px!important;font-size:11px!important}
+ #interview-screen .dialogue-options,#layan-screen .dialogue-options{gap:5px!important}
+ #interview-screen .dialogue-options button,#layan-screen .dialogue-options button{min-height:31px!important;padding:5px 8px!important;font-size:8px!important}
+ #interview-screen .dialogue-note,#layan-screen .dialogue-note{margin-top:5px!important;padding:5px 8px!important;font-size:8px!important}
+ #interview-screen .interview-record,#layan-screen .layan-record{max-height:58px!important;padding:4px 9px!important}
+ #interview-screen:after,#layan-screen:after{left:18px!important;bottom:5px!important;font-size:7px!important}
+ #layan-screen .layan-alert{margin-top:5px!important;padding:5px 9px!important;font-size:8px!important}
+}
+@media(max-width:700px) and (orientation:portrait){
+ #interview-screen,#layan-screen{padding:12px!important;background-position:30% center!important}
+ #interview-screen:before,#layan-screen:before{background:linear-gradient(180deg,#090b0e66,#090b0ef5 35%)!important}
+ #interview-screen .interview-header,#layan-screen .layan-header{grid-template-columns:1fr auto!important}
+ #interview-screen .interview-header .back-link,#layan-screen .layan-header .back-link{grid-column:1/-1!important}
+ #interview-screen .interview-room,#layan-screen .layan-room{grid-template-columns:1fr!important}
+ #interview-screen .interview-person,#layan-screen .layan-person{min-height:180px!important}
+ #interview-screen .dialogue-options,#layan-screen .dialogue-options{grid-template-columns:1fr!important}
+}
