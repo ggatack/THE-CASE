@@ -816,7 +816,7 @@ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!impo
 /* Audit excerpt shown beside the final digital-evidence question */
 .audit-extract{margin:2px 0 4px;padding:12px;background:#0a1013;border:1px solid #94745188;color:#d9cbb9;font-family:inherit}
 .audit-extract-head{display:flex;justify-content:space-between;gap:8px;padding-bottom:8px;border-bottom:1px solid #80674766;color:#d5a777;font:10px 'Cormorant Garamond',serif;letter-spacing:1px}
-.audit-extract-head small{color:#9f9588;font:10px inherit;letter-spacing:0}
+.audit-extract-head small{color:#9f9588;font-size:10px;font-family:inherit;letter-spacing:0}
 .audit-log-row{display:grid;grid-template-columns:48px 1fr;gap:3px 8px;padding:9px 0;border-bottom:1px solid #ffffff12;font-size:11px;line-height:1.6}
 .audit-log-row time{grid-row:span 2;color:#d8a36f;font-weight:700}
 .audit-log-row span{color:#e7ded2}
