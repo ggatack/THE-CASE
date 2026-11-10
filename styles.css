@@ -1578,3 +1578,72 @@ html,body{background:#090b0e!important}
 #files-modal .case-file-locked i{font:10px monospace;letter-spacing:2px;color:#74554b}
 #files-modal .modal-note{margin:14px 0 0;color:#837968;font-size:11px}
 @media(max-width:650px){#files-modal .case-file-feature{grid-template-columns:1fr}#files-modal .case-file-image{min-height:170px;height:170px}#files-modal .case-file-facts{grid-template-columns:repeat(3,1fr)}}
+
+
+/* CASE BRIEFING — cinematic opening dossier, using the approved real Adam artwork */
+#briefing-screen{
+ position:relative!important;isolation:isolate!important;display:flex!important;flex-direction:column!important;
+ align-items:flex-start!important;justify-content:center!important;gap:0!important;
+ width:100vw!important;max-width:none!important;height:100dvh!important;min-height:0!important;
+ margin:0!important;padding:5vh 7vw 5vh 49vw!important;overflow:hidden!important;
+ background:#090b0e url('assets/scenes/adam-investigation-presence.jpg?v=01') left center/auto 112% no-repeat!important;
+}
+#briefing-screen:before{
+ content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none!important;
+ background:linear-gradient(90deg,rgba(5,7,9,.04) 0%,rgba(5,7,9,.18) 27%,rgba(7,8,10,.84) 47%,#090b0e 72%)!important;
+}
+#briefing-screen:after{
+ content:"CASE FILE 001     /     INITIAL BRIEFING"!important;position:absolute!important;
+ right:7vw!important;top:5vh!important;color:#b9946e!important;font:10px 'Cormorant Garamond',serif!important;
+ letter-spacing:2.5px!important;border-bottom:1px solid #a17b514d!important;padding:0 0 10px!important;
+}
+#briefing-screen>*{position:relative!important;z-index:1!important}
+#briefing-screen .back-link{padding:0!important;margin:0 0 5vh!important;color:#c7b59e!important;font-size:11px!important}
+#briefing-screen .eyebrow{margin:0 0 13px!important;color:#bd956d!important;font-size:10px!important;letter-spacing:1.2px!important}
+#briefing-screen h2{
+ max-width:650px!important;margin:0!important;color:#eee3d2!important;
+ font-size:clamp(42px,5.3vw,76px)!important;line-height:1.12!important;letter-spacing:-1.5px!important;
+ text-shadow:0 4px 22px #000!important
+}
+#briefing-screen h2 em{color:#c69b70!important}
+#briefing-screen .briefing-card{
+ position:relative!important;width:min(100%,590px)!important;max-width:590px!important;
+ margin:25px 0 20px!important;padding:20px 23px!important;
+ color:#d7cbbb!important;background:linear-gradient(135deg,rgba(27,26,24,.96),rgba(13,15,17,.96))!important;
+ border:1px solid #9a79564d!important;border-right:3px solid #a47b53!important;
+ box-shadow:0 14px 34px #0008,inset 0 0 0 1px #ffffff08!important;
+}
+#briefing-screen .briefing-label{color:#c39a70!important;font-size:9px!important;letter-spacing:1.8px!important;margin:0 0 10px!important}
+#briefing-screen .briefing-card p{color:#d0c8bc!important;font-size:clamp(11px,1.05vw,13px)!important;line-height:1.95!important;margin:7px 0!important}
+#briefing-screen .briefing-card strong{color:#f0e4d2!important}
+#briefing-screen .briefing-meta{border-color:#8c6b493d!important;padding-top:12px!important;margin-top:13px!important;gap:34px!important;color:#9e978b!important}
+#briefing-screen .briefing-meta b{color:#e5d4bd!important;font-size:11px!important}
+#briefing-screen .briefing-meta .danger{color:#d07b6d!important}
+#briefing-screen #enter-office{
+ width:min(100%,260px)!important;min-width:0!important;height:48px!important;
+ justify-content:space-between!important;padding:0 18px!important;
+ background:linear-gradient(110deg,#c29a70,#9e754f)!important;color:#17120e!important;
+ border:1px solid #e1bc91!important;box-shadow:0 7px 20px #0007!important;
+}
+#briefing-screen .micro-copy{margin:13px 0 0!important;color:#9d9589!important;font-size:9px!important;letter-spacing:1px!important}
+@media(max-height:600px) and (orientation:landscape){
+ #briefing-screen{padding:4vh 6vw 3vh 48vw!important;background-size:auto 118%!important}
+ #briefing-screen:after{top:3vh!important;right:6vw!important;font-size:8px!important;padding-bottom:6px!important}
+ #briefing-screen .back-link{margin-bottom:2.2vh!important;font-size:9px!important}
+ #briefing-screen .eyebrow{font-size:8px!important;margin-bottom:5px!important}
+ #briefing-screen h2{font-size:clamp(30px,6.3vh,46px)!important;line-height:1.04!important}
+ #briefing-screen .briefing-card{padding:9px 15px!important;margin:9px 0 10px!important}
+ #briefing-screen .briefing-label{font-size:7px!important;margin-bottom:4px!important}
+ #briefing-screen .briefing-card p{font-size:9px!important;line-height:1.55!important;margin:4px 0!important}
+ #briefing-screen .briefing-meta{padding-top:6px!important;margin-top:6px!important}
+ #briefing-screen .briefing-meta b{font-size:9px!important;margin-top:2px!important}
+ #briefing-screen #enter-office{height:36px!important;font-size:10px!important}
+ #briefing-screen .micro-copy{margin-top:5px!important;font-size:7px!important}
+}
+@media(max-width:700px) and (orientation:portrait){
+ #briefing-screen{padding:10vh 7vw 5vh!important;background-position:35% center!important;background-size:auto 100%!important}
+ #briefing-screen:before{background:linear-gradient(180deg,rgba(5,7,9,.24),rgba(7,8,10,.9) 38%,#090b0e 72%)!important}
+ #briefing-screen:after{right:7vw!important;top:4vh!important}
+ #briefing-screen .back-link{margin-bottom:5vh!important}
+ #briefing-screen .briefing-card{padding:16px!important}
+}
