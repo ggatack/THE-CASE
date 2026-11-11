@@ -2964,3 +2964,53 @@ html,body{background:#090b0e!important}
  #home-screen{height:calc(100svh - 75px)!important;min-height:300px!important}
  #home-screen .hero-actions{left:7.5%!important;top:46.5%!important;width:26%!important;height:39%!important}
 }
+
+
+/* HOME MENU HOTFIX — restore visible, reliable touch targets over the artwork */
+#home-screen .hero-copy{pointer-events:none!important}
+#home-screen .hero-actions{
+  position:absolute!important;z-index:30!important;
+  left:6.5%!important;right:auto!important;top:39%!important;
+  transform:none!important;width:min(310px,31%)!important;height:auto!important;
+  display:flex!important;flex-direction:column!important;justify-content:flex-start!important;
+  gap:10px!important;margin:0!important;padding:0!important;
+  pointer-events:auto!important;
+}
+#home-screen .hero-actions button{
+  position:relative!important;display:flex!important;align-items:center!important;
+  justify-content:center!important;width:100%!important;height:auto!important;
+  min-height:48px!important;padding:12px 16px!important;margin:0!important;
+  border:1px solid #b88d5d!important;border-radius:2px!important;
+  background:linear-gradient(105deg,rgba(12,15,17,.96),rgba(30,25,20,.91))!important;
+  color:#f1dfc6!important;box-shadow:0 7px 22px #0009,inset 0 1px #fff1!important;
+  font-family:inherit!important;font-size:clamp(12px,1.15vw,15px)!important;
+  font-weight:700!important;letter-spacing:.02em!important;line-height:1.5!important;
+  opacity:1!important;visibility:visible!important;pointer-events:auto!important;
+  touch-action:manipulation!important;cursor:pointer!important;
+}
+#home-screen .hero-actions button span{
+  display:block!important;opacity:1!important;color:inherit!important;
+  font-size:inherit!important;visibility:visible!important;pointer-events:none!important;
+}
+#home-screen .hero-actions button:before{
+  content:"";position:absolute;inset:4px;border:1px solid #c29a6a2b;
+  pointer-events:none;
+}
+#home-screen .hero-actions button:hover,
+#home-screen .hero-actions button:focus-visible{
+  background:linear-gradient(105deg,rgba(52,39,25,.98),rgba(24,25,24,.97))!important;
+  outline:2px solid #d5ad7a!important;outline-offset:2px;
+}
+#home-screen .hero-actions button:active{transform:translateY(1px)!important}
+#home-screen .hero-actions button:focus-visible{z-index:2}
+@media(max-width:760px) and (orientation:portrait){
+  #home-screen .hero-actions{
+    left:5%!important;top:auto!important;bottom:7%!important;
+    width:min(270px,54%)!important;gap:7px!important;
+  }
+  #home-screen .hero-actions button{min-height:42px!important;padding:9px 12px!important;font-size:12px!important}
+}
+@media(max-height:520px) and (orientation:landscape){
+  #home-screen .hero-actions{left:5%!important;top:35%!important;width:min(270px,30%)!important;gap:6px!important}
+  #home-screen .hero-actions button{min-height:38px!important;padding:7px 12px!important;font-size:11px!important}
+}
