@@ -3014,3 +3014,101 @@ html,body{background:#090b0e!important}
   #home-screen .hero-actions{left:5%!important;top:35%!important;width:min(270px,30%)!important;gap:6px!important}
   #home-screen .hero-actions button{min-height:38px!important;padding:7px 12px!important;font-size:11px!important}
 }
+
+
+/* HOME MENU — corrected placement and clean, sharp artwork */
+#home-screen,
+#home-screen *{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+#home-screen{
+  filter:none!important;
+  background-position:center center!important;
+  background-size:100% 100%!important;
+}
+#home-screen:before,
+#home-screen:after{content:none!important;display:none!important}
+#home-screen .hero-copy{
+  background:transparent!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+#home-screen .hero-actions{
+  position:absolute!important;
+  z-index:30!important;
+  left:auto!important;
+  right:5%!important;
+  top:auto!important;
+  bottom:7%!important;
+  transform:none!important;
+  width:min(290px,25%)!important;
+  height:auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+  margin:0!important;
+  padding:0!important;
+  pointer-events:auto!important;
+}
+#home-screen .hero-actions button{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:43px!important;
+  padding:9px 14px!important;
+  border:1px solid #b88d5d!important;
+  border-radius:2px!important;
+  background:linear-gradient(105deg,rgba(12,15,17,.94),rgba(30,25,20,.92))!important;
+  color:#f1dfc6!important;
+  box-shadow:0 5px 16px #0008,inset 0 1px #fff1!important;
+  font-family:inherit!important;
+  font-size:clamp(11px,1vw,14px)!important;
+  font-weight:700!important;
+  line-height:1.4!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  touch-action:manipulation!important;
+}
+#home-screen .hero-actions button span{
+  display:block!important;
+  opacity:1!important;
+  color:inherit!important;
+  font-size:inherit!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+}
+#home-screen .hero-actions button:before{display:none!important}
+@media(max-width:760px) and (orientation:portrait){
+  #home-screen{
+    background-size:auto 100%!important;
+    background-position:48% center!important;
+  }
+  #home-screen .hero-actions{
+    right:4%!important;
+    left:auto!important;
+    bottom:5%!important;
+    top:auto!important;
+    width:min(250px,52%)!important;
+    gap:6px!important;
+  }
+  #home-screen .hero-actions button{
+    min-height:39px!important;
+    padding:7px 10px!important;
+    font-size:11px!important;
+  }
+}
+@media(max-height:520px) and (orientation:landscape){
+  #home-screen{height:calc(100svh - 75px)!important;min-height:300px!important}
+  #home-screen .hero-actions{
+    right:4%!important;left:auto!important;top:auto!important;bottom:6%!important;
+    width:min(250px,24%)!important;gap:5px!important;
+  }
+  #home-screen .hero-actions button{min-height:34px!important;padding:6px 10px!important;font-size:11px!important}
+}
