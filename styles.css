@@ -344,15 +344,18 @@ button.office-card:hover:not(:disabled){transform:translateY(-3px);border-color:
 .card-index{left:auto;right:14px;top:10px;color:#d1a36f;font:12px 'Cormorant Garamond';letter-spacing:1px}
 .card-symbol{height:42px;width:46px;margin:7px 0 10px;display:grid;place-items:center;border:1px solid #b98c5e66;background:linear-gradient(145deg,#443426,#171a1d);color:#e2b780;font-size:0;box-shadow:inset 0 0 15px #d4a36b15}
 .card-symbol:before{font-family:Arial,sans-serif;font-size:25px;line-height:1;text-shadow:0 0 12px #d4a36b55}
-#open-investigation .card-symbol:before{content:"▣"}
-#open-board .card-symbol:before{content:"⌘"}
-#open-interview .card-symbol:before{content:"◉"}
-#open-logs .card-symbol:before{content:"▤"}
-#open-timeline .card-symbol:before{content:"⌁"}
-#open-archive .card-symbol:before{content:"▥"}
-#open-crosscheck .card-symbol:before{content:"⟷"}
-#open-server-forensics .card-symbol:before{content:"⌬"}
-#open-layan-interview .card-symbol:before{content:"◌"}
+/* Distinct investigation-board symbols: each icon reflects its destination */
+#open-investigation .card-symbol:before{content:"⌕"} /* scene inspection */
+#open-board .card-symbol:before{content:"⌗"} /* linked evidence */
+#open-interview .card-symbol:before{content:"♙"} /* witness */
+#open-suspect-interviews .card-symbol:before{content:"⚖"} /* suspect confrontation */
+#open-layan-interview .card-symbol:before{content:"♙"} /* witness */
+#open-logs .card-symbol:before{content:"≣"} /* access log */
+#open-archive .card-symbol:before{content:"▤"} /* document archive */
+#open-server-forensics .card-symbol:before{content:"▦"} /* server rack */
+#open-timeline .card-symbol:before{content:"◷"} /* chronology */
+#open-crosscheck .card-symbol:before{content:"⇄"} /* document comparison */
+#open-case-review .card-symbol:before{content:"⚑"} /* case decision */
 .office-card h3{font-size:clamp(13px,1.25vw,17px);font-weight:600;margin:0 0 4px;color:#f0e3d1}
 .office-card p{font-size:10px;margin:0 0 5px;color:#b3a99a}
 .card-state{font-size:10px;color:#d5a36d}
