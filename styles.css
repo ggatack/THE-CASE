@@ -2943,3 +2943,79 @@ html,body{background:#090b0e!important}
 @media(prefers-reduced-motion:reduce){
   #case-ending-screen .ending-stage{animation:none!important}
 }
+
+
+/* HOME SCREEN — cinematic private-investigator office, built around the existing Adam photograph */
+#home-screen{position:relative!important;isolation:isolate!important;display:block!important;width:100%!important;height:calc(100svh - 126px)!important;min-height:490px!important;max-height:820px!important;margin:8px 0 0!important;padding:0!important;overflow:hidden!important;background:#080b0e!important;border:1px solid #9c79512b!important;box-shadow:0 24px 70px #0009!important}
+#home-screen:before{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;background:linear-gradient(90deg,#07090cf5 0%,#080b0de8 24%,#080b0d9c 39%,#080b0d18 67%,#080b0d44 100%),linear-gradient(0deg,#07090de8 0%,transparent 24%,transparent 77%,#07090d88 100%)!important}
+#home-screen .cinematic-entry-art{display:block!important;position:absolute!important;z-index:0!important;inset:0 0 0 auto!important;width:78%!important;height:100%!important;margin:0!important;background-image:url('assets/scenes/adam-investigation-presence.jpg?v=01')!important;background-position:center 42%!important;background-size:cover!important;background-repeat:no-repeat!important;opacity:1!important;filter:brightness(.88) contrast(1.08) saturate(.82)!important;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 8%,#000 26%)!important;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 8%,#000 26%)!important;pointer-events:none!important}
+#home-screen .cinematic-entry-art:before{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;background:radial-gradient(ellipse at 76% 55%,#d79a5d24 0%,transparent 32%)!important;animation:homeLampBreath 7s ease-in-out infinite alternate!important}
+#home-screen .cinematic-entry-art:after{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;background:repeating-linear-gradient(106deg,transparent 0 46px,#d6e1e51a 47px,#d6e1e508 49px,transparent 51px 93px)!important;opacity:.18!important;mix-blend-mode:screen!important;animation:homeRainDrift 18s linear infinite!important}
+#home-screen .hero-copy{position:absolute!important;z-index:3!important;left:6.2%!important;right:auto!important;top:50%!important;transform:translateY(-50%)!important;width:min(36%,450px)!important;max-width:450px!important;padding:clamp(17px,2.1vw,28px) 0!important;background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;text-align:left!important}
+#home-screen .home-kicker{display:flex;align-items:center;gap:9px;margin:0 0 19px!important;color:#c5a17a;font-size:10px;letter-spacing:1.4px;text-shadow:0 2px 8px #000}
+#home-screen .home-kicker .status-dot{flex:0 0 6px}
+#home-screen .home-kicker i{font:8px Georgia,serif;letter-spacing:1.5px;color:#938675}
+#home-screen .home-logo{margin:0 0 22px!important;direction:ltr!important;text-align:left!important;text-shadow:0 5px 24px #000!important}
+#home-screen .home-logo span{margin:0 0 6px 7px!important;font-size:clamp(21px,2.3vw,31px)!important}
+#home-screen .home-logo strong{font-size:clamp(65px,7.8vw,104px)!important;letter-spacing:-5px!important}
+#home-screen .home-logo i{right:auto!important;left:47%!important;top:-20px!important;opacity:.28!important}
+#home-screen .hero-description{display:block!important;max-width:350px!important;margin:0 0 23px!important;color:#eee1ce!important;font-size:clamp(13px,1.2vw,16px)!important;line-height:1.9!important;text-shadow:0 2px 12px #000!important}
+#home-screen .hero-description span{color:#b8aa98!important;font-size:.88em!important}
+#home-screen .hero-actions{width:min(100%,350px)!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:8px!important;margin:0!important}
+#home-screen .hero-actions button{height:47px!important;min-height:47px!important;padding:0 17px!important;border:1px solid #b18b625c!important;border-radius:1px!important;background:linear-gradient(90deg,#090c0eef,#121416c9)!important;color:#eee2d0!important;box-shadow:0 5px 16px #0008,inset 0 1px #ffffff0a!important;text-align:left!important;font-size:13px!important;letter-spacing:.1px!important}
+#home-screen .hero-actions button.primary-button{background:linear-gradient(105deg,#d1a477,#9b704b)!important;color:#1c1712!important;border-color:#e2bd91!important;box-shadow:0 8px 24px #0009,inset 0 1px #fff8!important}
+#home-screen .hero-actions button:hover{transform:translateX(3px)!important;border-color:#e0b789!important}
+#home-screen .micro-copy{width:min(100%,350px)!important;margin:15px 0 0!important;text-align:left!important;color:#c1b29f!important;font-size:10px!important;letter-spacing:.3px!important;text-shadow:0 2px 8px #000!important}
+#home-screen .home-case-meta{display:flex;gap:23px;flex-wrap:wrap;width:min(100%,350px);margin-top:17px;padding-top:12px;border-top:1px solid #c4a17a45;color:#a99b88;font-size:9px}
+#home-screen .home-case-meta span{display:flex;flex-direction:column;gap:5px}
+#home-screen .home-case-meta b{font-size:11px;font-weight:600;color:#e5d6c1}
+#home-screen .home-case-meta .home-live-status{color:#c48b69}
+#home-screen .home-scene-caption{position:absolute;z-index:2;right:4.5%;top:5%;display:flex;flex-direction:column;gap:5px;direction:ltr;text-align:right;color:#ead6bc;text-shadow:0 2px 12px #000;font:11px Georgia,serif;letter-spacing:2.2px}
+#home-screen .home-scene-caption i{font-size:8px;color:#c3ae92;font-style:normal;letter-spacing:2px}
+#home-screen .hero-case-strip{position:absolute;z-index:4;right:4.5%;bottom:0;left:4.5%;min-height:70px;display:grid;grid-template-columns:.72fr 1.25fr 1fr;align-items:center;gap:20px;padding:12px 4px max(12px,env(safe-area-inset-bottom));border-top:1px solid #c6a17a66;color:#e8dac8;background:linear-gradient(90deg,#090b0d22,#090b0d9c)}
+#home-screen .hero-case-strip>div{display:flex;flex-direction:column;gap:6px;min-width:0}
+#home-screen .hero-case-strip small{color:#b59a79;font:8px Georgia,serif;letter-spacing:1.8px}
+#home-screen .hero-case-strip b{font:11px Georgia,'IBM Plex Sans Arabic',serif;letter-spacing:1px;white-space:nowrap}
+#home-screen .hero-case-strip em{color:#b87865;font-style:normal;font-size:9px}
+#home-screen .hero-case-strip i{color:#c58e64;font-style:normal}
+@keyframes homeLampBreath{from{opacity:.55}to{opacity:1}}
+@keyframes homeRainDrift{from{transform:translate3d(0,-2%,0)}to{transform:translate3d(-1%,2%,0)}}
+@media(max-width:760px) and (orientation:portrait){
+ #home-screen{height:calc(100svh - 105px)!important;min-height:540px!important;max-height:none!important}
+ #home-screen .cinematic-entry-art{width:100%!important;background-position:54% center!important;opacity:.82!important;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 48%,transparent 100%)!important;mask-image:linear-gradient(180deg,#000 0%,#000 48%,transparent 100%)!important}
+ #home-screen:before{background:linear-gradient(180deg,#080b0d22 0%,#080b0d55 36%,#080b0df5 70%,#080b0d 100%)!important}
+ #home-screen .hero-copy{left:6%!important;right:6%!important;top:auto!important;bottom:85px!important;transform:none!important;width:auto!important;max-width:none!important;padding:0!important}
+ #home-screen .home-kicker{margin-bottom:10px!important;font-size:8px!important}
+ #home-screen .home-logo{margin-bottom:12px!important}
+ #home-screen .home-logo span{font-size:18px!important}
+ #home-screen .home-logo strong{font-size:clamp(54px,14vw,76px)!important}
+ #home-screen .home-logo i{width:78px!important;height:100px!important;left:44%!important}
+ #home-screen .hero-description{font-size:11px!important;line-height:1.7!important;margin-bottom:12px!important}
+ #home-screen .hero-actions{width:100%!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important}
+ #home-screen .hero-actions button{height:40px!important;min-height:40px!important;padding:0 10px!important;font-size:10px!important}
+ #home-screen .hero-actions button:first-child{grid-column:1/-1}
+ #home-screen .micro-copy,#home-screen .home-case-meta{display:none!important}
+ #home-screen .home-scene-caption{top:4%;right:5%;font-size:8px}
+ #home-screen .home-scene-caption i{font-size:6px}
+ #home-screen .hero-case-strip{right:5%;left:5%;min-height:58px;grid-template-columns:.65fr 1.2fr;gap:10px;padding:8px 0 max(8px,env(safe-area-inset-bottom))}
+ #home-screen .hero-case-strip>div:last-child{display:none}
+ #home-screen .hero-case-strip small{font-size:7px;letter-spacing:1px}
+ #home-screen .hero-case-strip b{font-size:9px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #home-screen{height:calc(100svh - 75px)!important;min-height:360px!important}
+ #home-screen .hero-copy{left:5%!important;width:34%!important;top:48%!important}
+ #home-screen .home-kicker{margin-bottom:7px!important;font-size:8px}
+ #home-screen .home-logo{margin-bottom:10px!important}
+ #home-screen .home-logo span{font-size:18px!important}
+ #home-screen .home-logo strong{font-size:clamp(50px,8vw,72px)!important}
+ #home-screen .hero-description{font-size:10px!important;margin-bottom:8px!important}
+ #home-screen .hero-actions{gap:5px!important;width:100%!important}
+ #home-screen .hero-actions button{height:34px!important;min-height:34px!important;font-size:10px!important;padding:0 10px!important}
+ #home-screen .micro-copy{display:none!important}
+ #home-screen .home-case-meta{margin-top:8px;padding-top:6px}
+ #home-screen .hero-case-strip{min-height:49px;padding:7px 0}
+}
+@media(prefers-reduced-motion:reduce){
+ #home-screen .cinematic-entry-art:before,#home-screen .cinematic-entry-art:after{animation:none!important}
+}
