@@ -2048,3 +2048,134 @@ html,body{background:#090b0e!important}
  #logs-screen .logs-list{overflow:visible!important}
  #logs-screen .log-detail{min-height:230px!important}
 }
+
+
+/* ARCHIVE REFINEMENT — physical records cabinet and open paper file */
+#archive-screen{
+ box-sizing:border-box!important;width:100vw!important;height:100svh!important;min-height:0!important;
+ max-width:none!important;margin:0!important;padding:clamp(12px,2.4vh,26px) clamp(16px,3vw,42px)!important;
+ display:flex;flex-direction:column;gap:clamp(8px,1.5vh,15px);
+ overflow:auto!important;isolation:isolate;
+ background:linear-gradient(105deg,rgba(8,10,12,.94),rgba(12,13,14,.82) 48%,rgba(7,8,9,.9)),url('assets/scenes/adam-investigation-presence.jpg?v=01') center/cover no-repeat!important;
+ border:1px solid #77583a!important;color:#e8dece;
+}
+#archive-screen:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(5,6,7,.36),transparent 38%,rgba(5,6,7,.2));pointer-events:none}
+#archive-screen .archive-header{
+ display:grid!important;grid-template-columns:auto 1fr auto!important;align-items:center!important;gap:clamp(12px,2vw,28px)!important;
+ flex:0 0 auto;padding:0 0 12px!important;border-bottom:1px solid rgba(190,148,99,.5)!important
+}
+#archive-screen .archive-header .back-link{padding:9px 12px!important;margin:0!important;border:1px solid #75583b!important;background:#11100ee8!important;color:#d9c5a8!important;white-space:nowrap}
+#archive-screen .archive-header .eyebrow{margin:0 0 3px!important;color:#c79b6a!important;font-size:9px!important}
+#archive-screen .archive-header h2{font-size:clamp(25px,3vw,38px)!important;color:#f0e4d2!important;line-height:1.15}
+#archive-screen .archive-header h2 em{color:#d3a16e!important}
+#archive-screen .archive-header p:last-child{font-size:10px!important;color:#c1b5a4!important;margin-top:4px!important}
+#archive-screen .archive-stamp{padding:8px 12px!important;border:1px solid #a06c50!important;background:#261b17d9!important;color:#e2ad88!important;letter-spacing:1px}
+#archive-screen .archive-warning{
+ flex:0 0 auto;margin:0!important;padding:8px 12px!important;gap:12px!important;
+ background:linear-gradient(90deg,#38261fef,#1c1714e8)!important;border:1px solid #77513b!important;
+ color:#d9c6ad!important;font-size:10px!important;line-height:1.7!important
+}
+#archive-screen .archive-warning b{color:#e4b47f!important}
+#archive-screen .archive-layout{
+ display:grid!important;grid-template-columns:minmax(245px,.78fr) minmax(0,1.22fr)!important;
+ gap:clamp(12px,2vw,22px)!important;flex:1 0 auto;min-height:0
+}
+#archive-screen .archive-documents{
+ display:flex!important;flex-direction:column!important;justify-content:center!important;gap:10px!important;
+ padding:clamp(10px,1.5vw,18px)!important;background:linear-gradient(145deg,#171615ed,#0d0f10f2)!important;
+ border:1px solid #70543a!important;box-shadow:inset 0 0 0 4px #08090988,0 12px 30px #0008!important
+}
+#archive-screen .archive-documents:before{
+ content:"خزانة 07  /  ملفات مستخرجة";display:block;padding:0 4px 8px;
+ border-bottom:1px solid #8a68434d;color:#c39a6b;font:10px 'Cormorant Garamond',serif;letter-spacing:1.5px
+}
+#archive-screen .archive-document{
+ position:relative!important;box-sizing:border-box!important;width:100%!important;min-height:0!important;
+ flex:1 1 0!important;margin:0!important;padding:12px 14px 11px!important;
+ display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:stretch!important;
+ gap:5px!important;text-align:right!important;direction:rtl!important;
+ background:linear-gradient(110deg,#d8c6a7,#b49a75)!important;border:1px solid #7d6042!important;
+ border-right:5px solid #80603e!important;border-radius:1px!important;box-shadow:0 4px 9px #0008,inset 0 0 0 3px #e6d7bd55!important;
+ color:#2c2118!important;transition:background .15s,border-color .15s
+}
+#archive-screen .archive-document:before{content:"";position:absolute;top:0;left:14px;width:42px;height:5px;background:#9b7650}
+#archive-screen .archive-document:after{content:"";position:absolute;inset:7px;border:1px solid #75593b38;pointer-events:none}
+#archive-screen .archive-document:hover,#archive-screen .archive-document.selected{
+ background:linear-gradient(110deg,#ead9bb,#c7ad83)!important;border-color:#d5a46c!important;border-right-color:#a54c3e!important
+}
+#archive-screen .archive-doc-index{font:9px 'Cormorant Garamond',serif!important;letter-spacing:1.2px;color:#7c5035!important}
+#archive-screen .archive-document b{font-size:clamp(11px,1.15vw,14px)!important;font-weight:700!important;color:#2a1d14!important}
+#archive-screen .archive-document small{font-size:9px!important;color:#66513a!important}
+#archive-screen .archive-document i{font-style:normal!important;color:#8b342b!important;font-size:9px!important}
+#archive-screen .archive-document.document-recorded{border-right:5px solid #647c5a!important}
+#archive-screen .archive-doc-state{color:#536c4d!important}
+#archive-screen .archive-reader{
+ box-sizing:border-box!important;min-height:0!important;padding:clamp(16px,2.2vw,26px)!important;
+ display:flex!important;flex-direction:column!important;position:relative;
+ background:linear-gradient(135deg,#e1d4bb,#c9b797)!important;color:#2b251e!important;
+ border:1px solid #8b7354!important;outline:5px solid #211a14!important;outline-offset:-8px;
+ box-shadow:0 12px 30px #0009,inset 0 0 35px #8c755122!important
+}
+#archive-screen .archive-reader:before{content:"NAWA  /  INTERNAL RECORD";display:block;padding-bottom:9px;border-bottom:1px solid #88745a66;color:#80694d;font:9px Georgia,serif;letter-spacing:2px}
+#archive-screen .archive-reader .log-detail-kicker{margin-top:12px;color:#8b5e3c!important;font-size:9px!important;letter-spacing:1px}
+#archive-screen .archive-reader h3{font-size:clamp(19px,2.2vw,27px)!important;font-weight:600!important;color:#2d241b!important;margin:7px 0 6px!important}
+#archive-screen .archive-reader>p{font-size:11px!important;line-height:1.9!important;color:#514637!important}
+#archive-screen .archive-extract{
+ flex:1 1 auto;min-height:110px!important;max-height:36vh;overflow:auto;
+ margin:12px 0!important;padding:clamp(12px,1.6vw,18px)!important;
+ background:rgba(245,237,219,.7)!important;border:1px solid #9d8767!important;
+ box-shadow:inset 0 0 0 4px #d2c2a4,0 3px 8px #5d4b3422!important;
+ color:#2b241c!important;font-size:clamp(11px,1.1vw,13px)!important;line-height:2!important
+}
+#archive-screen .archive-caution{
+ margin:0 0 10px!important;padding:9px 11px!important;background:#3a2922!important;
+ border-right:3px solid #9e5142!important;color:#ead0b9!important;font-size:9px!important;line-height:1.8!important
+}
+#archive-screen .archive-reader .collect-button{
+ align-self:flex-start;margin-top:auto!important;padding:10px 16px!important;
+ background:linear-gradient(#d6ae76,#a47a4d)!important;border:1px solid #795633!important;
+ color:#21180f!important;font-size:11px!important
+}
+#archive-screen .archive-reader .collect-button:disabled{opacity:.42!important}
+#archive-screen .archive-recorded{color:#42613e!important;font-weight:600}
+#archive-screen .scene-footnote{display:none!important}
+@media(max-width:760px){
+ #archive-screen{padding:10px!important;gap:7px!important}
+ #archive-screen .archive-header{grid-template-columns:1fr auto!important;gap:7px!important;padding-bottom:7px!important}
+ #archive-screen .archive-header .back-link{grid-column:1/-1;justify-self:start;padding:5px 8px!important;font-size:9px}
+ #archive-screen .archive-header h2{font-size:23px!important}
+ #archive-screen .archive-header p:last-child{font-size:8px!important}
+ #archive-screen .archive-stamp{font-size:8px;padding:5px 7px!important}
+ #archive-screen .archive-warning{font-size:8px;padding:6px 8px!important;line-height:1.5!important}
+ #archive-screen .archive-layout{grid-template-columns:minmax(115px,.72fr) minmax(0,1.28fr)!important;gap:7px!important}
+ #archive-screen .archive-documents{padding:7px!important;gap:6px!important}
+ #archive-screen .archive-documents:before{font-size:8px;padding-bottom:4px}
+ #archive-screen .archive-document{padding:7px 8px!important;gap:4px!important}
+ #archive-screen .archive-document b{font-size:9px!important}
+ #archive-screen .archive-document small{font-size:7px!important;line-height:1.5}
+ #archive-screen .archive-document i,#archive-screen .archive-doc-index{font-size:7px!important}
+ #archive-screen .archive-reader{padding:12px!important;outline-width:3px}
+ #archive-screen .archive-reader .log-detail-kicker{margin-top:6px}
+ #archive-screen .archive-reader h3{font-size:16px!important}
+ #archive-screen .archive-reader>p{font-size:9px!important}
+ #archive-screen .archive-extract{min-height:85px!important;padding:8px!important;margin:7px 0!important;font-size:9px!important;line-height:1.7!important}
+ #archive-screen .archive-caution{font-size:8px!important;padding:6px!important}
+ #archive-screen .archive-reader .collect-button{font-size:9px!important;padding:7px 9px!important}
+}
+@media(max-height:500px) and (orientation:landscape){
+ #archive-screen{padding:7px 16px!important;gap:5px!important}
+ #archive-screen .archive-header{padding-bottom:5px!important}
+ #archive-screen .archive-header .back-link{padding:5px 8px!important;font-size:9px}
+ #archive-screen .archive-header h2{font-size:21px!important}
+ #archive-screen .archive-warning{padding:4px 8px!important;font-size:8px!important}
+ #archive-screen .archive-layout{gap:8px!important}
+ #archive-screen .archive-documents{gap:5px!important;padding:6px!important}
+ #archive-screen .archive-document{padding:5px 8px!important}
+ #archive-screen .archive-reader{padding:8px 12px!important}
+ #archive-screen .archive-reader:before{padding-bottom:4px}
+ #archive-screen .archive-reader .log-detail-kicker{margin-top:4px}
+ #archive-screen .archive-reader h3{font-size:17px!important;margin:3px 0!important}
+ #archive-screen .archive-extract{min-height:65px!important;max-height:24vh;margin:5px 0!important;padding:6px 9px!important;font-size:9px!important;line-height:1.5!important}
+ #archive-screen .archive-caution{padding:5px 7px!important;margin-bottom:5px!important}
+ #archive-screen .archive-reader .collect-button{padding:6px 10px!important}
+}
