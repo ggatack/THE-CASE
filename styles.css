@@ -3193,3 +3193,65 @@ html,body{background:#090b0e!important}
   #home-screen .hero-actions{bottom:3.5%!important;width:min(700px,78%)!important;gap:7px!important}
   #home-screen .hero-actions button{height:38px!important;min-height:38px!important;font-size:11px!important}
 }
+
+
+/* HOME MENU POSITION — restore the original right-side vertical stack */
+#home-screen .hero-actions{
+  left:auto!important;
+  right:5%!important;
+  top:39%!important;
+  bottom:auto!important;
+  transform:none!important;
+  width:min(350px,32%)!important;
+  height:auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  gap:10px!important;
+  margin:0!important;
+  padding:0!important;
+  z-index:40!important;
+}
+#home-screen .hero-actions button{
+  width:100%!important;
+  min-width:0!important;
+  height:49px!important;
+  min-height:49px!important;
+  padding:0 18px!important;
+  justify-content:flex-start!important;
+  text-align:right!important;
+  font-size:clamp(12px,1.15vw,15px)!important;
+}
+@media(max-width:760px) and (orientation:portrait){
+  #home-screen .hero-actions{
+    left:auto!important;
+    right:4%!important;
+    top:auto!important;
+    bottom:5%!important;
+    transform:none!important;
+    width:min(310px,64%)!important;
+    gap:8px!important;
+  }
+  #home-screen .hero-actions button{
+    height:44px!important;
+    min-height:44px!important;
+    padding:0 15px!important;
+    font-size:12px!important;
+  }
+}
+@media(max-height:520px) and (orientation:landscape){
+  #home-screen .hero-actions{
+    left:auto!important;
+    right:5%!important;
+    top:35%!important;
+    bottom:auto!important;
+    width:min(330px,31%)!important;
+    gap:7px!important;
+  }
+  #home-screen .hero-actions button{
+    height:41px!important;
+    min-height:41px!important;
+    font-size:12px!important;
+  }
+}
