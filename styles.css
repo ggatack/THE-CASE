@@ -2517,3 +2517,101 @@ html,body{background:#090b0e!important}
  #timeline-screen .timeline-detail select{min-height:30px!important;padding:5px 8px!important}
  #timeline-screen .save-timeline{min-height:30px!important;margin-top:5px!important}
 }
+
+
+
+/* SUSPECT CONFRONTATION — final portrait and interview-room polish */
+#suspect-interviews-screen .suspect-list{
+ position:relative!important;overflow:auto!important;padding:12px!important;
+ background:linear-gradient(160deg,#171615f2,#090c0ef5)!important;
+ border:1px solid #9a744e77!important;box-shadow:inset 0 0 0 4px #08090a66,0 12px 28px #0009!important
+}
+#suspect-interviews-screen .suspect-list:before{
+ content:"SUBJECT REGISTER  /  001";display:block;padding:2px 3px 10px;margin-bottom:2px;
+ border-bottom:1px solid #a17b5555;color:#c8a477;font:9px Georgia,serif;letter-spacing:1.5px
+}
+#suspect-interviews-screen .suspect-person{
+ position:relative!important;min-height:82px!important;padding:9px 10px!important;
+ background:linear-gradient(105deg,#30271f,#141719)!important;border:1px solid #80634388!important;
+ border-right:3px solid #8d6a48!important;box-shadow:0 4px 12px #0006!important
+}
+#suspect-interviews-screen .suspect-person.selected{
+ background:linear-gradient(105deg,#493522,#1b1b19)!important;border-color:#d2a16e!important;
+ border-right-color:#a64a3d!important;box-shadow:inset 0 0 0 1px #d2a16e44,0 5px 14px #0008!important
+}
+#suspect-interviews-screen .suspect-avatar{
+ width:54px!important;height:54px!important;flex:0 0 54px!important;border-radius:50%!important;
+ object-fit:cover!important;object-position:center 20%!important;border:2px solid #a9845c!important;
+ box-shadow:0 0 0 3px #080a0b,0 3px 8px #0009!important
+}
+#suspect-interviews-screen .suspect-person:disabled .suspect-avatar{filter:grayscale(1)!important;border-color:#756b5d!important}
+#suspect-interviews-screen .suspect-person b{font-size:12px!important;letter-spacing:.1px}
+#suspect-interviews-screen .suspect-person small{margin-top:5px!important;font-size:8px!important}
+#suspect-interviews-screen .suspect-warning{
+ padding:12px 8px 3px!important;background:linear-gradient(180deg,transparent,#0b0d0e88)!important;
+ border-top:1px solid #a17b5555!important
+}
+#suspect-interviews-screen .suspect-panel{
+ position:relative!important;overflow:auto!important;
+ background:linear-gradient(135deg,#191918f5,#0b0e10f7)!important;
+ border:1px solid #a17a515e!important;box-shadow:inset 0 0 0 4px #07090a55,0 14px 35px #000b!important
+}
+#suspect-interviews-screen .suspect-panel:before{
+ content:"OFFICIAL INTERVIEW  /  RECORDED STATEMENT";display:block;flex:0 0 auto;
+ padding:0 0 9px;margin-bottom:11px;border-bottom:1px solid #a17b554d;
+ color:#c49a6b;font:8px Georgia,serif;letter-spacing:1.7px
+}
+#suspect-interviews-screen .suspect-focus-portrait{
+ background:#08090a!important;object-position:center 18%!important;
+ box-shadow:0 0 0 4px #0d0e0f,0 0 0 5px #9b744d,0 10px 22px #000a!important
+}
+#suspect-interviews-screen .suspect-response{
+ position:relative!important;margin:13px 0 8px!important;padding:16px 18px!important;
+ background:linear-gradient(110deg,#e0d2b8,#c5b08e)!important;
+ border:1px solid #8b704f!important;border-right:4px solid #963f34!important;
+ box-shadow:0 8px 18px #0008,inset 0 0 0 3px #f4e8d355!important;
+ color:#2b241c!important
+}
+#suspect-interviews-screen .suspect-observation{
+ padding:7px 10px!important;margin:0 0 2px!important;background:#bd8b6214!important;
+ border-right:2px solid #a77c50!important;color:#d5b68d!important
+}
+#suspect-interviews-screen .suspect-question-list button{
+ position:relative!important;min-height:44px!important;padding:9px 13px!important;
+ background:linear-gradient(100deg,#29221b,#111518)!important;border:1px solid #876747!important;
+ box-shadow:0 4px 10px #0005!important
+}
+#suspect-interviews-screen .suspect-question-list button:before{content:"01  /"!important;color:#c69b70!important;font:8px Georgia,serif!important;letter-spacing:1px}
+#suspect-interviews-screen .suspect-question-list button:nth-child(2):before{content:"02  /"!important}
+#suspect-interviews-screen .suspect-question-list button:nth-child(3):before{content:"03  /"!important}
+#suspect-interviews-screen .suspect-question-list button:nth-child(4):before{content:"04  /"!important}
+#suspect-interviews-screen .suspect-record{
+ background:linear-gradient(120deg,#171716f2,#0c0f10f2)!important;border:1px solid #8d6b4b88!important;
+ box-shadow:inset 0 0 0 3px #08090a55,0 8px 20px #0008!important
+}
+#suspect-interviews-screen .suspect-record .board-section-title span{color:#d0aa78!important}
+#suspect-interviews-screen .suspect-record .board-section-title small{color:#a99a85!important}
+#suspect-interviews-screen .suspect-record ul li{padding:2px 0;border-bottom:1px solid #ffffff0c}
+@media(max-width:700px) and (orientation:portrait){
+ #suspect-interviews-screen{
+  height:100svh!important;min-height:100svh!important;overflow:auto!important;
+  padding:12px!important;gap:10px!important;background-size:auto 100%!important
+ }
+ #suspect-interviews-screen .suspect-header{flex:0 0 auto!important}
+ #suspect-interviews-screen .suspect-layout{flex:0 0 auto!important;min-height:auto!important}
+ #suspect-interviews-screen .suspect-list{grid-template-columns:1fr 1fr!important}
+ #suspect-interviews-screen .suspect-person{min-height:72px!important}
+ #suspect-interviews-screen .suspect-avatar{width:42px!important;height:42px!important;flex-basis:42px!important}
+ #suspect-interviews-screen .suspect-panel{min-height:320px!important;overflow:visible!important}
+ #suspect-interviews-screen .suspect-focus-portrait{width:78px!important;height:96px!important;flex-basis:78px!important}
+ #suspect-interviews-screen .suspect-question-list{grid-template-columns:1fr!important}
+ #suspect-interviews-screen .suspect-record{max-height:180px!important;overflow:auto!important}
+ #suspect-interviews-screen:after{position:static!important;display:block!important;margin-top:2px!important}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #suspect-interviews-screen .suspect-person{min-height:53px!important}
+ #suspect-interviews-screen .suspect-avatar{width:38px!important;height:38px!important;flex-basis:38px!important}
+ #suspect-interviews-screen .suspect-panel:before{padding-bottom:4px;margin-bottom:5px}
+ #suspect-interviews-screen .suspect-focus-portrait{width:70px!important;height:82px!important;flex-basis:70px!important}
+ #suspect-interviews-screen .suspect-response{min-height:45px!important;padding:6px 10px!important}
+}
