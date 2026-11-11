@@ -3255,3 +3255,26 @@ html,body{background:#090b0e!important}
     font-size:12px!important;
   }
 }
+
+/* INTERROGATION ROOM — preserve approved portrait artwork on locked suspects */
+#suspect-interviews-screen .suspect-person:disabled{
+  filter:none!important;
+  opacity:1!important;
+  cursor:not-allowed!important;
+  background:linear-gradient(110deg,#201e1b,#111417)!important;
+  border-color:#65513a!important;
+  box-shadow:none!important;
+}
+#suspect-interviews-screen .suspect-person:disabled .suspect-avatar{
+  filter:none!important;
+  opacity:1!important;
+}
+#suspect-interviews-screen .suspect-person:disabled span{
+  opacity:.58!important;
+}
+#suspect-interviews-screen .suspect-person:disabled b{
+  color:#c6b8a3!important;
+}
+#suspect-interviews-screen .suspect-person:disabled small{
+  color:#a28f78!important;
+}
