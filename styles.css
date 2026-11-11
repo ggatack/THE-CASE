@@ -1933,3 +1933,118 @@ html,body{background:#090b0e!important}
  #interview-screen .interview-person,#layan-screen .layan-person{min-height:180px!important}
  #interview-screen .dialogue-options,#layan-screen .dialogue-options{grid-template-columns:1fr!important}
 }
+
+
+/* ACCESS LOG REVIEW — cinematic evidence console */
+#logs-screen{
+ box-sizing:border-box!important;position:relative!important;isolation:isolate!important;
+ display:flex!important;flex-direction:column!important;width:100vw!important;height:100dvh!important;
+ min-height:0!important;max-width:none!important;margin:0!important;padding:16px 28px 14px!important;
+ overflow:hidden!important;border:0!important;
+ background:#090b0e url('assets/scenes/adam-investigation-presence.jpg?v=01') left center/auto 118% no-repeat!important;
+}
+#logs-screen:before{
+ content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none!important;
+ background:linear-gradient(90deg,rgba(6,8,10,.12) 0%,rgba(6,8,10,.62) 22%,rgba(7,9,11,.94) 46%,#090b0e 100%)!important;
+}
+#logs-screen:after{
+ content:"THE CASE   /   DIGITAL ACCESS RECORD   /   001"!important;position:absolute!important;
+ left:28px!important;bottom:13px!important;color:#9e866b!important;
+ font:9px 'Cormorant Garamond',serif!important;letter-spacing:2px!important;pointer-events:none!important;
+}
+#logs-screen .logs-header{
+ flex:0 0 auto!important;display:grid!important;grid-template-columns:170px 1fr auto!important;
+ align-items:center!important;gap:20px!important;padding:0 0 11px!important;border-bottom:1px solid #b18a5a55!important;
+}
+#logs-screen .logs-header .back-link{padding:0!important;color:#c6b49b!important;font-size:10px!important}
+#logs-screen .logs-header .eyebrow{margin:0 0 4px!important;font-size:8px!important;letter-spacing:1.5px!important}
+#logs-screen .logs-header h2{margin:0!important;font-size:clamp(25px,3vw,39px)!important;line-height:1.1!important;color:#eee2d0!important}
+#logs-screen .logs-header h2 em{color:#c69a6e!important}
+#logs-screen .logs-header p:not(.eyebrow){font-size:10px!important;margin:4px 0 0!important;color:#b5a999!important}
+#logs-screen .logs-stamp{
+ padding:8px 12px!important;border:1px solid #9e79504d!important;background:#141414d9!important;
+ color:#c5a47d!important;font-size:9px!important;white-space:nowrap!important
+}
+#logs-screen .logs-warning{
+ flex:0 0 auto!important;display:flex!important;align-items:center!important;gap:14px!important;
+ margin:10px 0!important;padding:9px 13px!important;background:#1c1915e8!important;
+ border:1px solid #8e6d4c66!important;border-right:3px solid #a47b53!important;
+ color:#c9bba8!important;font-size:9px!important;line-height:1.7!important
+}
+#logs-screen .logs-warning b{color:#d2aa7c!important;white-space:nowrap!important}
+#logs-screen .logs-layout{
+ flex:1 1 auto!important;min-height:0!important;display:grid!important;
+ grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr)!important;gap:13px!important;margin:0 0 8px!important
+}
+#logs-screen .logs-list,#logs-screen .log-detail{
+ min-height:0!important;overflow:auto!important;padding:14px!important;
+ background:linear-gradient(135deg,rgba(19,20,20,.97),rgba(8,11,13,.98))!important;
+ border:1px solid #a17a514f!important;box-shadow:0 12px 30px #0009!important
+}
+#logs-screen .logs-list-title{
+ display:flex!important;justify-content:space-between!important;align-items:center!important;gap:10px!important;
+ padding-bottom:11px!important;border-bottom:1px solid #9a754b55!important;
+ color:#d9c7af!important;font-size:11px!important
+}
+#logs-screen .logs-list-title small{font-size:8px!important;color:#9b8f7e!important}
+#logs-screen .log-entry{
+ box-sizing:border-box!important;width:100%!important;min-height:58px!important;display:grid!important;
+ grid-template-columns:62px minmax(0,1fr) 20px!important;align-items:center!important;gap:12px!important;
+ margin-top:8px!important;padding:8px 11px!important;text-align:right!important;
+ background:linear-gradient(100deg,#211e1a,#111416)!important;border:1px solid #765a3d88!important;
+ border-right:2px solid #896745!important;color:#e9ddcb!important
+}
+#logs-screen .log-entry time{
+ color:#d1a477!important;font:18px 'Cormorant Garamond',serif!important;direction:ltr!important;text-align:center!important
+}
+#logs-screen .log-entry span{display:flex!important;flex-direction:column!important;gap:4px!important;min-width:0!important}
+#logs-screen .log-entry b{font-size:10px!important;color:#eee2d0!important}
+#logs-screen .log-entry small{font-size:8px!important;color:#a99b88!important}
+#logs-screen .log-entry i{font-style:normal!important;color:#c69a6e!important}
+#logs-screen .log-entry:hover,#logs-screen .log-entry:focus-visible{
+ border-color:#d2a16e!important;background:#30271f!important;outline:none!important
+}
+#logs-screen .log-detail{display:flex!important;flex-direction:column!important;justify-content:flex-start!important}
+#logs-screen .log-detail-kicker{color:#c69a6e!important;font-size:8px!important;letter-spacing:1.6px!important}
+#logs-screen .log-detail h3{margin:13px 0 8px!important;color:#eee2d0!important;font-size:clamp(19px,2.1vw,27px)!important}
+#logs-screen .log-detail>p:not(.log-recorded){color:#c6b9a8!important;font-size:11px!important;line-height:1.9!important}
+#logs-screen .log-detail-caution{
+ margin:12px 0!important;padding:12px!important;background:#171714!important;
+ border-right:2px solid #a47b53!important;color:#d0b38c!important;font-size:10px!important;line-height:1.85!important
+}
+#logs-screen .collect-button{
+ margin-top:auto!important;min-height:42px!important;padding:9px 13px!important;
+ background:linear-gradient(110deg,#c29a70,#9e754f)!important;color:#17120e!important;
+ border:1px solid #e1bc91!important;font-size:10px!important
+}
+#logs-screen .collect-button:disabled{opacity:.38!important;filter:grayscale(.7)!important}
+#logs-screen .log-recorded{margin:8px 0 0!important;color:#a9bd9c!important;font-size:9px!important}
+#logs-screen .scene-footnote{flex:0 0 auto!important;margin:0!important;color:#9e9384!important;font-size:8px!important}
+#logs-screen.hidden{display:none!important}
+@media(max-height:520px) and (orientation:landscape){
+ #logs-screen{padding:9px 18px 8px!important;background-size:auto 125%!important}
+ #logs-screen .logs-header{grid-template-columns:130px 1fr auto!important;padding-bottom:7px!important;gap:12px!important}
+ #logs-screen .logs-header h2{font-size:25px!important}
+ #logs-screen .logs-warning{margin:6px 0!important;padding:5px 9px!important;font-size:8px!important}
+ #logs-screen .logs-layout{gap:8px!important;margin-bottom:5px!important}
+ #logs-screen .logs-list,#logs-screen .log-detail{padding:8px!important}
+ #logs-screen .logs-list-title{padding-bottom:6px!important}
+ #logs-screen .log-entry{min-height:39px!important;margin-top:4px!important;padding:4px 8px!important;grid-template-columns:50px 1fr 14px!important}
+ #logs-screen .log-entry time{font-size:14px!important}
+ #logs-screen .log-entry b{font-size:8px!important}
+ #logs-screen .log-entry small{font-size:7px!important}
+ #logs-screen .log-detail h3{margin:6px 0!important;font-size:19px!important}
+ #logs-screen .log-detail>p:not(.log-recorded){font-size:9px!important;line-height:1.6!important;margin:5px 0!important}
+ #logs-screen .log-detail-caution{margin:5px 0!important;padding:6px!important;font-size:8px!important}
+ #logs-screen .collect-button{min-height:30px!important;padding:5px 9px!important;font-size:8px!important}
+ #logs-screen:after{left:18px!important;bottom:5px!important;font-size:7px!important}
+}
+@media(max-width:700px) and (orientation:portrait){
+ #logs-screen{padding:12px!important;background-position:30% center!important}
+ #logs-screen:before{background:linear-gradient(180deg,#090b0e66,#090b0ef5 35%)!important}
+ #logs-screen .logs-header{grid-template-columns:1fr auto!important}
+ #logs-screen .logs-header .back-link{grid-column:1/-1!important}
+ #logs-screen .logs-layout{grid-template-columns:1fr!important;overflow:auto!important}
+ #logs-screen .logs-list{overflow:visible!important}
+ #logs-screen .log-detail{min-height:230px!important}
+}
