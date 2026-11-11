@@ -2179,3 +2179,142 @@ html,body{background:#090b0e!important}
  #archive-screen .archive-caution{padding:5px 7px!important;margin-bottom:5px!important}
  #archive-screen .archive-reader .collect-button{padding:6px 10px!important}
 }
+
+
+/* CROSSCHECK REFINEMENT — side-by-side evidence comparison table */
+#crosscheck-screen{
+ box-sizing:border-box!important;width:100vw!important;height:100svh!important;min-height:0!important;max-width:none!important;
+ margin:0!important;padding:clamp(12px,2.4vh,26px) clamp(16px,3vw,42px)!important;
+ display:flex;flex-direction:column;gap:clamp(8px,1.5vh,15px);overflow:auto!important;isolation:isolate;
+ background:linear-gradient(105deg,rgba(8,10,12,.95),rgba(12,13,14,.82) 50%,rgba(7,8,9,.91)),url('assets/scenes/adam-investigation-presence.jpg?v=01') center/cover no-repeat!important;
+ border:1px solid #77583a!important;color:#e8dece
+}
+#crosscheck-screen:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#05060755,transparent 45%);pointer-events:none}
+#crosscheck-screen .crosscheck-header{
+ display:grid!important;grid-template-columns:auto 1fr auto!important;align-items:center!important;gap:clamp(12px,2vw,28px)!important;
+ flex:0 0 auto;padding:0 0 12px!important;border-bottom:1px solid #bd94634d!important
+}
+#crosscheck-screen .crosscheck-header .back-link{padding:9px 12px!important;margin:0!important;border:1px solid #75583b!important;background:#11100ee8!important;color:#d9c5a8!important;white-space:nowrap}
+#crosscheck-screen .crosscheck-header .eyebrow{margin:0 0 3px!important;color:#c79b6a!important;font-size:9px!important}
+#crosscheck-screen .crosscheck-header h2{font-size:clamp(25px,3vw,38px)!important;color:#f0e4d2!important;line-height:1.15}
+#crosscheck-screen .crosscheck-header h2 em{color:#d3a16e!important}
+#crosscheck-screen .crosscheck-header p:last-child{font-size:10px!important;color:#c1b5a4!important;margin-top:4px!important}
+#crosscheck-screen .crosscheck-stamp{padding:8px 12px!important;border:1px solid #a06c50!important;background:#261b17d9!important;color:#e2ad88!important;letter-spacing:1px}
+#crosscheck-screen .crosscheck-warning{
+ flex:0 0 auto;margin:0!important;padding:8px 12px!important;gap:12px!important;
+ background:linear-gradient(90deg,#38261fef,#1c1714e8)!important;border:1px solid #77513b!important;
+ color:#d9c6ad!important;font-size:10px!important;line-height:1.7!important
+}
+#crosscheck-screen .crosscheck-warning b{color:#e4b47f!important}
+#crosscheck-screen .crosscheck-layout{
+ display:grid!important;grid-template-columns:minmax(250px,.82fr) minmax(0,1.18fr)!important;
+ gap:clamp(12px,2vw,22px)!important;flex:1 0 auto;min-height:0
+}
+#crosscheck-screen .crosscheck-sources{
+ display:flex!important;flex-direction:column!important;justify-content:center!important;gap:8px!important;
+ padding:clamp(12px,1.7vw,20px)!important;background:linear-gradient(145deg,#171615ed,#0d0f10f2)!important;
+ border:1px solid #70543a!important;box-shadow:inset 0 0 0 4px #08090988,0 12px 30px #0008!important
+}
+#crosscheck-screen .board-section-title{
+ display:flex!important;flex-direction:column;gap:4px;padding:0 3px 8px!important;margin:0 0 2px!important;
+ border-bottom:1px solid #8a68434d!important
+}
+#crosscheck-screen .board-section-title span{color:#cda574!important;font-size:11px!important;letter-spacing:.5px}
+#crosscheck-screen .board-section-title small{color:#a99b87!important;font-size:8px!important;line-height:1.6}
+#crosscheck-screen .crosscheck-source{
+ position:relative!important;box-sizing:border-box!important;width:100%!important;margin:0!important;
+ padding:12px 14px!important;text-align:right!important;direction:rtl!important;
+ background:linear-gradient(110deg,#d8c6a7,#b49a75)!important;color:#2c2118!important;
+ border:1px solid #7d6042!important;border-right:5px solid #80603e!important;border-radius:1px!important;
+ box-shadow:0 4px 9px #0008,inset 0 0 0 3px #e6d7bd55!important
+}
+#crosscheck-screen .crosscheck-source:before{content:"";position:absolute;top:0;left:13px;width:38px;height:4px;background:#9b7650}
+#crosscheck-screen .crosscheck-source b{font-size:clamp(11px,1.1vw,14px)!important;color:#2a1d14!important;font-weight:700!important}
+#crosscheck-screen .crosscheck-source small{font-size:9px!important;color:#66513a!important;margin-top:4px!important}
+#crosscheck-screen .crosscheck-source.selected{
+ background:linear-gradient(110deg,#ead9bb,#c7ad83)!important;border-color:#d5a46c!important;border-right-color:#a54c3e!important;
+ box-shadow:0 0 0 2px #bd8b6255,0 5px 12px #0008!important
+}
+#crosscheck-screen .crosscheck-source.source-saved{border-right-color:#647c5a!important}
+#crosscheck-screen .crosscheck-source:disabled{opacity:.42!important;filter:none!important}
+#crosscheck-screen .crosscheck-pair{
+ display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;gap:5px!important;
+ margin:3px 0!important;padding:10px!important;background:#11100eea!important;border:1px solid #80603e!important
+}
+#crosscheck-screen .crosscheck-pair span{font-size:8px!important;color:#b49a78!important}
+#crosscheck-screen .crosscheck-pair b{font-size:9px!important;color:#ead8bd!important;min-height:24px}
+#crosscheck-screen .crosscheck-pair i{grid-column:auto!important;color:#c59a69!important;font-size:18px}
+#crosscheck-screen .save-crosscheck{
+ min-height:40px!important;margin-top:auto!important;padding:8px 14px!important;
+ background:linear-gradient(#d6ae76,#a47a4d)!important;border:1px solid #795633!important;
+ color:#21180f!important;font:600 11px 'IBM Plex Sans Arabic'!important;cursor:pointer
+}
+#crosscheck-screen .save-crosscheck:disabled{opacity:.4!important;cursor:not-allowed}
+#crosscheck-screen .crosscheck-result{
+ box-sizing:border-box!important;min-height:0!important;padding:clamp(16px,2.2vw,26px)!important;
+ display:flex!important;flex-direction:column!important;position:relative;
+ background:linear-gradient(135deg,#e1d4bb,#c9b797)!important;color:#2b251e!important;
+ border:1px solid #8b7354!important;outline:5px solid #211a14!important;outline-offset:-8px;
+ box-shadow:0 12px 30px #0009,inset 0 0 35px #8c755122!important
+}
+#crosscheck-screen .crosscheck-result:before{content:"NAWA  /  COMPARATIVE REVIEW";display:block;padding-bottom:9px;border-bottom:1px solid #88745a66;color:#80694d;font:9px Georgia,serif;letter-spacing:2px}
+#crosscheck-screen .crosscheck-result .log-detail-kicker{margin-top:12px;color:#8b5e3c!important;font-size:9px!important;letter-spacing:1px}
+#crosscheck-screen .crosscheck-result h3{font-size:clamp(19px,2.2vw,27px)!important;font-weight:600!important;color:#2d241b!important;margin:7px 0 6px!important}
+#crosscheck-screen .crosscheck-result>p{font-size:11px!important;line-height:1.9!important;color:#514637!important}
+#crosscheck-screen .crosscheck-limits{
+ flex:1 1 auto;min-height:95px;margin:12px 0!important;padding:clamp(12px,1.6vw,18px)!important;
+ background:rgba(245,237,219,.7)!important;border:1px solid #9d8767!important;
+ box-shadow:inset 0 0 0 4px #d2c2a4!important;color:#2b241c!important;
+ font-size:clamp(10px,1.05vw,12px)!important;line-height:2!important
+}
+#crosscheck-screen .crosscheck-result .collect-button{
+ align-self:flex-start;margin-top:auto!important;padding:10px 16px!important;
+ background:linear-gradient(#d6ae76,#a47a4d)!important;border:1px solid #795633!important;color:#21180f!important;font-size:11px!important
+}
+#crosscheck-screen .crosscheck-result .collect-button:disabled{opacity:.42!important}
+#crosscheck-screen .crosscheck-saved{color:#42613e!important;font-weight:600}
+#crosscheck-screen .scene-footnote{display:none!important}
+@media(max-width:760px){
+ #crosscheck-screen{padding:10px!important;gap:7px!important}
+ #crosscheck-screen .crosscheck-header{grid-template-columns:1fr auto!important;gap:7px!important;padding-bottom:7px!important}
+ #crosscheck-screen .crosscheck-header .back-link{grid-column:1/-1;justify-self:start;padding:5px 8px!important;font-size:9px}
+ #crosscheck-screen .crosscheck-header h2{font-size:23px!important}
+ #crosscheck-screen .crosscheck-header p:last-child{font-size:8px!important}
+ #crosscheck-screen .crosscheck-stamp{font-size:8px;padding:5px 7px!important}
+ #crosscheck-screen .crosscheck-warning{font-size:8px;padding:6px 8px!important;line-height:1.5!important}
+ #crosscheck-screen .crosscheck-layout{grid-template-columns:minmax(125px,.8fr) minmax(0,1.2fr)!important;gap:7px!important}
+ #crosscheck-screen .crosscheck-sources{padding:7px!important;gap:5px!important}
+ #crosscheck-screen .board-section-title{padding-bottom:4px!important}
+ #crosscheck-screen .board-section-title span{font-size:9px!important}
+ #crosscheck-screen .board-section-title small{font-size:7px!important}
+ #crosscheck-screen .crosscheck-source{padding:7px 8px!important}
+ #crosscheck-screen .crosscheck-source b{font-size:9px!important}
+ #crosscheck-screen .crosscheck-source small{font-size:7px!important;line-height:1.4}
+ #crosscheck-screen .crosscheck-pair{padding:6px!important;gap:3px!important}
+ #crosscheck-screen .crosscheck-pair span{font-size:7px!important}
+ #crosscheck-screen .crosscheck-pair b{font-size:8px!important}
+ #crosscheck-screen .save-crosscheck{min-height:32px;font-size:9px!important;padding:5px!important}
+ #crosscheck-screen .crosscheck-result{padding:12px!important;outline-width:3px}
+ #crosscheck-screen .crosscheck-result .log-detail-kicker{margin-top:6px}
+ #crosscheck-screen .crosscheck-result h3{font-size:16px!important}
+ #crosscheck-screen .crosscheck-result>p{font-size:9px!important}
+ #crosscheck-screen .crosscheck-limits{min-height:75px;padding:8px!important;margin:7px 0!important;font-size:9px!important;line-height:1.7!important}
+ #crosscheck-screen .crosscheck-result .collect-button{font-size:9px!important;padding:7px 9px!important}
+}
+@media(max-height:500px) and (orientation:landscape){
+ #crosscheck-screen{padding:7px 16px!important;gap:5px!important}
+ #crosscheck-screen .crosscheck-header{padding-bottom:5px!important}
+ #crosscheck-screen .crosscheck-header .back-link{padding:5px 8px!important;font-size:9px}
+ #crosscheck-screen .crosscheck-header h2{font-size:21px!important}
+ #crosscheck-screen .crosscheck-warning{padding:4px 8px!important;font-size:8px!important}
+ #crosscheck-screen .crosscheck-layout{gap:8px!important}
+ #crosscheck-screen .crosscheck-sources{padding:6px!important;gap:4px!important}
+ #crosscheck-screen .crosscheck-source{padding:5px 8px!important}
+ #crosscheck-screen .crosscheck-pair{padding:5px!important;margin:1px 0!important}
+ #crosscheck-screen .crosscheck-result{padding:8px 12px!important}
+ #crosscheck-screen .crosscheck-result:before{padding-bottom:4px}
+ #crosscheck-screen .crosscheck-result .log-detail-kicker{margin-top:4px}
+ #crosscheck-screen .crosscheck-result h3{font-size:17px!important;margin:3px 0!important}
+ #crosscheck-screen .crosscheck-limits{min-height:55px;margin:5px 0!important;padding:6px 9px!important;font-size:9px!important;line-height:1.5!important}
+ #crosscheck-screen .crosscheck-result .collect-button{padding:6px 10px!important}
+}
