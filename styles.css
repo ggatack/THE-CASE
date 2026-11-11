@@ -2321,3 +2321,7 @@ html,body{background:#090b0e!important}
  #crosscheck-screen .crosscheck-limits{min-height:55px;margin:5px 0!important;padding:6px 9px!important;font-size:9px!important;line-height:1.5!important}
  #crosscheck-screen .crosscheck-result .collect-button{padding:6px 10px!important}
 }
+
+
+/* Prevent the original fallback glyph and the new pseudo-icon from appearing together on the investigation wall. */
+.investigation-board .office-card .card-symbol{font-size:0!important}
