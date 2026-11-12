@@ -3334,3 +3334,23 @@ html,body{background:#090b0e!important}
     width:min(300px,65%)!important;
   }
 }
+
+/* HOME MENU — anchor landscape controls to the viewport's bottom-right corner */
+@media (orientation:landscape) and (max-height:600px){
+  #home-screen .hero-actions{
+    position:fixed!important;
+    top:auto!important;
+    right:4vw!important;
+    bottom:4vh!important;
+    left:auto!important;
+    transform:none!important;
+    width:min(330px,31vw)!important;
+    max-width:330px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-end!important;
+    gap:6px!important;
+    z-index:9999!important;
+  }
+}
