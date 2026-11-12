@@ -3562,7 +3562,8 @@ html,body{background:#090b0e!important}
   #suspect-interviews-screen .suspect-observation{padding:4px 7px!important;font-size:8px!important}
   #suspect-interviews-screen .suspect-question-list{gap:5px!important}
   #suspect-interviews-screen .suspect-question-list button{
-    min-height:32px!important;padding:5px 7px!important;font-size:8px!important;
+    min-height:38px!important;padding:6px 8px!important;font-size:9px!important;
+    touch-action:manipulation!important;
   }
   #suspect-interviews-screen .suspect-record{max-height:52px!important;padding:4px 9px!important}
   #suspect-interviews-screen .suspect-record ul{font-size:7px!important;margin:2px 0!important}
