@@ -3335,22 +3335,24 @@ html,body{background:#090b0e!important}
   }
 }
 
-/* HOME MENU — anchor landscape controls to the viewport's bottom-right corner */
-@media (orientation:landscape) and (max-height:600px){
-  #home-screen .hero-actions{
-    position:fixed!important;
-    top:auto!important;
-    right:4vw!important;
-    bottom:0.5vh!important;
-    left:auto!important;
-    transform:none!important;
-    width:min(330px,31vw)!important;
-    max-width:330px!important;
-    display:flex!important;
-    flex-direction:column!important;
-    align-items:stretch!important;
-    justify-content:flex-end!important;
-    gap:6px!important;
-    z-index:9999!important;
-  }
+/* HOME MENU — anchor controls to the bottom edge of the actual menu artwork */
+#home-screen .hero-copy{transform:none!important;filter:none!important;perspective:none!important}
+#home-screen .hero-actions{
+  position:absolute!important;
+  top:auto!important;
+  right:4%!important;
+  bottom:1%!important;
+  left:auto!important;
+  transform:none!important;
+  width:min(330px,31vw)!important;
+  max-width:330px!important;
+  height:auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-end!important;
+  gap:6px!important;
+  margin:0!important;
+  z-index:9999!important;
+  pointer-events:auto!important;
 }
