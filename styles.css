@@ -3190,7 +3190,11 @@ html,body{background:#090b0e!important}
   #home-screen .hero-actions button{height:40px!important;min-height:40px!important;font-size:11px!important}
 }
 @media(max-height:520px) and (orientation:landscape){
-  #home-screen .hero-actions{bottom:3.5%!important;width:min(700px,78%)!important;gap:7px!important}
+  #home-screen .hero-actions{
+    left:50%!important;right:auto!important;top:auto!important;
+    bottom:0.5%!important;transform:translateX(-50%)!important;
+    width:min(700px,78%)!important;gap:7px!important;
+  }
   #home-screen .hero-actions button{height:38px!important;min-height:38px!important;font-size:11px!important}
 }
 
