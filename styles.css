@@ -3302,3 +3302,35 @@ html,body{background:#090b0e!important}
     font-size:11px!important;
   }
 }
+
+
+/* HOTFIX — final override: home controls must sit at the bottom on every landscape viewport */
+#home-screen .hero-actions{
+  position:absolute!important;
+  top:auto!important;
+  bottom:3%!important;
+  left:auto!important;
+  right:5%!important;
+  transform:none!important;
+  width:min(330px,31%)!important;
+  height:auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  gap:5px!important;
+  z-index:999!important;
+}
+#home-screen .hero-actions button{
+  height:clamp(30px,8vh,39px)!important;
+  min-height:clamp(30px,8vh,39px)!important;
+  width:100%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+}
+@media(max-width:760px) and (orientation:portrait){
+  #home-screen .hero-actions{
+    right:4%!important;bottom:3%!important;left:auto!important;
+    width:min(300px,65%)!important;
+  }
+}
