@@ -3282,3 +3282,23 @@ html,body{background:#090b0e!important}
 #suspect-interviews-screen .suspect-person:disabled small{
   color:#a28f78!important;
 }
+
+
+/* HOME MENU — move the landscape controls lower so Start stays reachable */
+@media (orientation:landscape) and (max-height:600px){
+  #home-screen .hero-actions{
+    top:auto!important;
+    bottom:4%!important;
+    right:5%!important;
+    left:auto!important;
+    transform:none!important;
+    width:min(330px,31%)!important;
+    gap:6px!important;
+  }
+  #home-screen .hero-actions button{
+    height:38px!important;
+    min-height:38px!important;
+    padding:6px 12px!important;
+    font-size:11px!important;
+  }
+}
