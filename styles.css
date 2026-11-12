@@ -3341,7 +3341,7 @@ html,body{background:#090b0e!important}
     position:fixed!important;
     top:auto!important;
     right:4vw!important;
-    bottom:4vh!important;
+    bottom:0.5vh!important;
     left:auto!important;
     transform:none!important;
     width:min(330px,31vw)!important;
